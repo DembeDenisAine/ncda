@@ -67,11 +67,11 @@ class Objectives_model extends CI_Model{
 
     public function objectives_by_project_id($id) {
 
-        $query = $this->db->query('SELECT `no`.*, `np`.`project_name` as `project_name` 
+        $query = $this->db->query("SELECT `no`.*, `np`.`project_name` as `project_name` 
                                   FROM (`ncda_ojectives` `no`) 
                                   JOIN `ncda_projects` `np` 
                                   ON `np`.`id`=`no`.`project_id` 
-                                  WHERE `no`.`project_id` = 1')
+                                  WHERE `no`.`project_id` = '$id'")
                             ->result_array();
         return (object)$query;
 

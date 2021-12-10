@@ -19,7 +19,7 @@ class Activities extends MX_Controller
             $data['activities'] = $this->AM->activities_by_objective_id($id);
 
             $project = $this->OM->find($id);
-            $data['actv_name'] = $project['objective_name'];
+            $data['actv_name'] = $project->objective_name;
             $data['actv_id'] = $id;
 
         }else{
@@ -54,7 +54,7 @@ class Activities extends MX_Controller
 
     public function singleActivity($id = null){ //get activity page
 
-        $item$data['objective'] = $this->AM->find($id);
+        $data['objective'] = $this->AM->find($id);
         $data['objective_obj'] =  $this->OM->find($id);
 
         $data['module']=$this->module;

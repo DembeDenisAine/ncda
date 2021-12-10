@@ -52,22 +52,32 @@ class Activities_model extends CI_Model{
 
     public function activities_with_objectives_info() {
 
-        $builder = $this->db->table('ncda_activities as na');
+       /* $builder = $this->db->table('ncda_activities as na');
         $builder->select('na.*, no.objective_name as objective_name');
         $builder->join('ncda_ojectives as no', 'na.objective_id = no.id');
         $data = $builder->get()->getResult();
-        return $data;
+        return $data; */
+
+         $query = $this->db->query("SELECT `na`.*, `no`.`objective_name` as `objective_name` 
+                                  FROM (`ncda_activities` `na`) 
+                                  JOIN `ncda_ojectives` `no` 
+                                  ON `no`.`id`=`na`.`objective_id`")
+                            ->result_array();
+
+        return (object)$query;
 
     } 
 
     public function activities_by_objective_id($id) {
 
-        $builder = $this->db->table('ncda_activities as na');
-        $builder->select('na.*, no.objective_name as objective_name');
-        $builder->join('ncda_ojectives as no', 'na.objective_id = no.id');
-        $builder->where('na.objective_id',$id);
-        $data = $builder->get()->getResult();
-        return $data;
+        $query = $this->db->query("SELECT `na`.*, `no`.`objective_name` as `objective_name` 
+                                  FROM (`ncda_activities` `na`) 
+                                  JOIN `ncda_ojectives` `no` 
+                                  ON `no`.`id`=`na`.`objective_id` 
+                                  WHERE `na`.`objective_id` = '$id'")
+                            ->result_array();
+        return (object)$query;
+
 
     } 
 
