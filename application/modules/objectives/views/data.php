@@ -45,20 +45,20 @@
                                     <?php  if($objectives): $i=0;  foreach($objectives as $obj): $i++; ?>
                                         <tr>
                                             <td><?php echo $i; ?></td>
-                                            <td><?php echo $obj->objective_name; ?></td>
+                                            <td><?php echo $obj['objective_name']; ?></td>
 
-                                            <?php if(empty($proj_name)) { ?>
-                                                <td><?php echo $obj->project_name; ?></td>
+                                            <?php if($proj_name!='') { ?>
+                                                <td><?php echo $obj['project_name']; ?></td>
                                             <?php } ?> 
 
-                                            <td><?php echo $obj->objective_description; ?></td>
+                                            <td><?php echo $obj['objective_description']; ?></td>
                                             <td>
-                                                <a href="<?php echo base_url('activity-list/'.$obj->id);?>" 
+                                                <a href="<?php echo base_url('activity-list/'.$obj['id']);?>" 
                                                 class="btn btn-success btn-sm">Activities</a>
                                             </td>
                                             <td>
-                                                <a href="<?php echo base_url('edit-objective/'.$obj->id);?>" 
-                                                class="btn btn-primary btn-sm">Edit</a> <a href="<?php echo base_url('delete-objective/'.$obj->id);?>" 
+                                                <a href="<?php echo base_url('edit-objective/'.$obj['id']);?>" 
+                                                class="btn btn-primary btn-sm">Edit</a> <a href="<?php echo base_url('delete-objective/'.$obj['id']);?>" 
                                                 class="btn btn-danger btn-sm">Delete</a>
                                             </td>
                                         </tr>
