@@ -64,7 +64,6 @@ class Objectives_model extends CI_Model{
 
     } 
 
-
     public function objectives_by_project_id($id) {
 
         $query = $this->db->query("SELECT `no`.*, `np`.`project_name` as `project_name` 

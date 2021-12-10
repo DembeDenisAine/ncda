@@ -51,24 +51,30 @@ class Parameters_model extends CI_Model{
     }
 
 
-        public function parameters_with_activities_info() {
+    public function parameters_with_activities_info() {
 
-        $builder = $this->db->table('ncda_parameters as np');
-        $builder->select('np.*, no.activity_name as activity_name');
-        $builder->join('ncda_activities as no', 'np.activity_id = no.id');
-        $data = $builder->get();
-        return $data;
+        $query = $this->db
+                ->query("
+                    SELECT `np`.*, `na`.`activity_name` as `activity_name` 
+                    FROM (`ncda_parameters` `np`) 
+                    JOIN `ncda_activities` `na` 
+                    ON `na`.`id`=`np`.`activity_id`")
+                ->result_array();
 
+        return (object)$query;
     } 
 
     public function parameters_by_activity_id($id) {
 
-        $builder = $this->db->table('ncda_parameters as np');
-        $builder->select('np.*, no.activity_name as activity_name');
-        $builder->join('ncda_activities as no', 'np.activity_id = no.id');
-        $builder->where('np.activity_id',$id);
-        $data = $builder->get();
-        return $data;
+        $query = $this->db
+                 ->query("
+                    SELECT `np`.*, `na`.`activity_name` as `activity_name` 
+                    FROM (`ncda_activities` `na`) 
+                    JOIN `ncda_parameters` `np` 
+                    ON `na`.`id`=`np`.`activity_id` 
+                    WHERE `np`.`activity_id` = '$id'")
+                ->result_array();
+        return (object)$query;
 
     } 
 

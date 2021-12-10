@@ -52,27 +52,23 @@ class Activities_model extends CI_Model{
 
     public function activities_with_objectives_info() {
 
-         $query = $this->db
-                  ->query("
-                      SELECT `na`.*, `no`.`objective_name` as `objective_name` 
-                      FROM (`ncda_activities` `na`) 
-                      JOIN `ncda_ojectives` `no` 
-                      ON `no`.`id`=`na`.`objective_id`")
-                  ->result_array();
+         $query = $this->db->query("SELECT `na`.*, `no`.`objective_name` as `objective_name` 
+                                  FROM (`ncda_activities` `na`) 
+                                  JOIN `ncda_ojectives` `no` 
+                                  ON `no`.`id`=`na`.`objective_id`")
+                            ->result_array();
 
         return (object)$query;
     } 
 
     public function activities_by_objective_id($id) {
 
-        $query = $this->db
-                ->query("
-                    SELECT `na`.*, `no`.`objective_name` as `objective_name` 
-                    FROM (`ncda_activities` `na`)
-                    JOIN `ncda_ojectives` `no` 
-                    ON `no`.`id`=`na`.`objective_id` 
-                    WHERE `na`.`objective_id` = '$id'")
-                ->result_array();
+        $query = $this->db->query("SELECT `na`.*, `no`.`objective_name` as `objective_name` 
+                                  FROM (`ncda_activities` `na`) 
+                                  JOIN `ncda_ojectives` `no` 
+                                  ON `no`.`id`=`na`.`objective_id` 
+                                  WHERE `na`.`objective_id` = '$id'")
+                            ->result_array();
         return (object)$query;
     } 
 

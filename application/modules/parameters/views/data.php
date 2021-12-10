@@ -1,8 +1,4 @@
 
-<!-- INICIO: Contenido-->
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -18,10 +14,7 @@
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-    </section>
 
-    <!-- Main content -->
-    <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -53,20 +46,20 @@
                                     <?php  if($parameters): $i=0;  foreach($parameters as $actv): $i++; ?>
                                         <tr>
                                             <td><?php echo $i; ?></td>
-                                            <td><?php echo $actv->parameter_name; ?></td>
+                                            <td><?php echo $actv['parameter_name']; ?></td>
 
                                             <?php if(empty($actv_name)) { ?>
-                                                <td><?php echo $actv->activity_name; ?></td>
+                                                <td><?php echo $actv['activity_name']; ?></td>
                                             <?php } ?> 
 
-                                            <td><?php echo $actv->parameter_description; ?></td>
+                                            <td><?php echo $actv['parameter_description']; ?></td>
                                             <td>
-                                                <a href="<?php echo base_url('parameter-list/'.$actv->id);?>" 
+                                                <a href="<?php echo base_url('parameter-list/'.$actv['id']);?>" 
                                                 class="btn btn-success btn-sm">Parameters</a>
                                             </td>
                                             <td>
-                                                <a href="<?php echo base_url('edit-parameter/'.$actv->id);?>" 
-                                                class="btn btn-primary btn-sm">Edit</a> <a href="<?php echo base_url('delete-activity/'.$actv->id);?>" 
+                                                <a href="<?php echo base_url('edit-parameter/'.$actv['id']);?>" 
+                                                class="btn btn-primary btn-sm">Edit</a> <a href="<?php echo base_url('delete-activity/'.$actv['id']);?>" 
                                                 class="btn btn-danger btn-sm">Delete</a>
                                             </td>
                                         </tr>
@@ -97,8 +90,3 @@
         
             <!-- /.row -->
         </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
-<!-- FIN: Contenido-->

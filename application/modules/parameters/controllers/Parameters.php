@@ -19,7 +19,7 @@ class Parameters extends MX_Controller
             $data['parameters'] = $this->PM->parameters_by_activity_id($id);
 
             $activity = $this->AM->find($id);
-            $data['actv_name'] = $activity['activity_name'];
+            $data['actv_name'] = $activity->activity_name;
             $data['actv_id'] = $id;
 
         }else{
