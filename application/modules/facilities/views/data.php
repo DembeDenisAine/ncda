@@ -3,7 +3,7 @@
             <div class="row mb-2">
                 <div class="col-sm-8">
                     <h3>Objectives </h3>
-                    <h6><?php if(!empty($district)){ echo 'Branch: '.$district; } ?></h6>
+                    <h6><?php if(!empty($district)){ echo 'Branch: ['.$district.']'; } ?></h6>
                 </div>
                 <div class="col-sm-4">
                     <ol class="breadcrumb float-sm-right">
