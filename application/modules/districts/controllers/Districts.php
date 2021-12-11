@@ -15,7 +15,6 @@ class Districts extends MX_Controller
     
         $data['module']=$this->module;
         $data['title']="Districts";
-        $data['uptitle']="Main districts";
         $data['view']="data";
 
         $data['districts'] = $this->DM->get();
@@ -39,14 +38,27 @@ class Districts extends MX_Controller
 
     public function singleDistrict($id = null){ //get district page
 
-        $item$data['dt_obj'] = $this->DM->find($id);
-
+        $data['dt_obj'] = $this->DM->find($id);
         $data['module']=$this->module;
         $data['title']="Districts";
 
         $data['view']="edit";
         echo Modules::run('templates/main',$data);
     }
+
+    public function teams($id = null){ //get district teams
+
+        $data['teams'] = $this->DM->district_teams($id);
+        $data['facilities'] = $this->DM->facilities_by_district($id);
+        $data['district'] = $this->DM->find($id);
+
+        $data['module']=$this->module;
+        $data['title']="Branch Teams";
+
+        $data['view']="teams";
+        echo Modules::run('templates/main',$data);
+    }
+
 
     public function update($id = null){ //updat district
 

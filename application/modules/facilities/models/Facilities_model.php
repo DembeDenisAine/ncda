@@ -5,7 +5,7 @@ class Districts_model extends CI_Model{
     public function get(){
 
         $query = $this->db->get("ncda_facilities");
-        return $query->result();
+        return $query->result_array();
     }
 
 

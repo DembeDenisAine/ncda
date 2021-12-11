@@ -2,12 +2,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h3>Branches/Districts</h3>
+                    <h3>[<?php echo $district->district_name;?>] Branch -Teams </h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Branches/District List</li>
+                        <li class="breadcrumb-item active">Branch -Teams </li>
                     </ol>
                 </div>
             </div>
@@ -28,28 +28,29 @@
                                 <thead>
                                     <tr>
                                         <th width="5%">#</th>
-                                        <th>Branch Name</th>
-                                        <th>Region</th>
-                                        <th>Teams</th>
+                                        <th>Name</th>
+                                        <th>Gender</th>
+                                        <th>Title</th>
+                                        <th>Facility</th>
+                                        <th>Contact</th>
                                         <th width="15%">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                    <?php if($districts): ?>
-                                    <?php $i=0; foreach($districts as $proj): $i++; ?>
+                                    <?php if($teams): ?>
+                                    <?php $i=0; foreach($teams as $tm): $i++; ?>
                                     <tr>
                                         <td><?php echo $i; ?></td>
-                                        <td><?php echo $proj['district_name']; ?></td>
-                                        <td><?php echo $proj['region']; ?></td>
+                                        <td><?php echo $tm['first_name']." ".$tm['last_name']; ?></td>
+                                        <td><?php echo $tm['gender']; ?></td>
+                                        <td><?php echo $tm['title']; ?></td>
+                                        <td><?php echo $tm['contact']; ?></td>
+                                        <td><?php echo $tm['title']; ?></td>
                                         <td>
-                                            <a href="<?php echo base_url('teams-district/'.$proj['id']);?>" 
-                                            class="btn btn-primary btn-sm">Teams</a> 
-                                        </td>
-                                        <td>
-                                            <a href="<?php echo base_url('edit-district/'.$proj['id']);?>" 
+                                            <a href="<?php echo base_url('edit-district/'.$tm['id']);?>" 
                                             class="btn btn-primary btn-sm">Edit</a> 
-                                            <a href="<?php echo base_url('delete-district/'.$proj['id']);?>" 
+                                            <a href="<?php echo base_url('delete-district/'.$tm['id']);?>" 
                                             class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>

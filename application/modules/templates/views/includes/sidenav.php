@@ -193,7 +193,7 @@
                 <li class="nav-item">
                     <a href="<?=site_url('district-list')?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Districts</p>
+                        <p>Branches</p>
                     </a>
                 </li>
                 <li class="nav-item">

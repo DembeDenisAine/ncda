@@ -5,7 +5,7 @@ class Districts_model extends CI_Model{
     public function get(){
 
         $query = $this->db->get("ncda_districts");
-        return $query->result();
+        return (object)$query->result_array();
     }
 
 
@@ -43,7 +43,26 @@ class Districts_model extends CI_Model{
         return $this->db->get_where('ncda_districts', array('id' => $id))->row();
     }
 
+    public function district_teams($id)
+    {
+        $query = $this->db->query('SELECT `bt`.*, `nf`.`facility_name` as `facility_name` 
+                                  FROM (`ncda_branch_teams` `bt`) 
+                                  JOIN `ncda_facilities` `nf` 
+                                  ON `nf`.`id`=`bt`.`facility_id`')
+                          ->result_array();
+        return (object)$query;
 
+    }
+
+    public function facilities_by_district($id)
+    {
+        $query = $this->db->query("SELECT * FROM ncda_facilities WHERE  district_id='$id'")
+                          ->result_array();
+        return (object)$query;
+
+
+    }
+    
     public function delete($id)
     {
         return $this->db->delete('ncda_districts', array('id' => $id));
