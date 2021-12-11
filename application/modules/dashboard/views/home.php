@@ -2,10 +2,6 @@
   <section class="content">
     <div class="container-fluid">
       <!-- Small boxes (Stat box) -->
-
-          <?php //include('upper-cards.php'); ?>
-
-
           <div class="row">
         <div class="col-lg-3 col-6">
           <!-- small box -->
