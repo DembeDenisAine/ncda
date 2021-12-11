@@ -173,7 +173,7 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a href="<?=site_url('calendar')?>" class="nav-link">
+            <a href="#" class="nav-link">
                 <i class="nav-icon far fa-calendar-alt"></i>
                 <p>
                     Contacts
@@ -227,75 +227,8 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
-                <p>
-                    Settings
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-            <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>My Account</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Users</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Roles</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Permissions</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>System Settings</p>
-                    </a>
-                </li>
-            </ul>
-        </li>
-       
-        
-              <!--user perm 26-->
-           <?php if(in_array('32', $permissions)){ ?>
-            <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link">
-              <i class="fa fa-check-square"></i>
-              <p>
-                Forms & Fields
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="<?php echo base_url()?>forms" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  Forms</a>
-                  </li>
-                  <li class="nav-item">
-                  <a href="<?php echo base_url()?>forms/fields" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  Fields</a>
-                  </li>
-            </ul>
-            </li>
-            <?php } ?>
 
-          <!--user perm 14-->
+                  <!--user perm 14-->
           <?php if(in_array('35', $permissions)){ ?>
           <li class="nav-item has-treeview ">
             <a href="#" class="nav-link">
@@ -336,6 +269,33 @@
                 <?php } ?>
             </ul>
           </li>
+        
+              <!--user perm 26-->
+           <?php if(in_array('32', $permissions)){ ?>
+            <li class="nav-item has-treeview ">
+            <a href="#" class="nav-link">
+              <i class="fa fa-check-square"></i>
+              <p>
+                Forms & Fields
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?php echo base_url()?>forms" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  Forms</a>
+                  </li>
+                  <li class="nav-item">
+                  <a href="<?php echo base_url()?>forms/fields" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  Fields</a>
+                  </li>
+            </ul>
+            </li>
+            <?php } ?>
+
+
           <?php } ?>
          <li class="nav-item has-treeview">
             <a href="<?php echo base_url(); ?>" class="nav-link" 
