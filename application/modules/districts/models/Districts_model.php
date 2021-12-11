@@ -88,7 +88,7 @@ class Districts_model extends CI_Model{
             'contact' => $this->input->post('contact'),
             'notes' => $this->input->post('notes'),
         );
-        return $this->db->insert('ncda_districts', $data);
+        return $this->db->insert('ncda_branch_teams', $data);
     }
 
 

@@ -33,7 +33,7 @@ class Districts extends MX_Controller
     public function store() { //save district
 
         $this->DM->insert();
-        return $this->response->redirect(site_url('district-list'));
+        return redirect(site_url('district-list'));
     }
 
     public function singleDistrict($id = null){ //get district page
@@ -75,20 +75,20 @@ class Districts extends MX_Controller
     public function save_branch_team() { //save team
 
         $this->DM->insert_district_teams();
-        return $this->response->redirect(site_url('district-list'));
+        return redirect(site_url('district-list'));
     }
 
 
     public function update($id = null){ //updat district
 
         $this->AM->update($id);
-        return $this->response->redirect(site_url('district-list'));
+        return redirect(site_url('district-list'));
     }
  
     public function delete($id = null){ //delete district
 
         $this->AM->delete($id);
-        return $this->response->redirect(site_url('district-list'));
+        return redirect(site_url('district-list'));
     }  
 
 
