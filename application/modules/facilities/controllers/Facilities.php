@@ -19,7 +19,7 @@ class Facilities extends MX_Controller
             $data['facilities'] = $this->FM->facilities_by_district($id);
             $data['districts']  = $this->DM->get();
 
-            $district = $this->PM->find($id);
+            $district = $this->DM->find($id);
             $data['district'] = $district->district_name;
             $data['district_id'] = $id;
 

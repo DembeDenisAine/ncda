@@ -30,6 +30,7 @@
                                         <th width="5%">#</th>
                                         <th>Branch Name</th>
                                         <th>Region</th>
+                                        <th>Ficilities</th>
                                         <th>Teams</th>
                                         <th width="15%">Action</th>
                                     </tr>
@@ -42,6 +43,11 @@
                                         <td><?php echo $i; ?></td>
                                         <td><?php echo $proj['district_name']; ?></td>
                                         <td><?php echo $proj['region']; ?></td>
+                                        
+                                        <td>
+                                            <a href="<?php echo base_url('facility-list/'.$proj['id']);?>" 
+                                            class="btn btn-primary btn-sm">Ficilities</a> 
+                                        </td>
                                         <td>
                                             <a href="<?php echo base_url('teams-district/'.$proj['id']);?>" 
                                             class="btn btn-primary btn-sm">Teams</a> 

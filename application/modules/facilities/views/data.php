@@ -46,7 +46,7 @@
                                             <td><?php echo $i; ?></td>
                                             <td><?php echo $fty['facility_name']; ?></td>
 
-                                            <?php if($district!='') { ?>
+                                            <?php if(empty($district)) { ?>
                                                 <td><?php echo $fty['district_name']; ?></td>
                                             <?php } ?> 
                                             <td>
@@ -86,3 +86,4 @@
         
             <!-- /.row -->
         </div><!-- /.container-fluid -->
+
