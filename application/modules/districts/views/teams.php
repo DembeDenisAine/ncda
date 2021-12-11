@@ -19,7 +19,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                            <a href="<?=site_url('create-district')?>" class="btn btn-info pull-right">Add a District <i class="fas fa-plus"></i></a>
+                            <a href="<?=site_url('create-branch-team')?>/<?php echo $district_id; ?>" class="btn btn-info pull-right">Add a District <i class="fas fa-plus"></i></a>
                             </h3>
                         </div>
                         <!-- /.card-header -->

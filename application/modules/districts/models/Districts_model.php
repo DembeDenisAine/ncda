@@ -62,7 +62,13 @@ class Districts_model extends CI_Model{
 
 
     }
-    
+
+    public function get_facilities(){
+
+        $query = $this->db->get("ncda_facilities");
+        return $query->result_array();
+    }
+
     public function delete($id)
     {
         return $this->db->delete('ncda_districts', array('id' => $id));

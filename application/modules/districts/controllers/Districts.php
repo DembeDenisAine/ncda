@@ -62,10 +62,11 @@ class Districts extends MX_Controller
     public function create_team($id = null){ //get district teams
 
         $data['district_id']=$id;
+        $data['facilities'] = $this->DM->get_facilities();
         $data['module']=$this->module;
         $data['title']="Branch Teams";
 
-        $data['view']="teams";
+        $data['view']="create_teams";
         echo Modules::run('templates/main',$data);
     }
 
