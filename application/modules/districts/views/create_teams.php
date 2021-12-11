@@ -27,13 +27,13 @@
         <form method="post" action="<?= site_url('save-branch-team') ?>">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Facilty</label>
                             <select type="text" class="form-control select2" name="facility_id" style="width: 100%;">
                                 <option value="Central Region">Select---</option>
-                                <?php  foreach($teams as $tm):?>
-                                    <option value="<?php echo $facilities['id']?>"><?php echo $facilities['facility_name']?> ?></option>
+                                <?php  foreach($facilities as $fty):?>
+                                    <option value="<?php echo $fty['id']?>"><?php echo $fty['facility_name']?> ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -47,7 +47,7 @@
                             <label>Last Name</label>
                             <input type="text" class="form-control" name="last_name" style="width: 100%;">
                         </div>
-                    </div>facilities
+                    </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Title</label>
