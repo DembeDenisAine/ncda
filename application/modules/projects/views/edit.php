@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Projects List</a></li>
+                        <li class="breadcrumb-item"><a href="<?=site_url('project-list')?>">Projects List</a></li>
                         <li class="breadcrumb-item active">Edit Project</li>
                     </ol>
                 </div>

@@ -64,7 +64,7 @@ $variables=Modules::run("svariables/getSettings");
                       <!-- textarea -->
                       <div class="form-group">
                         <label>Default Password</label>
-                        <input type="text" required name="password" value="<?php echo $variables=Modules::run("svariables/getSettings")->default_password; ?> "  class="form-control"  readonly/>
+                        <input type="text" required name="password" value="Pass?2021$"  class="form-control"  readonly/>
                       </div>
                     </div>
                     <div class="col-sm-4">

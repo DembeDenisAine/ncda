@@ -8,7 +8,6 @@ class Activities_model extends CI_Model{
         return $query->result();
     }
 
-
     public function insert()
     {    
         $data = array(
@@ -36,7 +35,6 @@ class Activities_model extends CI_Model{
             return $this->db->update('ncda_activities',$data);
         }        
     }
-
 
     public function find($id)
     {

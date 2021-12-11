@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="<?php echo base_url()?>assets/img/basic/favicon.ico" type="image/x-icon">
-    <title>iHRIS-WHO Data Update Tool</title>
+    <title>NCDA Data Update Tool</title>
     <!-- CSS -->
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/app.css">
     <style>
@@ -95,7 +95,7 @@
                 </div>
                 <div class="col-lg-6 p-t-100">
                     <div class="text-white">
-                    <h1>WHO iHRIS Mobile Update Tool</h1>
+                    <h1>NCDAMobile Update Tool</h1>
                         <p class="s-18 p-t-b-20 font-weight-lighter"></p>
                     </div>
                     <form action="<?php echo base_url()?>users/login" id="loginForm" novalidate method="post" accept-charset="utf-8">

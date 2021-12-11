@@ -1,17 +1,14 @@
 
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h3>Edit Project</h3>
+                    <h3>Objective - Activities</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Projects List</a></li>
-                        <li class="breadcrumb-item active">Edit Project</li>
+                        <li class="breadcrumb-item"><a href="<?=site_url('activity-list')?>/<?php echo $objective_obj['id']; ?>">Activity List</a></li>
+                        <li class="breadcrumb-item active">New Activity</li>
                     </ol>
                 </div>
             </div>
@@ -31,53 +28,38 @@
                         </button>
                     </div>
                 </div>
-                <form method="post" action="<?= site_url('update-project') ?>">
+                <form method="post" action="<?= site_url('update-activity') ?>">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Project Title</label>
+                            <div class="form-group">
+                                    <label>Objective Title</label>
 
-                                    <input type="hidden" name="id" value="<?php echo $project_obj['id']; ?>">
-                                    <input class="form-control" name="project_name"
-                                    value="<?php echo $project_obj['project_name']; ?>" style="width: 100%;">
+                                    <input type="hidden" name="objective_id" value="<?php echo $objective_obj['id']; ?>">
+                                   
+                                    <textarea class="form-control" rows="3" readonly
+                                       style="width: 100%;"><?php echo $objective_obj['objective_name']; ?></textarea>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Start Date</label>
-                                            <input type="date" class="form-control date" name="start_date" value="<?php echo $project_obj['start_date']; ?>"
-                                             style="width: 100%;">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>End date</label>
-                                            <input type="date"  class="form-control date" value="<?php echo $project_obj['end_date']; ?>"
-                                            name="end_date" style="width: 100%;">
-                                        </div>
-                                    </div>
+
+                                <div class="form-group">
+                                    <label>Activity Title</label>
+                                    <textarea class="form-control" rows="3" name="activity_name" style="width: 100%;"><?php echo $objective['activity_name']; ?></textarea>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" rows="10" name="project_description" 
-                                    style="width: 100%;"><?php echo $project_obj['project_description']; ?></textarea>
+                                    <textarea class="form-control" rows="10" name="activity_description" style="width: 100%;"><?php echo $objective['activity_description']; ?></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-info pull-right">   
-                        Save Changes<i class="fas fa-plus"></i>
+                        Save <i class="fas fa-plus"></i>
                         </button>
                     </div>
                 </form>
             </div>
         </div>
     </section>
-    <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
-<!-- FIN: Contenido-->

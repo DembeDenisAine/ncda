@@ -12,7 +12,6 @@ class Activities extends MX_Controller
             
     }
 
-
 	public function index($id = false){  //activity list
 	  
         if(!empty($id)){
@@ -25,12 +24,12 @@ class Activities extends MX_Controller
         }else{
             $data['actv_name'] = '';
             $data['actv_id'] = '';
-            $data['activities'] = $AM->activities_with_objectives_info();
+            $data['activities'] = $this->AM->activities_with_objectives_info();
         }
 
         $data['module']=$this->module;
         $data['title']="Activities";
-        $data['uptitle']="Main Activities";
+
         $data['view']="data";
         echo Modules::run('templates/main',$data);
 	}
@@ -55,11 +54,14 @@ class Activities extends MX_Controller
     public function singleActivity($id = null){ //get activity page
 
         $data['objective'] = $this->AM->find($id);
-        $data['objective_obj'] =  $this->OM->find($id);
+        $data['objective_obj'] = $this->OM->find($id);
+
+        //print_r($data['objective']);
+        print_r($data['objective_obj']);
+        exit();
 
         $data['module']=$this->module;
         $data['title']="Objective - Activities";
-        $data['uptitle']="Main Activities";
         $data['view']="edit";
         echo Modules::run('templates/main',$data);
     }

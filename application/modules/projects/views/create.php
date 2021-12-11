@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Projects List</a></li>
+                        <li class="breadcrumb-item"><a href="<?=site_url('project-list')?>">Projects List</a></li>
                         <li class="breadcrumb-item active">Create a New Project</li>
                     </ol>
                 </div>
@@ -55,7 +55,7 @@
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label>Budget(numbers only)</label>
-                                            <input type="number" class="form-control date" name="start_date" style="width: 100%;">
+                                            <input type="number" class="form-control date" name="budget" style="width: 100%;">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
