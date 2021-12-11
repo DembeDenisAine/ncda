@@ -1,6 +1,4 @@
 
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -10,7 +8,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?=site_url('parameter-list')?>/<?php echo $obj_actv['id']; ?>">Parameter List</a></li>
+                        <li class="breadcrumb-item"><a href="<?=site_url('parameter-list')?>/<?php echo $actv_id; ?>">Parameter List</a></li>
                         <li class="breadcrumb-item active">New Parameter</li>
                     </ol>
                 </div>
@@ -38,10 +36,10 @@
                             <div class="form-group">
                                     <label>Activity Title</label>
 
-                                    <input type="hidden" name="activity_id" value="<?php echo $obj_actv['id']; ?>">
+                                    <input type="hidden" name="activity_id" value="<?php echo $actv_id; ?>">
                                    
                                     <textarea class="form-control" rows="3" readonly
-                                       style="width: 100%;"><?php echo $obj_actv['activity_name']; ?></textarea>
+                                       style="width: 100%;"><?php echo $actv_name; ?></textarea>
                                 </div>
 
                                 <div class="form-group">
@@ -66,7 +64,3 @@
             </div>
         </div>
     </section>
-    <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
-<!-- FIN: Contenido-->

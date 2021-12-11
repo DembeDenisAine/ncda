@@ -20,12 +20,15 @@ class Projects_model extends CI_Model{
         $data = array(
             'project_name' => $this->input->post('project_name'),
             'project_description' => $this->input->post('project_description'),
+            'budget' => $this->input->post('budget'),
+            'currency' => $this->input->post('currency'),
             'start_date'    => $start_date,
             'end_date'      => $end_date,
             'duration'      => $duration
         );
         return $this->db->insert('ncda_projects', $data);
     }
+
 
 
     public function update($id) 
@@ -39,6 +42,8 @@ class Projects_model extends CI_Model{
         $data = array(
             'project_name' => $this->input->post('project_name'),
             'project_description' => $this->input->post('project_description'),
+            'budget' => $this->input->post('budget'),
+            'currency' => $this->input->post('currency'),
             'start_date'    => $start_date,
             'end_date'      => $end_date,
             'duration'      => $duration

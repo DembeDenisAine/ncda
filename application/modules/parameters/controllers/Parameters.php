@@ -37,10 +37,14 @@ class Parameters extends MX_Controller
     }
     
     
-    public function create(){ // add parameters form
+    public function create($id){ // add parameters form
     
         $data['module']=$this->module;
         $data['title']="Create a Parameter";
+
+        $activity = $this->AM->find($id);
+        $data['actv_name'] = $activity->activity_name;
+        $data['actv_id'] = $id;
 
         $data['view']="create";
         echo Modules::run('templates/main',$data);
