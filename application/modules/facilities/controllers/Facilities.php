@@ -12,14 +12,28 @@ class Facilities extends MX_Controller
             
     }
 
-    public function index(){  //facilities list
-      
+    public function index($id = false)
+    {   
+
+        if(!empty($id)){
+            $data['facilities'] = $this->FM->facilities_by_district($id);
+            $data['districts']  = $this->DM->get();
+
+            $district = $this->PM->find($id);
+            $data['district'] = $district->district_name;
+            $data['district_id'] = $id;
+
+        }else{
+            $data['district'] = '';
+            $data['district_id'] = '';
+            $data['districts']  = $this->DM->get();
+            $data['facilities'] = $this->FM->get();
+        }
+        
         $data['module']=$this->module;
         $data['title']="Facilities";
         $data['view']="data";
 
-        $data['districts']  = $this->DM->get();
-        $data['facilities'] = $this->FM->get();
         echo Modules::run('templates/main',$data);
     }
     

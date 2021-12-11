@@ -1,63 +1,65 @@
 
-<!-- INICIO: Contenido-->
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h3>Districts</h3>
+                <div class="col-sm-8">
+                    <h3>Objectives </h3>
+                    <h6><?php if(!empty($district)){ echo 'Branch: '.$district; } ?></h6>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">District List</li>
+                        <li class="breadcrumb-item active">Facility List</li>
                     </ol>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-    </section>
 
-    <!-- Main content -->
-    <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                            <a href="<?=site_url('create-district')?>" class="btn btn-info pull-right">Add a District <i class="fas fa-plus"></i></a>
+                                <?php if(!empty($district)) { ?>
+                                    <a href="<?php echo base_url('create-facility/'.$district);?>" 
+                                    class="btn btn-success btn-sm pull-right">Create <i class="fas fa-plus"></i></a>
+                                <?php } ?> 
                             </h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table class="table table-bordered">
-                                <thead>
+                              <thead>
                                     <tr>
-                                        <th width="5%">#</th>
-                                        <th>District Name</th>
-                                        <th>Region</th>
-                                        <th width="15%">Action</th>
+                                        <th style="width: 10px">#</th>
+                                        <th>Facility</th>
+                                        <?php if(empty($district)) { ?>
+                                            <th>Branch</th>
+                                        <?php } ?> 
+                                        <th>Teams</th>
+                                        <th style="width: 150px">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php  if($facilities): $i=0;  foreach($facilities as $fty): $i++; ?>
+                                        <tr>
+                                            <td><?php echo $i; ?></td>
+                                            <td><?php echo $fty['facility_name']; ?></td>
 
-                                    <?php if($districts): ?>
-                                    <?php $i=0; foreach($districts as $proj): $i++; ?>
-                                    <tr>
-                                        <td><?php echo $i; ?></td>
-                                        <td><?php echo $proj['district_name']; ?></td>
-                                        <td><?php echo $proj['region']; ?></td>
-                                        <td>
-                                            <a href="<?php echo base_url('edit-district/'.$proj['id']);?>" 
-                                            class="btn btn-primary btn-sm">Edit</a> 
-                                            <a href="<?php echo base_url('delete-district/'.$proj['id']);?>" 
-                                            class="btn btn-danger btn-sm">Delete</a>
-                                        </td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                    <?php endif; ?>
+                                            <?php if($district!='') { ?>
+                                                <td><?php echo $fty['district_name']; ?></td>
+                                            <?php } ?> 
+                                            <td>
+                                                <a href="<?php echo base_url('facility-teams/'.$fty['id']);?>" 
+                                                class="btn btn-success btn-sm">Teams</a>
+                                            </td>
+                                            <td>
+                                                <a href="<?php echo base_url('edit-facility/'.$fty['id']);?>" 
+                                                class="btn btn-primary btn-sm">Edit</a> <a href="<?php echo base_url('delete-facility/'.$fty['id']);?>" 
+                                                class="btn btn-danger btn-sm">Delete</a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; endif; ?>
 
                                 </tbody>
                             </table>
@@ -84,8 +86,3 @@
         
             <!-- /.row -->
         </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
-<!-- FIN: Contenido-->

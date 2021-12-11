@@ -17,14 +17,8 @@ class Objectives extends MX_Controller
 
         if(!empty($id)){
             $data['objectives'] = $this->OM->objectives_by_project_id($id);
-           // print_r($data['objectives']);
-           // exit();
 
             $project = $this->PM->find($id);
-
-            //print_r($project);
-            //exit();
-            
             $data['proj_name'] = $project->project_name;
             $data['proj_id'] = $id;
 
