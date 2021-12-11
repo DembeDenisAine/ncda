@@ -518,7 +518,7 @@ $(window).on('resize', function(){
  
 </div>
 
-<div class='icon-credits'> <a href="http://health.go.ug" title="MOH" target="_blank">Ministry of Health <?php echo date('Y');?></a></div>
+<div class='icon-credits'> <a href="http://health.go.ug" title="MOH" target="_blank">NCDA Uganda <?php echo date('Y');?></a></div>
 
   
 </body>
