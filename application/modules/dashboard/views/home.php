@@ -175,8 +175,6 @@
           </div>
           <!-- /.card -->
 
-
-
           <!-- /.card -->
         </section>
         <!-- right col -->
