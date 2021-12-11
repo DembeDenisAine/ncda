@@ -51,7 +51,17 @@ class Districts extends MX_Controller
         $data['teams'] = $this->DM->district_teams($id);
         $data['facilities'] = $this->DM->facilities_by_district($id);
         $data['district'] = $this->DM->find($id);
+        $data['district_id']=$id;
+        $data['module']=$this->module;
+        $data['title']="Branch Teams";
 
+        $data['view']="teams";
+        echo Modules::run('templates/main',$data);
+    }
+
+    public function create_team($id = null){ //get district teams
+
+        $data['district_id']=$id;
         $data['module']=$this->module;
         $data['title']="Branch Teams";
 
