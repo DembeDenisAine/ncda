@@ -72,6 +72,13 @@ class Districts extends MX_Controller
     }
 
 
+    public function save_branch_team() { //save team
+
+        $this->DM->insert_district_teams();
+        return $this->response->redirect(site_url('district-list'));
+    }
+
+
     public function update($id = null){ //updat district
 
         $this->AM->update($id);

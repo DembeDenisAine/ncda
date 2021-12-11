@@ -43,6 +43,11 @@ class Districts_model extends CI_Model{
         return $this->db->get_where('ncda_districts', array('id' => $id))->row();
     }
 
+    public function delete($id)
+    {
+        return $this->db->delete('ncda_districts', array('id' => $id));
+    }
+
     public function district_teams($id)
     {
         $query = $this->db->query('SELECT `bt`.*, `nf`.`facility_name` as `facility_name` 
@@ -53,6 +58,8 @@ class Districts_model extends CI_Model{
         return (object)$query;
 
     }
+
+
 
     public function facilities_by_district($id)
     {
@@ -68,10 +75,22 @@ class Districts_model extends CI_Model{
         return $query->result_array();
     }
 
-    public function delete($id)
-    {
-        return $this->db->delete('ncda_districts', array('id' => $id));
+    public function insert_district_teams()
+    {    
+        $data = array(
+            'facility_id' => $this->input->post('facility_id'),
+            'first_name' => $this->input->post('first_name'),
+            'district_id' => $this->input->post('district_id'),
+            'last_name' => $this->input->post('last_name'),
+            'title' => $this->input->post('title'),
+            'gender' => $this->input->post('gender'),
+            'dob' => $this->input->post('dob'),
+            'contact' => $this->input->post('contact'),
+            'notes' => $this->input->post('notes'),
+        );
+        return $this->db->insert('ncda_districts', $data);
     }
+
 
 
 }

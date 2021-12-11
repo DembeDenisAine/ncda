@@ -42,6 +42,8 @@
                         <div class="form-group">
                             <label>First Name</label>
                             <input type="text" class="form-control" name="first_name" style="width: 100%;">
+
+                            <input type="hidden" class="form-control" name="district_id">
                         </div>
                         <div class="form-group">
                             <label>Last Name</label>
@@ -57,8 +59,8 @@
                             <label>Gender</label>
                             <select type="text" class="form-control select2" name="gender" style="width: 100%;">
                                 <option >Select---</option>
-                                <option value="Central Region">Male</option>
-                                <option value="Eastern Region">Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
                             </select>
                         </div>
                     </div>
