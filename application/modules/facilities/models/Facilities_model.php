@@ -1,6 +1,6 @@
 <?php 
 
-class Districts_model extends CI_Model{
+class Facilities_model extends CI_Model{
 
     public function get(){
 

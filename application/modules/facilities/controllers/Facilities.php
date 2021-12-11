@@ -54,7 +54,7 @@ class Facilities extends MX_Controller
 
     public function singleFacility($id = null){ //get facility page
 
-        $item$data['facility'] = $this->FM->find($id);
+        $data['facility'] = $this->FM->find($id);
         $data['districts'] =  $this->DM->find($id);
 
         $data['module']=$this->module;
