@@ -1,0 +1,9 @@
+backup.sql
+application/logs
+<<<<<<< HEAD
+application/config/config.php
+application/config/database.php
+=======
+application/config/database.php
+application/config/config.php
+>>>>>>> fd96193f0fc4c2a89353863650c0f11fbfdb2ff4
