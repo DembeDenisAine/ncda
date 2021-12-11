@@ -56,15 +56,15 @@ class Districts_model extends CI_Model{
 
     public function facilities_by_district($id)
     {
-        $query = $this->db->query("SELECT * FROM ncda_facilities WHERE  district_id='$id'")
+        $query = $this->db->query("SELECT * FROM ncda_facilities WHERE district_id='$id'")
                           ->result_array();
         return (object)$query;
 
     }
 
-    public function get_facilities(){
+    public function get_facilities($id){
 
-        $query = $this->db->get("ncda_facilities");
+        $query = $this->db->where('district_id',$id)->get("ncda_facilities");
         return $query->result_array();
     }
 

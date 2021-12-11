@@ -33,7 +33,7 @@
                             <select type="text" class="form-control select2" name="facility_id" style="width: 100%;">
                                 <option value="Central Region">Select---</option>
                                 <?php  foreach($facilities as $fty):?>
-                                    <option value="<?php echo $fty['id']?>"><?php echo $fty['facility_name']?> ?></option>
+                                    <option value="<?php echo $fty['id']?>"><?php echo $fty['facility_name']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
