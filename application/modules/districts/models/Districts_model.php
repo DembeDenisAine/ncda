@@ -60,7 +60,6 @@ class Districts_model extends CI_Model{
                           ->result_array();
         return (object)$query;
 
-
     }
 
     public function get_facilities(){
