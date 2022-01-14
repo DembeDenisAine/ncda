@@ -8,14 +8,12 @@ require_once("includes/sidenav.php");
 //db connection
 ?>
 
-
-
   <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper" >
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row">
                 <div class="col-sm-6">
                     <h4><?php echo (isset($title))?$title:''; ?></h4>
                 </div>
@@ -33,7 +31,7 @@ require_once("includes/sidenav.php");
     <!-- Main content -->
     <section class="content"  >
 
-      <div class="container-fluid" style="font-size:12px; min-height:940px; margin-top:40px;">
+      <div class="container-fluid" style="font-size:12px; min-height:400px;">
 
         <div class="row">
           <div class="col-12" style="margin-bottom:3px;">
