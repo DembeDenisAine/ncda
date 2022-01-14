@@ -1,12 +1,8 @@
 
 
-<?php if(!empty($proj_id)) { ?>
-    <a href="<?php echo base_url('create-objective/'.$proj_id);?>" 
+    <a href="<?php echo base_url('create-meeting');?>" 
     class="btn btn-success btn-sm pull-right">Create <i class="fas fa-plus"></i></a>
     <hr>
-<?php } ?> 
-
-
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -21,7 +17,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php  if($objectives): $i=0;  foreach($objectives as $obj): $i++; ?>
+        <?php  if($meetings): $i=0;  foreach($meetings as $obj): $i++; ?>
             <tr>
                 <td><?php echo $i; ?></td>
                 <td><?php echo $obj['objective_name']; ?></td>
