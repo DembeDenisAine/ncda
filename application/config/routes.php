@@ -79,7 +79,7 @@ $route['translate_uri_dashes'] = FALSE;
 //OBJECTIVES
 	$route['objective-list'] = 'objectives/index';
 	$route['objective-list/(:num)'] = 'objectives/index/$1';
-	$route['create-objective'] = 'objectives/create';
+	$route['create-objective/(:num)'] = 'objectives/create/$1';
 	$route['save-objective'] = 'objectives/create';
 	$route['edit-objective/(:num)'] = 'objectives/singleObjective/$1';
 	$route['update-objective/(:num)'] = 'objectives/update/$1';
@@ -89,7 +89,7 @@ $route['translate_uri_dashes'] = FALSE;
 //ACTIVITIES
 	$route['activity-list'] = 'activities/index';
 	$route['activity-list/(:num)'] = 'activities/index/$1';
-	$route['create-activity'] = 'activities/create';
+	$route['create-activity/(:num)'] = 'activities/create/$1';
 	$route['save-activity'] = 'activities/create';
 	$route['edit-activity/(:num)'] = 'activities/singleActivity/$1';
 	$route['update-activity/(:num)'] = 'activities/update/$1';

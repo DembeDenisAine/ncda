@@ -38,13 +38,13 @@ class Objectives extends MX_Controller
     }
     
     
-    public function create(){ // add objectives form
+    public function create($id){ // add objectives form
     
-        $data['module']=$this->module;
-        $data['title']="Create an Objective";
-        $project = $this->projectsModel->find($id);
-        $data['proj_name'] = $project->project_name;
-        $data['view']="create";
+        $data['module'] = $this->module;
+        $data['title']  = "Create an Objective";
+        $data['view']   = "create";
+        $data['project'] = $this->projectsModel->find($id);
+        
         echo Modules::run('templates/main',$data);
     }
 

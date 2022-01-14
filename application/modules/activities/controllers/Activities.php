@@ -36,7 +36,7 @@ class Activities extends MX_Controller
     
 	public function create($id){ // add activity form
 	
-        $data['obj_actv'] = $this->objectivesModel->find($id);
+        $data['objective'] = $this->objectivesModel->find($id);
         $data['module']=$this->module;
         $data['title']="Objective - Activities";
         $data['uptitle']="Main Activities";
