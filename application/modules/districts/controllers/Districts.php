@@ -21,14 +21,6 @@ class Districts extends MX_Controller
         echo Modules::run('templates/main',$data);
     }
     
-    public function create(){ // add districts form
-    
-        $data['module']=$this->module;
-        $data['title']="Create Districts";
-
-        $data['view']="create";
-        echo Modules::run('templates/main',$data);
-    }
 
     public function store() { //save district
 
