@@ -113,6 +113,8 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['edit-facility/(:num)'] = 'facilities/singleParameter/$1';
 	$route['update-facility/(:num)'] = 'facilities/update/$1';
 	$route['delete-facility/(:num)'] = 'facilities/delete/$1';
+	$route['facility-teams/(:num)'] = 'facilities/facility_teams/$1';
+	$route['create-facility-member/(:num)'] = 'facilities/create_team/$1';
 
 //Meetings
 	$route['meetings']       = 'meetings/index';
