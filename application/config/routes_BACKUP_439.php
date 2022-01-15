@@ -113,6 +113,10 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['edit-facility/(:num)'] = 'facilities/singleParameter/$1';
 	$route['update-facility/(:num)'] = 'facilities/update/$1';
 	$route['delete-facility/(:num)'] = 'facilities/delete/$1';
+<<<<<<< HEAD
+	$route['facility-teams/(:num)'] = 'facilities/facility_teams/$1';
+	$route['create-facility-member/(:num)'] = 'facilities/create_team/$1';
+=======
 
 //Meetings
 	$route['meetings']       = 'meetings/index';
@@ -121,3 +125,4 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['save-meeting']   = 'meetings/store';
 	$route['contacts']       = 'meetings/contacts';
 	$route['save-contact']   = 'meetings/saveContact';
+>>>>>>> f0cec74d09d6024260e0bc42fac2bea7bc6792ce

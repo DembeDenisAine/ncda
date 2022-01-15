@@ -176,12 +176,28 @@ body::-webkit-scrollbar-thumb
   border-radius:2px;
 
   }
-  .fc-content{
+  .fc-content {
     color:#fff !important;
 
   }
 
+  .nav-tabs li{
+    padding:10px!important;
+  }
 
+  .nav-tabs>li>.active {
+    background-color:blue!important;
+    padding:10px!important;
+    color:white;
+  }
+
+.tab-content{
+  padding:10px;
+}
+
+.tab-content>.active{
+  display: block!important;;
+}
 </style>
 
 <!-- Bootstrap 4 -->

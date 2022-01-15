@@ -153,27 +153,21 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="<?=base_url()?>meetings" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Create a Meeting</p>
+                        <p>Manage Meetings</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>List Meetings</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Evalutions</p>
+                        <p>Meeting Evalutions</p>
                     </a>
                 </li>
             </ul>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?=base_url()?>contacts" class="nav-link">
                 <i class="nav-icon far fa-calendar-alt"></i>
                 <p>
                     Contacts

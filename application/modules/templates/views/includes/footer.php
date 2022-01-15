@@ -27,7 +27,8 @@
 <!-- jQuery -->
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
-
+<!-- DataTables  & Plugins -->
+<script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 
 <script src="<?php echo base_url(); ?>assets/dist/js/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -41,29 +42,17 @@
 <!-- fullCalendar 2.2.5 -->
 <script src="<?php echo base_url()?>assets/plugins/moment/moment.min.js"></script>
 <script src="<?php echo base_url()?>assets/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
- <!-- counterup JS
-		============================================ -->
-<script src="http://localhost/mohattendance_dev/assets/js/counterup/jquery.counterup.min.js"></script>
 
-<script src="http://localhost/mohattendance_dev/assets/js/counterup/counterup-active.js"></script>
 <!-- DataTables  & Plugins -->
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/jszip/jszip.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+
 
 <div class="control-sidebar-bg"></div>
 </div>
 
 <script>
+
 $( document ).ready(function() {
   $.fn.datepicker.defaults.format = "yyyy-mm-dd";
     $('.datepicker').datepicker({
@@ -72,8 +61,7 @@ $( document ).ready(function() {
    
     });
   });
-</script>
-<script>
+
 // Radialize the colors
 $( document ).ready(function() {
 Highcharts.setOptions({
@@ -94,9 +82,6 @@ Highcharts.setOptions({
 });
 
 
-</script>
-
-<script>
  $(document).ready(function() {
     $('.mytable').DataTable( {
         dom: 'Bfrtip',
@@ -122,10 +107,8 @@ Highcharts.setOptions({
         ]
     } );
 });
-</script>
 
-<script>
- $(document).ready(function() {
+$(document).ready(function() {
     $('#timelogs').DataTable( {
     
         "paging": false,
@@ -138,42 +121,39 @@ Highcharts.setOptions({
      
     } );
 });
-</script>
 
-
-<script type="text/javascript">
         
-        $(document).ready(function(){
+$(document).ready(function(){
 
-           // $.notify("Hello","success");
+    // $.notify("Hello","success");
 
-            var isPassChanged="1";
+    var isPassChanged="1";
 
-            if(isPassChanged!=1){
+    if(isPassChanged!=1){
 
-                $('#changepass').modal('show');
-            }
+        $('#changepass').modal('show');
+    }
 
-            var url="<?php echo $this->uri->segment(2); ?>";
+    var url="<?php echo $this->uri->segment(2); ?>";
 
-            if(url=="tabular" || url=="actuals"||  url=="fetch_report"|| url=="actualsreport"|| url=="tabular#" || url=="timesheet" || url=="attfrom_report"){
+    if(url=="tabular" || url=="actuals"||  url=="fetch_report"|| url=="actualsreport"|| url=="tabular#" || url=="timesheet" || url=="attfrom_report"){
 
-                $('body').addClass('sidebar-collapse');
-                $('#sidebar').toggleClass('active');
+        $('body').addClass('sidebar-collapse');
+        $('#sidebar').toggleClass('active');
 
-            };
-
-
-        } );
+    };
 
 
-    </script>
+} );
+
+
+</script>
  
-
 <!-- ./wrapper -->
 <?php
+
 $uri = $_SERVER['REQUEST_URI'];
- $uri; // Outputs: URI
+$uri; // Outputs: URI
  
 $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
  
@@ -287,9 +267,8 @@ $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 </div>
 
 
-
   <!-- change password modal at ones own wish -->
-  <div class="modal" id="changepassword" data-backdrop="false">
+<div class="modal" id="changepassword" data-backdrop="false">
                 <div class="modal-dialog">
                     <div class="modal-content" >
                         <form method="post" action="<?php echo base_url(); ?>auth/changePass">
@@ -360,7 +339,8 @@ $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
 
 
-</body>
+
+        </body>
 </html>
 <script>
 
@@ -371,9 +351,7 @@ $(function () {
       theme: 'bootstrap4'
     })
 });
-</script>
 
-<script>
 $("document").ready(function() {
     $(".sdistrict").change();
     //$(".sfacility").change();
@@ -381,6 +359,7 @@ $("document").ready(function() {
    // console.log(time);
  
 });
+
 function getFacs(val) {
    
    $.ajax({          
@@ -407,6 +386,7 @@ function getDeps(val) {
          //  console.log('iwioowiiwoow');
    });
 }
+
 function getDivisions(val) {
    
     $.ajax({          

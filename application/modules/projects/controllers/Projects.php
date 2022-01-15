@@ -7,7 +7,7 @@ class Projects extends MX_Controller
         parent:: __construct();
 
         $this->module="projects";
-        $this->load->model("projects_model",'PM'); //Projects model
+        $this->load->model("projects_model",'projectsModel'); //Projects model
             
     }
 
@@ -15,10 +15,9 @@ class Projects extends MX_Controller
     
         $data['module']=$this->module;
         $data['title']="Projects";
-
         $data['view']="data";
 
-        $data['projects'] = $this->PM->get();
+        $data['projects'] = $this->projectsModel->get();
         echo Modules::run('templates/main',$data);
     }
     
@@ -26,38 +25,37 @@ class Projects extends MX_Controller
     
         $data['module']=$this->module;
         $data['title']="Create Project";
-
         $data['view']="create";
+
         echo Modules::run('templates/main',$data);
     }
 
     public function store() { //save project
 
-        $this->PM->insert();
+        $this->projectsModel->insert();
         return $this->response->redirect(site_url('project-list'));
     }
 
 
     public function singleProject($id = null){ //show single project
 
-        $data['project_obj'] = $this->PM->find($id);
-
+        $data['project_obj'] = $this->projectsModel->find($id);
         $data['module']=$this->module;
         $data['title']="Projects";
-
         $data['view']="edit";
+        
         echo Modules::run('templates/main',$data);
     }
 
     public function update($id = null){ //updat project
 
-        $this->PM->update($id);
+        $this->projectsModel->update($id);
         return $this->response->redirect(site_url('project-list'));
     }
  
     public function delete($id = null){ //delete project
 
-        $this->PM->delete($id);
+        $this->projectsModel->delete($id);
         return $this->response->redirect(site_url('project-list'));
     }  
 

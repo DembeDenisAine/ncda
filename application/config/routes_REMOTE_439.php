@@ -105,7 +105,7 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['update-parameter/(:num)'] = 'parameters/update/$1';
 	$route['delete-parameter/(:num)'] = 'parameters/delete/$1';
 
-//FACILITIES
+//PARAMETERS
 	$route['facility-list'] = 'facilities/index';
 	$route['facility-list/(:num)'] = 'facilities/index/$1';
 	$route['create-facility/(:num)'] = 'facilities/create/$1';

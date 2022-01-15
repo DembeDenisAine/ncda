@@ -79,7 +79,7 @@ $route['translate_uri_dashes'] = FALSE;
 //OBJECTIVES
 	$route['objective-list'] = 'objectives/index';
 	$route['objective-list/(:num)'] = 'objectives/index/$1';
-	$route['create-objective/(:num)'] = 'objectives/create/$1';
+	$route['create-objective'] = 'objectives/create';
 	$route['save-objective'] = 'objectives/create';
 	$route['edit-objective/(:num)'] = 'objectives/singleObjective/$1';
 	$route['update-objective/(:num)'] = 'objectives/update/$1';
@@ -89,7 +89,7 @@ $route['translate_uri_dashes'] = FALSE;
 //ACTIVITIES
 	$route['activity-list'] = 'activities/index';
 	$route['activity-list/(:num)'] = 'activities/index/$1';
-	$route['create-activity/(:num)'] = 'activities/create/$1';
+	$route['create-activity'] = 'activities/create';
 	$route['save-activity'] = 'activities/create';
 	$route['edit-activity/(:num)'] = 'activities/singleActivity/$1';
 	$route['update-activity/(:num)'] = 'activities/update/$1';
@@ -113,11 +113,5 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['edit-facility/(:num)'] = 'facilities/singleParameter/$1';
 	$route['update-facility/(:num)'] = 'facilities/update/$1';
 	$route['delete-facility/(:num)'] = 'facilities/delete/$1';
-
-//Meetings
-	$route['meetings']       = 'meetings/index';
-	$route['meeting/(:num)'] = 'meetings/meetingDetail/$1';
-	$route['create-meeting'] = 'meetings/create';
-	$route['save-meeting']   = 'meetings/store';
-	$route['contacts']       = 'meetings/contacts';
-	$route['save-contact']   = 'meetings/saveContact';
+	$route['facility-teams/(:num)'] = 'facilities/facility_teams/$1';
+	$route['create-facility-member/(:num)'] = 'facilities/create_team/$1';
