@@ -34,20 +34,17 @@ require_once("includes/sidenav.php");
       <div class="container-fluid" style="font-size:12px; min-height:400px;">
 
         <div class="row">
+         <div class="col-12">
+           <?php  require_once('includes/messages.php');  ?>
+         </div>
+          
           <div class="col-12" style="margin-bottom:3px;">
              <div class="card">
-                <div class="">
-                   
-                </div>
-                   <div class="card-body">
+             <div class="card-body">
               
-                        
-            <?php
-
-              $this->load->view($module."/".$view);
-
-            ?>
-                   </div>
+              <?php  $this->load->view($module."/".$view);  ?>
+            
+            </div>
              <!-- /.card-body -->
          <div class="card-footer">
        

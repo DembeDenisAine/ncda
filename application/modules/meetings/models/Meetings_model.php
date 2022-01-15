@@ -17,8 +17,8 @@ class Meetings_model extends CI_Model{
             'meeting_description' => $this->input->post('description'),
             'meeting_date'        => $this->input->post('date'),
             'venue'               => $this->input->post('venue'),
-            'start_at'               => $this->input->post('start_time'),
-            'end_at'               => $this->input->post('end_time')
+            'start_at'            => $this->input->post('start_time'),
+            'end_at'              => $this->input->post('end_time')
         );
 
         return $this->db->insert('ncda_meetings', $data);
@@ -34,8 +34,8 @@ class Meetings_model extends CI_Model{
             'meeting_description' => $this->input->post('description'),
             'meeting_date'        => $this->input->post('meeting_date'),
             'venue'               => $this->input->post('venue'),
-            'start_at'               => $this->input->post('start_time'),
-            'end_at'               => $this->input->post('end_time')
+            'start_at'            => $this->input->post('start_time'),
+            'end_at'              => $this->input->post('end_time')
         );
 
         if($id==0){
@@ -62,28 +62,29 @@ class Meetings_model extends CI_Model{
     public function getAttendants($id){
                 $this->db->join('ncda_contact_catalog',
                 'ncda_contact_catalog.id = ncda_meeting_participants.contact_id');
-        return $this->db->get_where('ncda_meeting_participants', array('meeting_id' => $id))->row();
+        return $this->db->get_where('ncda_meeting_participants', array('meeting_id' => $id))->result();
     }
 
+    //contacts
+    public function getContacts(){
+        return $this->db->get('ncda_contact_catalog')->result();
+    }
 
     //meeting impacts
     public function getImpacts($id){
         
-        return $this->db->get_where('ncda_meeting_impacts', array('meeting_id' => $id))->row();
+        return $this->db->get_where('ncda_meeting_impacts', array('meeting_id' => $id))->result();
     }
 
     //meeting discussions
     public function getDiscussions($id){
-        return $this->db->get_where('ncda_meeting_discusions', array('meeting_id' => $id))->row();
+        return $this->db->get_where('ncda_meeting_discusions', array('meeting_id' => $id))->result();
     }
 
     //meeting discussions
     public function getActionPoints($id){
-        return $this->db->get_where('ncda_meeting_action_points', array('meeting_id' => $id))->row();
+        return $this->db->get_where('ncda_meeting_action_points', array('meeting_id' => $id))->result();
     }
-
-
-
 
 
 }

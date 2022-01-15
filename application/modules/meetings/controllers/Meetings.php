@@ -34,18 +34,19 @@ class Meetings extends MX_Controller
     public function store() { //save meeting
 
         $this->meetingModel->insert();
-        return $this->response->redirect(site_url('meetings'));
+        set_flash('Meeting saved successfully');
+        redirect(site_url('meetings'));
     }
 
 
     public function meetingDetail($id = null){ //show single objective
 
-        $meeting            = $this->meetingModel->find($id);
+        $meeting              = $this->meetingModel->find($id);
         $data['participants'] = $this->meetingModel->getAttendants($id);
-        $data['impacts']    = $this->meetingModel->getImpacts($id);
-        $data['discussions']    = $this->meetingModel->getDiscussions($id);
-        $data['actions']     = $this->meetingModel->getActionPoints($id);
-        $data['meeting']    = $meeting;
+        $data['impacts']      = $this->meetingModel->getImpacts($id);
+        $data['discussions']  = $this->meetingModel->getDiscussions($id);
+        $data['actions']      = $this->meetingModel->getActionPoints($id);
+        $data['meeting']      = $meeting;
 
         $data['module'] = $this->module;
         $data['title']  = "Meeting Details";
@@ -65,6 +66,17 @@ class Meetings extends MX_Controller
         $this->projectsModel->delete($id);
         return $this->response->redirect(site_url('parameter-list'));
     }  
+
+    public function contacts(){ // add objectives form
+    
+        $data['module'] = $this->module;
+        $data['title']  = "Contacts List";
+        $data['view']   = "contacts";
+        $data['contacts']  = $this->meetingModel->getContacts();
+
+        echo Modules::run('templates/main',$data);
+    }
+
 
 
 }
