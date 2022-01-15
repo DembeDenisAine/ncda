@@ -41,14 +41,14 @@ class Meetings extends MX_Controller
     public function meetingDetail($id = null){ //show single objective
 
         $meeting            = $this->meetingModel->find($id);
-        $data['attendants'] = $this->meetingModel->getAttendants($id);
+        $data['participants'] = $this->meetingModel->getAttendants($id);
         $data['impacts']    = $this->meetingModel->getImpacts($id);
-        $data['impacts']    = $this->meetingModel->getDiscussions($id);
-        $data['points']     = $this->meetingModel->getActionPoints($id);
+        $data['discussions']    = $this->meetingModel->getDiscussions($id);
+        $data['actions']     = $this->meetingModel->getActionPoints($id);
         $data['meeting']    = $meeting;
 
         $data['module'] = $this->module;
-        $data['title']  = $meeting->meeting_title;
+        $data['title']  = "Meeting Details";
 
         $data['view']="details";
         echo Modules::run('templates/main',$data);

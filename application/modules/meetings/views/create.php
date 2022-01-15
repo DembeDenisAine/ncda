@@ -1,34 +1,58 @@
 
+<div class="modal" id="create-meeting">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+    
+    <form method="post" action="<?= site_url('save-meeting') ?>">
+      
+    <div class="modal-header">
+        <h3>Create New Meeting</h3>
 
-<form method="post" action="<?= site_url('save-objective') ?>">
-<div class="card-body">
-    <div class="row">
-        <div class="col-md-6">
-        <div class="form-group">
-                <label>Project Title</label>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 
-                <input type="hidden" name="project_id" value="<?php echo $project->id; ?>">
-                
-                <textarea class="form-control" rows="3" readonly
-                    style="width: 100%;"><?php echo $project->project_name; ?></textarea>
-            </div>
+    <div class="modal-body">
+            <div class="row">
+                <div class="form-group col-md-12">
+                        <label>Meeting Title</label>
+                        <input type="text" class="form-control" name="title" placeholder="Meeting title">
+                </div>
 
-            <div class="form-group">
-                <label>Objective Title</label>
-                <textarea class="form-control" rows="3" name="objective_name" style="width: 100%;"> </textarea>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Meeting Venue</label>
+                         <input type="text" class="form-control" name="venue" placeholder="Meeting Venue">
+                    </div>
+                    <div class="form-group">
+                        <label>Meeting Date</label>
+                         <input type="text" class="form-control" name="date" placeholder="Meeting Date">
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Start Time</label>
+                            <input type="text" class="form-control datepicker" name="start_time" placeholder="Start Time">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>End  Time</label>
+                            <input type="text" class="form-control datepicker" name="end_time" placeholder="End Time">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control" rows="7" name="description" style="width: 100%;"> </textarea>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label>Description</label>
-                <textarea class="form-control" rows="10" name="objective_description" style="width: 100%;"> </textarea>
-            </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-info pull-right"> <i class="fas fa-save"></i>  Save Meeting</button>
         </div>
     </div>
+    </form>
+    </div>
 </div>
-<div class="card-footer">
-    <button type="submit" class="btn btn-info pull-right">   
-    Save <i class="fas fa-plus"></i>
-    </button>
 </div>
-</form>

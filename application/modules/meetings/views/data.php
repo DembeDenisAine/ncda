@@ -1,40 +1,43 @@
 
+<?php require_once('create.php'); ?>
 
-    <a href="<?php echo base_url('create-meeting');?>" 
-    class="btn btn-success btn-sm pull-right">Create <i class="fas fa-plus"></i></a>
-    <hr>
+<a href="#create-meeting" data-toggle="modal"
+class="btn btn-success btn-sm pull-right">Create <i class="fas fa-plus"></i></a>
+<hr>
+
 <table class="table table-bordered">
     <thead>
         <tr>
             <th style="width: 10px">#</th>
-            <th>Objective Title</th>
-            <?php if(empty($proj_name)) { ?>
-                <th>Project Title</th>
-            <?php } ?> 
-            <th>Details</th>
-            <th>Activities</th>
+            <th>Meeting Title</th>
+            <th>Meeting Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
             <th style="width: 150px">Action</th>
         </tr>
     </thead>
     <tbody>
-        <?php  if($meetings): $i=0;  foreach($meetings as $obj): $i++; ?>
+        <?php  if($meetings): $i=0;  foreach($meetings as $row): $i++; ?>
             <tr>
                 <td><?php echo $i; ?></td>
-                <td><?php echo $obj['objective_name']; ?></td>
+                <td><?php echo $row->meeting_name; ?></td>
+                <td><?php echo $row->meeting_date; ?></td>
+                <td><?php echo $row->start_at; ?></td>
+                <td><?php echo $row->end_at; ?></td>
+                <td> 
 
-                <?php if($proj_name!='') { ?>
-                    <td><?php echo $obj['project_name']; ?></td>
-                <?php } ?> 
-
-                <td><?php echo $obj['objective_description']; ?></td>
-                <td>
-                    <a href="<?php echo base_url('activity-list/'.$obj['id']);?>" 
-                    class="btn btn-success btn-sm">Activities</a>
-                </td>
-                <td>
-                    <a href="<?php echo base_url('edit-objective/'.$obj['id']);?>" 
-                    class="btn btn-primary btn-sm">Edit</a> <a href="<?php echo base_url('delete-objective/'.$obj['id']);?>" 
-                    class="btn btn-danger btn-sm">Delete</a>
+                <div class="dropdown">
+                                        <button class="btn bg-primary dropdown-toggle btn-select-option"
+                                                type="button"
+                                                data-toggle="dropdown">Options
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu options-dropdown" style="padding: 10px;">
+                                            <li>
+                                                <a href="<?php echo base_url();?>meeting/<?=$row->id?>"><i class="fa fa-expand option-icon"></i> Details</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                 </td>
             </tr>
         <?php endforeach; endif; ?>

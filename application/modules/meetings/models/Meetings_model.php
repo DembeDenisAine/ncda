@@ -13,12 +13,12 @@ class Meetings_model extends CI_Model{
         $user_id = 1; 
 
         $data = array(
-            'meeting_name'        => $this->input->post('meeting_name'),
-            'meeting_description' => $this->input->post('meeting_description'),
-            'meeting_date'        => $this->input->post('meeting_date'),
+            'meeting_name' => $this->input->post('title'),
+            'meeting_description' => $this->input->post('description'),
+            'meeting_date'        => $this->input->post('date'),
             'venue'               => $this->input->post('venue'),
-            'start_at'            => $this->input->post('start_time'),
-            'end_date'            => $this->input->post('end_time')
+            'start_at'               => $this->input->post('start_time'),
+            'end_at'               => $this->input->post('end_time')
         );
 
         return $this->db->insert('ncda_meetings', $data);
@@ -30,12 +30,12 @@ class Meetings_model extends CI_Model{
         $user_id = 1; 
 
         $data = array(
-            'meeting_name' => $this->input->post('meeting_name'),
-            'meeting_description' => $this->input->post('meeting_description'),
+            'meeting_name' => $this->input->post('meeting_title'),
+            'meeting_description' => $this->input->post('description'),
             'meeting_date'        => $this->input->post('meeting_date'),
             'venue'               => $this->input->post('venue'),
             'start_at'               => $this->input->post('start_time'),
-            'end_date'               => $this->input->post('end_time')
+            'end_at'               => $this->input->post('end_time')
         );
 
         if($id==0){
@@ -60,7 +60,8 @@ class Meetings_model extends CI_Model{
 
     //meeting attendants
     public function getAttendants($id){
-
+                $this->db->join('ncda_contact_catalog',
+                'ncda_contact_catalog.id = ncda_meeting_participants.contact_id');
         return $this->db->get_where('ncda_meeting_participants', array('meeting_id' => $id))->row();
     }
 
