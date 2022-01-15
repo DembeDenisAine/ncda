@@ -86,6 +86,50 @@ class Meetings_model extends CI_Model{
         return $this->db->get_where('ncda_meeting_action_points', array('meeting_id' => $id))->result();
     }
 
+    //save contact
+    public function saveContact()
+    {   
+        $user_id = 1; 
+
+        $data = array(
+            'first_name'  => $this->input->post('firstname'),
+            'last_name'   => $this->input->post('lastname'),
+            'gender'      => $this->input->post('gender'),
+            'title'       => $this->input->post('title'),
+            'represents'  => $this->input->post('organization'),
+            'email'       => $this->input->post('email'),
+            'phone'       => $this->input->post('phone'),
+            'mobile'      => $this->input->post('mobile'),
+            'address'     => $this->input->post('address')
+        );
+
+        return $this->db->insert('ncda_contact_catalog', $data);
+    }
+
+
+    public function updateContact($id) 
+    {
+        $user_id = 1; 
+
+        $data = array(
+            'first_name'  => $this->input->post('firstname'),
+            'last_name'   => $this->input->post('lastname'),
+            'gender'      => $this->input->post('gender'),
+            'title'       => $this->input->post('title'),
+            'represents'  => $this->input->post('organization'),
+            'email'       => $this->input->post('email'),
+            'phone'       => $this->input->post('phone'),
+            'mobile'      => $this->input->post('mobile'),
+            'address'     => $this->input->post('address')
+        );
+
+        if($id==0){
+            return $this->db->insert('ncda_contact_catalog',$data);
+        }else{
+            $this->db->where('id',$id);
+            return $this->db->update('ncda_contact_catalog',$data);
+        }        
+    }
 
 }
 

@@ -120,3 +120,4 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['create-meeting'] = 'meetings/create';
 	$route['save-meeting']   = 'meetings/store';
 	$route['contacts']       = 'meetings/contacts';
+	$route['save-contact']   = 'meetings/saveContact';

@@ -2,7 +2,7 @@
 <?php require_once('create_contact.php'); ?>
 
 <a href="#create-contact" data-toggle="modal"
-class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> Create Contact</a>
+class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> New Contact</a>
 <hr>
 
 <table class="table table-bordered">

@@ -77,6 +77,12 @@ class Meetings extends MX_Controller
         echo Modules::run('templates/main',$data);
     }
 
+    public function saveContact(){
+        
+        $this->meetingModel->saveContact();
+        set_flash('Contact saved successfully');
+        redirect(site_url('contacts'));
+    }
 
 
 }
