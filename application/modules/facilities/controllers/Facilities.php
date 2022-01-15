@@ -27,7 +27,7 @@ class Facilities extends MX_Controller
             $data['district'] = '';
             $data['district_id'] = '';
             $data['districts']  = $this->DM->get();
-            $data['facilities'] = $this->FM->get();
+            $data['facilities'] = $this->FM->facilities_with_district_info();
         }
         
         $data['module']=$this->module;
@@ -49,7 +49,7 @@ class Facilities extends MX_Controller
     public function store() { //facility list
 
         $this->AM->insert();
-        return $this->response->redirect(site_url('facility-list'));
+        return redirect(site_url('facility-list'));
     }
 
     public function singleFacility($id = null){ //get facility page
@@ -67,14 +67,53 @@ class Facilities extends MX_Controller
     public function update($id = null){ //update facility
 
         $this->AM->update($id);
-        return $this->response->redirect(site_url('facility-list'));
+        return redirect(site_url('facility-list'));
     }
  
     public function delete($id = null){ //delete facility
 
         $this->AM->delete($id);
-        return $this->response->redirect(site_url('facility-list'));
+        return redirect(site_url('facility-list'));
     }  
+
+    public function facility_teams($id){ //get facility teams
+
+        $data['teams'] = $this->FM->teams_by_facility($id);
+        $fac = $this->FM->facility_by_id($id);
+        $data['facility'] = $fac->facility_name;
+        $data['district'] = $fac->district_name;
+        $data['district_id'] = $fac->district_id;
+        $data['facility_id'] = $fac->id;
+
+        $data['module']=$this->module;
+        $data['title']="Branch Teams";
+
+        $data['view']="teams";
+        echo Modules::run('templates/main',$data);
+    }
+
+    public function create_team($id = null){ //get facility teams
+
+        $fac = $this->FM->facility_by_id($id);
+        $data['facility'] = $fac->facility_name;
+        $data['district_id'] = $fac->district_id;
+        $data['facility_id'] = $fac->id;
+
+        $data['module']=$this->module;
+        $data['title']="Branch Teams";
+
+        $data['view']="create-team";
+        echo Modules::run('templates/main',$data);
+    }
+
+
+    public function save_branch_team() { //save team
+
+        $this->DM->insert_district_teams();
+        return redirect(site_url('district-list'));
+    }
+
+
 
 
 }

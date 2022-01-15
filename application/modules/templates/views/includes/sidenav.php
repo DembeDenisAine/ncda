@@ -270,7 +270,7 @@
             </ul>
           </li>
         
-              <!--user perm 26-->
+           <!--user perm 26-->
            <?php if(in_array('32', $permissions)){ ?>
             <li class="nav-item has-treeview ">
             <a href="#" class="nav-link">

@@ -105,7 +105,7 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['update-parameter/(:num)'] = 'parameters/update/$1';
 	$route['delete-parameter/(:num)'] = 'parameters/delete/$1';
 
-//PARAMETERS
+//FACILITIES
 	$route['facility-list'] = 'facilities/index';
 	$route['facility-list/(:num)'] = 'facilities/index/$1';
 	$route['create-facility/(:num)'] = 'facilities/create/$1';
@@ -113,3 +113,5 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['edit-facility/(:num)'] = 'facilities/singleParameter/$1';
 	$route['update-facility/(:num)'] = 'facilities/update/$1';
 	$route['delete-facility/(:num)'] = 'facilities/delete/$1';
+	$route['facility-teams/(:num)'] = 'facilities/facility_teams/$1';
+	$route['create-facility-member/(:num)'] = 'facilities/create_team/$1';

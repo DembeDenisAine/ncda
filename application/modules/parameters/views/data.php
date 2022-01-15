@@ -38,7 +38,7 @@
                                             <th>Activity</th>
                                         <?php } ?> 
                                         <th>Details</th>
-                                        <th>Parameters</th>
+                                        <th>Value</th>
                                         <th style="width: 150px">Action</th>
                                     </tr>
                                 </thead>
@@ -54,8 +54,7 @@
 
                                             <td><?php echo $actv['parameter_description']; ?></td>
                                             <td>
-                                                <a href="<?php echo base_url('parameter-list/'.$actv['id']);?>" 
-                                                class="btn btn-success btn-sm">Parameters</a>
+                                                <input type="text" name="value" class="form-control">
                                             </td>
                                             <td>
                                                 <a href="<?php echo base_url('edit-parameter/'.$actv['id']);?>" 

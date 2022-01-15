@@ -64,6 +64,7 @@ class Districts extends MX_Controller
         $data['district_id']=$id;
         $data['facilities'] = $this->DM->get_facilities($id);
         //$data['facilities'] = $this->DM->facilities_by_district($id);
+
         $data['module']=$this->module;
         $data['title']="Branch Teams";
 
