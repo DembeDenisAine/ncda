@@ -1,8 +1,4 @@
-
-<!-- <a href="<?=site_url('create-district')?>" class="btn btn-info pull-right">Add a District <i class="fas fa-plus"></i></a> -->
-
 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">Add a Branch  <i class="fas fa-plus"></i></button>
-
 <hr>
 <table class="table table-bordered">
     <thead>
