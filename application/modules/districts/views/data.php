@@ -29,12 +29,74 @@
                 class="btn btn-primary btn-sm">Teams</a> 
             </td>
             <td>
-                <a href="<?php echo base_url('edit-district/'.$proj['id']);?>" 
-                class="btn btn-primary btn-sm">Edit</a> 
+               <!--  <a href="<?php echo base_url('edit-district/'.$proj['id']);?>" 
+                class="btn btn-primary btn-sm">Edit</a> -->
+
+                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#edt<?php echo $proj['id'];?>">Edit <i class="fas fa-plus"></i></button>
+
                 <a href="<?php echo base_url('delete-district/'.$proj['id']);?>" 
-                class="btn btn-danger btn-sm">Delete</a>
+                class="btn btn-danger btn-sm ">Delete</a>
             </td>
         </tr>
+
+            <!-- Edit Branch Modeal ------------>
+            <div class="modal fade" id="edt<?php echo $proj['id'];?>">
+                 <div class="modal-dialog">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                             <h5 class="modal-title">Eid Branch: <u><?php echo $proj['district_name']; ?></u></h5>
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          <form method="post" action="<?= site_url('save-district') ?>">
+                            <div class="modal-body">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Branch/District Name</label>
+                                                    <input type="text" class="form-control" name="district_name" style="width: 100%;" value="<?php echo $proj['district_name']; ?>">
+                                                    <input type="hidden" class="form-control" name="active">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Region</label>
+                                                    <select type="text" class="form-control select2" name="region" style="width: 100%;">
+                                                        <option >Select Region</option>
+                                                        <option 
+                                                        <?php if($proj['region'] == "Central Region"){ echo "selected";} ?> value="Central Region">Central Region</option>
+
+                                                        <option 
+                                                        <?php if($proj['region'] == "Eastern Region"){ echo "selected";} ?> 
+                                                        value="Eastern Region">Eastern Region</option>
+                                                        <option 
+                                                        <?php if($proj['region'] == "Northern Region"){ echo "selected";} ?>  
+                                                        value="Northern Region">Northern Region</option>
+                                                        <option 
+                                                        <?php if($proj['region'] == "Western Region"){ echo "selected";} ?>
+                                                        value="Western Region">Western Region</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Notes</label>
+                                                    <textarea type="text" class="form-control" rows="5" name="notes" style="width: 100%;"><?php echo $proj['notes']; ?></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                              </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-info">Save <i class="fas fa-plus"></i></button>
+                            </div>
+                        </form>
+                      </div>
+                  </div>
+              </div>
+
         <?php endforeach; ?>
         <?php endif; ?>
 
