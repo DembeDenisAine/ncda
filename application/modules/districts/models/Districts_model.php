@@ -3,9 +3,9 @@
 class Districts_model extends CI_Model{
 
     public function get($limit=null, $start=null){
-
-        $query = $this->db->query("SELECT * FROM ncda_districts LIMIT $start,$limit")->result_array();
-        return (object)$query;
+        $this->db->limit($limit,$start);
+        $query = $this->db->get("ncda_districts")->result();
+        return $query;
         
     }
 

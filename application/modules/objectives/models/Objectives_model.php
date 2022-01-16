@@ -8,7 +8,7 @@ class Objectives_model extends CI_Model{
         return $query->result();
     }
 
-
+   
     public function insert()
     {   
         $user_id = 1; 
@@ -29,7 +29,7 @@ class Objectives_model extends CI_Model{
             'objective_name' => $this->input->post('objective_name'),
             'objective_description' => $this->input->post('objective_description'),
             'project_id'    => $this->input->post('project_id'),
-            'created_by'             => $user_id
+            'created_by'    => $user_id
         );
 
         if($id==0){
@@ -64,8 +64,11 @@ class Objectives_model extends CI_Model{
 
     } 
 
-    public function objectives_by_project_id($id) {
+    public function objectives_by_project_id($id,$perPage=null,$page=null) {
 
+        if($perPage)
+        $this->db->limit($perPage,$page);
+        
         $query = $this->db->query("SELECT `no`.*, `np`.`project_name` as `project_name` 
                                   FROM (`ncda_ojectives` `no`) 
                                   JOIN `ncda_projects` `np` 
@@ -75,6 +78,11 @@ class Objectives_model extends CI_Model{
         return (object)$query;
 
     } 
+
+    public function countObjects($id){
+        $this->db->where('project_id',$id);
+        return $this->db->count_all('ncda_ojectives');
+    }
 
 
 }

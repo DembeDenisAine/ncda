@@ -66,21 +66,18 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['update-branch-team'] = 'districts/update_district_team';
 	$route['delete-branch-staff/(:num)/(:num)'] = 'districts/delete_district_team/$1/$2';
 	
-
-
-
 //PROJECTS
 	$route['project-list(/:num)?'] = 'projects/index';
 	$route['create-project'] = 'projects/create';
 	$route['save-project'] = 'projects/create';
 	$route['edit-project/(:num)'] = 'projects/singleProject/$1';
-	$route['update-project/(:num)'] = 'projects/update/$1';
+	$route['update-project'] = 'projects/update';
 	$route['delete-project/(:num)'] = 'projects/delete/$1';
-
+	$route['entry/(:num)'] = 'projects/dataEntry/$1';
 
 //OBJECTIVES
 	$route['objective-list'] = 'objectives/index';
-	$route['objective-list/(:num)'] = 'objectives/index/$1';
+	$route['objective-list/(:num)(/:num)?'] = 'objectives/index/$1';
 	$route['create-objective/(:num)'] = 'objectives/create/$1';
 	$route['save-objective'] = 'objectives/create';
 	$route['edit-objective/(:num)'] = 'objectives/singleObjective/$1';
