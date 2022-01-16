@@ -48,12 +48,12 @@
      <div class="modal-dialog">
          <div class="modal-content">
              <div class="modal-header">
-                 <h6 class="modal-title">Add New Branch</h6>
+                 <h6 class="modal-title">Add Facility</h6>
                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
               </div>
-              <form method="post" action="<?= site_url('save-district') ?>">
+              <form method="post" action="<?= site_url('save-facility') ?>">
                 <div class="modal-body">
                         <div class="card-body">
                             <div class="row">

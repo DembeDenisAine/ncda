@@ -22,13 +22,15 @@ class Facilities_model extends CI_Model{
 
     public function insert()
     {    
+        $distric = $this->input->post('district_id');
         $data = array(
             'facility_name' => $this->input->post('facility_name'),
             'facilty_description' => $this->input->post('facilty_description'),
-            'facility_head' => $this->input->post('facility_head'),
-            'district_id' => $this->input->post('district_id')
+            'district_id' => $distric
         );
-        return $this->db->insert('ncda_facilities', $data);
+        
+        $this->db->insert('ncda_facilities', $data);
+        return  $distric; 
     }
 
 
