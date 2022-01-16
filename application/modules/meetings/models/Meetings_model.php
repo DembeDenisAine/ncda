@@ -2,11 +2,16 @@
 
 class Meetings_model extends CI_Model{
 
-    public function get(){
+    public function get($perPage,$page){
+        $this->db->limit($perPage,$page);
+        $this->db->order_by('id','desc');
         $query = $this->db->get("ncda_meetings");
         return $query->result();
     }
 
+    public function countMeetings(){
+        return $this->db->count_all("ncda_meetings");
+    }
 
     public function insert()
     {   
@@ -60,13 +65,15 @@ class Meetings_model extends CI_Model{
 
     //meeting attendants
     public function getAttendants($id){
-                $this->db->join('ncda_contact_catalog',
-                'ncda_contact_catalog.id = ncda_meeting_participants.contact_id');
+        $this->db->order_by('ncda_meeting_participants.id','desc');
+        $this->db->join('ncda_contact_catalog',
+        'ncda_contact_catalog.id = ncda_meeting_participants.contact_id');
         return $this->db->get_where('ncda_meeting_participants', array('meeting_id' => $id))->result();
     }
 
     //contacts
     public function getContacts($perPage,$page){
+        $this->db->order_by('id','desc');
         $this->db->limit($perPage,$page);  
         return $this->db->get('ncda_contact_catalog')->result();
     }
@@ -78,17 +85,19 @@ class Meetings_model extends CI_Model{
 
     //meeting impacts
     public function getImpacts($id){
-        
+        $this->db->order_by('ncda_meeting_impacts.id','desc');
         return $this->db->get_where('ncda_meeting_impacts', array('meeting_id' => $id))->result();
     }
 
     //meeting discussions
     public function getDiscussions($id){
+        $this->db->order_by('ncda_meeting_discusions.id','desc');
         return $this->db->get_where('ncda_meeting_discusions', array('meeting_id' => $id))->result();
     }
 
     //meeting discussions
     public function getActionPoints($id){
+        $this->db->order_by('ncda_meeting_action_points.id','desc');
         return $this->db->get_where('ncda_meeting_action_points', array('meeting_id' => $id))->result();
     }
 

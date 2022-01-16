@@ -13,23 +13,21 @@ class Meetings extends MX_Controller
 
     public function index()
     {   
-        $data['meetings'] = $this->meetingModel->get();
+       
         $data['module']   = $this->module;
         $data['title']    = "Meetings";
-        $data['view']     = "data";
+        $data['view']     = "meetings_list";
+
+        $perPage = 3;
+        $page    = ($this->uri->segment(2))? $this->uri->segment(2) : 0;
+        $count   = $this->meetingModel->countMeetings();
+
+        $data['meetings'] = $this->meetingModel->get($perPage,$page);
+        $data['links']    = paginate('meetings',$count,$perPage,2);
 
         echo Modules::run('templates/main',$data);
     }
-    
-    
-    public function create(){ // add objectives form
-    
-        $data['module'] = $this->module;
-        $data['title']  = "Create a Meeting";
-        $data['view']   = "create";
-
-        echo Modules::run('templates/main',$data);
-    }
+  
 
     public function store() { //save meeting
 
@@ -73,11 +71,11 @@ class Meetings extends MX_Controller
     
         $data['module'] = $this->module;
         $data['title']  = "Contacts List";
-        $data['view']   = "contacts";
+        $data['view']   = "contacts_list";
 
         $count   = $this->meetingModel->countContacts();
         $page    = ($this->uri->segment(2))? $this->uri->segment(2) : 0;
-        $perPage = 1;
+        $perPage = 15;
 
         $data['contacts']  = $this->meetingModel->getContacts($perPage,$page);
         $data['links']     = paginate('contacts',$count,$perPage,2);

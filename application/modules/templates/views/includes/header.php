@@ -64,6 +64,9 @@ $permissions=$userdata['permissions'];
 <link href="<?php echo base_url(); ?>assets/plugins/jquery-ui/jquery-ui.theme.min.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/css/style/custom_tabs.css" rel="stylesheet">
 
+<!--timepicker-->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+
 <style>
  @media (max-width: 767px) {
     .hidden-mobile {
@@ -222,6 +225,15 @@ body::-webkit-scrollbar-thumb
     padding: 5px!important;
     vertical-align: middle;
   }
+  a .btn{
+    color:white!important;
+  }
+  .page-link{
+    text-transform: capitalize;
+  }
+  tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 </style>
 
 </head>
