@@ -28,7 +28,7 @@ class Districts extends MX_Controller
         return redirect(site_url('district-list'));
     }
 
-    public function teams($id = null){ //get district teams
+    public function teams($id){ //get district teams
 
         $data['teams'] = $this->DM->district_teams($id);
         $data['facilities'] = $this->DM->facilities_by_district($id);
@@ -41,14 +41,14 @@ class Districts extends MX_Controller
         echo Modules::run('templates/main',$data);
     }
 
-    public function create_team($id = null){ //get district teams
+    public function create_team($id){ //get district teams
 
+        $district = $this->DM->find($id);
+        $data['district'] = $district->district_name;
         $data['district_id']=$id;
         $data['facilities'] = $this->DM->get_facilities($id);
-        //$data['facilities'] = $this->DM->facilities_by_district($id);
-
         $data['module']=$this->module;
-        $data['title']="Branch Teams";
+        $data['title']="Branch Teams //".$district->district_name.": Branch";
 
         $data['view']="create_teams";
         echo Modules::run('templates/main',$data);
@@ -57,8 +57,13 @@ class Districts extends MX_Controller
 
     public function save_branch_team() { //save team
 
-        $this->DM->insert_district_teams();
-        return redirect(site_url('district-list'));
+        $data = $this->DM->insert_district_teams();
+
+        //print_r($data);
+        //exit();
+        //.$data->district_id
+
+        return redirect(site_url('teams-district/'.$data));
     }
 
 

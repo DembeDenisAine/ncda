@@ -8,8 +8,8 @@
             <th>Name</th>
             <th>Gender</th>
             <th>Title</th>
-            <th>Facility</th>
             <th>Contact</th>
+            <th>Facility</th>
             <th width="15%">Action</th>
         </tr>
     </thead>
@@ -23,7 +23,8 @@
             <td><?php echo $tm['gender']; ?></td>
             <td><?php echo $tm['title']; ?></td>
             <td><?php echo $tm['contact']; ?></td>
-            <td><?php echo $tm['title']; ?></td>
+            <td><?php echo $tm['facility_name']; ?></td>
+            
             <td>
                 <a href="<?php echo base_url('edit-district/'.$tm['id']);?>" 
                 class="btn btn-primary btn-sm">Edit</a> 
