@@ -82,9 +82,6 @@ class Meetings extends MX_Controller
         $data['contacts']  = $this->meetingModel->getContacts($perPage,$page);
         $data['links']     = paginate('contacts',$count,1,2);
 
-        print_r($data);
-        exit();
-
         echo Modules::run('templates/main',$data);
     }
 
