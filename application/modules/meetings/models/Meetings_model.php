@@ -66,8 +66,14 @@ class Meetings_model extends CI_Model{
     }
 
     //contacts
-    public function getContacts(){
+    public function getContacts($perPage,$page){
+        $this->db->limit($perPage,$page);  
         return $this->db->get('ncda_contact_catalog')->result();
+    }
+
+    //contacts
+    public function countContacts(){
+        return $this->db->count_all('ncda_contact_catalog');
     }
 
     //meeting impacts

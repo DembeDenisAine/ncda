@@ -74,7 +74,16 @@ class Meetings extends MX_Controller
         $data['module'] = $this->module;
         $data['title']  = "Contacts List";
         $data['view']   = "contacts";
-        $data['contacts']  = $this->meetingModel->getContacts();
+        $count  = $this->meetingModel->countContacts();
+
+        $page    = ($this->uri->segment(2))? $this->uri->segment(2) : 0;
+        $perPage = 20;
+
+        $data['contacts']  = $this->meetingModel->getContacts($perPage,$page);
+        $data['links']     = paginate('contacts',$count,1,2);
+
+        print_r($data);
+        exit();
 
         echo Modules::run('templates/main',$data);
     }
