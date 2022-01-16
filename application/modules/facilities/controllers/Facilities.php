@@ -67,10 +67,10 @@ class Facilities extends MX_Controller
  
     
     //delete facility
-    public function delete($id = null){ 
+    public function delete($id = null, $district){ 
 
         $this->FM->delete($id);
-        return redirect(site_url('facility-list'));
+        return redirect(site_url('facility-list/'.$district));
     }  
 
     public function facility_teams($id){ //get facility teams
