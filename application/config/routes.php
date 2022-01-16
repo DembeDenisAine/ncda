@@ -55,7 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 //DISTRICTS
-	$route['district-list'] = 'districts/index';
+	$route['district-list(/:num)?'] = 'districts/index';
 	$route['save-district'] = 'districts/store';
 	$route['update-district/(:num)'] = 'districts/update/$1';
 	$route['delete-district/(:num)'] = 'districts/delete/$1';

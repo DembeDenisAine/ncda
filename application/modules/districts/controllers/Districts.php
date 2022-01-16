@@ -13,12 +13,20 @@ class Districts extends MX_Controller
 
     //get district list
     public function index(){  
+
+        $count = $this->DM->district_count();
+
+        $page  = ($this->uri->segment(2))? $this->uri->segment(2) : 0;
+        $route = 'district-list/';
+        $perPage = 10;
+
+        $data['links'] = paginate($route, $count, $perPage, 2);
     
         $data['module']=$this->module;
         $data['title']="Districts";
         $data['view']="data";
 
-        $data['districts'] = $this->DM->get();
+        $data['districts'] = $this->DM->get($perPage, $page);
         echo Modules::run('templates/main',$data);
     }
     
