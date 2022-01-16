@@ -1,4 +1,4 @@
-<div class="modal" id="create-participant">
+<div class="modal" id="create-participant<?=@$row->id?>">
 <div class="modal-dialog modal-lg">
 <div class="modal-content">
     

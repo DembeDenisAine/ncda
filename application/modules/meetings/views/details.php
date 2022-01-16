@@ -49,9 +49,9 @@ class="btn btn-info btn-sm pull-right"><i class="fa fa-arrow-left"></i> Back to 
     <li><a href="#discussions"><i class="fa fa-comments"></i> Discussions</a></li>
     <li><a href="#action-points"><i class="fa fa-list"></i> Action points</a></li>
   </ul>
-  <div id="participants"><?php require_once('meeting_participants.php'); ?></div>
-  <div id="discussions"><?php require_once('meeting_discussions.php'); ?></div>
-  <div id="action-points"><?php require_once('meeting_actions.php'); ?></div>
+  <div class="tab-content" id="participants"><?php require_once('meeting_participants.php'); ?></div>
+  <div class="tab-content" id="discussions"><?php require_once('meeting_discussions.php'); ?></div>
+  <div class="tab-content" id="action-points"><?php require_once('meeting_actions.php'); ?></div>
 </div>
 
 

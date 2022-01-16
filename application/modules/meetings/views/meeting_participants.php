@@ -10,10 +10,11 @@ class="btn btn-success btn-sm pull-right">Add Participant <i class="fas fa-plus"
     <thead>
         <tr>
             <th style="width: 10px">#</th>
-            <th>Meeting Title</th>
-            <th>Meeting Date</th>
-            <th>Start Time</th>
-            <th>End Time</th>
+            <th>Name</th>
+            <th>Organization</th>
+            <th>Address</th>
+            <th>Telephone</th>
+            <th>Mobile</th>
             <th style="width: 150px">Action</th>
         </tr>
     </thead>
@@ -25,6 +26,7 @@ class="btn btn-success btn-sm pull-right">Add Participant <i class="fas fa-plus"
                 <td><?php echo $row->represents; ?></td>
                 <td><?php echo $row->address; ?></td>
                 <td><?php echo $row->phone; ?></td>
+                <td><?php echo $row->mobile; ?></td>
                 <td> 
 
                 <div class="dropdown">

@@ -45,121 +45,108 @@
 <!-- DataTables  & Plugins -->
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/summernote/summernote.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 
 <div class="control-sidebar-bg"></div>
 </div>
 
 <script>
 
-$( document ).ready(function() {
+$(document).ready(function() {
 
-    try{
-        $('.summernote').summernote();
+try{
+    $('.summernote').summernote({height: 200 });
+}catch(error){
+    console.log(error);
+}
 
-     }catch(error){
-        console.log(error);
-     }
-
-    try{
-
+try{
     $( "#tabs" ).tabs();
+}catch(error){
+    console.log(error);
+}
 
-    }catch(error){
-        console.log(error);
-    }
+$.fn.datepicker.defaults.format = "yyyy-mm-dd";
 
-  $.fn.datepicker.defaults.format = "yyyy-mm-dd";
-    $('.datepicker').datepicker({
-        todayHighlight: true,
-        autoclose: true,
-   
-    });
-  });
+$('.datepicker').datepicker({
+    todayHighlight: true,
+    autoclose: true
+});
 
-// Radialize the colors
-$( document ).ready(function() {
 Highcharts.setOptions({
     colors: Highcharts.getOptions().colors.map(function(color) {
-        return {
-            radialGradient: {
-                cx: 0.5,
-                cy: 0.3,
-                r: 0.7
-            },
-            stops: [
-                [0, color],
-                [1, Highcharts.color(color).brighten(-0.3).get('rgb')] // darken
-            ]
-        };
+    return {
+    radialGradient: {
+        cx: 0.5,
+        cy: 0.3,
+        r: 0.7
+    },
+    stops: [
+        [0, color],
+        [1, Highcharts.color(color).brighten(-0.3).get('rgb')] // darken
+    ]
+    };
     })
 });
-});
 
+$('.mytable').DataTable( {
+    dom: 'Bfrtip',
+    "paging": true,
+    "lengthChange": true,
+    "searching": true,
+    "ordering": true,
+    "info": true,
+    "autoWidth": false,
+    "responsive": true,
+    lengthMenu: [
+    [ 25, 50, 100,150, -1 ],
+    [ '25', '50', '100','150','200', 'Show all' ]
+    ],
 
- $(document).ready(function() {
-    $('.mytable').DataTable( {
-        dom: 'Bfrtip',
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-        lengthMenu: [
-            [ 25, 50, 100,150, -1 ],
-            [ '25', '50', '100','150','200', 'Show all' ]
-        ],
-      
-        buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pageLength',
-            
-            
-        ]
-    } );
-});
-
-$(document).ready(function() {
-    $('#timelogs').DataTable( {
-    
-        "paging": false,
-        "lengthChange": true,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-     
-    } );
-});
-
-        
-$(document).ready(function(){
-
-    // $.notify("Hello","success");
-
-    var isPassChanged="1";
-
-    if(isPassChanged!=1){
-
-        $('#changepass').modal('show');
-    }
-
-    var url="<?php echo $this->uri->segment(2); ?>";
-
-    if(url=="tabular" || url=="actuals"||  url=="fetch_report"|| url=="actualsreport"|| url=="tabular#" || url=="timesheet" || url=="attfrom_report"){
-
-        $('body').addClass('sidebar-collapse');
-        $('#sidebar').toggleClass('active');
-
-    };
-
-
+    buttons: [
+    'copyHtml5',
+    'excelHtml5',
+    'csvHtml5',
+    'pageLength',
+    ]
 } );
 
+$('.simpledata').DataTable( {
+    "paging": false,
+    "lengthChange": true,
+    "searching": false,
+    "ordering": true,
+    "info": true,
+    "autoWidth": false,
+    "responsive": true,
+} );
+
+// $.notify("Hello","success");
+
+var isPassChanged="1";
+
+if(isPassChanged!=1){
+ $('#changepass').modal('show');
+}
+
+var url="<?php echo $this->uri->segment(2); ?>";
+
+if(url=="tabular" || url=="actuals"||  url=="fetch_report"|| url=="actualsreport"|| url=="tabular#" || url=="timesheet" || url=="attfrom_report"){
+
+$('body').addClass('sidebar-collapse');
+$('#sidebar').toggleClass('active');
+
+};
+
+
+$('.select2').select2()
+$('.select2dist').select2({ dropdownParent: "#switch" });
+
+$('.select2bs4').select2({
+    theme: 'bootstrap4'
+})
+
+});
 
 </script>
  
@@ -356,77 +343,6 @@ $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
         </body>
 </html>
-<script>
-
-$(function () {
-    $('.select2').select2()
-    $('.select2dist').select2({ dropdownParent: "#switch" });
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
-    })
-});
-
-$("document").ready(function() {
-    $(".sdistrict").change();
-    //$(".sfacility").change();
-    
-   // console.log(time);
- 
-});
-
-function getFacs(val) {
-   
-   $.ajax({          
-           method: "GET",
-           url: "<?php echo base_url(); ?>departments/get_facilities",
-           data:'dist_data='+val,
-           success: function(data){
-               //alert(data);
-               $(".sfacility").html(data);
-           }
-   });
-}
-
-function getDeps(val) {
-   
-   $.ajax({          
-           method: "GET",
-           url: "<?php echo base_url(); ?>departments/get_departments",
-           data:'fac_data='+val,
-           success: function(data){
-               //alert(data);
-               $(".sdepartment").html(data);
-           }
-         //  console.log('iwioowiiwoow');
-   });
-}
-
-function getDivisions(val) {
-   
-    $.ajax({          
-            method: "GET",
-            url: "<?php echo base_url(); ?>departments/get_divisions",
-            data:'depart_data='+val,
-            success: function(data){
-                // alert(data);
-                $(".sdivision").html(data);
-            }
-    });
-}
 
 
-function getUnits(val) {
-   
-    $.ajax({          
-            method: "GET",
-            url: "<?php echo base_url(); ?>departments/get_units",
-            data:'division='+val,
-            success: function(data){
-                //alert(data);
-                $(".sunit").html(data);
-            }
-    });
-}
-
-</script>
 
