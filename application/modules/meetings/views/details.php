@@ -43,50 +43,17 @@ class="btn btn-info btn-sm pull-right"><i class="fa fa-arrow-left"></i> Back to 
     </div>
 </div>
 
-<section>
-<div class=" container">
-
-	<ul class="nav nav-tabs">
-	  <li class="active">
-	  	<a data-toggle="tab" href="#participants">
-	  		<i class="fa fa-users"></i> 
-	  		Participants
-        </a>
-	  </li>
-	  <li>
-	  	<a data-toggle="tab" href="#discussions">
-	  		<i class="fa fa-comments"></i> 
-	  		Discussions
-        </a>
-	  </li>
-	  <li>
-	  	<a data-toggle="tab" href="#action-points">
-	  		<i class="fa fa-file"></i> 
-	  		Action Points
-        </a>
-	  </li>
-	 
-	</ul>
-
-
-	<div class="tab-content">
-
-	  <div id="participants" class="tab-pane active fade"> 
-          <?php require_once('meeting_participants.php'); ?>
-      </div>
-
-	  <div id="discussions" class="tab-pane fade">  
-         <?php require_once('meeting_discussions.php'); ?>
-      </div>
-
-	  <div id="action-points" class="tab-pane fade">
-         <?php require_once('meeting_actions.php'); ?>
-     </div>
-
-	</div>
-
+<div id="tabs">
+  <ul>
+    <li><a href="#participants"><i class="fa fa-users"></i> Participants</a></li>
+    <li><a href="#discussions"><i class="fa fa-comments"></i> Discussions</a></li>
+    <li><a href="#action-points"><i class="fa fa-list"></i> Action points</a></li>
+  </ul>
+  <div id="participants"><?php require_once('meeting_participants.php'); ?></div>
+  <div id="discussions"><?php require_once('meeting_discussions.php'); ?></div>
+  <div id="action-points"><?php require_once('meeting_actions.php'); ?></div>
 </div>
-</section>
+
 
 
 

@@ -47,13 +47,21 @@
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 
 
-
 <div class="control-sidebar-bg"></div>
 </div>
 
 <script>
 
 $( document ).ready(function() {
+
+    try{
+
+    $( "#tabs" ).tabs();
+
+    }catch(error){
+        console.log(error);
+    }
+
   $.fn.datepicker.defaults.format = "yyyy-mm-dd";
     $('.datepicker').datepicker({
         todayHighlight: true,

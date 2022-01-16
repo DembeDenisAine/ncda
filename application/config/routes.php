@@ -122,3 +122,4 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['save-meeting']   = 'meetings/store';
 	$route['contacts']       = 'meetings/contacts';
 	$route['save-contact']   = 'meetings/saveContact';
+	$route['save-participant']  = 'meetings/saveContact';

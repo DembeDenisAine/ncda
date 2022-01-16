@@ -1,8 +1,8 @@
 
 
-<?php require_once('create.php'); ?>
+<?php require_once('add_participant.php'); ?>
 
-<a href="#create-meeting" data-toggle="modal"
+<a href="#create-participant" data-toggle="modal"
 class="btn btn-success btn-sm pull-right">Add Participant <i class="fas fa-plus"></i></a>
 <hr>
 
