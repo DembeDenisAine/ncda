@@ -1,6 +1,4 @@
-
 <form method="post" action="<?= site_url('save-branch-team') ?>">
-    <div class="card-body">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -17,9 +15,11 @@
                 <div class="form-group">
                     <label>First Name</label>
                     <input type="text" class="form-control" name="first_name" style="width: 100%;">
-
-                    <input type="hidden" class="form-control" name="district_id">
+                    <input type="hidden" 
+                            class="form-control" name="district_id" value="<?php echo $district_id; ?>">
                 </div>
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
                     <label>Last Name</label>
                     <input type="text" class="form-control" name="last_name" style="width: 100%;">
@@ -30,6 +30,8 @@
                     <label>Title</label>
                     <input type="text" class="form-control" name="title" style="width: 100%;">
                 </div>
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
                     <label>Gender</label>
                     <select type="text" class="form-control select2" name="gender" style="width: 100%;">
@@ -44,6 +46,8 @@
                     <label>Date of Birth</label>
                     <input type="date" class="form-control" name="dob" style="width: 100%;">
                 </div>
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
                     <label>Contact</label>
                     <input type="text" class="form-control" name="contact" style="width: 100%;">
@@ -52,14 +56,9 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Notes</label>
-                    <textarea type="text" class="form-control" rows="5" name="notes" style="width: 100%;"> </textarea>
+                    <textarea type="text" class="form-control" rows="5" name="notes" style="width: 100%;"></textarea>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="card-footer">
-        <button type="submit" class="btn btn-info pull-right">   
-        Save <i class="fas fa-plus"></i>
-        </button>
-    </div>
+        <button type="submit" class="btn btn-info pull-right">Save <i class="fas fa-plus"></i></button>
 </form>

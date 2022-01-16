@@ -50,16 +50,15 @@ class Districts_model extends CI_Model{
 
     public function district_teams($id)
     {
-        $query = $this->db->query('SELECT `bt`.*, `nf`.`facility_name` as `facility_name` 
+        $query = $this->db->query("SELECT `bt`.*, `nf`.`facility_name` as `facility_name` 
                                   FROM (`ncda_branch_teams` `bt`) 
                                   JOIN `ncda_facilities` `nf` 
-                                  ON `nf`.`id`=`bt`.`facility_id`')
+                                  ON `nf`.`id`=`bt`.`facility_id`
+                                  WHERE `bt`.`district_id`=$id")
                           ->result_array();
         return (object)$query;
 
     }
-
-
 
     public function facilities_by_district($id)
     {
@@ -88,10 +87,13 @@ class Districts_model extends CI_Model{
             'contact' => $this->input->post('contact'),
             'notes' => $this->input->post('notes'),
         );
-        return $this->db->insert('ncda_branch_teams', $data);
+        $this->db->insert('ncda_branch_teams', $data);
+
+        $last_id = $this->db->insert_id();
+        $res = $this->db->get_where('ncda_branch_teams', array('id' => $last_id))->row();
+        $district = $res->district_id;
+        return $district;
     }
-
-
 
 }
 
