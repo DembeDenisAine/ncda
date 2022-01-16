@@ -55,15 +55,16 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 //DISTRICTS
-	$route['district-list'] = 'districts/index';
+	$route['district-list(/:num)?'] = 'districts/index';
 	$route['save-district'] = 'districts/store';
 	$route['update-district/(:num)'] = 'districts/update/$1';
 	$route['delete-district/(:num)'] = 'districts/delete/$1';
-	$route['teams-district/(:num)(/:num)?'] = 'districts/teams/$1';
+	$route['teams-district/(:num)(/:num)?'] = 'districts/get_teams/$1';
 	$route['create-branch-team/(:num)'] = 'districts/create_team/$1';
 	$route['save-branch-team'] = 'districts/save_branch_team';
 	$route['edit-branch-team/(:num)/(:num)'] = 'districts/edit_team/$1/$2';
 	$route['update-branch-team'] = 'districts/update_district_team';
+	$route['delete-branch-staff/(:num)/(:num)'] = 'districts/delete_district_team/$1/$2';
 	
 
 

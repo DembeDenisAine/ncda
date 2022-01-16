@@ -29,11 +29,7 @@
                 class="btn btn-primary btn-sm">Teams</a> 
             </td>
             <td>
-               <!--  <a href="<?php echo base_url('edit-district/'.$proj['id']);?>" 
-                class="btn btn-primary btn-sm">Edit</a> -->
-
                 <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#edt<?php echo $proj['id'];?>">Edit <i class="fas fa-plus"></i></button>
-
                 <a href="<?php echo base_url('delete-district/'.$proj['id']);?>" 
                 class="btn btn-danger btn-sm ">Delete</a>
             </td>
@@ -102,6 +98,8 @@
 
     </tbody>
 </table>
+
+<?php echo $links; ?>
 
 <!-- Create Branch Modeal ------------>
 <div class="modal fade" id="modal-default">

@@ -2,10 +2,11 @@
 
 class Districts_model extends CI_Model{
 
-    public function get(){
+    public function get($limit=null, $start=null){
 
-        $query = $this->db->get("ncda_districts");
-        return (object)$query->result_array();
+        $query = $this->db->query("SELECT * FROM ncda_districts LIMIT $start,$limit")->result_array();
+        return (object)$query;
+        
     }
 
 
@@ -18,6 +19,12 @@ class Districts_model extends CI_Model{
             'active' => $this->input->post('active')
         );
         return $this->db->insert('ncda_districts', $data);
+    }
+
+    public function district_count()
+    {   
+        $query = $this->db->get('ncda_districts')->num_rows();
+        return $query;
     }
 
 
@@ -137,6 +144,12 @@ class Districts_model extends CI_Model{
             return false;
         }
             
+    }
+
+    public function delete_district_staff($id)
+    {   
+        return $this->db->delete('ncda_branch_teams', array('id' => $id));
+  
     }
 
     
