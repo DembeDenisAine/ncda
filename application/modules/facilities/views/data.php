@@ -129,7 +129,7 @@
 
 
 
-<!-- Create Branch Modeal ------------>
+<!-- Create facility Modeal ------------>
 <div class="modal fade" id="modal-facility">
      <div class="modal-dialog">
          <div class="modal-content">
