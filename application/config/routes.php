@@ -62,6 +62,9 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['teams-district/(:num)(/:num)?'] = 'districts/teams/$1';
 	$route['create-branch-team/(:num)'] = 'districts/create_team/$1';
 	$route['save-branch-team'] = 'districts/save_branch_team';
+	$route['edit-branch-team/(:num)/(:num)'] = 'districts/edit_team/$1/$2';
+	$route['update-branch-team'] = 'districts/update_district_team';
+	
 
 
 

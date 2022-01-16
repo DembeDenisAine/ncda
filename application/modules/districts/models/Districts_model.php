@@ -49,12 +49,23 @@ class Districts_model extends CI_Model{
     }
 
     public function district_teams($id, $limit=null, $start=null)
-    {   //$this->db->limit($limit, $start);
+    {   
         $query = $this->db->query("SELECT `bt`.*, `nf`.`facility_name` as `facility_name` 
                         FROM (`ncda_branch_teams` `bt`) 
                         JOIN `ncda_facilities` `nf` 
                         ON `nf`.`id`=`bt`.`facility_id`
-                        WHERE `bt`.`district_id`=$id LIMIT $limit OFFSET $start")->result_array();
+                        WHERE `bt`.`district_id`=$id LIMIT $start,$limit")->result_array();
+        return (object)$query;
+
+    }
+
+    public function single_district_staff($id)
+    {  
+        $query = $this->db->query("SELECT `bt`.*, `nf`.`facility_name` as `facility_name` 
+                        FROM (`ncda_branch_teams` `bt`) 
+                        JOIN `ncda_facilities` `nf` 
+                        ON `nf`.`id`=`bt`.`facility_id`
+                        WHERE `bt`.`id`=$id")->row();
         return (object)$query;
 
     }
@@ -100,6 +111,33 @@ class Districts_model extends CI_Model{
         return $district;
     }
 
+
+    public function update_district_teams()
+    {   
+        $district_id = $this->input->post('district_id');
+        $data = array(
+            'facility_id' => $this->input->post('facility_id'),
+            'first_name' => $this->input->post('first_name'),
+            'district_id' => $district_id,
+            'last_name' => $this->input->post('last_name'),
+            'title' => $this->input->post('title'),
+            'gender' => $this->input->post('gender'),
+            'dob' => $this->input->post('dob'),
+            'contact' => $this->input->post('contact'),
+            'notes' => $this->input->post('notes'),
+        );
+
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('ncda_branch_teams', $data);
+        $updated_status = $this->db->affected_rows();
+
+        if($updated_status){
+            return $district_id ;
+        }else{
+            return false;
+        }
+            
+    }
 
     
 
