@@ -69,7 +69,7 @@ $route['translate_uri_dashes'] = FALSE;
 //PROJECTS
 	$route['project-list(/:num)?'] = 'projects/index';
 	$route['create-project'] = 'projects/create';
-	$route['save-project'] = 'projects/create';
+	$route['save-project']   = 'projects/store';
 	$route['edit-project/(:num)'] = 'projects/singleProject/$1';
 	$route['update-project'] = 'projects/update';
 	$route['delete-project/(:num)'] = 'projects/delete/$1';
@@ -83,7 +83,6 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['edit-objective/(:num)']   = 'objectives/singleObjective/$1';
 	$route['update-objective/(:num)'] = 'objectives/update/$1';
 	$route['delete-objective/(:num)'] = 'objectives/delete/$1';
-
 
 //ACTIVITIES
 	$route['activity-list'] = 'activities/index';

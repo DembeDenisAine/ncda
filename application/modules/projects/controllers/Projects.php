@@ -44,7 +44,7 @@ class Projects extends MX_Controller
 
         $this->projectsModel->insert();
         set_flash('Project saved successfully');
-        return $this->response->redirect(site_url('project-list'));
+        return redirect(site_url('project-list'));
     }
 
 
@@ -77,8 +77,10 @@ class Projects extends MX_Controller
 
         $activityId = ($this->input->post('activity_id'))?$this->input->post('activity_id'):null;
         $data['selectedActivity']  = ($activityId )? $this->activitiesModel->find($activityId): null;
+
         $objectiveId = ($this->input->post('objective_id'))?$this->input->post('objective_id'):null;
         $data['selectedObjective']  = ($objectiveId)? $this->objectivesModel->find($objectiveId): null;
+        
         $data['activities']   = ($objectiveId)?$this->activitiesModel->activities_by_objective_id($objectiveId):[];
         $data['parameters']   = ($activityId)?$this->parametersModel->parameters_by_activity_id($activityId):[];
         $data['districts']    = ($activityId )?$this->districtsModel->get():[];

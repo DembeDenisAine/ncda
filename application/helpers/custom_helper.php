@@ -153,6 +153,16 @@ if (!function_exists('text_date')) {
     }
 }
 
+if (!function_exists('setting')) {
+
+    function setting(){
+        $ci =& get_instance();
+        return $ci->db->get('setting')->row();
+    }
+}
+
+
+
 
 
 

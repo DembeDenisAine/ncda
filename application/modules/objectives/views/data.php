@@ -1,5 +1,5 @@
-<a href="<?php echo base_url('projects-list');?>" 
-    class="btn btn-primary btn-sm pull-right">BAck to Projects <i class="fas fa-arrow-left"></i></a>
+<a href="<?php echo base_url('project-list');?>" 
+    class="btn btn-primary btn-sm pull-right">Back to Projects <i class="fas fa-arrow-left"></i></a>
 <hr>
 
 <div class="card list-card" style="border-left: 10px solid green;">
@@ -41,18 +41,20 @@
         </tr>
     </thead>
     <tbody>
-        <?php  if($objectives): $i=0;  foreach($objectives as $obj): $i++; ?>
+        <?php  if($objectives): $i=0;  
+            foreach($objectives as $obj): $i++;
+         ?>
             <tr>
                 <td><?php echo $i; ?></td>
-                <td><?php echo $obj['objective_name']; ?></td>
-                <td><?php echo $obj['objective_description']; ?></td>
+                <td><?php echo $obj->objective_name; ?></td>
+                <td><?php echo $obj->objective_description; ?></td>
                 <td>
-                    <a href="<?php echo base_url('activity-list/'.$obj['id']);?>" 
+                    <a href="<?php echo base_url('activity-list/'.$obj->id);?>" 
                     class="btn btn-success btn-sm">Activities</a>
                 </td>
                 <td>
-                    <a href="<?php echo base_url('edit-objective/'.$obj['id']);?>" 
-                    class="btn btn-primary btn-sm">Edit</a> <a href="<?php echo base_url('delete-objective/'.$obj['id']);?>" 
+                    <a href="<?php echo base_url('edit-objective/'.$obj->id);?>" 
+                    class="btn btn-primary btn-sm">Edit</a> <a href="<?php echo base_url('delete-objective/'.$obj->id);?>" 
                     class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>

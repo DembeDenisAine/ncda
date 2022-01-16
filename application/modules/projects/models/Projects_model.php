@@ -5,6 +5,7 @@ class Projects_model extends CI_Model{
     public function get($perPage,$page){
         
         $this->db->limit($perPage,$page);
+        $this->db->order_by('id','desc');
         $query = $this->db->get("ncda_projects");
         return $query->result();
     }

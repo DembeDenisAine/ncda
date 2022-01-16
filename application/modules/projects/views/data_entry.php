@@ -10,7 +10,7 @@
     <div class="row " >
         <div class="col-md-12">
             <label>Project:</label>
-            <h4><?php echo $project->project_name; ?></h4>
+            <h5><?php echo $project->project_name; ?></h5>
             <label>Description: </label>
             <p><?php echo $project->project_description; ?></p>
             <div class="grid">
@@ -35,6 +35,7 @@
 
 <hr>
 
+<?php if(count($objectives)>0){ ?>
 
     <form class="row" method="post" id="entryForm">
         <div class="form-group col-lg-5 col-md-12 col-sm-12">
@@ -66,6 +67,7 @@
             </select>
         </div>
 
+
         <div class="form-group col-lg-3 col-md-3 col-sm-12">
             <label>District</label>
             <select class="form-control select2">
@@ -84,6 +86,16 @@
     </form>
     
     <br>
+
+    <?php } else{//No Objectives  ?>
+
+        <div class="text-center">
+            <h1 class="text-muted"><i class="fa fa-info-circle"></i></h1>
+            <p class="text-danger">No Objectives were set up under project</p>
+        </div> 
+        <br>
+
+    <?php } //ends check for Objectives ?>
 
     <?php if(!empty($selectedActivity)): ?>
         <label class="text-info">Selected Activity: </label>

@@ -111,7 +111,7 @@ class Districts extends MX_Controller
         $data['district_id']=$district_id;
         $data['facilities'] = $this->DM->get_facilities($district_id);
         $data['module']=$this->module;
-        $data['title']="Edit Branch Teams //".$district->district_name.": Branch";
+        $data['title']="Edit Branch Teams - ".$district->district_name.": Branch";
 
         $data['view']="edit_teams";
         echo Modules::run('templates/main',$data);

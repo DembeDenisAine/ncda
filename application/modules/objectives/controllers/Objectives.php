@@ -23,7 +23,7 @@ class Objectives extends MX_Controller
 
         $count   = $this->objectivesModel->countObjects($id);
         $page    = ($this->uri->segment(3))?$this->uri->segment(3):0;
-        $perPage = 2;
+        $perPage =2;
 
         $data['objectives'] = $this->objectivesModel->objectives_by_project_id($id,$perPage,$page);
         $data['links']      = paginate('objective-list/'.$id,$count,$perPage,3);
