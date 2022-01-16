@@ -48,16 +48,21 @@ class Districts_model extends CI_Model{
         return $this->db->delete('ncda_districts', array('id' => $id));
     }
 
-    public function district_teams($id)
-    {
+    public function district_teams($id, $limit=null, $start=null)
+    {   //$this->db->limit($limit, $start);
         $query = $this->db->query("SELECT `bt`.*, `nf`.`facility_name` as `facility_name` 
-                                  FROM (`ncda_branch_teams` `bt`) 
-                                  JOIN `ncda_facilities` `nf` 
-                                  ON `nf`.`id`=`bt`.`facility_id`
-                                  WHERE `bt`.`district_id`=$id")
-                          ->result_array();
+                        FROM (`ncda_branch_teams` `bt`) 
+                        JOIN `ncda_facilities` `nf` 
+                        ON `nf`.`id`=`bt`.`facility_id`
+                        WHERE `bt`.`district_id`=$id LIMIT $limit OFFSET $start")->result_array();
         return (object)$query;
 
+    }
+
+    public function district_teams_count($id)
+    {   
+        $query = $this->db->where('district_id', $id)->get('ncda_branch_teams')->num_rows();
+        return $query;
     }
 
     public function facilities_by_district($id)
@@ -94,6 +99,9 @@ class Districts_model extends CI_Model{
         $district = $res->district_id;
         return $district;
     }
+
+
+    
 
 }
 

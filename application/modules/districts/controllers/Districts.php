@@ -30,7 +30,16 @@ class Districts extends MX_Controller
 
     public function teams($id){ //get district teams
 
-        $data['teams'] = $this->DM->district_teams($id);
+         
+        $count = $this->DM->district_teams_count($id);
+
+        $page  = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
+        $route = 'teams-district/'.$id.'/'.$page;
+        $perPage = 500;
+
+        $data['teams'] = $this->DM->district_teams($id, $perPage, $page);
+        $data['links'] = paginate($route, $count, $perPage, $page);
+
         $data['facilities'] = $this->DM->facilities_by_district($id);
         $data['district'] = $this->DM->find($id);
         $data['district_id']=$id;
@@ -58,10 +67,6 @@ class Districts extends MX_Controller
     public function save_branch_team() { //save team
 
         $data = $this->DM->insert_district_teams();
-
-        //print_r($data);
-        //exit();
-        //.$data->district_id
 
         return redirect(site_url('teams-district/'.$data));
     }
