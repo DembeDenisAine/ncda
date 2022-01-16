@@ -41,8 +41,8 @@ class Facilities extends MX_Controller
     //save facility
     public function create() { 
 
-        $distric = $this->FM->insert();
-        return redirect(site_url('facility-list/'.$distric));
+        $distridistrictc = $this->FM->insert();
+        return redirect(site_url('facility-list/'.$district));
     }
 
     //Edit facility  -form
@@ -61,8 +61,8 @@ class Facilities extends MX_Controller
     //update facility
     public function update($id = null){ 
 
-        $this->FM->update($id);
-        return redirect(site_url('facility-list'));
+        $district = $this->FM->update($id);
+        return redirect(site_url('facility-list/'.$district));
     }
  
     
