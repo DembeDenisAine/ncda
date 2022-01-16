@@ -73,8 +73,8 @@ class Parameters_model extends CI_Model{
                     JOIN `ncda_parameters` `np` 
                     ON `na`.`id`=`np`.`activity_id` 
                     WHERE `np`.`activity_id` = '$id'")
-                ->result_array();
-        return (object)$query;
+                ->result();
+        return $query;
 
     } 
 

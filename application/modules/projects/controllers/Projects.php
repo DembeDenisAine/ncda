@@ -43,6 +43,7 @@ class Projects extends MX_Controller
     public function store() { //save project
 
         $this->projectsModel->insert();
+        set_flash('Project saved successfully');
         return $this->response->redirect(site_url('project-list'));
     }
 

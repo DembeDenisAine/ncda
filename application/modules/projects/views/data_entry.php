@@ -24,6 +24,7 @@
     
     </div>
 </div>
+
 <br>
 <h5 class="text-muted">Select Objective & Activity</h5>
 
@@ -90,7 +91,7 @@
     <?php endif; ?>
 
 
-    <?php if(@count($parameters)>0): ?>
+    <?php if(count($parameters)>0): ?>
      
     <br>
     <label class="text-info">PARAMETERS / MEASURES: </label>

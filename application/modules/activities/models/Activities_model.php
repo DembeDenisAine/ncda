@@ -55,10 +55,8 @@ class Activities_model extends CI_Model{
                       SELECT `na`.*, `no`.`objective_name` as `objective_name` 
                       FROM (`ncda_activities` `na`) 
                       JOIN `ncda_ojectives` `no` 
-                      ON `no`.`id`=`na`.`objective_id`")
-                  ->result_array();
-
-        return (object)$query;
+                      ON `no`.`id`=`na`.`objective_id`")->result();
+        return $query;
     } 
 
     public function activities_by_objective_id($id) {
@@ -70,8 +68,8 @@ class Activities_model extends CI_Model{
                     JOIN `ncda_ojectives` `no` 
                     ON `no`.`id`=`na`.`objective_id` 
                     WHERE `na`.`objective_id` = '$id'")
-                ->result_array();
-        return (object)$query;
+                ->result();
+        return $query;
     } 
 
 }

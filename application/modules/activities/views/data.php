@@ -1,7 +1,7 @@
  
                         
-<?php if(!empty($actv_id)) { ?>
-        <a href="<?php echo base_url('create-activity/'.$actv_id);?>" 
+<?php if(!empty($activity_id)) { ?>
+        <a href="<?php echo base_url('create-activity/'.$activity_id);?>" 
         class="btn btn-success btn-sm pull-right">Create <i class="fas fa-plus"></i></a>
     
 <!-- /.card-header -->
@@ -13,7 +13,7 @@
         <tr>
             <th style="width: 10px">#</th>
             <th>Activity Title</th>
-            <?php if(empty($actv_name)) { ?>
+            <?php if(empty($activity_name)) { ?>
                 <th>Activity Title</th>
             <?php } ?> 
             <th>Details</th>
@@ -22,23 +22,27 @@
         </tr>
     </thead>
     <tbody>
-        <?php  if($activities): $i=0;  foreach($activities as $actv): $i++; ?>
+        <?php  
+               if($activities): $i=0;  
+               foreach($activities as $activity): 
+               $i++;
+        ?>
             <tr>
                 <td><?php echo $i; ?></td>
-                <td><?php echo $actv['activity_name']; ?></td>
+                <td><?php echo $activity->activity_name; ?></td>
 
-                <?php if(empty($actv_name)) { ?>
-                    <td><?php echo $actv['objective_name']; ?></td>
+                <?php if(empty($activity_name)) { ?>
+                    <td><?php echo $activity->objective_name; ?></td>
                 <?php } ?> 
 
-                <td><?php echo $actv['activity_description']; ?></td>
+                <td><?php echo $activity->activity_description; ?></td>
                 <td>
-                    <a href="<?php echo base_url('parameter-list/'.$actv['id']);?>" 
+                    <a href="<?php echo base_url('parameter-list/'.$activity->id);?>" 
                     class="btn btn-success btn-sm">Parameters</a>
                 </td>
                 <td>
-                    <a href="<?php echo base_url('edit-activity/'.$actv['id']);?>" 
-                    class="btn btn-primary btn-sm">Edit</a> <a href="<?php echo base_url('delete-activity/'.$actv['id']);?>" 
+                    <a href="<?php echo base_url('edit-activity/'.$activity->id);?>" 
+                    class="btn btn-primary btn-sm">Edit</a> <a href="<?php echo base_url('delete-activity/'.$activity->id);?>" 
                     class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>

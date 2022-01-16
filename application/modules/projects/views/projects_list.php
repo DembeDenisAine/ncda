@@ -1,4 +1,8 @@
+<a href="<?php echo base_url(); ?>create-project" class="btn btn-primary">
+    <i class="fa fa-plus"></i> Create New Project
+</a>
 
+<hr>
 
 <?php if($projects): 
      foreach($projects as $proj): 

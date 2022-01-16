@@ -8,7 +8,7 @@ class Activities extends MX_Controller
 
         $this->module="activities";
         $this->load->model("activities_model",'activitiesModel'); //activities model
-        $this->load->model("objectives_model",'objectivesModel'); //objectives model
+        $this->load->model("objectives/objectives_model",'objectivesModel'); //objectives model
             
     }
 
@@ -48,16 +48,14 @@ class Activities extends MX_Controller
     public function store() { //activity list
 
         $this->activitiesModel->insert();
-        return $this->response->redirect(site_url('activity-list'));
+        return redirect(site_url('activity-list'));
     }
 
     public function singleActivity($id = null){ //get activity page
 
         $data['objective'] = $this->activitiesModel->find($id);
         $data['objective_obj'] = $this->objectivesModel->find($id);
-        print_r($data['objective_obj']);
-        exit();
-
+       
         $data['module']=$this->module;
         $data['title']="Objective - Activities";
         $data['view']="edit";
@@ -67,13 +65,13 @@ class Activities extends MX_Controller
     public function update($id = null){ //updat activity
 
         $this->activitiesModel->update($id);
-        return $this->response->redirect(site_url('activity-list'));
+        return redirect(site_url('activity-list'));
     }
  
     public function delete($id = null){ //delete activity
 
         $this->activitiesModel->delete($id);
-        return $this->response->redirect(site_url('activity-list'));
+        return redirect(site_url('activity-list'));
     }  
 
 

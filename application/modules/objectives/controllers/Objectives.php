@@ -6,9 +6,9 @@ class Objectives extends MX_Controller
     public  function __construct(){
         parent:: __construct();
 
-        $this->module="objectives";
+        $this->module = "objectives";
         $this->load->model("objectives_model",'objectivesModel'); //objectives model
-        $this->load->model("projects_model",'projectsModel'); //projects model
+        $this->load->model("projects/projects_model",'projectsModel'); //projects model
             
     }
 
@@ -19,6 +19,7 @@ class Objectives extends MX_Controller
         $project = $this->projectsModel->find($id);
         $data['proj_name'] = $project->project_name;
         $data['proj_id']   = $id;
+        $data['project']   = $this->projectsModel->find($id);
 
         $count   = $this->objectivesModel->countObjects($id);
         $page    = ($this->uri->segment(3))?$this->uri->segment(3):0;
@@ -37,9 +38,9 @@ class Objectives extends MX_Controller
     
     public function create($id){ // add objectives form
     
-        $data['module'] = $this->module;
-        $data['title']  = "Create an Objective";
-        $data['view']   = "create";
+        $data['module']  = $this->module;
+        $data['title']   = "Create an Objective";
+        $data['view']    = "create";
         $data['project'] = $this->projectsModel->find($id);
         
         echo Modules::run('templates/main',$data);
@@ -47,33 +48,34 @@ class Objectives extends MX_Controller
 
     public function store() { //save objective
 
-        $this->projectsModel->insert();
-        return $this->response->redirect(site_url('objective-list'));
+        $this->objectivesModel->insert();
+        set_flash('Objective saved successfully');
+        return redirect(site_url('objective-list/'.$this->input->post('project_id')));
     }
 
 
     public function singleObjective($id = null){ //show single objective
 
         $data['objective'] = $this->objectivesModel->find($id);
-        $data['project_obj'] = $this->projectsModel->find($id);
+        $data['project']   = $this->projectsModel->find($id);
 
-        $data['module']=$this->module;
-        $data['title']="Objective";
+        $data['module'] = $this->module;
+        $data['title']  = "Objective";
+        $data['view']   = "edit";
 
-        $data['view']="edit";
         echo Modules::run('templates/main',$data);
     }
 
     public function update($id = null){ //updat objective
 
         $this->objectivesModel->update($this->input->post('id'));
-        return $this->response->redirect(site_url('objective-list'));
+        return redirect(site_url('objective-list'));
     }
  
     public function delete($id = null){ //delete objective
 
         $this->projectsModel->delete($id);
-        return $this->response->redirect(site_url('parameter-list'));
+        return redirect(site_url('parameter-list'));
     }  
 
 
