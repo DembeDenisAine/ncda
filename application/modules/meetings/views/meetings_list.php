@@ -27,17 +27,17 @@ class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> Create  Me
                 <td> 
 
                 <div class="dropdown">
-                                        <button class="btn bg-primary btn-xs dropdown-toggle btn-select-option"
-                                                type="button"
-                                                data-toggle="dropdown">Options
-                                            <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu options-dropdown" style="padding: 10px;">
-                                            <li>
-                                                <a href="<?php echo base_url();?>meeting/<?=$row->id?>"><i class="fa fa-expand option-icon"></i> Details</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                    <button class="btn bg-primary btn-xs dropdown-toggle btn-select-option"
+                            type="button"
+                            data-toggle="dropdown">Options
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu options-dropdown" style="padding: 10px;">
+                        <li>
+                            <a href="<?php echo base_url();?>meeting/<?=$row->id?>"><i class="fa fa-expand option-icon"></i> Details</a>
+                        </li>
+                    </ul>
+                </div>
                 </td>
             </tr>
         <?php endforeach; endif; ?>

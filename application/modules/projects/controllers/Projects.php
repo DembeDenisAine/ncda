@@ -15,9 +15,15 @@ class Projects extends MX_Controller
     
         $data['module']=$this->module;
         $data['title']="Projects";
-        $data['view']="data";
+        $data['view']="projects_list";
 
-        $data['projects'] = $this->projectsModel->get();
+        $count = $this->projectsModel->countProjects();
+        $page = ($this->uri->segment(2))?$this->uri->segment(2):0;
+        $perPage = 2;
+
+        $data['projects'] = $this->projectsModel->get($perPage,$page);
+        $data['links'] = paginate('project-list',$count,2,2);
+
         echo Modules::run('templates/main',$data);
     }
     
@@ -25,7 +31,7 @@ class Projects extends MX_Controller
     
         $data['module']=$this->module;
         $data['title']="Create Project";
-        $data['view']="create";
+        $data['view']="create_project";
 
         echo Modules::run('templates/main',$data);
     }
@@ -42,7 +48,7 @@ class Projects extends MX_Controller
         $data['project_obj'] = $this->projectsModel->find($id);
         $data['module']=$this->module;
         $data['title']="Projects";
-        $data['view']="edit";
+        $data['view']="edit_project";
         
         echo Modules::run('templates/main',$data);
     }
