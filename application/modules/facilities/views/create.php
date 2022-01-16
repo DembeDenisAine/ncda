@@ -1,4 +1,3 @@
-
 <form method="post" action="<?= site_url('save-district') ?>">
     <div class="card-body">
         <div class="row">
