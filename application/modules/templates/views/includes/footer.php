@@ -35,7 +35,6 @@
 <script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
 
 <script src="<?php echo base_url() ?>assets/plugins/daterangepicker/daterangepicker.js"></script>
-<script src="<?php echo base_url() ?>assets/plugins/summernote/summernote-bs4.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 <script src="<?php echo base_url(); ?>/assets/plugins/select2/js/select2.full.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/notify.min.js"></script>
@@ -45,7 +44,7 @@
 
 <!-- DataTables  & Plugins -->
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
-
+<script src="<?php echo base_url(); ?>assets/plugins/summernote/summernote.min.js"></script>
 
 <div class="control-sidebar-bg"></div>
 </div>
@@ -53,6 +52,13 @@
 <script>
 
 $( document ).ready(function() {
+
+    try{
+        $('.summernote').summernote();
+
+     }catch(error){
+        console.log(error);
+     }
 
     try{
 

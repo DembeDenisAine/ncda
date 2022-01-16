@@ -45,6 +45,8 @@ $permissions=$userdata['permissions'];
   <!-- Theme style -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-avatar@latest/dist/avatar.css" rel="stylesheet">
  <link href="<?php echo base_url(); ?>assets/css/fullcalendar.css" rel="stylesheet">
+ <link href="<?php echo base_url(); ?>assets/plugins/summernote/summernote.min.css" rel="stylesheet">
+ 
 <style>
  @media (max-width: 767px) {
     .hidden-mobile {
@@ -215,6 +217,13 @@ body::-webkit-scrollbar-thumb
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+<style>
+  td{
+    padding: 5px!important;
+    vertical-align: middle;
+  }
+</style>
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">

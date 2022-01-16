@@ -61,22 +61,31 @@ class Meetings extends MX_Controller
         return $this->response->redirect(site_url('objective-list'));
     }
  
+    // Renders Contacts List
     public function delete($id = null){ //delete objective
 
         $this->projectsModel->delete($id);
         return $this->response->redirect(site_url('parameter-list'));
     }  
 
-    public function contacts(){ // add objectives form
+    // Renders Contacts List
+    public function contacts(){ 
     
         $data['module'] = $this->module;
         $data['title']  = "Contacts List";
         $data['view']   = "contacts";
-        $data['contacts']  = $this->meetingModel->getContacts();
+        $count  = $this->meetingModel->countContacts();
+
+        $page    = ($this->uri->segment(2))? $this->uri->segment(2) : 0;
+        $perPage = 20;
+
+        $data['contacts']  = $this->meetingModel->getContacts($perPage,$page);
+        $data['links']     = paginate('contacts',$count,1,2);
 
         echo Modules::run('templates/main',$data);
     }
 
+    //save Contact/Meeting Particpant
     public function saveContact(){
         
         $this->meetingModel->saveContact();
@@ -89,6 +98,39 @@ class Meetings extends MX_Controller
           redirect(site_url('meeting/'.$_POST['meeting']));
         endif;
     }
+
+    //save Discussion
+    public function saveDiscussion(){
+        
+        $this->meetingModel->saveDiscussion();
+        
+        if(!empty($_POST['discussion'])):
+            set_flash('Discussion updated successfully');
+        else:
+            set_flash('Discussion saved successfully');
+        endif;
+        
+        redirect(site_url('meeting/'.$_POST['meeting']));
+    }
+
+    //save Discussion
+    public function saveAction(){
+        
+        $this->meetingModel->saveActionPoint();
+        
+        if(!empty($_POST['action_id'])):
+            set_flash('Action Point updated successfully');
+        else:
+            set_flash('Action Point saved successfully');
+        endif;
+        
+        redirect(site_url('meeting/'.$_POST['meeting']));
+    }
+
+    
+
+
+    
 
 
 }

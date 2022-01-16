@@ -44,4 +44,46 @@ if (!function_exists('old')) {
     }
 }
 
+//print old form data
+if (!function_exists('truncate')) {
+    function truncate($content,$limit)
+    {
+      return (strlen($content)>$limit)? substr($content,0,$limit)."...":$content;
+    }
+}
+
+if (!function_exists('paginate')) {
+function paginate($route,$totals,$perPage=20,$segment=2)
+    {
+        $ci =& get_instance();
+        $config = array();
+        $config["base_url"] = base_url().$route;
+        $config["total_rows"]     = $totals;
+        $config["per_page"]       = $perPage;
+        $config["uri_segment"]    = $segment;
+        $config['full_tag_open']  = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['first_link'] = 'first';
+        $config['last_link'] = 'last';
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['prev_link'] = '&laquo';
+        $config['prev_tag_open'] = '<li class="prev">';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+
+        $ci->pagination->initialize($config);
+       
+        return $ci->pagination->create_links();
+    }
+}
+
 ?>

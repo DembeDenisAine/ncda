@@ -115,10 +115,12 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['create-facility-member/(:num)'] = 'facilities/create_team/$1';
 
 //Meetings
-	$route['meetings']       = 'meetings/index';
-	$route['meeting/(:num)'] = 'meetings/meetingDetail/$1';
-	$route['create-meeting'] = 'meetings/create';
-	$route['save-meeting']   = 'meetings/store';
-	$route['contacts']       = 'meetings/contacts';
-	$route['save-contact']   = 'meetings/saveContact';
+	$route['meetings']          = 'meetings/index';
+	$route['meeting/(:num)']    = 'meetings/meetingDetail/$1';
+	$route['create-meeting']    = 'meetings/create';
+	$route['save-meeting']      = 'meetings/store';
+	$route['contacts']          = 'meetings/contacts';
+	$route['save-contact']      = 'meetings/saveContact';
 	$route['save-participant']  = 'meetings/saveContact';
+	$route['save-discussion']   = 'meetings/saveDiscussion';
+	$route['save-action']		= 'meetings/saveAction';

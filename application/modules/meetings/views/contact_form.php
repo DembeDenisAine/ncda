@@ -1,7 +1,7 @@
 <div class="row">
             <div class="form-group col-md-2">
                         <label>Title</label>
-                        <select class="form-control" name="gender" required>
+                        <select class="form-control" name="title" required>
                             <option value="">Choose</option>
                             <option>Mr.</option>
                             <option>Mrs.</option>
@@ -24,6 +24,14 @@
                 </div>
 
                 <div class="col-md-6">
+                <div class="form-group">
+                        <label>Gender</label>
+                        <select class="form-control" name="gender" required>
+                            <option value="">Choose</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                  </div>
                     <div class="form-group">
                         <label>Telephone</label>
                          <input type="tel" class="form-control" name="phone" placeholder="Telephone" required>
