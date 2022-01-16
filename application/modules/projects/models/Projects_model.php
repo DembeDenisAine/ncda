@@ -52,7 +52,7 @@ class Projects_model extends CI_Model{
             'start_date'    => $start_date,
             'end_date'      => $end_date,
             'duration'      => $duration,
-            'update_at'     => date('Y-m-d')
+            'updated_at'     => date('Y-m-d')
         );
 
         if($id==0){
