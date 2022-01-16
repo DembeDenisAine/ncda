@@ -12,10 +12,11 @@ class Facilities extends MX_Controller
             
     }
 
+    // get facilities
     public function index($id = false)
     {   
 
-        if(!empty($id)){
+        if(!empty($id)){  // with a branch
             $data['facilities'] = $this->FM->facilities_by_district($id);
             $data['districts']  = $this->DM->get();
 
@@ -23,7 +24,7 @@ class Facilities extends MX_Controller
             $data['district'] = $district->district_name;
             $data['district_id'] = $id;
 
-        }else{
+        }else{ // with no branch
             $data['district'] = '';
             $data['district_id'] = '';
             $data['districts']  = $this->DM->get();
@@ -31,13 +32,14 @@ class Facilities extends MX_Controller
         }
         
         $data['module']=$this->module;
-        $data['title']="Facilities";
+        $data['title']="Facilities //". $data['district']. ": Branch";
         $data['view']="data";
 
         echo Modules::run('templates/main',$data);
     }
     
-    public function create(){ // add facilities form
+    //create facilities  -form
+    public function create(){ 
     
         $data['module']=$this->module;
         $data['title']="Add Facilities";
@@ -46,13 +48,15 @@ class Facilities extends MX_Controller
         echo Modules::run('templates/main',$data);
     }
 
-    public function store() { //facility list
+    //save facility
+    public function store() { 
 
         $this->AM->insert();
         return redirect(site_url('facility-list'));
     }
 
-    public function singleFacility($id = null){ //get facility page
+    //Edit facility  -form
+    public function singleFacility($id = null){ 
 
         $data['facility'] = $this->FM->find($id);
         $data['districts'] =  $this->DM->find($id);
@@ -64,13 +68,16 @@ class Facilities extends MX_Controller
         echo Modules::run('templates/main',$data);
     }
 
-    public function update($id = null){ //update facility
+    //update facility
+    public function update($id = null){ 
 
         $this->AM->update($id);
         return redirect(site_url('facility-list'));
     }
  
-    public function delete($id = null){ //delete facility
+    
+    //delete facility
+    public function delete($id = null){ 
 
         $this->AM->delete($id);
         return redirect(site_url('facility-list'));
