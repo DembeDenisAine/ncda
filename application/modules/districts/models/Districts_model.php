@@ -31,10 +31,10 @@ class Districts_model extends CI_Model{
     public function update($id) 
     {
         $data = array(
-            'activity_name' => $this->input->post('activity_name'),
-            'activity_description' => $this->input->post('activity_description'),
-            'objective_id' => $this->input->post('objective_id'),
-            'created_by' => $this->input->post('created_by')
+            'district_name' => $this->input->post('activity_name'),
+            'region' => $this->input->post('region'),
+            'notes' => $this->input->post('notes'),
+            'active' => $this->input->post('active')
         );
         if($id==0){
             return $this->db->insert('ncda_districts',$data);
@@ -52,7 +52,22 @@ class Districts_model extends CI_Model{
 
     public function delete($id)
     {
-        return $this->db->delete('ncda_districts', array('id' => $id));
+        $facility = $this->db->get_where('ncda_facilities', array('district_id' => $id))->num_rows();
+        $branch_teams = $this->db->get_where('ncda_branch_teams', array('district_id' => $id))->num_rows();
+
+        if($facility > 0){
+            $data['status'] = false;
+            $data['msg'] = "You can not perform this operation, This branch has some Facility info. associated to it";
+            return $data;
+
+        }else{
+
+            return $this->db->delete('ncda_districts', array('id' => $id));
+            $data['status'] = true;
+            $data['msg'] = " Branch deleted Successfully";
+            return $data;
+        }
+        
     }
 
     public function district_teams($id, $limit=null, $start=null)
