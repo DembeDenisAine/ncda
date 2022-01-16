@@ -1,6 +1,6 @@
 
-<a href="<?=site_url('create-branch-team')?>/<?php echo $district_id; ?>" class="btn btn-info pull-right">Adda Member <i class="fas fa-plus"></i></a>
-
+<a href="<?=site_url('create-branch-team')?>/<?php echo $district_id; ?>" class="btn btn-info btn-xs pull-right">Adda Member <i class="fas fa-plus"></i></a>
+<hr>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -26,10 +26,10 @@
             <td><?php echo $tm['facility_name']; ?></td>
             
             <td>
-                <a href="<?php echo base_url('edit-district/'.$tm['id']);?>" 
-                class="btn btn-primary btn-sm">Edit</a> 
+                <a href="<?php echo base_url('edit-branch-team/'.$tm['id'].'/'.$tm['district_id']);?>" 
+                class="btn btn-primary btn-xs">Edit</a> 
                 <a href="<?php echo base_url('delete-district/'.$tm['id']);?>" 
-                class="btn btn-danger btn-sm">Delete</a>
+                class="btn btn-danger btn-xs">Delete</a>
             </td>
         </tr>
         <?php endforeach; ?>
@@ -37,3 +37,5 @@
 
     </tbody>
 </table>
+
+<?php echo $links ?>
