@@ -103,7 +103,15 @@ class Meetings_model extends CI_Model{
             'address'     => $this->input->post('address')
         );
 
-        return $this->db->insert('ncda_contact_catalog', $data);
+        $inserted = $this->db->replace('ncda_contact_catalog', $data);
+
+        if(!empty( $this->input->post('meeting'))):
+            $meeting_attendant = array('contact_id'  => $this->db->insert_id(),
+                             'meeting_id'  => $this->input->post('meeting'));
+            $this->db->insert('ncda_meeting_participants',$meeting_attendant);
+        endif;
+
+        return $inserted;
     }
 
 
@@ -122,6 +130,13 @@ class Meetings_model extends CI_Model{
             'mobile'      => $this->input->post('mobile'),
             'address'     => $this->input->post('address')
         );
+
+        if(!empty( $this->input->post('meeting'))):
+            $meeting_attendant = array('contact_id'  => $id,
+                             'meeting_id'  => $this->input->post('meeting'));
+            $this->db->insert('ncda_meeting_participants',$meeting_attendant);
+        endif;
+
 
         if($id==0){
             return $this->db->insert('ncda_contact_catalog',$data);

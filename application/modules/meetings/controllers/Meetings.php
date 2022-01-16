@@ -80,8 +80,14 @@ class Meetings extends MX_Controller
     public function saveContact(){
         
         $this->meetingModel->saveContact();
-        set_flash('Contact saved successfully');
-        redirect(site_url('contacts'));
+        
+        if(empty($_POST['meeting'])):
+            set_flash('Contact saved successfully');
+            redirect(site_url('contacts'));
+        else:
+            set_flash('Participant saved successfully');
+          redirect(site_url('meeting/'.$_POST['meeting']));
+        endif;
     }
 
 
