@@ -1,4 +1,4 @@
-
+<h3>
 <?php if(!empty($district)) { ?>
     <a href="<?php echo base_url('create-facility/'.$district);?>" 
     class="btn btn-success btn-sm pull-right">Create <i class="fas fa-plus"></i></a>

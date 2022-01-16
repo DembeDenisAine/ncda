@@ -28,16 +28,6 @@ class Districts extends MX_Controller
         return redirect(site_url('district-list'));
     }
 
-    public function singleDistrict($id = null){ //get district page
-
-        $data['dt_obj'] = $this->DM->find($id);
-        $data['module']=$this->module;
-        $data['title']="Districts";
-
-        $data['view']="edit";
-        echo Modules::run('templates/main',$data);
-    }
-
     public function teams($id = null){ //get district teams
 
         $data['teams'] = $this->DM->district_teams($id);
