@@ -38,21 +38,11 @@ class Facilities extends MX_Controller
         echo Modules::run('templates/main',$data);
     }
     
-    //create facilities  -form
-    public function create(){ 
-    
-        $data['module']=$this->module;
-        $data['title']="Add Facilities";
-
-        $data['view']="create";
-        echo Modules::run('templates/main',$data);
-    }
-
     //save facility
-    public function store() { 
+    public function create() { 
 
-        $this->AM->insert();
-        return redirect(site_url('facility-list'));
+        $distridistrictc = $this->FM->insert();
+        return redirect(site_url('facility-list/'.$district));
     }
 
     //Edit facility  -form
@@ -71,16 +61,16 @@ class Facilities extends MX_Controller
     //update facility
     public function update($id = null){ 
 
-        $this->AM->update($id);
-        return redirect(site_url('facility-list'));
+        $district = $this->FM->update($id);
+        return redirect(site_url('facility-list/'.$district));
     }
  
     
     //delete facility
-    public function delete($id = null){ 
+    public function delete($id = null, $district){ 
 
-        $this->AM->delete($id);
-        return redirect(site_url('facility-list'));
+        $this->FM->delete($id);
+        return redirect(site_url('facility-list/'.$district));
     }  
 
     public function facility_teams($id){ //get facility teams
