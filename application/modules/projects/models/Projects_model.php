@@ -51,7 +51,8 @@ class Projects_model extends CI_Model{
             'currency'      => $this->input->post('currency'),
             'start_date'    => $start_date,
             'end_date'      => $end_date,
-            'duration'      => $duration
+            'duration'      => $duration,
+            'update_at'     => date('Y-m-d')
         );
 
         if($id==0){
