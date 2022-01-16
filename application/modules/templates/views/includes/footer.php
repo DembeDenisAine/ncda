@@ -38,9 +38,6 @@
 <script src="<?php echo base_url(); ?>assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 <script src="<?php echo base_url(); ?>/assets/plugins/select2/js/select2.full.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/notify.min.js"></script>
-<!-- fullCalendar 2.2.5 -->
-<script src="<?php echo base_url()?>assets/plugins/moment/moment.min.js"></script>
-<script src="<?php echo base_url()?>assets/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 
 <!-- DataTables  & Plugins -->
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>

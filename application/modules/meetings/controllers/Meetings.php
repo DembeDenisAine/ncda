@@ -125,11 +125,32 @@ class Meetings extends MX_Controller
         redirect(site_url('meeting/'.$_POST['meeting']));
     }
 
-    
+     /**
+     * Get All Meetings and render them oon calendar
+    */
+    public function meetingCalendar($sharingAcess=false)
+    {
+        $meetings = $this->meetingModel->get(10,0);
+        $data = array();
 
+        foreach ($meetings as $key => $value) {
+            $data['data'][$key]['title'] = $value->meeting_name;
+            $data['data'][$key]['start'] = $value->meeting_date;
+            $data['data'][$key]['end'] = $value->meeting_date;
+            $data['data'][$key]['backgroundColor'] = "#00a65a";
+        }
+        
+        $data['title'] = "Meetings Calendar";
 
-    
-
-
+        if(!$sharingAcess): 
+            //when accessed directly in browser
+            $data['view'] = 'meetings_calendar';
+            $data['module'] = $this->module;
+            echo Modules::run('templates/main',$data);
+        else:
+            //sharing with other module
+            $this->load->view('meetings_calendar', $data);
+        endif;
+    }
 }
 
