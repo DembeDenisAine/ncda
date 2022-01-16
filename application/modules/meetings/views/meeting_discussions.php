@@ -1,48 +1,31 @@
+<?php require_once('add_discussion_modal.php'); ?>
 
-
-<?php require_once('create.php'); ?>
-
-<a href="#create-meeting" data-toggle="modal"
+<a href="#add-discussion" data-toggle="modal"
 class="btn btn-success btn-sm pull-right">Add Discussion <i class="fas fa-plus"></i></a>
 <hr>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th style="width: 10px">#</th>
-            <th>Meeting Title</th>
-            <th>Meeting Date</th>
-            <th>Start Time</th>
-            <th>End Time</th>
-            <th style="width: 150px">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php  if($participants): $i=0;  foreach($participants as $row): $i++; ?>
-            <tr>
-                <td><?php echo $i; ?></td>
-                <td><?php echo $row->title." ".$row->first_name." ".$row->last_name; ?></td>
-                <td><?php echo $row->represents; ?></td>
-                <td><?php echo $row->address; ?></td>
-                <td><?php echo $row->phone; ?></td>
-                <td> 
-
-                <div class="dropdown">
-                    <button class="btn bg-primary dropdown-toggle btn-select-option"
-                            type="button"
-                            data-toggle="dropdown">Options
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu options-dropdown" style="padding: 10px;">
-                        <li>
-                            <a href="<?php echo base_url();?>meeting/<?=$row->id?>"><i class="fa fa-expand option-icon"></i> Details</a>
-                        </li>
-                    </ul>
-                 </div>
-                </td>
-            </tr>
-        <?php endforeach; endif; ?>
-
-    </tbody>
-</table>
-                
+<?php  if($discussions): $i=0;  foreach($discussions as $row): $i++; ?>
+    <div class="row">
+        <div class="col-md-3">
+            <?php echo $row->item_name; ?>
+        </div>
+        <div class="col-md-7">
+            <?php echo nl2br(truncate($row->item_details,300)); ?>
+        </div>
+        <div class="col-md-2">
+            <div class="dropdown">
+                <button class="btn bg-primary btn-sm dropdown-toggle btn-select-option"
+                        type="button"
+                        data-toggle="dropdown">Options
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu options-dropdown" style="padding: 10px;">
+                    <li>
+                        <a href="<?php echo base_url();?>meeting/<?=$row->id?>"><i class="fa fa-expand option-icon"></i> Details</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr>
+<?php endforeach; endif; ?>

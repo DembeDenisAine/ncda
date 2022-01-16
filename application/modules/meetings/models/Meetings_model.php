@@ -103,6 +103,10 @@ class Meetings_model extends CI_Model{
             'address'     => $this->input->post('address')
         );
 
+         //for Updates
+         if(!empty( $this->input->post('contact')))
+           $data ['id'] = $this->input->post('contact');
+
         $inserted = $this->db->replace('ncda_contact_catalog', $data);
 
         if(!empty( $this->input->post('meeting'))):
@@ -114,37 +118,42 @@ class Meetings_model extends CI_Model{
         return $inserted;
     }
 
-
-    public function updateContact($id) 
-    {
-        $user_id = 1; 
-
+    //saves a Discussion
+    public function saveDiscussion()
+    {   
         $data = array(
-            'first_name'  => $this->input->post('firstname'),
-            'last_name'   => $this->input->post('lastname'),
-            'gender'      => $this->input->post('gender'),
-            'title'       => $this->input->post('title'),
-            'represents'  => $this->input->post('organization'),
-            'email'       => $this->input->post('email'),
-            'phone'       => $this->input->post('phone'),
-            'mobile'      => $this->input->post('mobile'),
-            'address'     => $this->input->post('address')
+            'meeting_id'   => $this->input->post('meeting'),
+            'item_name'    => $this->input->post('topic'),
+            'item_details' => $this->input->post('details')
         );
 
-        if(!empty( $this->input->post('meeting'))):
-            $meeting_attendant = array('contact_id'  => $id,
-                             'meeting_id'  => $this->input->post('meeting'));
-            $this->db->insert('ncda_meeting_participants',$meeting_attendant);
-        endif;
+        //for Updates
+        if(!empty( $this->input->post('discussion')))
+            $data ['id'] = $this->input->post('discussion');
 
-
-        if($id==0){
-            return $this->db->insert('ncda_contact_catalog',$data);
-        }else{
-            $this->db->where('id',$id);
-            return $this->db->update('ncda_contact_catalog',$data);
-        }        
+        $inserted = $this->db->replace('ncda_meeting_discusions', $data);
+        return $inserted;
     }
+
+
+      //saves an action Point
+      public function saveActionPoint()
+      {   
+          $data = array(
+              'meeting_id'   => $this->input->post('meeting'),
+              'action_point'    => $this->input->post('action'),
+          );
+  
+          //for Updates
+          if(!empty( $this->input->post('action_id')))
+              $data ['id'] = $this->input->post('action_id');
+  
+          $inserted = $this->db->replace('ncda_meeting_action_points', $data);
+          return $inserted;
+      }
+  
+   
+    
 
 }
 

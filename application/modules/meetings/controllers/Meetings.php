@@ -61,13 +61,15 @@ class Meetings extends MX_Controller
         return $this->response->redirect(site_url('objective-list'));
     }
  
+    // Renders Contacts List
     public function delete($id = null){ //delete objective
 
         $this->projectsModel->delete($id);
         return $this->response->redirect(site_url('parameter-list'));
     }  
 
-    public function contacts(){ // add objectives form
+    // Renders Contacts List
+    public function contacts(){ 
     
         $data['module'] = $this->module;
         $data['title']  = "Contacts List";
@@ -77,6 +79,7 @@ class Meetings extends MX_Controller
         echo Modules::run('templates/main',$data);
     }
 
+    //save Contact/Meeting Particpant
     public function saveContact(){
         
         $this->meetingModel->saveContact();
@@ -89,6 +92,39 @@ class Meetings extends MX_Controller
           redirect(site_url('meeting/'.$_POST['meeting']));
         endif;
     }
+
+    //save Discussion
+    public function saveDiscussion(){
+        
+        $this->meetingModel->saveDiscussion();
+        
+        if(!empty($_POST['discussion'])):
+            set_flash('Discussion updated successfully');
+        else:
+            set_flash('Discussion saved successfully');
+        endif;
+        
+        redirect(site_url('meeting/'.$_POST['meeting']));
+    }
+
+    //save Discussion
+    public function saveAction(){
+        
+        $this->meetingModel->saveActionPoint();
+        
+        if(!empty($_POST['action_id'])):
+            set_flash('Action Point updated successfully');
+        else:
+            set_flash('Action Point saved successfully');
+        endif;
+        
+        redirect(site_url('meeting/'.$_POST['meeting']));
+    }
+
+    
+
+
+    
 
 
 }

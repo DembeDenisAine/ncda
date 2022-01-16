@@ -44,4 +44,12 @@ if (!function_exists('old')) {
     }
 }
 
+//print old form data
+if (!function_exists('truncate')) {
+    function truncate($content,$limit)
+    {
+      return (strlen($content)>$limit)? substr($content,0,$limit)."...":$content;
+    }
+}
+
 ?>
