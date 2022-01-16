@@ -17,7 +17,7 @@ class Districts extends MX_Controller
         $count = $this->DM->district_count();
 
         $page  = ($this->uri->segment(2))? $this->uri->segment(2) : 0;
-        $route = 'district-list/';
+        $route = 'district-list';
         $perPage = 10;
 
         $data['links'] = paginate($route, $count, $perPage, 2);
@@ -41,14 +41,14 @@ class Districts extends MX_Controller
     //updat district
     public function update($id = null){ 
 
-        $this->AM->update($id);
+        $this->DM->update($id);
         return redirect(site_url('district-list'));
     }
  
     //delete district
     public function delete($id = null){ 
 
-        $this->AM->delete($id);
+        $this->DM->delete($id);
         return redirect(site_url('district-list'));
     }  
 
