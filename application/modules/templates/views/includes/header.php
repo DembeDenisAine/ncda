@@ -46,7 +46,24 @@ $permissions=$userdata['permissions'];
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-avatar@latest/dist/avatar.css" rel="stylesheet">
  <link href="<?php echo base_url(); ?>assets/css/fullcalendar.css" rel="stylesheet">
  <link href="<?php echo base_url(); ?>assets/plugins/summernote/summernote.min.css" rel="stylesheet">
+ <link href="<?php echo base_url(); ?> assets/plugins/toastr/toastr.min.css" rel="stylesheet">
  
+ 
+<!-- Bootstrap 4 -->
+<script src="<?php echo base_url(); ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo base_url() ?>assets/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- AdminLTE App -->
+<!-- Select2 -->
+<script src="<?php echo base_url() ?>assets/plugins/select2/js/select2.full.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/dist/js/adminlte.min.js"></script>
+
+<script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="<?php echo base_url(); ?>assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<link href="<?php echo base_url(); ?>assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>assets/plugins/jquery-ui/jquery-ui.theme.min.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>assets/css/style/custom_tabs.css" rel="stylesheet">
+
 <style>
  @media (max-width: 767px) {
     .hidden-mobile {
@@ -200,25 +217,7 @@ body::-webkit-scrollbar-thumb
 .tab-content>.active{
   display: block!important;;
 }
-</style>
 
-<!-- Bootstrap 4 -->
-<script src="<?php echo base_url(); ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="<?php echo base_url() ?>assets/plugins/summernote/summernote-bs4.min.js"></script>
-<!-- AdminLTE App -->
-<!-- Select2 -->
-<script src="<?php echo base_url() ?>assets/plugins/select2/js/select2.full.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/dist/js/adminlte.min.js"></script>
-
-<script src="<?php echo base_url(); ?>/assets/plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="<?php echo base_url(); ?>/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- date-range-picker -->
-
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-
-<style>
   td{
     padding: 5px!important;
     vertical-align: middle;

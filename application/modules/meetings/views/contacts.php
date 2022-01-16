@@ -6,8 +6,6 @@
 class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> New Contact</a>
 <hr>
 
-<?php print_r($links); ?>
-
 
 <table class="table table-bordered">
     <thead>
@@ -48,4 +46,7 @@ class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> New Contac
 
     </tbody>
 </table>
+
+<?php echo $links; ?>
+
                 
