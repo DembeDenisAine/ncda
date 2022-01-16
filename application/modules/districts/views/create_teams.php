@@ -60,5 +60,5 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-info pull-right">Save <i class="fas fa-plus"></i></button>
+        <button type="submit" class="btn btn-info btn-xs pull-right">Save <i class="fas fa-plus"></i></button>
 </form>

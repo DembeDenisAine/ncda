@@ -11,7 +11,8 @@ class Districts extends MX_Controller
             
     }
 
-    public function index(){  //district list
+    //get district list
+    public function index(){  
     
         $data['module']=$this->module;
         $data['title']="Districts";
@@ -22,13 +23,57 @@ class Districts extends MX_Controller
     }
     
 
-    public function store() { //save district
+    //save district
+    public function store() { 
 
         $this->DM->insert();
         return redirect(site_url('district-list'));
     }
 
-    public function teams($id){ //get district teams
+    //updat district
+    public function update($id = null){ 
+
+        $this->AM->update($id);
+        return redirect(site_url('district-list'));
+    }
+ 
+    //delete district
+    public function delete($id = null){ 
+
+        $this->AM->delete($id);
+        return redirect(site_url('district-list'));
+    }  
+
+// >>>>>>>>>>>>>>> END OF BRANCH (DISTRICT) OPERATIONS <<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+// >>>>>>>>>>>>>>> BRANCH (DISTRICT) TEAM OPERATIONS <<<<<<<<<<<<<<<<<<<<<<<<<<
+
+     //create district teams - form
+    public function create_team($id){
+
+        $district = $this->DM->find($id);
+        $data['district'] = $district->district_name;
+        $data['district_id']=$id;
+        $data['facilities'] = $this->DM->get_facilities($id);
+        $data['module']=$this->module;
+        $data['title']="Branch Teams //".$district->district_name.": Branch";
+
+        $data['view']="create_teams";
+        echo Modules::run('templates/main',$data);
+    }
+
+    //save team
+    public function save_branch_team() { 
+
+        $data = $this->DM->insert_district_teams();
+
+        return redirect(site_url('teams-district/'.$data));
+    }
+
+    //get district teams
+    public function get_teams($id){ 
 
         $count = $this->DM->district_teams_count($id);
 
@@ -49,20 +94,8 @@ class Districts extends MX_Controller
         echo Modules::run('templates/main',$data);
     }
 
-    public function create_team($id){ //get district teams
-
-        $district = $this->DM->find($id);
-        $data['district'] = $district->district_name;
-        $data['district_id']=$id;
-        $data['facilities'] = $this->DM->get_facilities($id);
-        $data['module']=$this->module;
-        $data['title']="Branch Teams //".$district->district_name.": Branch";
-
-        $data['view']="create_teams";
-        echo Modules::run('templates/main',$data);
-    }
-
-    public function edit_team($id, $district_id){ //edit district teams
+    //edit district team - form
+    public function edit_team($id, $district_id){ 
 
         $data['staff'] = $this->DM->single_district_staff($id);
         $district = $this->DM->find($district_id);
@@ -76,31 +109,20 @@ class Districts extends MX_Controller
         echo Modules::run('templates/main',$data);
     }
 
-    public function save_branch_team() { //save team
-
-        $data = $this->DM->insert_district_teams();
-
-        return redirect(site_url('teams-district/'.$data));
-    }
-
-    public function update_district_team() { //update team
+    //update team
+    public function update_district_team() {  
 
         $data = $this->DM->update_district_teams();
         return redirect(site_url('teams-district/'.$data));
     }
 
-    
-    public function update($id = null){ //updat district
-
-        $this->AM->update($id);
-        return redirect(site_url('district-list'));
+    //update team
+    public function delete_district_team($id, $district_id) {  
+        $district = $district_id;
+        $this->DM->delete_district_staff($id);
+        return redirect(site_url('teams-district/'.$district));
     }
- 
-    public function delete($id = null){ //delete district
-
-        $this->AM->delete($id);
-        return redirect(site_url('district-list'));
-    }  
+    
 
 
 }

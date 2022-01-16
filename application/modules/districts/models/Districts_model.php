@@ -139,6 +139,12 @@ class Districts_model extends CI_Model{
             
     }
 
+    public function delete_district_staff($id)
+    {   
+        return $this->db->delete('ncda_branch_teams', array('id' => $id));
+  
+    }
+
     
 
 }
