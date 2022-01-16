@@ -67,6 +67,11 @@ $permissions=$userdata['permissions'];
 <!--timepicker-->
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 
+<!-- fullCalendar 2.2.5 -->
+<script src="<?php echo base_url()?>assets/plugins/moment/moment.min.js"></script>
+<script src="<?php echo base_url()?>assets/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+
+
 <style>
  @media (max-width: 767px) {
     .hidden-mobile {

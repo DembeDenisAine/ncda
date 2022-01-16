@@ -83,9 +83,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="<?=base_url()?>meetings-calendar" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Meeting Evalutions</p>
+                        <p>Meeting Calendar</p>
                     </a>
                 </li>
             </ul>
