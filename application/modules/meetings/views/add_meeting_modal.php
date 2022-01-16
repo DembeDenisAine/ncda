@@ -27,17 +27,17 @@
                     </div>
                     <div class="form-group">
                         <label>Meeting Date</label>
-                         <input type="text" class="form-control" name="date" placeholder="Meeting Date">
+                         <input type="text" class="form-control datepicker" autocomplete="off" name="date" placeholder="Meeting Date">
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label>Start Time</label>
-                            <input type="text" class="form-control datepicker" name="start_time" placeholder="Start Time">
+                            <input type="text" class="form-control time" name="start_time" placeholder="Start Time">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label>End  Time</label>
-                            <input type="text" class="form-control datepicker" name="end_time" placeholder="End Time">
+                            <input type="text" class="form-control time" name="end_time" placeholder="End Time">
                         </div>
                     </div>
                 </div>

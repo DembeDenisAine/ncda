@@ -1,8 +1,8 @@
 
-<?php require_once('create.php'); ?>
+<?php require_once('add_meeting_modal.php'); ?>
 
 <a href="#create-meeting" data-toggle="modal"
-class="btn btn-success btn-sm pull-right">Create <i class="fas fa-plus"></i></a>
+class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> Create  Meeting</a>
 <hr>
 
 <table class="table table-bordered">
@@ -27,7 +27,7 @@ class="btn btn-success btn-sm pull-right">Create <i class="fas fa-plus"></i></a>
                 <td> 
 
                 <div class="dropdown">
-                                        <button class="btn bg-primary btn-sm dropdown-toggle btn-select-option"
+                                        <button class="btn bg-primary btn-xs dropdown-toggle btn-select-option"
                                                 type="button"
                                                 data-toggle="dropdown">Options
                                             <span class="caret"></span>
@@ -44,4 +44,6 @@ class="btn btn-success btn-sm pull-right">Create <i class="fas fa-plus"></i></a>
 
     </tbody>
 </table>
+
+<?php echo $links; ?>
                 

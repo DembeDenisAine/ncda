@@ -46,6 +46,7 @@
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/summernote/summernote.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
 <div class="control-sidebar-bg"></div>
 </div>
@@ -53,6 +54,23 @@
 <script>
 
 $(document).ready(function() {
+
+    try{
+        $('.time').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 60,
+            minTime: '08',
+            maxTime: '7:00pm',
+            defaultTime: '08',
+            startTime: '09:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true,
+            zindex: 9999999
+        });
+    }catch(error){
+        console.log(error);
+    }
 
 try{
     $('.summernote').summernote({height: 200 });

@@ -57,6 +57,7 @@ function paginate($route,$totals,$perPage=20,$segment=2)
     {
         $ci =& get_instance();
         $config = array();
+        
         $config["base_url"] = base_url().$route;
         $config["total_rows"]     = $totals;
         $config["per_page"]       = $perPage;

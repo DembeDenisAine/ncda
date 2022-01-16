@@ -1,5 +1,5 @@
 
-<?php require_once('create_contact.php'); ?>
+<?php require_once('add_contact_modal.php'); ?>
 
 
 <a href="#create-contact" data-toggle="modal"
@@ -29,7 +29,7 @@ class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> New Contac
                 <td> 
 
                 <div class="dropdown">
-                    <button class="btn bg-primary btn-sm dropdown-toggle btn-select-option"
+                    <button class="btn bg-primary btn-xs dropdown-toggle btn-select-option"
                             type="button"
                             data-toggle="dropdown">Options
                         <span class="caret"></span>

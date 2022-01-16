@@ -9,7 +9,7 @@
         <h3>Add Action Point</h3>
 
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <h3 aria-hidden="true">&times;</h3>
         </button>
     </div>
 

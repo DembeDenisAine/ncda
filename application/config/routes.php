@@ -115,7 +115,7 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['create-facility-member/(:num)'] = 'facilities/create_team/$1';
 
 //Meetings
-	$route['meetings']          = 'meetings/index';
+	$route['meetings(/:num)?']          = 'meetings/index';
 	$route['meeting/(:num)']    = 'meetings/meetingDetail/$1';
 	$route['create-meeting']    = 'meetings/create';
 	$route['save-meeting']      = 'meetings/store';
