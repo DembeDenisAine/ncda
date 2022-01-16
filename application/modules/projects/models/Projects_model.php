@@ -2,12 +2,15 @@
 
 class Projects_model extends CI_Model{
 
-    public function get(){
-
+    public function get($perPage,$page){
+        $this->db->limit($perPage,$page);
         $query = $this->db->get("ncda_projects");
         return $query->result();
     }
 
+    public  function countProjects(){
+        return $this->db->count_all('ncda_projects');
+    }
 
     public function insert()
     {    

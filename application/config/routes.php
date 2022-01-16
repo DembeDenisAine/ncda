@@ -70,7 +70,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 //PROJECTS
-	$route['project-list'] = 'projects/index';
+	$route['project-list(/:num)?'] = 'projects/index';
 	$route['create-project'] = 'projects/create';
 	$route['save-project'] = 'projects/create';
 	$route['edit-project/(:num)'] = 'projects/singleProject/$1';

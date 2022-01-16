@@ -239,6 +239,30 @@ body::-webkit-scrollbar-thumb
   tr:nth-child(even) {
   background-color: #f2f2f2;
 }
+
+.grid{
+  display: flex;
+  flex-direction: row;
+}
+
+.grid div{
+  padding: 10px;
+}
+
+.flexed{
+  display: flex;
+  flex-direction: row;
+  justify-items: flex-end;
+  align-items: center;
+  text-align: right;
+}
+
+.list-card{
+  border-radius:0; 
+  margin-top:5px; 
+  margin-bottom:5px;
+}
+
 </style>
 
 </head>
