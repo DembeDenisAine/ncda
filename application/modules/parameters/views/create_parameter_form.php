@@ -6,7 +6,7 @@
 
         <div class="form-group">
             <label>Parameter Title</label>
-            <textarea class="form-control" rows="1" name="parameter_name" style="width: 100%;">
+            <textarea class="form-control" rows="2" name="parameter_name" style="width: 100%;">
                 <?=(@$param)?$param->parameter_name:''?> 
             </textarea>
         </div>

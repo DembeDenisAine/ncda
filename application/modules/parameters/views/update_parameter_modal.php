@@ -5,7 +5,10 @@
         <div class="modal-content">
                      
             <div class="modal-header"> 
-               Update  Parameter
+               <h4>Update  Parameter</h4>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h3 aria-hidden="true">&times;</h3>
+                </button>
             </div>
             <div class="modal-body">
                 <?php require('create_parameter_form.php'); ?>

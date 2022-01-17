@@ -1,12 +1,17 @@
-<a href="<?php echo base_url('activity-list/'.$activity->objective_id);?>" 
-    class="btn btn-primary btn-sm ">
-    <i class="fas fa-arrow-left"></i>
-    Back to Activities 
-</a>
+
+
+<div class="btn-group">
+    <a href="<?php echo base_url('activity-list/'.$activity->objective_id);?>" 
+        class="btn btn-primary btn-sm ">
+        <i class="fas fa-arrow-left"></i>
+        Back to Activities 
+    </a>
+    <a href="#add_parameter"  data-toggle="modal" class="btn btn-success btn-sm pull-right"> 
+        <i class="fas fa-plus"></i> Create New Parameter
+    </a>
+</div>
 
 <?php require_once('add_parameter_modal.php'); ?>
-
-<a href="#add_parameter"  data-toggle="modal" class="btn btn-success btn-sm pull-right"> <i class="fas fa-plus"></i> Create New Parameter</a>
 <hr>
 
 <div class="card list-card" style="border-left: 10px solid green;">

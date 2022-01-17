@@ -7,8 +7,8 @@
             <div class="modal-header"> 
                 <h4>Add New Parameter</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <h3 aria-hidden="true">&times;</h3>
-        </button>
+                <h3 aria-hidden="true">&times;</h3>
+                </button>
             </div>
             <div class="modal-body">
                 <?php require_once('create_parameter_form.php'); ?>

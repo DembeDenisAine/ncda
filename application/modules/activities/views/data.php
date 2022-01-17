@@ -1,10 +1,11 @@
+<div class="btn-group">
 <a href="<?php echo base_url('objective-list/'.$objective->project_id);?>" 
 class="btn btn-primary btn-sm pull-right"><i class="fas fa-arrow-left"></i> Back to  Project Objective</a>
+<a href="#add_activity" data-toggle="modal" class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> Create New Activity</a>
+</div>
+
 
 <?php require_once('add_activity_modal.php'); ?>
-
-<a href="#add_activity" data-toggle="modal" class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> Create New Activity</a>
-
 <hr>
 
 <div class="card list-card" style="border-left: 10px solid green;">
