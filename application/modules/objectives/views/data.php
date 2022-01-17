@@ -1,6 +1,16 @@
+<?php include('add_objective_modal.php'); ?>
+
+<div class="btn-group">
 <a href="<?php echo base_url('project-list');?>" 
     class="btn btn-primary btn-sm pull-right">Back to Projects <i class="fas fa-arrow-left"></i></a>
-<hr>
+
+<?php if(!empty($proj_id)) { ?>
+<a href="#add_objective"  data-toggle="modal"
+class="btn btn-success btn-sm pull-right">New Objective <i class="fas fa-plus"></i></a>
+<?php } ?>
+</div>
+
+ <hr>
 
 <div class="card list-card" style="border-left: 10px solid green;">
     <div class="card-body">
@@ -22,12 +32,7 @@
     </div>
 </div>
 <br>
-
-<?php if(!empty($proj_id)) { ?>
-    <a href="<?php echo base_url('create-objective/'.$project->id);?>" 
-    class="btn btn-success btn-sm pull-right">New Objective <i class="fas fa-plus"></i></a>
-<?php } ?>
-<br> <br> 
+<br> 
 <h3>Project Objectives</h3>
 <hr>
 <table class="table table-bordered">
@@ -42,7 +47,9 @@
     </thead>
     <tbody>
         <?php  if($objectives): $i=0;  
-            foreach($objectives as $obj): $i++;
+            foreach($objectives as $obj):
+                 $i++;
+                 require('edit_objective_modal.php');
          ?>
             <tr>
                 <td><?php echo $i; ?></td>
@@ -53,9 +60,9 @@
                     class="btn btn-success btn-sm">Activities</a>
                 </td>
                 <td>
-                    <a href="<?php echo base_url('edit-objective/'.$obj->id);?>" 
-                    class="btn btn-primary btn-sm">Edit</a> <a href="<?php echo base_url('delete-objective/'.$obj->id);?>" 
-                    class="btn btn-danger btn-sm">Delete</a>
+                    <a href="#edit_objective<?=$obj->id?>" data-toggle="modal" 
+                    class="btn btn-primary btn-sm">Edit</a> 
+                    <a href="#delete<?php echo $obj->id;?>"  class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
         <?php endforeach; endif; ?>

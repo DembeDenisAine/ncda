@@ -1,8 +1,4 @@
-
-
-<form method="post" action="<?= site_url('save-objective') ?>">
-<div class="card-body">
-    <div class="row">
+<div class="row">
         <div class="col-md-6">
         <div class="form-group">
                 <label>Project Title</label>
@@ -25,10 +21,3 @@
             </div>
         </div>
     </div>
-</div>
-<div class="card-footer">
-    <button type="submit" class="btn btn-info pull-right">   
-    Save <i class="fas fa-plus"></i>
-    </button>
-</div>
-</form>
