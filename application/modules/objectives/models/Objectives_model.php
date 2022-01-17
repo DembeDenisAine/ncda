@@ -77,7 +77,7 @@ class Objectives_model extends CI_Model{
 
     public function countObjects($id){
         $this->db->where('project_id',$id);
-        return $this->db->count_all('ncda_ojectives');
+        return $this->db->get('ncda_ojectives')->num_rows();
     }
 
 

@@ -46,7 +46,9 @@ class="btn btn-success btn-sm pull-right">New Objective <i class="fas fa-plus"><
         </tr>
     </thead>
     <tbody>
-        <?php  if($objectives): $i=0;  
+        <?php  
+           if($objectives): 
+            $i = $page;  
             foreach($objectives as $obj):
                  $i++;
                  require('edit_objective_modal.php');
