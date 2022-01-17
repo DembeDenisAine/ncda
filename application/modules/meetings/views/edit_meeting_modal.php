@@ -1,12 +1,12 @@
 
-<div class="modal" id="create-meeting">
+<div class="modal" id="edit_meeting<?=$row->id?>">
 <div class="modal-dialog modal-lg">
 <div class="modal-content">
     
-    <form method="post" action="<?= site_url('save-meeting') ?>">
+    <form method="post" action="<?= site_url('update-meeting') ?>">
       
     <div class="modal-header">
-        <h3>Create New Meeting</h3>
+        <h3>Edit Meeting</h3>
 
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -15,10 +15,12 @@
 
     <div class="modal-body">
             
-        <?php require_once('meeting_form.php'); ?>
+        <?php require('meeting_form.php'); ?>
+
+        <input type="hidden" name="id" value="<?=$row->id?>" />
 
         <div class="modal-footer">
-            <button type="submit" class="btn btn-info pull-right"> <i class="fas fa-save"></i>  Save Meeting</button>
+            <button type="submit" class="btn btn-info pull-right"> <i class="fas fa-save"></i>  Save Changes</button>
         </div>
     </div>
     </form>

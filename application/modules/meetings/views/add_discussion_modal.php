@@ -1,4 +1,3 @@
-
 <div class="modal" id="add-discussion">
 <div class="modal-dialog modal-lg">
 <div class="modal-content">
@@ -17,11 +16,13 @@
             
             <?php require_once('discussion_form.php'); ?>
             <input type="hidden" name="meeting" value="<?=$meeting->id?>" />
-            
-        <div class="modal-footer">
-            <button type="submit" class="btn btn-info pull-right"> <i class="fas fa-save"></i>  Save Discussion</button>
-        </div>
+  
     </div>
+              
+    <div class="modal-footer">
+            <button type="submit" class="btn btn-info pull-right"> <i class="fas fa-save"></i>  Save Discussion</button>
+    </div>
+
     </form>
     </div>
 </div>

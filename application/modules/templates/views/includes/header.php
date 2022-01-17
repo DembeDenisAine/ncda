@@ -265,6 +265,20 @@ body::-webkit-scrollbar-thumb
   min-width: 100%!important;
 }
 
+.dropdown-menu>li{
+  min-width: 100%;
+  margin-bottom: 5px!important;
+  padding-bottom: 5px!important;
+  border-bottom: 1px solid #939596;
+}
+.dropdown-menu>li>a{
+  color:#565757!important;
+}
+
+.dropdown-menu>li>a:hover{
+  color:#2084ba!important;
+}
+
 </style>
 
 </head>

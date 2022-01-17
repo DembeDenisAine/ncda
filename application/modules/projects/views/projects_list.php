@@ -31,13 +31,13 @@
                                     <ul class="dropdown-menu options-dropdown" style="padding: 10px;">
                                     
                                         <li>
-                                            <a href="<?php echo base_url('entry/'.$proj->id);?>">Field Data Entry</a>
+                                          <a href="<?php echo base_url('entry/'.$proj->id);?>"><i class="fa fa-box"></i>  Field Data Entry</a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url('objective-list/'.$proj->id);?>">View Objectives</a>
+                                        <a href="<?php echo base_url('objective-list/'.$proj->id);?>"><i class="fa fa-list"></i>  View Objectives</a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url('edit-project/'.$proj->id);?>"> Edit Project</a>
+                                        <a href="<?php echo base_url('edit-project/'.$proj->id);?>"> <i class="fa fa-edit"></i>   Edit Project</a>
                                         </li>
                                     </ul>
                             </div>

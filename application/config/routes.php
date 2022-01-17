@@ -119,9 +119,11 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['meeting/(:num)']    = 'meetings/meetingDetail/$1';
 	$route['create-meeting']    = 'meetings/create';
 	$route['save-meeting']      = 'meetings/store';
-	$route['contacts(/:num)?']   = 'meetings/contacts';
+	$route['contacts(/:num)?']  = 'meetings/contacts';
 	$route['save-contact']      = 'meetings/saveContact';
 	$route['save-participant']  = 'meetings/saveContact';
 	$route['save-discussion']   = 'meetings/saveDiscussion';
 	$route['save-action']		= 'meetings/saveAction';
 	$route['meetings-calendar'] = 'meetings/meetingCalendar';
+	$route['update-meeting']    = 'meetings/update';
+	

@@ -53,17 +53,17 @@ class Meetings extends MX_Controller
         echo Modules::run('templates/main',$data);
     }
 
-    public function update($id = null){ //updat objective
-
-        $this->projectsModel->update($id);
-        return $this->response->redirect(site_url('objective-list'));
+    public function update(){ //updat objective
+        $this->meetingModel->update();
+        set_flash('Meeting updated successfully');
+        return redirect(site_url('meetings'));
     }
  
     // Renders Contacts List
     public function delete($id = null){ //delete objective
 
-        $this->projectsModel->delete($id);
-        return $this->response->redirect(site_url('parameter-list'));
+        $this->meetingModel->delete($id);
+        return redirect(site_url('parameter-list'));
     }  
 
     // Renders Contacts List
@@ -99,7 +99,7 @@ class Meetings extends MX_Controller
 
     //save Discussion
     public function saveDiscussion(){
-        
+
         $this->meetingModel->saveDiscussion();
         
         if(!empty($_POST['discussion'])):
