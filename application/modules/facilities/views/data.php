@@ -10,7 +10,9 @@
     <tr>
         <th style="width: 10px">#</th>
         <th>Facility</th>
-        <th>Branch</th>
+        <?php if(empty($district)) { ?>
+            <th>Branch</th>
+        <?php } ?>
         <th>Teams</th>
         <th style="width: 150px">Action</th>
     </tr>
@@ -20,7 +22,9 @@
         <tr>
             <td><?php echo $i; ?></td>
             <td><?php echo $fty['facility_name']; ?></td>
-            <td><?php echo $fty['district_name']; ?></td>
+            <?php if(empty($district)) { ?>
+                <td><?php echo $fty['district_name']; ?></td>
+            <?php } ?>
             <td>
                 <a href="<?php echo base_url('facility-teams/'.$fty['id']);?>" 
                 class="btn btn-success btn-sm">Teams</a>
