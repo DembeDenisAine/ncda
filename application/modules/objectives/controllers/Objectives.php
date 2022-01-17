@@ -15,24 +15,21 @@ class Objectives extends MX_Controller
     public function index($id = false)
     {   
 
-        if(!empty($id)){
-            
-            $data['objectives'] = $this->objectivesModel->objectives_by_project_id($id);
+       
+        $project = $this->projectsModel->find($id);
+        $data['proj_name'] = $project->project_name;
+        $data['proj_id']   = $id;
 
-            $project = $this->projectsModel->find($id);
-            $data['proj_name'] = $project->project_name;
-            $data['proj_id']   = $id;
+        $count   = $this->objectivesModel->countObjects($id);
+        $page    = ($this->uri->segment(3))?$this->uri->segment(3):0;
+        $perPage = 2;
 
-        }else{
-            $data['proj_name'] = '';
-            $data['proj_id'] = '';
-            $data['objectives'] = $this->objectivesModel->objectives_with_project_info();
-        }
+        $data['objectives'] = $this->objectivesModel->objectives_by_project_id($id,$perPage,$page);
+        $data['links']      = paginate('objective-list/'.$id,$count,$perPage,3);
         
-        $data['module']=$this->module;
-        $data['title']="Objectives";
-
-        $data['view']="data";
+        $data['module'] = $this->module;
+        $data['title']  = "Objectives";
+        $data['view']   = "data";
 
         echo Modules::run('templates/main',$data);
     }
@@ -69,7 +66,7 @@ class Objectives extends MX_Controller
 
     public function update($id = null){ //updat objective
 
-        $this->projectsModel->update($id);
+        $this->objectivesModel->update($this->input->post('id'));
         return $this->response->redirect(site_url('objective-list'));
     }
  

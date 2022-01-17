@@ -3,6 +3,7 @@
 class Projects_model extends CI_Model{
 
     public function get($perPage,$page){
+        
         $this->db->limit($perPage,$page);
         $query = $this->db->get("ncda_projects");
         return $query->result();
@@ -17,7 +18,7 @@ class Projects_model extends CI_Model{
         $start_date = $this->input->post('start_date');
         $end_date   = $this->input->post('end_date');
 
-        $diff = strtotime($start_date) - strtotime($end_date);
+        $diff     = strtotime($start_date) - strtotime($end_date);
         $duration = ceil(abs($diff / 86400)).' days';
 
         $data = array(
@@ -29,9 +30,9 @@ class Projects_model extends CI_Model{
             'end_date'      => $end_date,
             'duration'      => $duration
         );
+
         return $this->db->insert('ncda_projects', $data);
     }
-
 
 
     public function update($id) 
@@ -45,8 +46,8 @@ class Projects_model extends CI_Model{
         $data = array(
             'project_name' => $this->input->post('project_name'),
             'project_description' => $this->input->post('project_description'),
-            'budget' => $this->input->post('budget'),
-            'currency' => $this->input->post('currency'),
+            'budget'        => $this->input->post('budget'),
+            'currency'      => $this->input->post('currency'),
             'start_date'    => $start_date,
             'end_date'      => $end_date,
             'duration'      => $duration
@@ -65,7 +66,6 @@ class Projects_model extends CI_Model{
     {
         return $this->db->get_where('ncda_projects', array('id' => $id))->row();
     }
-
 
     public function delete($id)
     {

@@ -10,8 +10,7 @@ class Templates extends MX_Controller {
 	public function main($data)
 	{   
 		$data['setting']=$this->db->get('setting')->row();
-		
-		$this->load->view('main',$data);
+	    $this->load->view('main',$data);
 	}
 
 

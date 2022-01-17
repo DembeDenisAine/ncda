@@ -45,4 +45,6 @@
 
     </tbody>
 </table>
+
+<?php echo $links; ?>
                 

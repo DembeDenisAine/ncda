@@ -31,13 +31,14 @@
                         </button>
                     </div>
                 </div>
-                <form method="post" action="<?= site_url('update-project') ?>">
+                <form method="post" action="<?= site_url('update-objective') ?>">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Project Title</label>
 
+                                    <input type="hidden" name="id" value="<?php echo $project_obj['id']; ?>">
                                     <input type="hidden" name="id" value="<?php echo $project_obj['id']; ?>">
                                     <input class="form-control" name="project_name"
                                     value="<?php echo $project_obj['project_name']; ?>" style="width: 100%;">

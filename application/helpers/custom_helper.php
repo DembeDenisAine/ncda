@@ -146,4 +146,14 @@ if (!function_exists('is_past')) {
     }
 }
 
+if (!function_exists('text_date')) {
+
+    function text_date($date){
+        return date("M jS, Y", strtotime($date));;
+    }
+}
+
+
+
+
 ?>
