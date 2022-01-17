@@ -13,7 +13,6 @@
         <?php if(empty($district)) { ?>
             <th>Branch</th>
         <?php } ?>
-        <th>Teams</th>
         <th style="width: 150px">Action</th>
     </tr>
 </thead>
@@ -25,10 +24,7 @@
             <?php if(empty($district)) { ?>
                 <td><?php echo $fty['district_name']; ?></td>
             <?php } ?>
-            <td>
-                <a href="<?php echo base_url('facility-teams/'.$fty['id']);?>" 
-                class="btn btn-success btn-sm">Teams</a>
-            </td>
+
             <td>
                 <div class="dropdown">
                     <button class="btn bg-primary btn-xs dropdown-toggle btn-select-option"
@@ -37,12 +33,19 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu options-dropdown" style="padding: 10px;">
-                        <li>
-                            <a  data-target="#edt<?php echo $fty['id'];?>"  data-toggle="modal" 
-                            class="btn btn-success btn-xs">Edit <i class="fas fa-plus"></i></a>
 
-                            <a href="#del<?php echo $fty['id']; ?>" class="btn btn-danger btn-xs"
-                             data-toggle="modal"> Delete <i class="fas fa-minus"></i></a>
+                       <li>
+                        <a href="<?php echo base_url('facility-teams/'.$fty['id']);?>">
+                          <i class="fas fa-users"></i> View Teams</a>
+                        </li>
+
+                        <li>
+                            <a href="#edt<?php echo $fty['id'];?>"  data-toggle="modal">
+                            <i class="fas fa-edit"></i>  Edit Facility</a>
+                        </li>
+                        <li>
+                            <a href="#del<?php echo $fty['id']; ?>" data-toggle="modal">
+                             <i class="fas fa-trash"></i> Delete Facility</a>
                         </li>
                     </ul>
                 </div>
