@@ -81,7 +81,7 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['create-objective/(:num)'] = 'objectives/create/$1';
 	$route['save-objective']          = 'objectives/store';
 	$route['edit-objective/(:num)']   = 'objectives/singleObjective/$1';
-	$route['update-objective/(:num)'] = 'objectives/update/$1';
+	$route['update-objective']        = 'objectives/update';
 	$route['delete-objective/(:num)'] = 'objectives/delete/$1';
 
 //ACTIVITIES

@@ -60,16 +60,16 @@ class Objectives extends MX_Controller
         $data['project']   = $this->projectsModel->find($id);
 
         $data['module'] = $this->module;
-        $data['title']  = "Objective";
+        $data['title']  = "Edit Objective";
         $data['view']   = "edit";
 
         echo Modules::run('templates/main',$data);
     }
 
-    public function update($id = null){ //updat objective
-
+    public function update(){ //updat objective
         $this->objectivesModel->update($this->input->post('id'));
-        return redirect(site_url('objective-list'));
+        set_flash('Objective updated successfully');
+        return redirect(site_url('objective-list/'.$this->input->post('project_id')));
     }
  
     public function delete($id = null){ //delete objective

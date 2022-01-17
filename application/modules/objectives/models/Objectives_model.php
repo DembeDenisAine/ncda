@@ -22,7 +22,7 @@ class Objectives_model extends CI_Model{
     }
 
 
-    public function update($id) 
+    public function update() 
     {
         $user_id = 1; 
         $data = array(
@@ -32,12 +32,8 @@ class Objectives_model extends CI_Model{
             'created_by'    => $user_id
         );
 
-        if($id==0){
-            return $this->db->insert('ncda_ojectives',$data);
-        }else{
-            $this->db->where('id',$id);
-            return $this->db->update('ncda_ojectives',$data);
-        }        
+        $this->db->where('id',$this->input->post('id'));
+        return $this->db->update('ncda_ojectives',$data);      
     }
 
 

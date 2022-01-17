@@ -48,7 +48,6 @@ $permissions=$userdata['permissions'];
  <link href="<?php echo base_url(); ?>assets/plugins/summernote/summernote.min.css" rel="stylesheet">
  <link href="<?php echo base_url(); ?> assets/plugins/toastr/toastr.min.css" rel="stylesheet">
  
- 
 <!-- Bootstrap 4 -->
 <script src="<?php echo base_url(); ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="<?php echo base_url() ?>assets/plugins/summernote/summernote-bs4.min.js"></script>
