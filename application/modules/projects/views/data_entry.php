@@ -45,7 +45,7 @@
                 <?php foreach($objectives as $obj): 
                     $selected = (!empty($selectedObjective))?$selectedObjective->id:null;
                 ?>
-                    <option <?php echo ($selected == $obj['id'])?'selected':''; ?> value="<?php echo $obj['id']; ?>"><?php echo $obj['objective_name']; ?></option>
+                    <option <?php echo ($selected == $obj->id)?'selected':''; ?> value="<?php echo $obj->id; ?>"><?php echo $obj->objective_name; ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -59,7 +59,7 @@
                      foreach($activities as $act):
                         $selectedAct = (!empty($selectedActivity))?$selectedActivity->id:null;
                 ?>
-                    <option <?php echo ($selectedAct == $act['id'])?'selected':''; ?>  value="<?php echo $act['id']; ?>"><?php echo $act['activity_name']; ?></option>
+                    <option <?php echo ($selectedAct == $act->id)?'selected':''; ?>  value="<?php echo $act->id; ?>"><?php echo $act->activity_name; ?></option>
                 <?php 
                     endforeach;
                     endif; 
@@ -117,12 +117,12 @@
             ?>
             <tr> 
                 <td>
-                    <label><?php echo $param['parameter_name']; ?></label>
+                    <label><?php echo $param->parameter_name; ?></label>
             </td>
             <td>
-                <p> <?php echo $param['parameter_name']; ?> </p>
+                <p> <?php echo $param->parameter_name; ?> </p>
                     <input type="text" name="params[]" required>
-                    <input type="hidden" value="<?=$param['id']?>" name="ids[]">
+                    <input type="hidden" value="<?=$param->id?>" name="ids[]">
             </td>
             </tr>
 

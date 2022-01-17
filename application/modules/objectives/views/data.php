@@ -60,9 +60,11 @@ class="btn btn-success btn-sm pull-right">New Objective <i class="fas fa-plus"><
                     class="btn btn-success btn-sm">Activities</a>
                 </td>
                 <td>
+                    <div class="btn-group">
                     <a href="#edit_objective<?=$obj->id?>" data-toggle="modal" 
                     class="btn btn-primary btn-sm">Edit</a> 
                     <a href="#delete<?php echo $obj->id;?>"  class="btn btn-danger btn-sm">Delete</a>
+                    </div>
                 </td>
             </tr>
         <?php endforeach; endif; ?>
