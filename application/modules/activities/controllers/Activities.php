@@ -38,7 +38,9 @@ class Activities extends MX_Controller
     public function store() { //activity list
 
         $this->activitiesModel->insert();
-        return redirect(site_url('activity-list'));
+        $objectiveId = $this->input->post('objective_id');
+        set_flash('Activity saved successfully');
+        return redirect(site_url('activity-list/'.$objectiveId));
     }
 
     public function singleActivity($id = null){ //get activity page
@@ -52,10 +54,12 @@ class Activities extends MX_Controller
         echo Modules::run('templates/main',$data);
     }
 
-    public function update($id = null){ //updat activity
+    public function update(){ //updat activity
 
-        $this->activitiesModel->update($id);
-        return redirect(site_url('activity-list'));
+        $this->activitiesModel->update();
+        $objectiveId = $this->input->post('objective_id');
+        set_flash('Activity saved successfully');
+        return redirect(site_url('activity-list/'.$objectiveId));
     }
  
     public function delete($id = null){ //delete activity

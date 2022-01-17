@@ -1,9 +1,9 @@
 <a href="<?php echo base_url('objective-list/'.$objective->project_id);?>" 
 class="btn btn-primary btn-sm pull-right"><i class="fas fa-arrow-left"></i> Back to  Project Objective</a>
 
+<?php require_once('add_activity_modal.php'); ?>
 
-<a href="<?php echo base_url('create-activity/'.$objective->id);?>" 
-class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> Create New Activity</a>
+<a href="#add_activity" data-toggle="modal" class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> Create New Activity</a>
 
 <hr>
 
@@ -11,9 +11,7 @@ class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> Create New
     <div class="card-body">
         <div class="col-md-12">
             <label>Objective:</label>
-            <h5><?php echo $objective->objective_name; ?></h5>
-            <label>Description: </label>
-            <p><?php echo $objective->objective_description; ?></p>
+             <h5><?php echo $objective->objective_name; ?></h5>
             <div class="grid"> 
                 <div><strong><i class="fa fa-check-circle text-muted"></i> Last Updated:</strong> <?php echo time_ago($objective->updated_at); ?></div>
             </div>

@@ -61,6 +61,7 @@ class Projects extends MX_Controller
     public function update($id = null){ //updat project
 
         $this->projectsModel->update($this->input->post('id'));
+        set_flash('Project updated successfully');
         return redirect(site_url('project-list'));
     }
  

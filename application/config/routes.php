@@ -98,9 +98,9 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['parameter-list'] = 'parameters/index';
 	$route['parameter-list/(:num)'] = 'parameters/index/$1';
 	$route['create-parameter/(:num)'] = 'parameters/create/$1';
-	$route['save-parameter'] = 'parameters/create';
-	$route['edit-parameter/(:num)'] = 'parameters/singleParameter/$1';
-	$route['update-parameter/(:num)'] = 'parameters/update/$1';
+	$route['save-parameter']          = 'parameters/store';
+	$route['edit-parameter/(:num)']   = 'parameters/singleParameter/$1';
+	$route['update-parameter']        = 'parameters/update';
 	$route['delete-parameter/(:num)'] = 'parameters/delete/$1';
 
 //FACILITIES

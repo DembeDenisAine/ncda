@@ -7,30 +7,18 @@ class Parameters extends MX_Controller
         parent:: __construct();
 
         $this->module="parameters";
-        $this->load->model("parameters_model",'PM'); //Parameters model
-        $this->load->model("activities_model",'AM'); //activities model
+        $this->load->model("parameters_model",'parametersModel'); //Parameters model
+        $this->load->model("activities/activities_model",'activitiesModel'); //activities model
             
     }
 
     public function index($id = false)
     {   
-
-        if(!empty($id)){
-            $data['parameters'] = $this->PM->parameters_by_activity_id($id);
-
-            $activity = $this->AM->find($id);
-            $data['actv_name'] = $activity->activity_name;
-            $data['actv_id'] = $id;
-
-        }else{
-            $data['actv_name'] = '';
-            $data['actv_id'] = '';
-            $data['parameters'] = $this->PM->parameters_with_activities_info();
-        }
+        $data['parameters'] = $this->parametersModel->parameters_by_activity_id($id);
+        $data['activity']   = $this->activitiesModel->find($id);
         
-        $data['module']=$this->module;
-        $data['title']="Parameters";
-
+        $data['module'] = $this->module;
+        $data['title']  = "Activity Parameters";
         $data['view']="data";
 
         echo Modules::run('templates/main',$data);
@@ -42,7 +30,7 @@ class Parameters extends MX_Controller
         $data['module']=$this->module;
         $data['title']="Create a Parameter";
 
-        $activity = $this->AM->find($id);
+        $activity = $this->activitiesModel->find($id);
         $data['actv_name'] = $activity->activity_name;
         $data['actv_id'] = $id;
 
@@ -51,16 +39,17 @@ class Parameters extends MX_Controller
     }
 
     public function store() { //save parameter
-
-        $this->PM->insert();
-        return $this->response->redirect(site_url('parameter-list'));
+        $this->parametersModel->insert();
+        $activityId = $this->input->post('activity_id');
+        set_flash('Paramter saved successfully');
+        return redirect(site_url('parameter-list/'.$activityId));
     }
 
 
-    public function singleProject($id = null){ //show parameter project
+    public function singleParameter($id = null){ //show parameter project
 
-        $data['objective'] = $this->PM->find($id);
-        $data['objective_obj'] = $this->AM->find($id);
+        $data['parameter']     = $this->parametersModel->find($id);
+        $data['activity']      = $this->activitiesModel->find($id);
 
         $data['module']=$this->module;
         $data['title']="Parameters";
@@ -69,16 +58,18 @@ class Parameters extends MX_Controller
         echo Modules::run('templates/main',$data);
     }
 
-    public function update($id = null){ //updat parameter
+    public function update(){ //updat parameter
 
-        $this->PM->update($id);
-        return $this->response->redirect(site_url('parameter-list'));
+        $this->parametersModel->update();
+        $activityId = $this->input->post('activity_id');
+        set_flash('Paramter updated successfully');
+        return redirect(site_url('parameter-list/'.$activityId));
     }
  
     public function delete($id = null){ //delete parameters
 
-        $this->PM->delete($id);
-        return $this->response->redirect(site_url('parameter-list'));
+        $this->parametersModel->delete($id);
+        return redirect(site_url('parameter-list'));
     }  
 
 
