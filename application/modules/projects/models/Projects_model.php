@@ -5,6 +5,7 @@ class Projects_model extends CI_Model{
     public function get($perPage,$page){
         
         $this->db->limit($perPage,$page);
+        $this->db->order_by('id','desc');
         $query = $this->db->get("ncda_projects");
         return $query->result();
     }
@@ -50,7 +51,8 @@ class Projects_model extends CI_Model{
             'currency'      => $this->input->post('currency'),
             'start_date'    => $start_date,
             'end_date'      => $end_date,
-            'duration'      => $duration
+            'duration'      => $duration,
+            'updated_at'     => date('Y-m-d')
         );
 
         if($id==0){

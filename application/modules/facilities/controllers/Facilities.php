@@ -21,19 +21,19 @@ class Facilities extends MX_Controller
             $data['districts']  = $this->DM->get();
 
             $district = $this->DM->find($id);
-            $data['district'] = $district->district_name;
+            $data['district']    = $district->district_name;
             $data['district_id'] = $id;
 
         }else{ // with no branch
-            $data['district'] = '';
+            $data['district']    = '';
             $data['district_id'] = '';
-            $data['districts']  = $this->DM->get();
-            $data['facilities'] = $this->FM->facilities_with_district_info();
+            $data['districts']   = $this->DM->get();
+            $data['facilities']  = $this->FM->facilities_with_district_info();
         }
         
-        $data['module']=$this->module;
-        $data['title']="Facilities //". $data['district']. ": Branch";
-        $data['view']="data";
+        $data['module'] = $this->module;
+        $data['title']  = (($data['district'])?"Branch ":""). "Facilities ".@$data['district']['district_name'];
+        $data['view']   = "data";
 
         echo Modules::run('templates/main',$data);
     }
@@ -41,7 +41,7 @@ class Facilities extends MX_Controller
     //save facility
     public function create() { 
 
-        $distridistrictc = $this->FM->insert();
+        $district = $this->FM->insert();
         return redirect(site_url('facility-list/'.$district));
     }
 

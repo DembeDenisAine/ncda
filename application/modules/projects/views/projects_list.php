@@ -1,4 +1,8 @@
+<a href="<?php echo base_url(); ?>create-project" class="btn btn-primary">
+    <i class="fa fa-plus"></i> Create New Project
+</a>
 
+<hr>
 
 <?php if($projects): 
      foreach($projects as $proj): 
@@ -9,14 +13,14 @@
             <div class="card-body">
             <div class="row " >
                 <div class="col-md-10">
-                    <h4><?php echo $proj->project_name; ?></h4>
+                    <h5><?php echo $proj->project_name; ?></h5>
                     <label>Description: </label>
                     <p><?php echo truncate($proj->project_description,500); ?></p>
                     <div class="grid">
-                        <div><strong><?=($isInPast)?'Started':'Starts'?>:</strong> <?php echo $proj->start_date; ?></div>
-                        <div><strong><?=($isInPast)?'Ended':'Ends'?>:</strong> <?php echo $proj->end_date; ?></div>
-                        <div><strong>Duration:</strong> <?php echo $proj->duration; ?></div>
-                        <div><strong>Last Updated:</strong> <?php echo time_ago($proj->updated_at); ?></div>
+                        <div><strong><i class="fa fa-calendar text-muted"></i> Started:</strong> <?php echo text_date($proj->start_date); ?></div>
+                        <div><strong><i class="fa fa-calendar text-muted"></i> Ends:</strong> <?php echo text_date($proj->end_date); ?></div>
+                        <div><strong><i class="fa fa-clock text-muted"></i> Duration:</strong> <?php echo $proj->duration; ?></div>
+                        <div><strong><i class="fa fa-check-circle text-muted"></i> Last Updated:</strong> <?php echo time_ago($proj->updated_at); ?></div>
                     </div>
                 </div>
                 <div class="col-md-1 flexed">

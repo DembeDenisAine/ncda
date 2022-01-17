@@ -31,14 +31,17 @@
                 <form method="post" action="<?= site_url('update-project') ?>">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6">
+                               <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Project Title</label>
 
                                     <input type="hidden" name="id" value="<?php echo $project_obj->id; ?>">
-                                    <textarea class="form-control" rows="3" 
+                                    <textarea class="form-control" rows="5" 
                                     name="project_name" style="width: 100%;"><?php echo $project_obj->project_name; ?></textarea>
                                 </div>
+                                </div>
+                                
+                                <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -54,6 +57,7 @@
                                             name="end_date" style="width: 100%;">
                                         </div>
                                     </div>
+                                    
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8">
@@ -80,11 +84,12 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" rows="10" name="project_description" 
+                                    <textarea class="form-control summernote" rows="10" name="project_description" 
                                     style="width: 100%;"><?php echo $project_obj->project_description; ?></textarea>
                                 </div>
                             </div>

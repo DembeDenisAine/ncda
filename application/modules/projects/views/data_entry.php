@@ -10,7 +10,7 @@
     <div class="row " >
         <div class="col-md-12">
             <label>Project:</label>
-            <h4><?php echo $project->project_name; ?></h4>
+            <h5><?php echo $project->project_name; ?></h5>
             <label>Description: </label>
             <p><?php echo $project->project_description; ?></p>
             <div class="grid">
@@ -24,6 +24,7 @@
     
     </div>
 </div>
+
 <br>
 <h5 class="text-muted">Select Objective & Activity</h5>
 
@@ -34,6 +35,7 @@
 
 <hr>
 
+<?php if(count($objectives)>0){ ?>
 
     <form class="row" method="post" id="entryForm">
         <div class="form-group col-lg-5 col-md-12 col-sm-12">
@@ -43,7 +45,7 @@
                 <?php foreach($objectives as $obj): 
                     $selected = (!empty($selectedObjective))?$selectedObjective->id:null;
                 ?>
-                    <option <?php echo ($selected == $obj['id'])?'selected':''; ?> value="<?php echo $obj['id']; ?>"><?php echo $obj['objective_name']; ?></option>
+                    <option <?php echo ($selected == $obj->id)?'selected':''; ?> value="<?php echo $obj->id; ?>"><?php echo $obj->objective_name; ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -57,13 +59,14 @@
                      foreach($activities as $act):
                         $selectedAct = (!empty($selectedActivity))?$selectedActivity->id:null;
                 ?>
-                    <option <?php echo ($selectedAct == $act['id'])?'selected':''; ?>  value="<?php echo $act['id']; ?>"><?php echo $act['activity_name']; ?></option>
+                    <option <?php echo ($selectedAct == $act->id)?'selected':''; ?>  value="<?php echo $act->id; ?>"><?php echo $act->activity_name; ?></option>
                 <?php 
                     endforeach;
                     endif; 
                 ?>
             </select>
         </div>
+
 
         <div class="form-group col-lg-3 col-md-3 col-sm-12">
             <label>District</label>
@@ -84,13 +87,23 @@
     
     <br>
 
+    <?php } else{//No Objectives  ?>
+
+        <div class="text-center">
+            <h1 class="text-muted"><i class="fa fa-info-circle"></i></h1>
+            <p class="text-danger">No Objectives were set up under project</p>
+        </div> 
+        <br>
+
+    <?php } //ends check for Objectives ?>
+
     <?php if(!empty($selectedActivity)): ?>
         <label class="text-info">Selected Activity: </label>
         <h5><?php echo $selectedActivity->activity_name; ?></h5>
     <?php endif; ?>
 
 
-    <?php if(@count($parameters)>0): ?>
+    <?php if(count($parameters)>0): ?>
      
     <br>
     <label class="text-info">PARAMETERS / MEASURES: </label>
@@ -104,12 +117,12 @@
             ?>
             <tr> 
                 <td>
-                    <label><?php echo $param['parameter_name']; ?></label>
+                    <label><?php echo $param->parameter_name; ?></label>
             </td>
             <td>
-                <p> <?php echo $param['parameter_name']; ?> </p>
+                <p> <?php echo $param->parameter_name; ?> </p>
                     <input type="text" name="params[]" required>
-                    <input type="hidden" value="<?=$param['id']?>" name="ids[]">
+                    <input type="hidden" value="<?=$param->id?>" name="ids[]">
             </td>
             </tr>
 

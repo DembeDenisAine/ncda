@@ -69,7 +69,7 @@ $route['translate_uri_dashes'] = FALSE;
 //PROJECTS
 	$route['project-list(/:num)?'] = 'projects/index';
 	$route['create-project'] = 'projects/create';
-	$route['save-project'] = 'projects/create';
+	$route['save-project']   = 'projects/store';
 	$route['edit-project/(:num)'] = 'projects/singleProject/$1';
 	$route['update-project'] = 'projects/update';
 	$route['delete-project/(:num)'] = 'projects/delete/$1';
@@ -79,17 +79,16 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['objective-list'] = 'objectives/index';
 	$route['objective-list/(:num)(/:num)?'] = 'objectives/index/$1';
 	$route['create-objective/(:num)'] = 'objectives/create/$1';
-	$route['save-objective'] = 'objectives/create';
-	$route['edit-objective/(:num)'] = 'objectives/singleObjective/$1';
-	$route['update-objective/(:num)'] = 'objectives/update/$1';
+	$route['save-objective']          = 'objectives/store';
+	$route['edit-objective/(:num)']   = 'objectives/singleObjective/$1';
+	$route['update-objective']        = 'objectives/update';
 	$route['delete-objective/(:num)'] = 'objectives/delete/$1';
-
 
 //ACTIVITIES
 	$route['activity-list'] = 'activities/index';
 	$route['activity-list/(:num)'] = 'activities/index/$1';
 	$route['create-activity/(:num)'] = 'activities/create/$1';
-	$route['save-activity'] = 'activities/create';
+	$route['save-activity'] = 'activities/store';
 	$route['edit-activity/(:num)'] = 'activities/singleActivity/$1';
 	$route['update-activity/(:num)'] = 'activities/update/$1';
 	$route['delete-activity/(:num)'] = 'activities/delete/$1';
@@ -99,9 +98,9 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['parameter-list'] = 'parameters/index';
 	$route['parameter-list/(:num)'] = 'parameters/index/$1';
 	$route['create-parameter/(:num)'] = 'parameters/create/$1';
-	$route['save-parameter'] = 'parameters/create';
-	$route['edit-parameter/(:num)'] = 'parameters/singleParameter/$1';
-	$route['update-parameter/(:num)'] = 'parameters/update/$1';
+	$route['save-parameter']          = 'parameters/store';
+	$route['edit-parameter/(:num)']   = 'parameters/singleParameter/$1';
+	$route['update-parameter']        = 'parameters/update';
 	$route['delete-parameter/(:num)'] = 'parameters/delete/$1';
 
 //FACILITIES

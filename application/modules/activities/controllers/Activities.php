@@ -8,28 +8,18 @@ class Activities extends MX_Controller
 
         $this->module="activities";
         $this->load->model("activities_model",'activitiesModel'); //activities model
-        $this->load->model("objectives_model",'objectivesModel'); //objectives model
+        $this->load->model("objectives/objectives_model",'objectivesModel'); //objectives model
             
     }
 
 	public function index($id = false){  //activity list
 	  
-        if(!empty($id)){
-
-            $data['activities'] = $this->activitiesModel->activities_by_objective_id($id);
-            $project = $this->objectivesModel->find($id);
-            $data['actv_name'] = $project->objective_name;
-            $data['actv_id'] = $id;
-
-        }else{
-            $data['actv_name'] = '';
-            $data['actv_id'] = '';
-            $data['activities'] = $this->activitiesModel->activities_with_objectives_info();
-        }
-
-        $data['module']=$this->module;
-        $data['title']="Activities";
-        $data['view']="data";
+        $data['activities'] = $this->activitiesModel->activities_by_objective_id($id);
+        $data['objective']  = $this->objectivesModel->find($id);
+           
+        $data['module'] = $this->module;
+        $data['title']  = "Objective  Activities";
+        $data['view']   = "data";
 
         echo Modules::run('templates/main',$data);
 	}
@@ -48,32 +38,34 @@ class Activities extends MX_Controller
     public function store() { //activity list
 
         $this->activitiesModel->insert();
-        return $this->response->redirect(site_url('activity-list'));
+        $objectiveId = $this->input->post('objective_id');
+        set_flash('Activity saved successfully');
+        return redirect(site_url('activity-list/'.$objectiveId));
     }
 
     public function singleActivity($id = null){ //get activity page
 
         $data['objective'] = $this->activitiesModel->find($id);
         $data['objective_obj'] = $this->objectivesModel->find($id);
-        print_r($data['objective_obj']);
-        exit();
-
+       
         $data['module']=$this->module;
         $data['title']="Objective - Activities";
         $data['view']="edit";
         echo Modules::run('templates/main',$data);
     }
 
-    public function update($id = null){ //updat activity
+    public function update(){ //updat activity
 
-        $this->activitiesModel->update($id);
-        return $this->response->redirect(site_url('activity-list'));
+        $this->activitiesModel->update();
+        $objectiveId = $this->input->post('objective_id');
+        set_flash('Activity saved successfully');
+        return redirect(site_url('activity-list/'.$objectiveId));
     }
  
     public function delete($id = null){ //delete activity
 
         $this->activitiesModel->delete($id);
-        return $this->response->redirect(site_url('activity-list'));
+        return redirect(site_url('activity-list'));
     }  
 
 

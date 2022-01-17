@@ -22,7 +22,7 @@ class Objectives_model extends CI_Model{
     }
 
 
-    public function update($id) 
+    public function update() 
     {
         $user_id = 1; 
         $data = array(
@@ -32,12 +32,8 @@ class Objectives_model extends CI_Model{
             'created_by'    => $user_id
         );
 
-        if($id==0){
-            return $this->db->insert('ncda_ojectives',$data);
-        }else{
-            $this->db->where('id',$id);
-            return $this->db->update('ncda_ojectives',$data);
-        }        
+        $this->db->where('id',$this->input->post('id'));
+        return $this->db->update('ncda_ojectives',$data);      
     }
 
 
@@ -55,12 +51,12 @@ class Objectives_model extends CI_Model{
 
     public function objectives_with_project_info() {
 
-        $query = $this->db->query('SELECT `no`.*, `np`.`project_name` as `project_name` 
+        $result = $this->db->query('SELECT `no`.*, `np`.`project_name` as `project_name` 
                                   FROM (`ncda_ojectives` `no`) 
                                   JOIN `ncda_projects` `np` 
                                   ON `np`.`id`=`no`.`project_id`')
-                          ->result_array();
-        return (object)$query;
+                          ->result();
+        return $result;
 
     } 
 
@@ -69,13 +65,13 @@ class Objectives_model extends CI_Model{
         if($perPage)
         $this->db->limit($perPage,$page);
         
-        $query = $this->db->query("SELECT `no`.*, `np`.`project_name` as `project_name` 
+        $result = $this->db->query("SELECT `no`.*, `np`.`project_name` as `project_name` 
                                   FROM (`ncda_ojectives` `no`) 
                                   JOIN `ncda_projects` `np` 
                                   ON `np`.`id`=`no`.`project_id` 
                                   WHERE `no`.`project_id` = '$id'")
-                            ->result_array();
-        return (object)$query;
+                            ->result();
+        return $result;
 
     } 
 

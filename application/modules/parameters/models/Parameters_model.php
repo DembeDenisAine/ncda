@@ -21,21 +21,20 @@ class Parameters_model extends CI_Model{
     }
 
 
-    public function update($id) 
+    public function update() 
     {
         $user_id = 1;
+        $id = $this->input->post('id');
         $data = array(
             'parameter_name' => $this->input->post('parameter_name'),
             'parameter_description' => $this->input->post('parameter_description'),
-            'activity_id' => $this->input->post('activity_id'),
-            'created_by'             => $user_id,
+            'activity_id'           => $this->input->post('activity_id'),
+            'created_by'            => $user_id,
         );
-        if($id==0){
-            return $this->db->insert('ncda_parameters',$data);
-        }else{
-            $this->db->where('id',$id);
-            return $this->db->update('ncda_parameters',$data);
-        }        
+        
+        $this->db->where('id',$id);
+        return $this->db->update('ncda_parameters',$data);
+                 
     }
 
 
@@ -73,8 +72,8 @@ class Parameters_model extends CI_Model{
                     JOIN `ncda_parameters` `np` 
                     ON `na`.`id`=`np`.`activity_id` 
                     WHERE `np`.`activity_id` = '$id'")
-                ->result_array();
-        return (object)$query;
+                ->result();
+        return $query;
 
     } 
 
