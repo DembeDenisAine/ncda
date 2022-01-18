@@ -162,6 +162,13 @@ if (!function_exists('setting')) {
 }
 
 
+if (!function_exists('user')) {
+    function user(){
+        $ci =& get_instance();
+        return $ci->session->userdata();
+    }
+}
+
 
 
 

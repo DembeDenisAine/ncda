@@ -74,6 +74,43 @@ class Projects_model extends CI_Model{
         return $this->db->delete('ncda_projects', array('id' => $id));
     }
 
+    public function saveData(){
+
+        $activities = $this->input->post('activity');
+        $values     = $this->input->post('values');
+        $params     = $this->input->post('params');
+        $facility   = $this->input->post('facility');
+
+        foreach($activities as $key=>$value){
+            
+            $rowValues = $values[$key];
+            $rowParams = $params[$key];
+            $activity = $value;
+
+            $this->saveParameterData($facility,$activity ,$rowValues,$rowParams);
+        }
+
+        return true;
+    }
+
+    private function saveParameterData($facility,$activityId,$values,$params){
+
+        foreach($values as $key=>$value):
+           
+            $row = array(
+                'parameter_id'    => $params[$key],
+                'parameter_value' => $values[$key],
+                'facility_id'     => $facility,
+                'action_date'     => date('Y-m-d')
+            );
+
+            $this->db->insert('ncda_field_activity_data',$row);
+
+        endforeach;
+
+        return true;
+    }
+
 
 }
 

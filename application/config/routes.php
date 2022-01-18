@@ -137,5 +137,10 @@ $route['translate_uri_dashes'] = FALSE;
 	//Facilitation
 	$route['facilitation'] 		= 'facilitation/index';
 	$route['save-transaction'] = 'facilitation/store';
+
+	//collected data submission
+	$route['submit-data'] = 'projects/submitData';
+	//Report
+	$route['project_report'] = 'reports/projects';
 	
 	

@@ -70,6 +70,8 @@ $permissions=$userdata['permissions'];
 <script src="<?php echo base_url()?>assets/plugins/moment/moment.min.js"></script>
 <script src="<?php echo base_url()?>assets/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 
+<script src="<?php echo base_url()?>assets/js/ddslick/jquery.ddslick.min.js"></script>
+
 
 <style>
  @media (max-width: 767px) {

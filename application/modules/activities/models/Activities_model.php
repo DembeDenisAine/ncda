@@ -41,7 +41,6 @@ class Activities_model extends CI_Model{
         return $this->db->get_where('ncda_activities', array('id' => $id))->row();
     }
 
-
     public function delete($id)
     {
         return $this->db->delete('ncda_activities', array('id' => $id));
