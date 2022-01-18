@@ -24,18 +24,15 @@ class Teams extends MX_Controller
         $perPage = 5;
 
         $searched_string = $this->input->post('search');
-        //print_r($searched_string);
-        //exit();
-
+        
         if(isset($searched_string)){
             $count = $this->teams->count_all_team_searches($searched_string);
             $data['teams'] = $this->teams->search_branch_staff($searched_string, $perPage, $page);
 
-        }
-       /* else{
+        }else{
             $count = $this->teams->count_all_teams();
             $data['teams'] = $this->teams->get_teams($perPage, $page);
-        } */
+        }
 
         $data['links'] = paginate($route, $count, $perPage, 2);
         $data['module']=$this->module;

@@ -173,5 +173,26 @@ class Districts_model extends CI_Model{
         return $this->db->where('active',1)->get('ncda_districts')->num_rows();
     }
 
+    //search like
+    public function search_districts($string, $limit=null, $start=null)
+    {   
+        $query = $this->db->query("SELECT * FROM ncda_districts
+                            WHERE district_name LIKE '%$string%'
+                            OR region LIKE '%$string%'
+                            LIMIT $start,$limit
+                        ")->result_array();
+        return $query;
+  
+    }
+
+    public function count_all_districts_searches($string)
+    {   
+        $query = $this->db->query("SELECT * FROM ncda_districts
+                    WHERE district_name LIKE '%$string%'
+                    OR region LIKE '%$string%'
+                ")->num_rows();
+        return $query;
+    }
+
 }
 
