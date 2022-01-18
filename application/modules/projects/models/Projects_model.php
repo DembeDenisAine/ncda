@@ -27,6 +27,7 @@ class Projects_model extends CI_Model{
             'project_description' => $this->input->post('project_description'),
             'budget' => $this->input->post('budget'),
             'currency' => $this->input->post('currency'),
+            'status' => $this->input->post('status'),
             'start_date'    => $start_date,
             'end_date'      => $end_date,
             'duration'      => $duration
@@ -49,6 +50,7 @@ class Projects_model extends CI_Model{
             'project_description' => $this->input->post('project_description'),
             'budget'        => $this->input->post('budget'),
             'currency'      => $this->input->post('currency'),
+            'status' => $this->input->post('status'),
             'start_date'    => $start_date,
             'end_date'      => $end_date,
             'duration'      => $duration,
@@ -74,6 +76,22 @@ class Projects_model extends CI_Model{
         return $this->db->delete('ncda_projects', array('id' => $id));
     }
 
+    //count Active projects 
+    public  function countActiveProjects(){
+        return $this->db->where('status','Active')->get('ncda_projects')->num_rows();
+    }
+
+    //count Completed projects 
+    public  function countCompletedProjects(){
+        return $this->db->where('status','Completed')->get('ncda_projects')->num_rows();
+    }
+
+
+    public function getTopFive(){
+        
+        $this->db->limit(5);
+        return $this->db->order_by('id','desc')->get("ncda_projects")->result();
+    }
 
 }
 

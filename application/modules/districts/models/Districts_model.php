@@ -167,7 +167,11 @@ class Districts_model extends CI_Model{
   
     }
 
-    
+
+    //count Active Branches 
+    public  function countActiveBranches(){
+        return $this->db->where('active',1)->get('ncda_districts')->num_rows();
+    }
 
 }
 

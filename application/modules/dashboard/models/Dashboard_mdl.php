@@ -83,4 +83,14 @@ class Dashboard_mdl extends CI_Model {
 
     }
 
+
+
+    //count Contact Catalog 
+    public  function countContactCatalog(){
+        return $this->db->get('ncda_contact_catalog')->num_rows();
+    }
+
+
+
+
 }

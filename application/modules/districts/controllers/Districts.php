@@ -52,6 +52,12 @@ class Districts extends MX_Controller
         return redirect(site_url('district-list'));
     }  
 
+
+    //Number of branches- districts
+    public function ActiveBranches(){ 
+        return $this->DM->countActiveBranches();
+    }
+
 // >>>>>>>>>>>>>>> END OF BRANCH (DISTRICT) OPERATIONS <<<<<<<<<<<<<<<<<<<<<<<<
 
 

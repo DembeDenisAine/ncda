@@ -7,21 +7,20 @@
 
 <div class="card list-card" style="border-left: 10px solid green;">
     <div class="card-body">
-    <div class="row " >
-        <div class="col-md-12">
-            <label>Project:</label>
-            <h5><?php echo $project->project_name; ?></h5>
-            <label>Description: </label>
-            <p><?php echo $project->project_description; ?></p>
-            <div class="grid">
-                <div><strong><i class="fa fa-calendar"></i> Started:</strong> <?php echo text_date($project->start_date); ?></div>
-                <div><strong><i class="fa fa-calendar"></i> Ends:</strong> <?php echo text_date($project->end_date); ?></div>
-                <div><strong><i class="fa fa-clock"></i> Duration:</strong> <?php echo $project->duration; ?></div>
-                <div><strong><i class="fa fa-check-circle"></i> Last Updated:</strong> <?php echo time_ago($project->updated_at); ?></div>
+        <div class="row " >
+            <div class="col-md-12">
+                <label>Project:</label>
+                <h5><?php echo $project->project_name; ?></h5>
+                <label>Description: </label>
+                <p><?php echo $project->project_description; ?></p>
+                <div class="grid">
+                    <div><strong><i class="fa fa-calendar"></i> Started:</strong> <?php echo text_date($project->start_date); ?></div>
+                    <div><strong><i class="fa fa-calendar"></i> Ends:</strong> <?php echo text_date($project->end_date); ?></div>
+                    <div><strong><i class="fa fa-clock"></i> Duration:</strong> <?php echo $project->duration; ?></div>
+                    <div><strong><i class="fa fa-check-circle"></i> Last Updated:</strong> <?php echo time_ago($project->updated_at); ?></div>
+                </div>
             </div>
         </div>
-    </div>
-    
     </div>
 </div>
 
