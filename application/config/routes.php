@@ -126,4 +126,16 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['save-action']		= 'meetings/saveAction';
 	$route['meetings-calendar'] = 'meetings/meetingCalendar';
 	$route['update-meeting']    = 'meetings/update';
+
+	//Branch Activities
+	$route['branch-acts'] 		= 'bactivities/index';
+	$route['save-branch-act'] 	= 'bactivities/store';
+	$route['branch-params'] 	= 'bparameters/index';
+	$route['save-branch-param']   = 'bparameters/store';
+	$route['branch-param/(:num)'] = 'bparameters/index/$1';
+
+	//Facilitation
+	$route['facilitation'] 		= 'facilitation/index';
+	$route['save-transaction'] = 'facilitation/store';
+	
 	

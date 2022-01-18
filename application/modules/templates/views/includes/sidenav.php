@@ -119,6 +119,32 @@
                 </li>
             </ul>
         </li>
+
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-list"></i>
+                <p>
+                    Branch Activities
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="<?=site_url('branch-acts')?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Regular Activities</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="<?=site_url('facilitation')?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Facilitation</p>
+                    </a>
+                </li>
+                
+            </ul>
+        </li>
         
         <li class="nav-item">
             <a href="<?=base_url()?>contacts" class="nav-link">
