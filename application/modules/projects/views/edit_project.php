@@ -43,21 +43,30 @@
                                 
                                 <div class="col-md-6">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Start Date</label>
                                             <input type="date" class="form-control date" name="start_date" value="<?php echo $project_obj->start_date; ?>"
                                              style="width: 100%;">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>End date</label>
                                             <input type="date"  class="form-control date" value="<?php echo $project_obj->end_date; ?>"
                                             name="end_date" style="width: 100%;">
                                         </div>
                                     </div>
-                                    
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <select type="text" name="status" class="form-control select2" style="width: 100%;">
+                                                <option>select-----</option>
+                                                <option <?php if(($project_obj->status)=="Active"){ echo "selected"; }; ?> value="Active">Active</option>
+                                                <option <?php if(($project_obj->status)=="Completed"){ echo "selected"; }; ?> value="Completed">Completed</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8">
@@ -71,20 +80,19 @@
                                             <label>Currency</label>
                                             <select id="currencyList" type="text" name="currency" class="form-control select2" style="width: 100%;">
                                                 <option>select-----</option>
-                                                <option value="EUR">Euro (EUR)</option>
-                                                <option value="JPY">Japanese yen (JPY)</option>
-                                                <option value="GBP">Pound sterling (GBP)</option>
-                                                <option value="USD">United States dollar (USD)</option>
-                                                <option value="ANG">Netherlands Antillean guilder (ANG)</option>
-                                                <option value="AUD">Australian dollar (AUD)</option>
-                                                <option value="AWG">Aruban florin (AWG)</option>
-                                                <option value="RWF">Rwandan franc (RWF)</option>
-                                                <option value="TZS">Tanzanian shilling (TZS)</option>
+                                                <option <?php if(($project_obj->currency)=="EUR"){ echo "selected"; }; ?> value="EUR">Euro (EUR)</option>
+                                                <option <?php if(($project_obj->currency)=="JPY"){ echo "selected"; }; ?> value="JPY">Japanese yen (JPY)</option>
+                                                <option <?php if(($project_obj->currency)=="GBP"){ echo "selected"; }; ?> value="GBP">Pound sterling (GBP)</option>
+                                                <option <?php if(($project_obj->currency)=="USD"){ echo "selected"; }; ?> value="USD">United States dollar (USD)</option>
+                                                <option <?php if(($project_obj->currency)=="ANG"){ echo "selected"; }; ?> value="ANG">Netherlands Antillean guilder (ANG)</option>
+                                                <option <?php if(($project_obj->currency)=="AUD"){ echo "selected"; }; ?> value="AUD">Australian dollar (AUD)</option>
+                                                <option <?php if(($project_obj->currency)=="AWG"){ echo "selected"; }; ?> value="AWG">Aruban florin (AWG)</option>
+                                                <option <?php if(($project_obj->currency)=="RWF"){ echo "selected"; }; ?> value="RWF">Rwandan franc (RWF)</option>
+                                                <option <?php if(($project_obj->currency)=="TZS"){ echo "selected"; }; ?> value="TZS">Tanzanian shilling (TZS)</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-                                
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
