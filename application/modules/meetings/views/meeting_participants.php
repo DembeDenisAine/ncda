@@ -3,7 +3,7 @@
 <?php require_once('add_participant_modal.php'); ?>
 
 <a href="#create-participant" data-toggle="modal"
-   class="btn btn-primary btn-sm pull-right">Add Participant <i class="fas fa-plus"></i></a>
+   class="btn btn-default btn-sm pull-right">Add Participant <i class="fas fa-plus"></i></a>
 <hr>
 
 <table class="table table-bordered">

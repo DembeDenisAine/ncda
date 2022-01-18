@@ -30,25 +30,22 @@ class Meetings_model extends CI_Model{
     }
 
 
-    public function update($id) 
+    public function update() 
     {
         $user_id = 1; 
+        $id = $this->input->post('id');
 
         $data = array(
-            'meeting_name' => $this->input->post('meeting_title'),
+            'meeting_name' => $this->input->post('title'),
             'meeting_description' => $this->input->post('description'),
-            'meeting_date'        => $this->input->post('meeting_date'),
+            'meeting_date'        => $this->input->post('date'),
             'venue'               => $this->input->post('venue'),
             'start_at'            => $this->input->post('start_time'),
             'end_at'              => $this->input->post('end_time')
         );
 
-        if($id==0){
-            return $this->db->insert('ncda_meetings',$data);
-        }else{
-            $this->db->where('id',$id);
-            return $this->db->update('ncda_meetings',$data);
-        }        
+        $this->db->where('id',$id);
+        return $this->db->update('ncda_meetings',$data);
     }
 
 
@@ -143,13 +140,16 @@ class Meetings_model extends CI_Model{
         );
 
         //for Updates
-        if(!empty( $this->input->post('discussion')))
-            $data ['id'] = $this->input->post('discussion');
+        if(!empty($this->input->post('discussion'))){
 
-        $inserted = $this->db->replace('ncda_meeting_discusions', $data);
-        return $inserted;
+            $id = $this->input->post('discussion');
+            $this->db->where('id',$id);
+            $this->db->update('ncda_meeting_discusions', $data);
+            
+        }else{
+          return  $this->db->insert('ncda_meeting_discusions', $data);
+        }
     }
-
 
       //saves an action Point
       public function saveActionPoint()

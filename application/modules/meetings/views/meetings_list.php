@@ -17,7 +17,13 @@ class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> Create  Me
         </tr>
     </thead>
     <tbody>
-        <?php  if($meetings): $i=0;  foreach($meetings as $row): $i++; ?>
+        <?php  if($meetings): $i=0;
+               foreach($meetings as $row):
+               $i++;
+
+               require('edit_meeting_modal.php');
+               
+               ?>
             <tr>
                 <td><?php echo $i; ?></td>
                 <td><?php echo $row->meeting_name; ?></td>
@@ -35,6 +41,10 @@ class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> Create  Me
                     <ul class="dropdown-menu options-dropdown" style="padding: 10px;">
                         <li>
                             <a href="<?php echo base_url();?>meeting/<?=$row->id?>"><i class="fa fa-expand option-icon"></i> Details</a>
+                        </li>
+
+                        <li>
+                            <a href="#edit_meeting<?=$row->id?>" data-toggle="modal"><i class="fa fa-edit"></i> Edit Meeting</a>
                         </li>
                     </ul>
                 </div>
