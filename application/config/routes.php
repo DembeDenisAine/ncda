@@ -114,7 +114,7 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['facility-teams/(:num)'] = 'facilities/facility_teams/$1';
 	$route['create-facility-member/(:num)'] = 'facilities/create_team/$1';
 
-//Meetings
+//MEETINGS
 	$route['meetings(/:num)?']          = 'meetings/index';
 	$route['meeting/(:num)']    = 'meetings/meetingDetail/$1';
 	$route['create-meeting']    = 'meetings/create';
@@ -127,15 +127,19 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['meetings-calendar'] = 'meetings/meetingCalendar';
 	$route['update-meeting']    = 'meetings/update';
 
-	//Branch Activities
+//BRANCH ACTIVITIES
 	$route['branch-acts'] 		= 'bactivities/index';
 	$route['save-branch-act'] 	= 'bactivities/store';
 	$route['branch-params'] 	= 'bparameters/index';
 	$route['save-branch-param']   = 'bparameters/store';
 	$route['branch-param/(:num)'] = 'bparameters/index/$1';
 
-	//Facilitation
+//FACILITATION
 	$route['facilitation'] 		= 'facilitation/index';
 	$route['save-transaction'] = 'facilitation/store';
+
+//CONTACTS
+	$route['contacts-list(/:num)?'] = 'teams/get_all_teams';
+	
 	
 	

@@ -1,6 +1,4 @@
 
-<a href="<?=site_url('create-branch-team')?>/<?php echo $district_id; ?>" class="btn btn-info btn-xs pull-right">Adda Member <i class="fas fa-plus"></i></a>
-<hr>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -24,7 +22,6 @@
             <td><?php echo $tm['title']; ?></td>
             <td><?php echo $tm['contact']; ?></td>
             <td><?php echo $tm['facility_name']; ?></td>
-            
             <td>
                 <div class="dropdown">
                     <button class="btn bg-primary btn-sm dropdown-toggle btn-select-option"
