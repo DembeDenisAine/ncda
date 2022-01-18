@@ -12,6 +12,7 @@ class Projects extends MX_Controller
         $this->load->model("activities/activities_model",'activitiesModel'); //Activities model
         $this->load->model("districts/districts_model",'districtsModel'); //Districts model
         $this->load->model("parameters/parameters_model",'parametersModel'); //Districts model
+        $this->load->model("facilities/facilities_model",'facilitiesnModel');
         
     }
 
@@ -76,21 +77,38 @@ class Projects extends MX_Controller
         $data['project']     = $this->projectsModel->find($id);
         $data['objectives']  = $this->objectivesModel->objectives_by_project_id($id);
 
-        $activityId = ($this->input->post('activity_id'))?$this->input->post('activity_id'):null;
-        $data['selectedActivity']  = ($activityId )? $this->activitiesModel->find($activityId): null;
+        //$activityId = ($this->input->post('activity_id'))?$this->input->post('activity_id'):null;
+       // $data['selectedActivity']  = ($activityId )? $this->activitiesModel->find($activityId): null;
 
         $objectiveId = ($this->input->post('objective_id'))?$this->input->post('objective_id'):null;
         $data['selectedObjective']  = ($objectiveId)? $this->objectivesModel->find($objectiveId): null;
         
-        $data['activities']   = ($objectiveId)?$this->activitiesModel->activities_by_objective_id($objectiveId):[];
-        $data['parameters']   = ($activityId)?$this->parametersModel->parameters_by_activity_id($activityId):[];
-        $data['districts']    = ($activityId )?$this->districtsModel->get():[];
-        $data['module']       = $this->module;
+        $activities   = ($objectiveId)?$this->activitiesModel->activities_by_objective_id($objectiveId):[];
+       
+        $data['selectedFacility'] = ($this->input->post('facility'))?$this->input->post('facility'):null;
+        $data['activities']    = $this->paramtizedActivities($activities );
+        $data['facilities']    = ($objectiveId)?$this->facilitiesnModel->get():[];
+        $data['module']        = $this->module;
 
         $data['title'] = "Field Data Entry";
         $data['view']  = "data_entry";
         
         echo Modules::run('templates/main',$data);
+    }
+
+    private function paramtizedActivities($activities){
+        
+        foreach($activities as $act){
+            $act->parameters   = $this->parametersModel->parameters_by_activity_id($act->id);
+        }
+        return $activities;
+    }
+
+
+    public function submitData(){
+
+        $this->projectsModel->saveData();
+        echo json_encode($this->input->post());
     }
 
 

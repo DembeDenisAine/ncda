@@ -138,13 +138,15 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['facilitation'] 		= 'facilitation/index';
 	$route['save-transaction'] = 'facilitation/store';
 
-//CONTACTS
-	$route['contacts-list(/:num)?'] = 'teams/get_all_teams';
-	
-
+<<<<<<< HEAD
 	//collected data submission
 	$route['submit-data'] = 'projects/submitData';
 	//Report
 	$route['project_report'] = 'reports/projects';
+=======
+//CONTACTS
+	$route['contacts-list(/:num)?'] = 'teams/get_all_teams';
+	
+>>>>>>> 1c07f5607fdc367f2cb2770f27c24c8e5763e4c8
 	
 	

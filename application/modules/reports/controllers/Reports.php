@@ -8,79 +8,34 @@ class Reports extends MX_Controller {
 
 		parent::__Construct();
 
-		$this->load->model('reports_mdl');
-		$this->module="reports";
-		$this->title="Reports";
-		$this->filters=Modules::run('filters/sessionfilters');
-        //doesnt require a join on ihrisdata
-        $this->ufilters=Modules::run('filters/universalfilters');
-        // requires a join on ihrisdata with district level
-        $this->distfilters=Modules::run('filters/districtfilters');
-
+		$this->load->model("projects/projects_model",'projectsModel'); //Projects model
+        $this->load->model("objectives/objectives_model",'objectivesModel'); //Objectives model
+        $this->load->model("activities/activities_model",'activitiesModel'); //Activities model
+        $this->load->model("districts/districts_model",'districtsModel'); //Districts model
+        $this->load->model("parameters/parameters_model",'parametersModel'); //Districts model
+        $this->load->model("facilities/facilities_model",'facilitiesnModel');
+		$this->module = 'reports';
 
 	}
 
-	public function index(){
+	public function projects(){
 
-		//$data['requests']=$this->requests;
+		$data['projects']	= $this->projectsModel->get(100,0);
+		$data['objectives'] = objectives(9);
 
-	}
-	public function rosterRate(){
+		if($this->input->post()){
+			print_r($this->input->post());
+			exit();
 
-		//$data['requests']=$this->requests;
-		$data['title']=$this->title;
-		$data['uptitle']="Duty Roster Reporting";
-		
-		$data['view']='roster_rate';
-		$data['module']=$this->module;
-		echo Modules::run('templates/main', $data);
+		}
 
-	}
-	public function attendanceRate(){
-
-		
-		$data['title']='Attendance Reporting Rate';
-		$data['uptitle']="Attendance Reporting";
-		$data['view']='attendance_rate';
-		$data['module']=$this->module;
-		echo Modules::run('templates/main', $data);
+		$data['title'] = "Reports";
+        $data['view']  = "data";
+		$data['module'] = $this->module;
+        
+        echo Modules::run('templates/main',$data);
 
 	}
-	public function attendroster(){
-
-		
-		$data['title']='Attendance vs Duty Roster';
-		$data['uptitle']="Attendance Reporting";
-		$data['view']='roster_att';
-		$data['module']=$this->module;
-		echo Modules::run('templates/main', $data);
-
-	}
-
-
-	public function graphData(){
-		
-		 
-         $data=$this->reports_mdl->getgraphData();
-	return $data;
-	}
-	public function dutygraphData(){
-		$data=$this->reports_mdl->dutygraphData();
-   return $data;
-   }
-
-	public function  attroData(){
-		$data=$this->reports_mdl->attroData();
-     //print_r($data);
-	echo  json_encode($data,JSON_NUMERIC_CHECK);
-	}
-
-
 	
-
-
-
-	
-
 
 }
