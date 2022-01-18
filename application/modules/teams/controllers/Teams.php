@@ -15,6 +15,26 @@ class Teams extends MX_Controller
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>TEAM INFORMATION BY BRANCHES - DISTRICTS
 
+
+    //get branch teams
+    public function get_all_teams(){ 
+
+        $count = $this->teams->count_all_teams();
+
+        $page  = ($this->uri->segment(2))? $this->uri->segment(2) : 0;
+        $route = 'contacts-list';
+        $perPage = 5;
+
+        $data['teams'] = $this->teams->get_teams($perPage, $page);
+        $data['links'] = paginate($route, $count, $perPage, 2);
+
+        $data['module']=$this->module;
+        $data['title']="Branch Teams";
+
+        $data['view']="teams";
+        echo Modules::run('templates/main',$data);
+    }
+
      //create district teams - form
     public function create_team($id){
 
@@ -30,12 +50,13 @@ class Teams extends MX_Controller
     }
 
     //save branch team
-    public function save_branch_team() { 
+
+   /* public function save_branch_team() { 
 
         $data = $this->DM->insert_district_teams();
 
         return redirect(site_url('teams-district/'.$data));
-    }
+    } */
 
     //get district teams
     public function get_teams($id){ 
@@ -110,7 +131,7 @@ public function facility_teams($id){
 }
 
 //create teams - form
-public function create_team($id = null){ 
+public function create_facility_team($id = null){ 
 
     $fac = $this->FM->facility_by_id($id);
     $data['facility'] = $fac->facility_name;

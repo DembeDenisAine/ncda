@@ -112,6 +112,21 @@ class Projects extends MX_Controller
     }
 
 
+    //Number of Completed project
+    public function CompletedProjects(){ 
+        return $this->projectsModel->countCompletedProjects();
+    }
+
+    //Number of Active project
+    public function ActiveProjects(){ 
+        return $this->projectsModel->countActiveProjects();
+    }
+
+    //get Top Five projects
+    public function getTopFive(){ 
+        return $this->projectsModel->getTopFive();
+    }
+    
 
 }
 

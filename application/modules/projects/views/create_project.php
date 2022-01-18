@@ -11,16 +11,26 @@
                 <div class="col-md-6">
                     
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label>Start Date</label>
                             <input type="date" class="form-control date" name="start_date" style="width: 100%;">
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label>End date</label>
                             <input type="date"  class="form-control date" name="end_date" style="width: 100%;">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select type="text" name="status" class="form-control select2" style="width: 100%;">
+                                <option>select-----</option>
+                                <option value="Active">Active</option>
+                                <option value="Completed">Completed</option>
+                            </select>
                         </div>
                     </div>
                 </div>

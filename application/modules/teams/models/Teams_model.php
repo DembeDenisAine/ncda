@@ -2,6 +2,25 @@
 
 class Teams_model extends CI_Model{
 
+
+    public function get_teams($limit=null, $start=null)
+    {   
+        $query = $this->db->query("SELECT `bt`.*, `nf`.`facility_name` as `facility_name` 
+                        FROM (`ncda_branch_teams` `bt`) 
+                        JOIN `ncda_facilities` `nf` 
+                        ON `nf`.`id`=`bt`.`facility_id`
+                        LIMIT $start,$limit")->result_array(); 
+        return (object)$query;
+        //LEFT JOIN `ncda_districts` `nd` ON `nd`.`id`=`nf`.`district_id`
+    }
+
+    public function count_all_teams()
+    {   
+        $query = $this->db->get('ncda_branch_teams')->num_rows();
+        return $query;
+    }
+
+
     public function get($limit=null, $start=null){
 
         $query = $this->db->query("SELECT * FROM ncda_districts LIMIT $start,$limit")->result_array();

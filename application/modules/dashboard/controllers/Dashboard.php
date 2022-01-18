@@ -9,6 +9,8 @@ class Dashboard extends MX_Controller {
 
 			$this->dashmodule="dashboard";
 			$this->load->model("dashboard_mdl",'dash_mdl');
+			$this->load->model("dashboard_mdl",'dash_mdl');
+			
 			
 
 			}
@@ -19,8 +21,12 @@ class Dashboard extends MX_Controller {
 		$data['title']="Main Dashboard";
 		$data['uptitle']="Main Dashboard";
 		$data['view']="home";
-		//$data['dashboard']=$this->dashboardData();
-
+		$data['activeProjects']=Modules::run('projects/ActiveProjects');
+		$data['completedProjects']=Modules::run('projects/CompletedProjects');
+		$data['topFiveProjects']=Modules::run('projects/getTopFive');
+		$data['activeBranches']=Modules::run('districts/ActiveBranches');
+		$data['contacts']= $this->dash_mdl->countContactCatalog();
+		
 		echo Modules::run('templates/main',$data);
 	}
 	public function dashboardData(){

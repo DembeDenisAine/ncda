@@ -40,7 +40,6 @@
                 </div>
             </div>
             <div class="col-md-6">
-
                 <div class="form-group">
                     <label>Contact</label>
                     <input type="text" class="form-control" name="contact" style="width: 100%;">
