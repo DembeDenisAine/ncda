@@ -16,7 +16,7 @@ class Districts extends MX_Controller
 
         $page  = ($this->uri->segment(2))? $this->uri->segment(2) : 0;
         $route = 'district-list';
-        $perPage = 1;
+        $perPage = 10;
 
         /*$string = $this->input->post('search');
         
