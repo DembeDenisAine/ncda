@@ -3,7 +3,7 @@
 <form action="<?php echo base_url(); ?>project_report" method="post" id="report_form">
     <h6 class="text-muted">Choose Project</h6>
 
-    <select id="example" class="select2">
+    <select id="example" name="project" class="select2">
         <label> Choose Projects</label>
     <?php foreach($projects as $project): ?>
 
@@ -22,73 +22,61 @@
 <hr>
 
 
-<table border="1">
+<table border="1" width="100%">
+    <thead>
+        <tr>
+            <th>Activity</th>
+            <th>Indicator(s)</th>
+            <th>Target</th>
+            <th>Score</th>
+        </tr>
+    </thead>
        <?php 
+         $rows = 0;
          foreach($objectives as $objective):
           $activities = activities($objective->id);
         ?>
 
-        <tr>
-            <td rowspan="<?=($activities)?count($activities):2;?>">
+        <!-- <tr>
+            <td rowspan="<?=($activities)?count($activities):1;?>">
                 <?=$objective->objective_name?>
-            </td> 
-        </tr>
+            </td>
+        </tr> -->
        
-        <?php if(count($activities)>0){ ?>
-
+       
             <?php 
+                  
                   foreach($activities as $activty):
-                    $paramData = param_data($activty->id);
+                    $paramData = parameters($activty->id);
+
+                    if($paramData):
                  ?>
                  
-                <tr>
+                    <tr style="background-color:<?=(($rows%2)>0)?'#eee':''?>">
 
-                 <td rowspan="<?=($paramData)?count($paramData):2;?>"> 
-                    <?=$activty->activity_name?>
-                 </td>
-                 
-                </tr>
+                    <td  rowspan="<?=($paramData)?count($paramData)+1:1;?>"> 
+                        <?=$activty->activity_name?>
+                    </td>
+                    
+                    </tr>
 
-                <?php if(count($paramData)>0){ ?>
-
-                    <?php foreach($paramData as $param): ?>
-                        <tr> <td> <?=$param->parameter_name?></td> </tr>
+                    <?php foreach($paramData as $param):
+                        $value = param_data($param->id);
+                     ?>
+                        <tr style="background-color:<?=(($rows%2)>0)?'#eee':''?>"> 
+                            <td> <?=$param->parameter_name?></td>
+                            <td> <?=$param->target_value?></td>
+                            <td> <?=($value)?$value->parameter_value:'N/A'?></td>
+                        </tr>
                     <?php endforeach; ?>
 
-            <?php } endforeach; ?>
-            
-      
-    <?php  }?>
-
+            <?php 
+                    $rows++; endif; endforeach; ?>
+        
     <?php  endforeach; ?>
+
 </table>
 </div>
-
-<table border="1">
-    <tr>
-        <td rowspan="2">
-            <td>1213</td>
-        </td>
-        <td >
-            <td>1213</td>
-        </td>
-        <td >
-            <td>1213</td>
-        </td>
-    </tr>
-
-    <tr>
-        <td>
-            1213
-        </td>
-        <td >
-            1213
-        </td>
-        <td >
-            1213
-        </td>
-    </tr>
-</table>
 
 <!-- data-imagesrc="<?php echo base_url();?>assets/images/project.png" -->
 

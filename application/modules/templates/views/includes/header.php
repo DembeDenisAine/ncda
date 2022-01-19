@@ -237,7 +237,7 @@ body::-webkit-scrollbar-thumb
   .page-link{
     text-transform: capitalize;
   }
-  tr:nth-child(even) {
+ .table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 

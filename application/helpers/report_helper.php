@@ -1,22 +1,6 @@
 <?php
 
 /*
-/* Retrieves parameter data by activity Id
-*/
-if (!function_exists('param_data')) {
-    
-    function param_data($id){
-
-        $ci =& get_instance();
-
-        $ci->db->join('ncda_parameters','ncda_parameters.id=ncda_field_activity_data.parameter_id');
-        $ci->db->where('activity_id',$id);
-        $query = $ci->db->get('ncda_field_activity_data');
-        return $query->result();
-    }
-}
-
-/*
 /* Retrieves activities data by objective_id
 */
 if (!function_exists('activities')) {
@@ -43,6 +27,36 @@ if (!function_exists('objectives')) {
         return $query->result();
     }
 }
+
+
+/*
+/* Retrieves parameters data by activity Id
+*/
+if (!function_exists('parameters')) {
+    
+    function parameters($id){
+
+        $ci =& get_instance();
+        $ci->db->where('activity_id',$id);
+        $query = $ci->db->get('ncda_parameters');
+        return $query->result();
+    }
+}
+
+/*
+/* Retrieves parameter data by param Id
+*/
+if (!function_exists('param_data')) {
+    
+    function param_data($id){
+
+        $ci =& get_instance();
+        $ci->db->where('parameter_id',$id);
+        $query = $ci->db->get('ncda_field_activity_data');
+        return $query->row();
+    }
+}
+
 
 
 

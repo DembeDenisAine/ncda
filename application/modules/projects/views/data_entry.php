@@ -157,6 +157,8 @@
        endforeach;
     ?>
 
+    <input type="hidden" name="project_id" value="<?=$project->id?>" />
+
      <div class="row">
             <div class="col-sm-12 col-lg-4 col-lg-offset-8 col-sm-offset-0 col-md-6 col-md-offset-6">
                 <button type="submit" value="Submit Data" class="btn btn-success">

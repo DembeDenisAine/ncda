@@ -21,14 +21,8 @@ class Reports extends MX_Controller {
 	public function projects(){
 
 		$data['projects']	= $this->projectsModel->get(100,0);
-		$data['objectives'] = objectives(9);
-
-		if($this->input->post()){
-			print_r($this->input->post());
-			exit();
-
-		}
-
+		$data['objectives'] = objectives($this->input->post('project'));
+		
 		$data['title'] = "Reports";
         $data['view']  = "data";
 		$data['module'] = $this->module;

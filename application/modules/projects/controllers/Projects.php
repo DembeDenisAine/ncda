@@ -108,9 +108,9 @@ class Projects extends MX_Controller
     public function submitData(){
 
         $this->projectsModel->saveData();
-        echo json_encode($this->input->post());
+        set_flash('Activty data saved successfully');
+        redirect(site_url('entry/'.$this->input->post('project_id')));
     }
-
 
     //Number of Completed project
     public function CompletedProjects(){ 
