@@ -13,7 +13,7 @@ $permissions=$userdata['permissions'];
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?php echo (!empty($setting->title))?:$setting->title; ?> - <?php echo (!empty($title)?$title:null) ?></title>
+  <title><?php //echo (!empty($setting->title))?:$setting->title; ?> <?php echo (!empty($title)?$title:null) ?></title>
         <!-- Favicon and touch icons -->
   <link rel="shortcut icon" href="<?php echo base_url(!empty($settings->favicon)?$settings->favicon:"assets/images/icons/favicon.png"); ?>">
        
