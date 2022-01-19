@@ -130,7 +130,44 @@ class Teams_model extends CI_Model{
   
     }
 
-    
+
+    //search like
+    public function search_branch_staff($string, $limit=null, $start=null)
+    {   
+        $query = $this->db->query("SELECT `bt`.*, `nf`.`facility_name` as `facility_name` 
+                    FROM (`ncda_branch_teams` `bt`) 
+                    JOIN `ncda_facilities` `nf` 
+                    ON `nf`.`id`=`bt`.`facility_id`
+                    WHERE `nf`.`facility_name` LIKE '%$string%'
+                    OR `nf`.`facility_name` LIKE '%$string%'
+                    OR `bt`.`first_name` LIKE '%$string%'
+                    OR `bt`.`last_name` LIKE '%$string%'
+                    OR `bt`.`title` LIKE '%$string%'
+                    OR `bt`.`contact` LIKE '%$string%'
+                    OR `bt`.`gender` LIKE '%$string%'
+                    LIMIT $start,$limit
+                ")->result_array();
+        return $query;
+  
+    }
+
+    public function count_all_team_searches($string)
+    {   
+        $query = $this->db->query("SELECT `bt`.*, `nf`.`facility_name` as `facility_name` 
+                    FROM (`ncda_branch_teams` `bt`) 
+                    JOIN `ncda_facilities` `nf` 
+                    ON `nf`.`id`=`bt`.`facility_id`
+                    WHERE `nf`.`facility_name` LIKE '%$string%'
+                    OR `bt`.`first_name` LIKE '%$string%'
+                    OR `bt`.`last_name` LIKE '%$string%'
+                    OR `bt`.`title` LIKE '%$string%'
+                    OR `bt`.`contact` LIKE '%$string%'
+                    OR `bt`.`gender` LIKE '%$string%'
+                ")->num_rows();
+        return $query;
+    }
+
+
 
 }
 

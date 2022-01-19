@@ -1,6 +1,17 @@
 <?php  require_once('add_district_modal.php'); ?>
 
 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">Add a Branch  <i class="fas fa-plus"></i></button>
+
+<form class="form-inline" method="POST" action="<?=site_url('district-list')?>">
+  <div class="form-group">
+    <div  class="form-control-plaintext" >Search <small>(e.g branch name, region)</small></div>
+  </div>
+  <div class="form-group mx-sm-3 mb-2">
+    <input type="text" class="form-control" name="search">
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Submit</button>
+</form>
+
 <hr>
 
 <table class="table table-bordered">
@@ -55,8 +66,8 @@
        
     <?php 
 
-    require('district_delete_modal.php');
-    require('district_edit_modal.php');
+   // require('district_delete_modal.php');
+    //require('district_edit_modal.php');
 
     endforeach; 
     endif; 

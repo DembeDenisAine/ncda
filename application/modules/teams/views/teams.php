@@ -1,3 +1,13 @@
+<form class="form-inline" method="POST" action="<?=site_url('contacts-list')?>">
+  <div class="form-group">
+    <div  class="form-control-plaintext" >Search <small>(e.g name, title, gender, facility, contact)</small></div>
+    
+  </div>
+  <div class="form-group mx-sm-3 mb-2">
+    <input type="text" class="form-control" name="search">
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Submit</button>
+</form>
 
 <table class="table table-bordered">
     <thead>
