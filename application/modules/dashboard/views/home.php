@@ -7,7 +7,7 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3><?php echo $activeProjects; ?></h3>
+              <h5><?php echo $activeProjects; ?></h5>
 
               <p>Active Projects</p>
             </div>
@@ -22,7 +22,7 @@
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3><?php echo $completedProjects; ?><sup style="font-size: 20px"></sup></h3>
+              <h5><?php echo $completedProjects; ?><sup style="font-size: 20px"></sup></h5>
 
               <p>Completed Projects</p>
             </div>
@@ -37,7 +37,7 @@
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3><?php echo $activeBranches; ?></h3>
+              <h5><?php echo $activeBranches; ?></h5>
               <p>Branches</p>
             </div>
             <div class="icon">
@@ -51,7 +51,7 @@
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h3><?php echo $contacts; ?></h3>
+              <h5><?php echo $contacts; ?></h5>
               <p>Contacts</p>
             </div>
             <div class="icon">
@@ -71,10 +71,10 @@
           <!-- Custom tabs (Charts with tabs)-->
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">
+              <h5 class="card-title">
                 <i class="fas fa-chart-pie mr-1"></i>
                 Latest Projects
-              </h3>
+              </h5>
               <div class="card-tools"></div>
               
             </div><!-- /.card-header -->
@@ -105,10 +105,10 @@
             <div class="card bg-gradient-white">
             <div class="card-header border-0">
 
-              <h3 class="card-title">
+              <h5 class="card-title">
                 <i class="far fa-calendar-alt"></i>
                 Meetings Calendar
-              </h3>
+              </h5>
             </div>
             <!-- /.card-header -->
             <div class="card-body pt-0">
