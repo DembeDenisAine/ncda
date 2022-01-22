@@ -62,6 +62,8 @@ $permissions=$userdata['permissions'];
 <link href="<?php echo base_url(); ?>assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/plugins/jquery-ui/jquery-ui.theme.min.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/css/style/custom_tabs.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>assets/js/list/list.css" rel="stylesheet">
+
 
 <!--timepicker-->
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
@@ -71,6 +73,7 @@ $permissions=$userdata['permissions'];
 <script src="<?php echo base_url()?>assets/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 
 <script src="<?php echo base_url()?>assets/js/ddslick/jquery.ddslick.min.js"></script>
+
 
 
 <style>

@@ -1,5 +1,8 @@
 
+
 <div class="container">
+
+
 <form action="<?php echo base_url(); ?>project_report" method="post" id="report_form">
     <h6 class="text-muted">Choose Project</h6>
 
@@ -7,7 +10,8 @@
         <label> Choose Projects</label>
     <?php foreach($projects as $project): ?>
 
-        <option value="<?=$project->id?>"  
+        <option value="<?=$project->id?>" 
+            data-imagesrc="<?php echo base_url();?>assets/images/project.png" 
             data-description="<?=truncate($project->project_description,100)?>">
             <?=$project->project_name?>
         </option>
@@ -15,7 +19,7 @@
         <?php endforeach; ?>
     </select>
 
-</form>
+    </form>
 
 <div>
 
@@ -85,7 +89,7 @@
     selectText: "Select Project",
     width: '100%',
     background:'#ffffff',
-    imagePosition: "right",
+    imagePosition: "left",
     height:200,
     onSelected: function(selectedData){
        $('#report_form').submit()
