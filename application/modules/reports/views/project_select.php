@@ -1,41 +1,13 @@
-<div class="list-wrapper">
-  <div class="select_wrap">
-      <ul class="default_option">
-          <li>
-              <div class="option pizza">
-                <div class="icon"></div>
-                <p>Pizzas</p>
-              </div>
-          </li>
-      </ul>
-      <ul class="select_ul">
-          <li>
-              <div class="option pizza">
-                <div class="icon"></div>
-                <p>Pizzas</p>
-              </div>
-          </li>
-          <li>
-              <div class="option burger">
-                <div class="icon"></div>
-                <p>Burget</p>
-              </div>  
-          </li>
-          <li>
-              <div class="option ice">
-                <div class="icon"></div>
-                <p>Ice Cream</p>
-              </div>  
-          </li>
-          <li>
-            <div class="option fries">
-                <div class="icon"></div>
-                <p>Fried Potatoes</p>
-              </div>
-          </li>
-      </ul>
-  </div>
-</div>
 
-<script type="text/javascript" src="<?base_url()?>assets/js/list/list.js"></script>
+    <select id="example" name="project" class="select2">
+        <label> Choose Projects</label>
+    <?php foreach($projects as $project): ?>
 
+        <option value="<?=$project->id?>" 
+            data-imagesrc="<?php echo base_url();?>assets/images/project.png" 
+            data-description="<?=truncate($project->project_description,100)?>">
+            <?=$project->project_name?>
+        </option>
+
+        <?php endforeach; ?>
+    </select>

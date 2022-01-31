@@ -66,8 +66,8 @@
        
     <?php 
 
-   // require('district_delete_modal.php');
-    //require('district_edit_modal.php');
+    require('district_delete_modal.php');
+    require('district_edit_modal.php');
 
     endforeach; 
     endif; 

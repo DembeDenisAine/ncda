@@ -1,9 +1,9 @@
 
-<?php if(!empty($district)) { ?>
+
     <button type="button" class="btn btn-default" data-toggle="modal" 
     data-target="#modal-facility">Add Facility <i class="fas fa-plus"></i></button>
 <hr>
-<?php } ?> 
+
 
 <table class="table table-bordered">
 <thead>
