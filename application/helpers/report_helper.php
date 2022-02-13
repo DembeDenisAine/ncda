@@ -23,7 +23,7 @@ if (!function_exists('objectives')) {
 
         $ci =& get_instance();
         $ci->db->where('project_id',$id);
-        $query = $ci->db->get('ncda_ojectives');
+        $query = $ci->db->get('ncda_objectives');
         return $query->result();
     }
 }

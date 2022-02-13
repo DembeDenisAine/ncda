@@ -4,7 +4,7 @@ class Objectives_model extends CI_Model{
 
     public function get(){
 
-        $query = $this->db->get("ncda_ojectives");
+        $query = $this->db->get("ncda_objectives");
         return $query->result();
     }
 
@@ -18,7 +18,7 @@ class Objectives_model extends CI_Model{
             'project_id'    => $this->input->post('project_id'),
             'created_by'             => $user_id
         );
-        return $this->db->insert('ncda_ojectives', $data);
+        return $this->db->insert('ncda_objectives', $data);
     }
 
 
@@ -33,26 +33,26 @@ class Objectives_model extends CI_Model{
         );
 
         $this->db->where('id',$this->input->post('id'));
-        return $this->db->update('ncda_ojectives',$data);      
+        return $this->db->update('ncda_objectives',$data);      
     }
 
 
     public function find($id)
     {
-        return $this->db->get_where('ncda_ojectives', array('id' => $id))->row();
+        return $this->db->get_where('ncda_objectives', array('id' => $id))->row();
     }
 
 
     public function delete($id)
     {
-        return $this->db->delete('ncda_ojectives', array('id' => $id));
+        return $this->db->delete('ncda_objectives', array('id' => $id));
     }
 
 
     public function objectives_with_project_info() {
 
         $result = $this->db->query('SELECT `no`.*, `np`.`project_name` as `project_name` 
-                                  FROM (`ncda_ojectives` `no`) 
+                                  FROM (`ncda_objectives` `no`) 
                                   JOIN `ncda_projects` `np` 
                                   ON `np`.`id`=`no`.`project_id`')
                           ->result();
@@ -66,7 +66,7 @@ class Objectives_model extends CI_Model{
         $this->db->limit($perPage,$page);
         
         $result = $this->db->query("SELECT `no`.*, `np`.`project_name` as `project_name` 
-                                  FROM (`ncda_ojectives` `no`) 
+                                  FROM (`ncda_objectives` `no`) 
                                   JOIN `ncda_projects` `np` 
                                   ON `np`.`id`=`no`.`project_id` 
                                   WHERE `no`.`project_id` = '$id'")
@@ -77,7 +77,7 @@ class Objectives_model extends CI_Model{
 
     public function countObjects($id){
         $this->db->where('project_id',$id);
-        return $this->db->get('ncda_ojectives')->num_rows();
+        return $this->db->get('ncda_objectives')->num_rows();
     }
 
 

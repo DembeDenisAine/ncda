@@ -20,11 +20,21 @@ class Reports extends MX_Controller {
 
 	public function projects(){
 
+		$projectId = ($this->input->post('project')!=null)?$this->input->post('project'):null;
+
 		$data['projects']	= $this->projectsModel->get(100,0);
-		$data['objectives'] = objectives($this->input->post('project'));
+		$data['objectives'] = ($projectId != null)?objectives($projectId):[];
+		$data['project']    = null;
+
+		if($projectId !=null ){
+			$data['project'] = $this->projectsModel->find($projectId);
+			$html = $this->load->view('report_projects',$data,true);
+			echo $html;
+			return;
+		}
 		
-		$data['title'] = "Reports";
-        $data['view']  = "data";
+		$data['title']  = "Reports";
+        $data['view']   = "data";
 		$data['module'] = $this->module;
         
         echo Modules::run('templates/main',$data);

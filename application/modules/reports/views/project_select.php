@@ -1,13 +1,23 @@
 
-    <select id="example" name="project" class="select2">
-        <label> Choose Projects</label>
-    <?php foreach($projects as $project): ?>
+<form action="<?=base_url()?>project_report">
 
-        <option value="<?=$project->id?>" 
+    <select id="selector" name="project" class="select2">
+    
+       <?php foreach($projects as $row): ?>
+
+        <option value="<?=$row->id?>"  <?=($project && ($row->id == $project->id))?'selected':''?>
             data-imagesrc="<?php echo base_url();?>assets/images/project.png" 
-            data-description="<?=truncate($project->project_description,100)?>">
-            <?=$project->project_name?>
+            data-description="<?=truncate($row->project_description,100)?>">
+            <?=$row->project_name?>
         </option>
 
         <?php endforeach; ?>
     </select>
+</form>
+
+<?php
+
+print_r($project);
+
+
+?>

@@ -14,8 +14,6 @@ class Objectives extends MX_Controller
 
     public function index($id = false)
     {   
-
-       
         $project = $this->projectsModel->find($id);
         $data['proj_name'] = $project->project_name;
         $data['proj_id']   = $id;

@@ -1,0 +1,85 @@
+
+.typeahead{
+    padding:15px 200px;
+    width:100% !important;
+    background-color: #fff !important;
+    padding-left:40px !important;
+    font-size:18px;
+    }
+    .empty-message{
+    color:red;
+    text-align: center;
+    padding:10px 0px;
+    }
+    .tt-menu {
+    display: block;
+    width:152%;
+    background-color: #fff;
+    border:unset !important;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    }
+    .tt-suggestion {
+    padding: 3px 20px;
+    font-size: 18px;
+    line-height: 24px;
+    cursor: pointer;
+    }
+    .man-section{
+    position: relative;
+    width:94%;
+    border-bottom:1px solid #d2d2d2;;
+    font-family: 'Roboto Condensed', sans-serif;
+    }
+    .image-section{
+    width:10%;
+    float:left;
+    display: table;
+    }
+    .image-section img{
+    width:70px;
+    height:70px;
+    border:1px solid #000;
+    display: table-cell;
+    vertical-align: middle;
+    margin:6px 0px 5px -9px;
+    }
+    .description-section{
+    float:left;
+    width:80%;
+    }
+    .description-section h1{
+    margin:0px;
+    font-weight: bold;
+    padding:0px 7px;
+    font-size:16px;
+    color:#000;
+    margin-top:4px;
+    text-transform: uppercase;
+    }
+    .description-section p{
+    margin:0px;
+    padding:0px 1px 0px 8px;
+    font-size:14px;
+    color:#7d7f80;
+    line-height: 15px;
+    }
+    .description-section span{
+    padding:7px;
+    font-size:13px;
+    color:#a09999;
+    }
+    .more-section{
+    position: absolute;
+    bottom:7px;
+    right:16px;
+    }
+    .more-section a{
+    text-decoration: none;
+    }
+    .more-section button{
+    border:unset;
+    color:#fff;
+    border-radius: 5px;
+    padding:5px;
+    background-color:#5D4C46 !important;
+    }

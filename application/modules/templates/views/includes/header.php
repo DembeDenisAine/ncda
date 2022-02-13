@@ -64,6 +64,8 @@ $permissions=$userdata['permissions'];
 <link href="<?php echo base_url(); ?>assets/css/style/custom_tabs.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/js/list/list.css" rel="stylesheet">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/0.11.1/typeahead.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.min.js"></script>
 
 <!--timepicker-->
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
@@ -73,6 +75,10 @@ $permissions=$userdata['permissions'];
 <script src="<?php echo base_url()?>assets/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 
 <script src="<?php echo base_url()?>assets/js/ddslick/jquery.ddslick.min.js"></script>
+
+<script src="<?php echo base_url(); ?>assets/js/blockui/jquery.blockUI.js"></script>
+
+<script src="<?php echo base_url(); ?>assets/js/app/custom.js"></script>
 
 
 
@@ -282,6 +288,14 @@ body::-webkit-scrollbar-thumb
 
 .dropdown-menu>li>a:hover{
   color:#2084ba!important;
+}
+
+.cell-header{
+  padding:8px;
+
+}
+.flat{
+  border-radius: 0px;
 }
 
 </style>

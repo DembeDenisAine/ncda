@@ -108,14 +108,14 @@
     <form method="post" action="<?php echo base_url()?>submit-data">
         <table width='100%' >
              <input type="hidden" value="<?=$activity->id?>" name="facility">
-            <input type="hidden" value="<?=$selectedFacility?>" name="activity[]">
-            <!-- <thead>
+              <input type="hidden" value="<?=$selectedFacility?>" name="activity[]">
+            <thead>
                 <tr>
                     <th></th>
                     <th>Target</th>
                     <th>Score</th>
                 </tr>
-            </thead> -->
+            </thead> 
             <?php
                 $count =0; 
                 foreach($activity->parameters as $param):

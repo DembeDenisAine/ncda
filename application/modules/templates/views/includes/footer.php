@@ -12,8 +12,6 @@
                     <div class="col-md-3">
                     <!-- <a href="http://health.go.ug" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Coat_of_arms_of_Uganda.svg" style="width:50px; height:30px; "> </a> -->
                     </div>
-                   
-  
                  </footer>
 
   <!-- Control Sidebar -->
