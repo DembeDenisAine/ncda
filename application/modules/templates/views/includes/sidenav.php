@@ -43,6 +43,25 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-gavel"></i>
+                <p>
+                    Governance
+                    <i class="fas fa-angle-left right"></i>
+                    <span class="badge badge-info right"></span>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                    <a href="<?=site_url('board-list')?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Board Members</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
                     Projects
