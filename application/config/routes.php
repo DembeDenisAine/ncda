@@ -83,6 +83,7 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['edit-objective/(:num)']   = 'objectives/singleObjective/$1';
 	$route['update-objective']        = 'objectives/update';
 	$route['delete-objective/(:num)'] = 'objectives/delete/$1';
+	$route['core-objectives'] = 'objectives/core_list';
 
 //ACTIVITIES
 	$route['activity-list'] = 'activities/index';
@@ -141,10 +142,23 @@ $route['translate_uri_dashes'] = FALSE;
 //CONTACTS
 	$route['contacts-list(/:num)?'] = 'teams/get_all_teams';
 	
-
 	//collected data submission
 	$route['submit-data'] = 'projects/submitData';
+
 	//Report
 	$route['project_report'] = 'reports/projects';
-	
+
+	//Governance
+	$route['board-list'] = 'governance/index';
+
+	//Partners
+	$route['partners(/:num)?'] = 'partners/index';
+	$route['partner_profile/(:num)'] = 'partners/partner/$1';
+	$route['save-partner'] = 'partners/save_partner';
+
+	//Subscriber
+	$route['subscribers(/:num)?'] = 'subscribers/index';
+	$route['subscriber/(:num)'] = 'subscribers/subscriber/$1';
+	$route['save-subscriber'] = 'subscribers/save_subscriber';
+
 	

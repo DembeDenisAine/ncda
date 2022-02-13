@@ -168,7 +168,7 @@ if (!function_exists('setting')) {
 if (!function_exists('user')) {
     function user(){
         $ci =& get_instance();
-        return $ci->session->userdata();
+        return (Object) $ci->session->userdata();
     }
 }
 
@@ -186,8 +186,11 @@ if (!function_exists('get_subscriber')) {
     }
 }
 
-
-
-
+if (!function_exists('dd')) {
+    function dd($data){
+        print_r($data);
+        exit();
+    }
+}
 
 ?>

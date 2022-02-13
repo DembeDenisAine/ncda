@@ -19,7 +19,7 @@ class="btn btn-success btn-sm pull-right">New Objective <i class="fas fa-plus"><
             <label>Project:</label>
             <h4><?php echo $project->project_name; ?></h4>
             <label>Description: </label>
-            <p><?php echo $project->project_description; ?></p>
+            <p><?php echo truncate($project->project_description,500); ?></p>
             <div class="grid">
                 <div><strong><i class="fa fa-calendar"></i> Started:</strong> <?php echo text_date($project->start_date); ?></div>
                 <div><strong><i class="fa fa-calendar"></i> Ends:</strong> <?php echo text_date($project->end_date); ?></div>
@@ -56,7 +56,7 @@ class="btn btn-success btn-sm pull-right">New Objective <i class="fas fa-plus"><
             <tr>
                 <td><?php echo $i; ?></td>
                 <td><?php echo $obj->objective_name; ?></td>
-                <td><?php echo $obj->objective_description; ?></td>
+                <td><?php echo truncate($obj->objective_description,200); ?></td>
                 <td>
                     <a href="<?php echo base_url('activity-list/'.$obj->id);?>" 
                     class="btn btn-success btn-sm">Activities</a>

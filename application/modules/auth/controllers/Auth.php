@@ -103,7 +103,6 @@ class Auth extends MX_Controller {
      
         }
       
-
 		redirect("auth");
 		}
 		

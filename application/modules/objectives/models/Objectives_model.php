@@ -2,8 +2,13 @@
 
 class Objectives_model extends CI_Model{
 
-    public function get(){
+    public function __construct()
+    {
+        $this->user_id = user()->user_id;
+    }
 
+    public function get(){
+        $this->db->where('is_core',0);
         $query = $this->db->get("ncda_objectives");
         return $query->result();
     }
@@ -11,12 +16,13 @@ class Objectives_model extends CI_Model{
    
     public function insert()
     {   
-        $user_id = 1; 
+         
         $data = array(
             'objective_name' => $this->input->post('objective_name'),
             'objective_description' => $this->input->post('objective_description'),
-            'project_id'    => $this->input->post('project_id'),
-            'created_by'             => $user_id
+            'project_id' => $this->input->post('project_id'),
+            'created_by' =>  $this->user_id,
+            'is_core'   =>($this->input->post('is_core')!=null)?$this->input->post('is_core'):0
         );
         return $this->db->insert('ncda_objectives', $data);
     }
@@ -24,12 +30,12 @@ class Objectives_model extends CI_Model{
 
     public function update() 
     {
-        $user_id = 1; 
+         
         $data = array(
             'objective_name' => $this->input->post('objective_name'),
             'objective_description' => $this->input->post('objective_description'),
             'project_id'    => $this->input->post('project_id'),
-            'created_by'    => $user_id
+            'created_by'    =>  $this->user_id
         );
 
         $this->db->where('id',$this->input->post('id'));
@@ -78,6 +84,16 @@ class Objectives_model extends CI_Model{
     public function countObjects($id){
         $this->db->where('project_id',$id);
         return $this->db->get('ncda_objectives')->num_rows();
+    }
+
+    public function countCoreObjects(){
+        $this->db->where('is_core',1);
+        return $this->db->get('ncda_objectives')->num_rows();
+    }
+
+    public function core_objectives(){
+        $this->db->where('is_core',1);
+        return $this->db->get('ncda_objectives')->result();
     }
 
 

@@ -57,8 +57,40 @@
                         <p>Board Members</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?=site_url('core-objectives')?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Core Objectives</p>
+                    </a>
+                </li>
             </ul>
         </li>
+
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                    Membership
+                    <i class="fas fa-angle-left right"></i>
+                    <span class="badge badge-info right"></span>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                    <a href="<?=site_url('partners')?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Partners</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?=site_url('subscribers')?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Subscribers</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
 
           <li class="nav-item">
             <a href="#" class="nav-link">
