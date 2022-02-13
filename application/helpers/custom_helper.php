@@ -186,11 +186,28 @@ if (!function_exists('get_subscriber')) {
     }
 }
 
+if (!function_exists('get_subscribers')) {
+    function get_subscribers(){
+        $ci =& get_instance();
+        return $ci->db->get('ncda_subscribers')->result();
+    }
+}
+
+
 if (!function_exists('dd')) {
     function dd($data){
         print_r($data);
         exit();
     }
 }
+
+if (!function_exists('poeple_titles')) {
+    function poeple_titles(){
+         $titles = ['Mr.','Mrs.','Ms.','Hon.','Dr.','Pr.','He.','Hh.'];
+         return $titles;
+    }
+}
+
+
 
 ?>

@@ -149,7 +149,9 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['project_report'] = 'reports/projects';
 
 	//Governance
-	$route['board-list'] = 'governance/index';
+	$route['board-list(/:num)?'] = 'governance/index';
+	$route['save-member']   = 'governance/store';
+	$route['update-member'] = 'governance/update';
 
 	//Partners
 	$route['partners(/:num)?'] = 'partners/index';

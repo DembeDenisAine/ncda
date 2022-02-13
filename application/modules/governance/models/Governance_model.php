@@ -2,59 +2,59 @@
 
 class Governance_model extends CI_Model{
 
+    protected $table;
+
+    public function __construct()
+    {
+        $this->table = "ncda_board_members";
+    }
 
     public function get($limit=null, $start=null){
         
         $this->db->limit($limit,$start);
-        $query = $this->db->get("ncda_board_members")->result();
+        $query = $this->db->get($this->table)->result();
         return $query;
         
     }
 
-
-    public function insert()
+    public function save()
     {    
         $data = array(
             'title'     => $this->input->post('title'),
-            'first_name'=> $this->input->post('fname'),
-            'last_name' => $this->input->post('lname'),
+            'firstname'=> $this->input->post('fname'),
+            'lastname' => $this->input->post('lname'),
             'role'      => $this->input->post('role'),
             'phone_no'  => $this->input->post('phone'),
             'email_address' => $this->input->post('email'),
-            'from_year'  => $this->input->post('start_year'),
+            'from_year'  => $this->input->post('from_year'),
             'to_year'    => $this->input->post('to_year'),
-            'partner_id' => $this->input->post('partner')
+            'subscriber_id' => $this->input->post('subscriber_id')
         );
-        return $this->db->insert('ncda_board_members', $data);
+        return $this->db->insert($this->table, $data);
     }
 
 
     public function count_members()
     {   
-        $query = $this->db->get('ncda_board_members')->num_rows();
+        $query = $this->db->get($this->table)->num_rows();
         return $query;
     }
 
-    public function update($id) 
-    {
-        $data = array(
+    public function update() 
+        { $data = array(
             'title'     => $this->input->post('title'),
-            'first_name'=> $this->input->post('fname'),
-            'last_name' => $this->input->post('lname'),
+            'firstname'=> $this->input->post('fname'),
+            'lastname' => $this->input->post('lname'),
             'role'      => $this->input->post('role'),
             'phone_no'  => $this->input->post('phone'),
             'email_address' => $this->input->post('email'),
-            'from_year'  => $this->input->post('start_year'),
+            'from_year'  => $this->input->post('from_year'),
             'to_year'    => $this->input->post('to_year'),
-            'partner_id' => $this->input->post('partner')
+            'subscriber_id' => $this->input->post('subscriber_id')
         );
 
-        if($id==0){
-            return $this->db->insert('ncda_board_members',$data);
-        }else{
-            $this->db->where('id',$id);
-            return $this->db->update('ncda_board_members',$data);
-        }        
+        $this->db->where('id',$this->input->post('id'));
+        return $this->db->update($this->table,$data);
     }
 
 

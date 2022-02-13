@@ -6,7 +6,7 @@ class="btn btn-success btn-sm pull-right">Add Partner <i class="fas fa-plus"></i
 </div>
 
 <hr>
-<table class="table table-bordered">
+<table class="table table-bordered table-responsive-lg">
     <thead>
         <tr>
             <th style="width: 10px">#</th>
@@ -34,11 +34,10 @@ class="btn btn-success btn-sm pull-right">Add Partner <i class="fas fa-plus"></i
                 <td><?php echo $partner->phone_no; ?></td>
                 <td><?php echo $partner->email; ?></td>
                 <td>
-                    <div class="btn-group">
-                    <a href="#edit_partner<?=$partner->id?>" data-toggle="modal" 
-                    class="btn btn-primary btn-sm">Edit</a> 
-                    <a href="#delete<?php echo $partner->id;?>"  class="btn btn-danger btn-sm">Delete</a>
-                    </div>
+                    &nbsp;&nbsp;
+                    <a href="#edit_partner<?=$partner->id?>" data-toggle="modal" class="text-primary" >Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="#delete<?php echo $partner->id;?>" class="text-danger">Delete</a>
                 </td>
             </tr>
         <?php endforeach; endif; ?>

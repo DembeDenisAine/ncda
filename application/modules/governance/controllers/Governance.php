@@ -32,19 +32,19 @@ class Governance extends MX_Controller
     //save members
     public function store() { 
 
-        $this->governanceModel->insert();
+        $this->governanceModel->save();
+        set_flash('Member saved successfully');
         return redirect(site_url('board-list'));
     }
 
     //update members
     public function update($id = null){ 
-
         $this->governanceModel->update($id);
+        set_flash('Member updated successfully');
         return redirect(site_url('board-list'));
     }
  
    
-
 
 }
 

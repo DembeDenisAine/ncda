@@ -1,9 +1,9 @@
-<?php  //require_once('add_member_modal.php'); ?>
+<?php  require_once('add_member_modal.php'); ?>
 
 <div class="row">
 
 <div class="col-lg-2">
-    <a class="btn btn-default" data-toggle="modal" data-target="#modal-default">Add a Member  <i class="fas fa-plus"></i></a>
+    <a class="btn btn-default" data-toggle="modal" data-target="#add_member">Add a Member  <i class="fas fa-plus"></i></a>
 </div>
 <div class="col-lg-8">
     <form class="mt-2" method="POST" action="<?=site_url('board-list')?>">
@@ -37,7 +37,12 @@
     <tbody>
 
         <?php if($members): ?>
-        <?php $i=0; foreach($members as $member): $i++; ?>
+        <?php
+            $i=0; 
+            foreach($members as $member): 
+                $i++;
+                require('edit_member_modal.php');
+         ?>
         <tr>
             <td><?php echo $i; ?></td>
             <td><?php echo $member->title ." ".$member->firstname ." ".$member->lastname; ?></td>
@@ -49,9 +54,9 @@
             <td><?php echo get_subscriber_name($member->subscriber_id); ?></td>
             <td>
                  &nbsp;&nbsp;
-                <a href="" class="text-primary" >Edit</a>
+                <a href="#edit_member<?=$member->id?>" data-toggle="modal" class="text-primary" >Edit</a>
                  &nbsp;&nbsp;&nbsp;
-                <a href="" class="text-danger">Delete</a>
+                <a href="#delete_member<?=$member->id?>" data-toggle="modal" class="text-danger">Delete</a>
             </td>
 
         </tr>

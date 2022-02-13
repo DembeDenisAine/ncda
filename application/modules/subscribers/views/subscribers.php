@@ -6,7 +6,7 @@ class="btn btn-success btn-sm pull-right">Add Subscriber <i class="fas fa-plus">
 </div>
 
 <hr>
-<table class="table table-bordered">
+<table class="table table-bordered table-responsive-lg">
     <thead>
         <tr>
             <th style="width: 10px">#</th>
@@ -34,11 +34,10 @@ class="btn btn-success btn-sm pull-right">Add Subscriber <i class="fas fa-plus">
                 <td><?php echo $subscriber->phone_no; ?></td>
                 <td><?php echo $subscriber->email; ?></td>
                 <td>
-                    <div class="btn-group">
-                    <a href="#edit_subscriber<?=$subscriber->id?>" data-toggle="modal" 
-                    class="btn btn-primary btn-sm">Edit</a> 
-                    <a href="#delete<?php echo $subscriber->id;?>"  class="btn btn-danger btn-sm">Delete</a>
-                    </div>
+                    &nbsp;&nbsp;
+                    <a href="#edit_subscriber<?=$subscriber->id?>" data-toggle="modal" class="text-primary" >Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href=#delete<?php echo $subscriber->id;?>" class="text-danger">Delete</a>
                 </td>
             </tr>
         <?php endforeach; endif; ?>
