@@ -13,13 +13,15 @@ class Auth_mdl extends CI_Model {
 
 	
 public function loginChecker($postdata){
-	$username=$postdata['username'];
-	$password=md5($postdata['password']);
 
-	if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
+	$username = $postdata['username'];
+	$password = md5($postdata['password']);
+
+	//if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
 	 //login using username
 	
 	 $this->db->where("username",$username);
+	 $this->db->or_where("email",$username);
 	 $this->db->where("password",$password);
 	 $this->db->where("status",1);
 	 $this->db->join('user_groups','user_groups.group_id=user.role');
@@ -28,118 +30,20 @@ public function loginChecker($postdata){
  
 	 $rows=$qry->num_rows();
  
-	 if($rows!==0){
- 
-	 $person=$qry->row();
- 
- 
-	 return $person;
- 
-	}
- 
-	else{
- 
-		$newuser=$this->checkNewUser($username); //check wther person id exists
- 
-		if($newuser){ //check if new user was added
- 
-			return "new";
+		if($rows !== 0){
+			$person=$qry->row();
+			return $person;
 		}
-		else{
- 
+	    else{
 			return "failed";
 		}
- 
-	}
-
-
-	  }
-	  else{
-
-
-		//login using email
-	
-		$this->db->where("email",$username);
-		$this->db->where("password",$password);
-		$this->db->where("status",1);
-		$this->db->join('user_groups','user_groups.group_id=user.role');
-	
-		$qry=$this->db->get($this->table);
-	
-		$rows=$qry->num_rows();
-	
-		if($rows!==0){
-	
-		$person=$qry->row();
-	
-	
-		return $person;
-	
-	   }
-	
-	   else{
-	
-		   $newuser=$this->checkNewUser($username); //check wther person id exists
-	
-		   if($newuser){ //check if new user was added
-	
-			   return "new";
-		   }
-		   else{
-	
-			   return "failed";
-		   }
-	
-	   }
-
-
-	  }
-
-
+	 // }
+	 // else{
+	//	 return "failed";
+	 //  }
 
 }
 
-public function checkNewUser($personid){
-
-	$newpid='person|'.trim($personid);
-
-	$this->db->select('ihris_pid,surname,firstname,facility_id,department_id,department,facility,district,district_id');
-	$this->db->where('ihris_pid',$newpid);
-	$this->db->or_where('ipps',$personid);
-
-	$query=$this->db->get('ihrisdata');
-
-	$rows=$query->num_rows();
-
-	if($rows>0){
-
-		$userRow= $query->row();
-		$newUser=array(
-			"username"=>$personid,
-			"name"=>$userRow->firstname." ".$userRow->surname,
-			"facility_id"=>$userRow->facility_id,
-			"department_id"=>$userRow->department_id,
-			"department"=>$userRow->department,
-			"facility"=>$userRow->facility,
-			"ihris_pid"=>$userRow->ihris_pid,
-			"district"=>$userRow->district,
-			"district_id"=>$userRow->district_id,
-			"password"=>md5($this->password),
-			"role"=>"17",
-			"status"=>"0"
-
-		   );
-		$res=$this->db->insert($this->table,$newUser);
-
-		return true;
-	 }
-
-	else{
-
-		return false;
-	  }
-
-	}
 
 public function unlock($pass){
 
