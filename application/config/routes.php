@@ -127,6 +127,7 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['save-action']		= 'meetings/saveAction';
 	$route['meetings-calendar'] = 'meetings/meetingCalendar';
 	$route['update-meeting']    = 'meetings/update';
+	$route['import-contacts']   = 'meetings/importContacts';
 
 //BRANCH ACTIVITIES
 	$route['branch-acts'] 		= 'bactivities/index';

@@ -18,10 +18,11 @@ class Meetings extends MX_Controller
         $data['title']    = "Meetings";
         $data['view']     = "meetings_list";
 
-        $perPage = 3;
+        $perPage = 15;
         $page    = ($this->uri->segment(2))? $this->uri->segment(2) : 0;
         $count   = $this->meetingModel->countMeetings();
 
+        $data['page']      = $page;
         $data['meetings'] = $this->meetingModel->get($perPage,$page);
         $data['links']    = paginate('meetings',$count,$perPage,2);
 
@@ -45,12 +46,22 @@ class Meetings extends MX_Controller
         $data['discussions']  = $this->meetingModel->getDiscussions($id);
         $data['actions']      = $this->meetingModel->getActionPoints($id);
         $data['meeting']      = $meeting;
-
         $data['module'] = $this->module;
-        $data['title']  = "Meeting Details";
 
-        $data['view']="details";
-        echo Modules::run('templates/main',$data);
+
+        $data['title']  = "Meeting Details";
+       
+        if(!empty($_GET['pdf'])):
+
+            $data['view'] = 'export_details_pdf';
+            $html = $this->load->view($data['module']."/".$data['view'],$data,true);
+            $filename = "meeting_".$data['meeting']->id."_".time().".pdf";
+
+            make_pdf($html,$filename,"D",true);
+        else:
+            $data['view']="details";
+            echo Modules::run('templates/main',$data);
+        endif;
     }
 
     public function update(){ //updat objective
@@ -77,16 +88,30 @@ class Meetings extends MX_Controller
         $page    = ($this->uri->segment(2))? $this->uri->segment(2) : 0;
         $perPage = 15;
 
+        $data['page']      = $page;
         $data['contacts']  = $this->meetingModel->getContacts($perPage,$page);
         $data['links']     = paginate('contacts',$count,$perPage,2);
 
-        echo Modules::run('templates/main',$data);
+        if(!empty($_GET['pdf'])):
+
+            $data['view'] = 'export_contacts_pdf';
+            $html = $this->load->view($data['module']."/".$data['view'],$data,true);
+            $filename = "contacts_".time().".pdf";
+
+            make_pdf($html,$filename,"D",true);
+        else:
+            echo Modules::run('templates/main',$data);
+        endif;
+
+        
     }
 
     //save Contact/Meeting Particpant
     public function saveContact(){
+
+        $data = $this->input->post();
         
-        $this->meetingModel->saveContact();
+        $this->meetingModel->saveContact($data);
         
         if(empty($_POST['meeting'])):
             set_flash('Contact saved successfully');
@@ -96,6 +121,54 @@ class Meetings extends MX_Controller
           redirect(site_url('meeting/'.$_POST['meeting']));
         endif;
     }
+
+     public function importContacts(){
+
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'csv';
+            $config['max_size']     = '500';
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+            if(!$this->upload->do_upload('contacts')){
+
+                $error = $this->upload->display_errors('<p>', '</p>');
+
+                set_flash($error,true);
+                redirect(site_url('contacts'));
+
+            }else{
+
+                $file = (Object) $this->upload->data();
+                $data = read_csv('./uploads/'.$file->file_name);
+
+
+                for($i=1; $i<count($data); $i++):
+
+                    $row = $data[$i];
+
+                    $formated_row = array(
+                        'firstname'   => $row[0],
+                        'lastname'    => $row[1],
+                        'gender'      => $row[2],
+                        'title'       => $row[3],
+                        'email'       => $row[4],
+                        'phone'       => $row[5],
+                        'mobile'      => $row[6],
+                        'address'     => $row[7]
+                    );
+
+                    $this->meetingModel->saveContact($formated_row);
+
+                 endfor;
+
+                set_flash('Participant imported successfully');
+                redirect(site_url('contacts'));
+            }
+            
+
+     }
 
     //save Discussion
     public function saveDiscussion(){

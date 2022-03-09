@@ -17,15 +17,15 @@ class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> Create  Me
         </tr>
     </thead>
     <tbody>
-        <?php  if($meetings): $i=0;
+        <?php  if($meetings): 
                foreach($meetings as $row):
-               $i++;
+               $page++;
 
                require('edit_meeting_modal.php');
                
                ?>
             <tr>
-                <td><?php echo $i; ?></td>
+                <td><?php echo $page; ?></td>
                 <td><?php echo $row->meeting_name; ?></td>
                 <td><?php echo $row->meeting_date; ?></td>
                 <td><?php echo $row->start_at; ?></td>
@@ -46,6 +46,11 @@ class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> Create  Me
                         <li>
                             <a href="#edit_meeting<?=$row->id?>" data-toggle="modal"><i class="fa fa-edit"></i> Edit Meeting</a>
                         </li>
+
+                        <li>
+                            <a href="<?=base_url()?>meeting/<?=$row->id?>?pdf=1"><i class="fa fa-file"></i> Export PDF</a>
+                        </li>
+
                     </ul>
                 </div>
                 </td>

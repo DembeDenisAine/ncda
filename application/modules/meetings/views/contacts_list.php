@@ -1,9 +1,22 @@
 
-<?php require_once('add_contact_modal.php'); ?>
+<?php 
 
+        require_once('add_contact_modal.php');
+        require_once('import_contacts_modal.php');
 
+ ?>
+
+<div class="btn-group">
 <a href="#create-contact" data-toggle="modal"
-class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> New Contact</a>
+class="btn btn-success btn-sm"><i class="fas fa-plus"></i> New Contact</a>
+<a href="<?=base_url()?>uploads/contacts_template.xlsx" data-toggle="modal"
+class="btn btn-primary btn-sm"><i class="fas fa-download"></i> Download Template</a>
+<a href="#import-contacts" data-toggle="modal"
+class="btn btn-info btn-sm"><i class="fas fa-upload"></i> Import Contacts</a>
+
+<a href="<?=base_url()?>contacts?pdf=1" 
+class="btn btn-warning btn-sm"><i class="fas fa-file"></i> Export to PDF</a>
+</div>
 <hr>
 
 
@@ -19,9 +32,9 @@ class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> New Contac
         </tr>
     </thead>
     <tbody>
-        <?php  if($contacts): $i=0;  foreach($contacts as $row): $i++; ?>
+        <?php  if($contacts): $i=0;  foreach($contacts as $row): $page++; ?>
             <tr>
-                <td><?php echo $i; ?></td>
+                <td><?php echo $page; ?></td>
                 <td><?php echo $row->first_name." ".$row->last_name; ?></td>
                 <td><?php echo $row->represents; ?></td>
                 <td><?php echo $row->phone; ?></td>

@@ -99,31 +99,31 @@ class Meetings_model extends CI_Model{
     }
 
     //save contact
-    public function saveContact()
+    public function saveContact($data)
     {   
         $user_id = 1; 
 
         $data = array(
-            'first_name'  => $this->input->post('firstname'),
-            'last_name'   => $this->input->post('lastname'),
-            'gender'      => $this->input->post('gender'),
-            'title'       => $this->input->post('title'),
-            'represents'  => $this->input->post('organization'),
-            'email'       => $this->input->post('email'),
-            'phone'       => $this->input->post('phone'),
-            'mobile'      => $this->input->post('mobile'),
-            'address'     => $this->input->post('address')
+            'first_name'  => $data['firstname'],
+            'last_name'   => $data['lastname'],
+            'gender'      => $data['gender'],
+            'title'       => $data['title'],
+            'represents'  => $data['organization'],
+            'email'       => $data['email'],
+            'phone'       => $data['phone'],
+            'mobile'      => $data['mobile'],
+            'address'     => $data['address']
         );
 
          //for Updates
-         if(!empty( $this->input->post('contact')))
-           $data ['id'] = $this->input->post('contact');
+         if(!empty( $data['contact']))
+           $data ['id'] = $data['contact'];
 
         $inserted = $this->db->replace('ncda_contact_catalog', $data);
 
-        if(!empty( $this->input->post('meeting'))):
+        if(!empty( $data['meeting'])):
             $meeting_attendant = array('contact_id'  => $this->db->insert_id(),
-                             'meeting_id'  => $this->input->post('meeting'));
+                             'meeting_id'  => $data['meeting']);
             $this->db->insert('ncda_meeting_participants',$meeting_attendant);
         endif;
 

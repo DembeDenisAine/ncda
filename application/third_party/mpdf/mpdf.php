@@ -88,6 +88,7 @@ if (!defined('PHP_VERSION_ID')) {
 
 class mPDF
 {
+	
 
 ///////////////////////////////
 // EXTERNAL (PUBLIC) VARIABLES
