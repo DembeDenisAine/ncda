@@ -1,4 +1,5 @@
 
+<?php include('includes/projects_context_menu.php'); ?>
 
 <table border="1" width="100%">
     <thead>
@@ -14,13 +15,6 @@
          foreach($objectives as $objective):
           $activities = activities($objective->id);
         ?>
-
-        <!-- <tr>
-            <td rowspan="<?=($activities)?count($activities):1;?>">
-                <?=$objective->objective_name?>
-            </td>
-        </tr> -->
-       
        
             <?php 
                   
@@ -39,18 +33,23 @@
                     </tr>
 
                     <?php foreach($paramData as $param):
+
                         $value = param_data($param->id);
+                        $meetsTarget = ($value && is_numeric($value->target_value) && $value->parameter_value>=$param->target_value)?true:false;
                      ?>
                         <tr style="background-color:<?=(($rows%2)>0)?'#eee':''?>"> 
                             <td> <?=$param->parameter_name?></td>
                             <td> <?=$param->target_value?></td>
-                            <td> <?=($value)?$value->parameter_value:'N/A'?></td>
+                            <td  style="background-color:<?=($meetsTarget)?'#3bc92e':'#f79797'?>"> <?=($value)?$value->parameter_value:'N/A'?></td>
                         </tr>
                     <?php endforeach; ?>
 
             <?php 
-                    $rows++; endif; endforeach; ?>
+                $rows++; endif; endforeach; ?>
         
-    <?php  endforeach; ?>
+            <?php  endforeach; ?>
 
 </table>
+
+<script src="<?php echo base_url()?>assets/plugins/context-menu/context-menu.js"></script>
+

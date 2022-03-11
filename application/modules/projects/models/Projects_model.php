@@ -129,6 +129,19 @@ class Projects_model extends CI_Model{
         return true;
     }
 
+    public function  getParamScore($paramId,$facilityId){
+
+        $this->db->select('parameter_value as score');
+        $this->db->where('parameter_id',$paramId);
+
+        if($facilityId)
+            $this->db->where('parameter_id',$paramId);
+
+        $res = $this->db->get('ncda_field_activity_data')->row();
+
+        return ($res)?$res->score:null;
+    }
+
 
 }
 

@@ -49,23 +49,6 @@
             </select>
         </div>
 
-        <!-- <div class="form-group col-lg-3 col-md-3 col-sm-12">
-            <label>Activity</label>
-            <select class="form-control select2" name="activity_id" onchange="$('#entryForm').submit()">
-                <option>Choose Activity</option>
-                <?php 
-                     if($activities):
-                     foreach($activities as $act):
-                        $selectedAct = (!empty($selectedActivity))?$selectedActivity->id:null;
-                ?>
-                    <option <?php echo ($selectedAct == $act->id)?'selected':''; ?>  value="<?php echo $act->id; ?>"><?php echo $act->activity_name; ?></option>
-                <?php 
-                    endforeach;
-                    endif; 
-                ?>
-            </select>
-        </div> -->
-
 
         <div class="form-group col-lg-6 col-md-6 col-sm-12">
             <label>Facility</label>
@@ -107,8 +90,8 @@
     <!-- <label class="text-info">PARAMETERS / MEASURES: </label> -->
     <form method="post" action="<?php echo base_url()?>submit-data">
         <table width='100%' >
-             <input type="hidden" value="<?=$activity->id?>" name="facility">
-              <input type="hidden" value="<?=$selectedFacility?>" name="activity[]">
+              <input type="hidden" value="<?=$activity->id?>" name="activity[]">
+              <input type="hidden" value="<?=$selectedFacility?>" name="facility">
             <thead>
                 <tr>
                     <th></th>
@@ -130,7 +113,7 @@
                  <label><?php echo ($param->target_value)?$param->target_value:'N/A'; ?></label>
             </td>
             <td width="40%">
-                <input type="text" name="values[<?=$activityCount?>][]"  required>
+                <input type="text" name="values[<?=$activityCount?>][]" value="<?=parameter_score($param->id,$selectedFacility)?>"  required>
                 <input type="hidden"  class="input" value="<?=$param->id?>" name="params[<?=$activityCount?>][]">
             </td>
             </tr>

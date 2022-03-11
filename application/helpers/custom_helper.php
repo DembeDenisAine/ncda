@@ -209,6 +209,13 @@ if (!function_exists('poeple_titles')) {
     }
 }
 
+if (!function_exists('parameter_score')) {
+    function parameter_score($paramId,$facilityId=null){
+         $ci =& get_instance();
+         return $ci->projectsModel->getParamScore($paramId,$facilityId);
+    }
+}
+
 
 
 ?>

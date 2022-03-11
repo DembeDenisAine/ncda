@@ -2,10 +2,6 @@
 
 <div class="container">
 
-<!-- <div id="the-basics">
-<input class="typeahead form-control" type="text" placeholder="Search Film Name" autocomplete="off">
-</div> -->
-
 
 <form action="<?php echo base_url(); ?>project_report" method="post" id="report_form">
     <h6 class="text-muted">Choose Project</h6>

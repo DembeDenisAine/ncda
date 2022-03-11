@@ -148,6 +148,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 	//Report
 	$route['project_report'] = 'reports/projects';
+	$route['visualize/(:num)'] = 'reports/visual_report/$1';
 
 	//Governance
 	$route['board-list(/:num)?'] = 'governance/index';
@@ -163,5 +164,7 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['subscribers(/:num)?'] = 'subscribers/index';
 	$route['subscriber/(:num)'] = 'subscribers/subscriber/$1';
 	$route['save-subscriber'] = 'subscribers/save_subscriber';
+
+	
 
 	

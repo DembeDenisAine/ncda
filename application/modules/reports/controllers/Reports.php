@@ -40,6 +40,18 @@ class Reports extends MX_Controller {
         echo Modules::run('templates/main',$data);
 
 	}
+
+	public function visual_report($projectId){
+
+		$data['objectives'] = ($projectId != null)?objectives($projectId):[];
+		$data['project']    = $this->projectsModel->find($projectId);
+
+		$data['title']  = "Project Visualization";
+        $data['view']   = "project_visualization";
+		$data['module'] = $this->module;
+        
+        echo Modules::run('templates/main',$data);
+	}
 	
 
 }

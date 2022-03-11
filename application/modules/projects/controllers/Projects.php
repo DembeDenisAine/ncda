@@ -77,8 +77,6 @@ class Projects extends MX_Controller
         $data['project']     = $this->projectsModel->find($id);
         $data['objectives']  = $this->objectivesModel->objectives_by_project_id($id);
 
-        //$activityId = ($this->input->post('activity_id'))?$this->input->post('activity_id'):null;
-       // $data['selectedActivity']  = ($activityId )? $this->activitiesModel->find($activityId): null;
 
         $objectiveId = ($this->input->post('objective_id'))?$this->input->post('objective_id'):null;
         $data['selectedObjective']  = ($objectiveId)? $this->objectivesModel->find($objectiveId): null;
