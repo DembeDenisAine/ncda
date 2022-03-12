@@ -135,8 +135,9 @@ class Projects_model extends CI_Model{
         $this->db->where('parameter_id',$paramId);
 
         if($facilityId)
-            $this->db->where('parameter_id',$paramId);
-
+            $this->db->where('facility_id',$paramId);
+        
+        $this->db->order_by('id','desc');
         $res = $this->db->get('ncda_field_activity_data')->row();
 
         return ($res)?$res->score:null;

@@ -10,13 +10,19 @@
   
    function renderChart(paramData){
 
+    console.log(paramData);
+
     var data = JSON.parse(paramData);
 
-    console.log(data);
 
     var currentValue = (data.param_value)?parseInt(data.param_value):0;
     var targetValue = (data.parameter_target)?parseInt(data.parameter_target):100;
-    
+
+
+    console.log(data.id);
+    console.log(currentValue);
+    console.log(targetValue);
+
         Highcharts.chart('container'+data.id, {
 
         chart: {
@@ -124,9 +130,6 @@
          $rows = 0;
          foreach($objectives as $objective):
           $activities = activities($objective->id);
-        ?>
-       
-               <?php 
                   
                   foreach($activities as $activty):
 
@@ -135,7 +138,7 @@
                     if($paramData):
                  ?>
                  
-                     <h3><?=$activty->activity_name?></h3>
+             <h3><?=$activty->activity_name?></h3>
 
            
             <div class="row">
@@ -144,33 +147,33 @@
                        foreach($paramData as $param):
 
                         $value = param_data($param->id);
-                        $meetsTarget = ($value && is_numeric($value->target_value) && $value->parameter_value>=$param->target_value)?true:false;
+                        $meetsTarget = ($value &&  (!empty($value->target_value)) && is_numeric($value->target_value) && $value->parameter_value>=$param->target_value)?true:false;
 
-                        $param->param_value = ($value)?$value->parameter_value:0;
+                        $json = (Object) array(
+                            'id'=>$param->id,
+                            'paramenter_name'=>trim($param->parameter_name),
+                            'paramenter_target'=>(!empty($param->target_value))?$param->paramenter_target:null
+                        );
+
+                        $json->param_value = ($value)?$value->parameter_value:0;
 
                      ?>
 
-                        <!--<ul> 
-                            <li> <?=$param->parameter_name?></li>
-                            <li> <?=$param->target_value?></li>
-                            <li  style="background-color:<?=($meetsTarget)?'#3bc92e':'#f79797'?>"> <?=($value)?$value->parameter_value:'N/A'?></li>
-                        </ul>-->
+                    <div class="col-md-4" style="padding:40px;">
+                    <figure class="highcharts-figure">
 
-<div class="col-md-4">
-<figure class="highcharts-figure">
+                        <!-- <p class="highcharts-description text-">
+                            <?=$param->parameter_name?>
+                        </p> -->
+                        <div id="container<?=$param->id?>"></div>
+                    </figure>
+                    </div>
 
-    <p class="highcharts-description text-">
-        <?=$param->parameter_name?>
-    </p>
-    <div id="container<?=$param->id?>"></div>
-</figure>
-</div>
+                    <script type="text/javascript">
+                        
+                        renderChart('<?=json_encode($json)?>');
 
-<script type="text/javascript">
-    
-    renderChart('<?=json_encode($param)?>');
-
-</script>
+                    </script>
 
              
 <?php 
@@ -178,7 +181,7 @@
     endforeach; 
     $rows++;
 
-    ?>
+?>
 
 
 </div>

@@ -206,7 +206,7 @@
                 </p>
             </a>
         </li>
-        <li class="nav-item">
+       <!--  <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-archive"></i>
                 <p>
@@ -222,7 +222,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-list"></i>
@@ -239,15 +239,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="<?=base_url()?>reports/activities" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>DHTs Report</p>
+                        <p>Branch Activities Report</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="<?=base_url()?>reports/facilitation" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Donation Report</p>
+                        <p>Facilitation Report</p>
                     </a>
                 </li>
             </ul>

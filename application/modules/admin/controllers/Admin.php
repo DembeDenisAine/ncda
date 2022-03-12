@@ -100,8 +100,8 @@ public function configure(){
         $data = array(
             'title' => 'User Activity Logs',
             'logs' => $this->admin_model->get_logs(),
-            'facilities'=> Modules::run('facilities/getFacilities'),
-            'districts' => Modules::run('districts/getDistricts')
+           // 'facilities'=> Modules::run('facilities/getFacilities'),
+            //'districts' => Modules::run('districts/getDistricts')
             //'username'=>$this->username
         );
 

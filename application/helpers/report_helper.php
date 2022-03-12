@@ -5,11 +5,11 @@
 */
 if (!function_exists('activities')) {
     
-    function activities($id){
+    function activities($id,$branchActivity=false){
 
         $ci =& get_instance();
         $ci->db->where('objective_id',$id);
-        $query = $ci->db->get('ncda_activities');
+        $query = $ci->db->get(($branchActivity)?'branch_activities':'ncda_activities');
         return $query->result();
     }
 }
@@ -34,11 +34,11 @@ if (!function_exists('objectives')) {
 */
 if (!function_exists('parameters')) {
     
-    function parameters($id){
+    function parameters($id,$branchActivity=false){
 
         $ci =& get_instance();
         $ci->db->where('activity_id',$id);
-        $query = $ci->db->get('ncda_parameters');
+        $query = $ci->db->get(($branchActivity)?'branch_activty_parameters':'ncda_parameters');
         return $query->result();
     }
 }
@@ -48,11 +48,18 @@ if (!function_exists('parameters')) {
 */
 if (!function_exists('param_data')) {
     
-    function param_data($id){
+    function param_data($id,$branchActivity=false){
 
         $ci =& get_instance();
         $ci->db->where('parameter_id',$id);
-        $query = $ci->db->get('ncda_field_activity_data');
+
+        if(isset($_GET['from']))
+        $ci->db->where("action_date >='".$_GET['from']."'");
+
+        if(isset($_GET['to']))
+        $ci->db->where("action_date <='".$_GET['to']."'");
+
+        $query = $ci->db->get( ($branchActivity)?'ncda_branch_activity_data':'ncda_field_activity_data');
         return $query->row();
     }
 }

@@ -1,7 +1,7 @@
 
 <menu class="menu">
   <li class="menu-item">
-    <a  href="<?=base_url()?>visualize/<?=$project->id?>">
+    <a  href="<?=base_url()?>reports/activities/visualize">
     <button type="button" class="menu-btn"> <i class="fa fa-chart-pie"></i> <span class="menu-text">Visualize</span> </button>
     </a>
   </li>

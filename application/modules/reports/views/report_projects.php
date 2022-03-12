@@ -14,8 +14,13 @@
          $rows = 0;
          foreach($objectives as $objective):
           $activities = activities($objective->id);
+
+          if(count($activities)>0):
         ?>
-       
+             <tr>
+                 <td class="text-bold" colspan="4"><?=$objective->objective_name?></td>
+             </tr>
+            
             <?php 
                   
                   foreach($activities as $activty):
@@ -35,7 +40,7 @@
                     <?php foreach($paramData as $param):
 
                         $value = param_data($param->id);
-                        $meetsTarget = ($value && is_numeric($value->target_value) && $value->parameter_value>=$param->target_value)?true:false;
+                        $meetsTarget = ($value &&  (!empty($value->target_value)) && is_numeric($value->target_value) && $value->parameter_value>=$param->target_value)?true:false;
                      ?>
                         <tr style="background-color:<?=(($rows%2)>0)?'#eee':''?>"> 
                             <td> <?=$param->parameter_name?></td>
@@ -45,9 +50,11 @@
                     <?php endforeach; ?>
 
             <?php 
-                $rows++; endif; endforeach; ?>
-        
-            <?php  endforeach; ?>
+                $rows++; 
+                 endif;
+                 endforeach; 
+                 endif; 
+                 endforeach; ?>
 
 </table>
 

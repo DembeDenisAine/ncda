@@ -87,21 +87,7 @@ $('.datepicker').datepicker({
     autoclose: true
 });
 
-Highcharts.setOptions({
-    colors: Highcharts.getOptions().colors.map(function(color) {
-    return {
-    radialGradient: {
-        cx: 0.5,
-        cy: 0.3,
-        r: 0.7
-    },
-    stops: [
-        [0, color],
-        [1, Highcharts.color(color).brighten(-0.3).get('rgb')] // darken
-    ]
-    };
-    })
-});
+
 
 $('.mytable').DataTable( {
     dom: 'Bfrtip',
@@ -349,12 +335,6 @@ $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                 </div>
             </div>
             <!-- /change password--modal for first logins (as a MUST)-->
-
- 
-
-
-
-
         </body>
 </html>
 

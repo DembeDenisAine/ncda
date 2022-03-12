@@ -14,6 +14,11 @@ class Reports extends MX_Controller {
         $this->load->model("districts/districts_model",'districtsModel'); //Districts model
         $this->load->model("parameters/parameters_model",'parametersModel'); //Districts model
         $this->load->model("facilities/facilities_model",'facilitiesnModel');
+
+        $this->load->model("facilitation/facilitation_model",'facilitationModel'); //Facilitation model
+        $this->load->model("facilities/facilities_model",'facilitiesnModel');
+    
+
 		$this->module = 'reports';
 
 	}
@@ -46,12 +51,36 @@ class Reports extends MX_Controller {
 		$data['objectives'] = ($projectId != null)?objectives($projectId):[];
 		$data['project']    = $this->projectsModel->find($projectId);
 
-		$data['title']  = "Project Visualization";
+		$data['title']  = "Project Visualization Report";
         $data['view']   = "project_visualization";
 		$data['module'] = $this->module;
         
         echo Modules::run('templates/main',$data);
 	}
+
+	public function activities($value='')
+	{
+		
+		$data['objectives'] = $this->objectivesModel->core_objectives();
+		$data['title']      = "Branch Activity Report";
+        $data['view']       = "report_activities";
+		$data['module']     = $this->module;
+        
+        echo Modules::run('templates/main',$data);
+	}
+
+	 
+    public function facilitation()
+    {   
+        $data['transactions'] = $this->facilitationModel->get();
+        $data['facilities']   = $this->facilitiesnModel->get();
+        
+        $data['module'] = $this->module;
+        $data['title']  = "Facilitation Report";
+        $data['view']="facilitation_report";
+
+        echo Modules::run('templates/main',$data);
+    }
 	
 
 }

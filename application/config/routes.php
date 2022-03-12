@@ -135,6 +135,9 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['branch-params'] 	= 'bparameters/index';
 	$route['save-branch-param']   = 'bparameters/store';
 	$route['branch-param/(:num)'] = 'bparameters/index/$1';
+	$route['branch/dataentry']   = 'bactivities/dataEntry';
+	$route['branch/savedata']    = 'bactivities/submitData';
+	
 
 //FACILITATION
 	$route['facilitation'] 		= 'facilitation/index';
@@ -149,6 +152,8 @@ $route['translate_uri_dashes'] = FALSE;
 	//Report
 	$route['project_report'] = 'reports/projects';
 	$route['visualize/(:num)'] = 'reports/visual_report/$1';
+	$route['reports/activities']    = 'reports/activities';
+	$route['reports/facilitation']    = 'reports/facilitation';
 
 	//Governance
 	$route['board-list(/:num)?'] = 'governance/index';

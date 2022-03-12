@@ -212,9 +212,23 @@ if (!function_exists('poeple_titles')) {
 if (!function_exists('parameter_score')) {
     function parameter_score($paramId,$facilityId=null){
          $ci =& get_instance();
-         return $ci->projectsModel->getParamScore($paramId,$facilityId);
+
+        $ci->load->model("projects_model",'projectsModel');
+        return $ci->projectsModel->getParamScore($paramId,$facilityId);
+         
     }
 }
+
+if (!function_exists('branch_parameter_score')) {
+    function branch_parameter_score($paramId,$facilityId=null){
+         $ci =& get_instance();
+         
+            $ci->load->model("bactivities_model",'activitiesModel');
+            return $ci->activitiesModel->getParamScore($paramId,$facilityId);
+         
+    }
+}
+
 
 
 
