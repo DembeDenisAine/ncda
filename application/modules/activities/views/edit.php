@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?=site_url('activity-list')?>/<?php echo $objective_obj['id']; ?>">Activity List</a></li>
+                        <li class="breadcrumb-item"><a href="<?=site_url('activity-list')?>/<?php echo @$objective->id; ?>">Activity List</a></li>
                         <li class="breadcrumb-item active">New Activity</li>
                     </ol>
                 </div>
@@ -33,23 +33,18 @@
                         <div class="row">
                             <div class="col-md-6">
                             <div class="form-group">
-                                    <label>Objective Title</label>
-
-                                    <input type="hidden" name="objective_id" value="<?php echo $objective_obj['id']; ?>">
-                                   
-                                    <textarea class="form-control" rows="3" readonly
-                                       style="width: 100%;"><?php echo $objective_obj['objective_name']; ?></textarea>
+                                    <input type="hidden" name="objective_id" value="<?php echo $objective->id; ?>">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Activity Title</label>
-                                    <textarea class="form-control" rows="3" name="activity_name" style="width: 100%;"><?php echo $objective['activity_name']; ?></textarea>
+                                    <textarea class="form-control" rows="3" name="activity_name" style="width: 100%;"><?php echo $objective->activity_name; ?></textarea>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" rows="10" name="activity_description" style="width: 100%;"><?php echo $objective['activity_description']; ?></textarea>
+                                    <textarea class="form-control" rows="10" name="activity_description" style="width: 100%;"><?php echo $objective->activity_description; ?></textarea>
                                 </div>
                             </div>
                         </div>

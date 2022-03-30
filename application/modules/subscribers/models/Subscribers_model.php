@@ -34,7 +34,8 @@ class Subscribers_model extends CI_Model{
             'address'  => $this->input->post('address'),
             'email'    => $this->input->post('email'),
             'phone_no' => $this->input->post('phone'),
-            'since'    => $this->input->post('start_year')
+            'since'    => $this->input->post('start_year'),
+            'is_active'=> $this->input->post('status')
         );
 
         return $this->db->insert($this->table, $data);
@@ -49,12 +50,46 @@ class Subscribers_model extends CI_Model{
             'email'    => $this->input->post('email'),
             'phone_no' => $this->input->post('phone'),
             'since'    => $this->input->post('start_year'),
-            'is_active'=> $this->input->post('is_active')
+            'is_active'=> $this->input->post('status')
         );
 
         $this->db->where('id',$this->input->post('subscriber_id'));
-        return $this->db->insert($this->table, $data);
+        return $this->db->update($this->table, $data);
     }
+
+    public function subscriber_membership($subscriberId){
+
+        $this->db->select("member_count as membership, date_format(record_date, '%b %Y') as period");
+        $this->db->where('subscriber_id',$subscriberId);
+        $this->db->order_by('record_date','asc');
+        $rows = $this->db->get('subscriber_membership')->result();
+
+        $data['membership'] =  array_map(function($row){ return intval($row->membership); }, $rows);
+        $data['periods'] =  array_map(function($row){ return $row->period; }, $rows);
+
+        return (Object) $data;
+
+        }
+
+    public function current_membership($subscriberId){
+
+        $this->db->where('subscriber_id',$subscriberId);
+        $this->db->order_by('record_date','desc');
+        $row = $this->db->get('subscriber_membership')->row();
+        return ($row)?$row->member_count:0;
+    }
+
+     public function save_membership()
+    {    
+        $data = array(
+            'member_count' => $this->input->post('membership'),
+            'record_date' => $this->input->post('date'),
+            'subscriber_id' => $this->input->post('subscriber_id')
+        );
+
+        return $this->db->insert('subscriber_membership', $data);
+    }
+
 
 }
 

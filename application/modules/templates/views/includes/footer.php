@@ -69,7 +69,7 @@ $(document).ready(function() {
     }
 
 try{
-    $('.summernote').summernote({height: 150 });
+    $('.summernote').summernote({height: 80 });
 }catch(error){
     console.log(error);
 }

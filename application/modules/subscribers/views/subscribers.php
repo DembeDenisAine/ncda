@@ -2,7 +2,7 @@
 
 <div class="row mb-4">
 <a href="#add_subscriber"  data-toggle="modal"
-class="btn btn-success btn-sm pull-right">Add Subscriber <i class="fas fa-plus"></i></a>
+class="btn btn-success btn-sm pull-right">Add Member <i class="fas fa-plus"></i></a>
 </div>
 
 <hr>
@@ -10,7 +10,7 @@ class="btn btn-success btn-sm pull-right">Add Subscriber <i class="fas fa-plus">
     <thead>
         <tr>
             <th style="width: 10px">#</th>
-            <th>Subscriber</th>
+            <th>Member</th>
             <th>Description</th>
             <th>Address</th>
             <th>Phone Number</th>
@@ -34,10 +34,16 @@ class="btn btn-success btn-sm pull-right">Add Subscriber <i class="fas fa-plus">
                 <td><?php echo $subscriber->phone_no; ?></td>
                 <td><?php echo $subscriber->email; ?></td>
                 <td>
-                    &nbsp;&nbsp;
-                    <a href="#edit_subscriber<?=$subscriber->id?>" data-toggle="modal" class="text-primary" >Edit</a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a href=#delete<?php echo $subscriber->id;?>" class="text-danger">Delete</a>
+                       <a class="btn float-end"    data-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i>
+                       </a>
+                       <ul  class="dropdown-menu">
+                          <span class="dropdown-menu-arrow"></span>
+                          <li><a class="dropdown-item"  href="<?=base_url()?>subscriber/<?=$subscriber->id?>" class="text-primary" >View Profile</a></li>
+                          <li><a class="dropdown-item"  href="#edit_subscriber<?=$subscriber->id?>" data-toggle="modal" class="text-primary" >Edit</a></li>
+                          <li><a class="dropdown-item text-danger" href="#delete<?php echo $subscriber->id;?>" data-toggle="modal">Delete</a></li>
+                       </ul>
+
                 </td>
             </tr>
         <?php endforeach; endif; ?>

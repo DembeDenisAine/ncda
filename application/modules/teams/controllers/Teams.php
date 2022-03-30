@@ -39,7 +39,7 @@ class Teams extends MX_Controller
         $data['title']="Branch/Facility/Medical Teams";
 
         $data['view']="teams";
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
 
 
@@ -57,7 +57,7 @@ class Teams extends MX_Controller
         $data['title']="Branch Teams //".$district->district_name.": Branch";
 
         $data['view']="create_teams";
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
 
     //save branch team
@@ -88,7 +88,7 @@ class Teams extends MX_Controller
         $data['title']="Branch Teams";
 
         $data['view']="teams";
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
 
     //edit district team - form
@@ -103,7 +103,7 @@ class Teams extends MX_Controller
         $data['title']="Edit Branch Teams //".$district->district_name.": Branch";
 
         $data['view']="edit_teams";
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
 
     //update team
@@ -138,7 +138,7 @@ public function facility_teams($id){
     $data['title']="Branch Teams";
 
     $data['view']="teams";
-    echo Modules::run('templates/main',$data);
+    render_view($data);
 }
 
 //create teams - form
@@ -153,7 +153,7 @@ public function create_facility_team($id = null){
     $data['title']="Branch Teams";
 
     $data['view']="create-team";
-    echo Modules::run('templates/main',$data);
+    render_view($data);
 }
 
 //save team

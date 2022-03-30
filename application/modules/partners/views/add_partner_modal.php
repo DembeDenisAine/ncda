@@ -5,7 +5,7 @@
         <div class="modal-content">
                      
             <div class="modal-header"> 
-                <h4>Add Partner</h4>
+                <h4>Add Donor</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <h3 aria-hidden="true">&times;</h3>
                 </button>
@@ -15,7 +15,7 @@
             </div>
             <div class="modal-footer">
                     <button type="submit" class="btn btn-success pull-right">   
-                    <i class="fas fa-save"></i> Save Objective
+                    <i class="fas fa-save"></i> Save Donor
                     </button>
             </div>
         </div>

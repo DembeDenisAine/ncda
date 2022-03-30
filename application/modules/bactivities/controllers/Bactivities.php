@@ -20,7 +20,7 @@ class Bactivities extends MX_Controller
         $data['title']  = "Branch  Activities";
         $data['view']   = "data";
 
-        echo Modules::run('templates/main',$data);
+        render_view($data);
 	}
     
 	
@@ -38,7 +38,7 @@ class Bactivities extends MX_Controller
         $data['module']=$this->module;
         $data['title']="Branch Activity Detail";
         $data['view']="edit";
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
 
     public function update(){ //updat activity
@@ -79,7 +79,7 @@ class Bactivities extends MX_Controller
         $data['title'] = "Branch Activity Data Entry";
         $data['view']  = "branch_data_entry";
         
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
 
     private function paramtizedActivities($activities){

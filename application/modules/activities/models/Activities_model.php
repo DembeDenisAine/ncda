@@ -20,7 +20,7 @@ class Activities_model extends CI_Model{
     }
 
 
-    public function update($id) 
+    public function update() 
     {
         $data = array(
             'activity_name' => $this->input->post('activity_name'),
@@ -28,12 +28,9 @@ class Activities_model extends CI_Model{
             'objective_id' => $this->input->post('objective_id'),
             'created_by' => $this->input->post('created_by')
         );
-        if($id==0){
-            return $this->db->insert('ncda_activities',$data);
-        }else{
-            $this->db->where('id',$id);
-            return $this->db->update('ncda_activities',$data);
-        }        
+
+        $this->db->where('id',$this->input->post('id'));
+        return $this->db->update('ncda_activities',$data);     
     }
 
     public function find($id)

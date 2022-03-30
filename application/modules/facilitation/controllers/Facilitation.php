@@ -20,7 +20,7 @@ class Facilitation extends MX_Controller
         $data['title']  = "Facilitation";
         $data['view']="data";
 
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
     
     

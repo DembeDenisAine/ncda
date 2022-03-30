@@ -21,16 +21,16 @@ class Partners extends MX_Controller
         $data['links']    = paginate('partners/',$count,$perPage,3);
         $data['page']   = $page;
         $data['module'] = $this->module;
-        $data['title']  = "Our Partners";
+        $data['title']  = "Our Donors";
         $data['view']   = "partners";
 
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
     
     public function save_partner() { //save objective
 
         $this->partnersModel->save();
-        set_flash('Partner saved successfully');
+        set_flash('Donor saved successfully');
         $redirect_route = 'partners';
         return redirect(site_url($redirect_route ));
     }
@@ -40,16 +40,16 @@ class Partners extends MX_Controller
 
         $data['partner'] = $this->partnersModel->find($id);
         $data['module'] = $this->module;
-        $data['title']  = "Partner Profile";
+        $data['title']  = "Donor Profile";
         $data['view']   = "partner_profile";
 
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
 
     public function update_partner(){
          //update partner
         $this->partnersModel->update($this->input->post('id'));
-        set_flash('Partner updated successfully');
+        set_flash('Donor updated successfully');
         $redirect_route = (!isset($_POST['is_profile']))?'partners':'partner/'.$this->input->post('partner_id');
        
         return redirect($redirect_route);

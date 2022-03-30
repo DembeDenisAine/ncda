@@ -30,7 +30,7 @@ class Objectives extends MX_Controller
         $data['title']  = "Objectives";
         $data['view']   = "project_objectives";
 
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
     
     
@@ -41,7 +41,7 @@ class Objectives extends MX_Controller
         $data['view']    = "create";
         $data['project'] = $this->projectsModel->find($id);
         
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
 
     public function store() { //save objective
@@ -63,7 +63,7 @@ class Objectives extends MX_Controller
         $data['title']  = "Edit Objective";
         $data['view']   = "edit";
 
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
 
     public function update(){ //updat objective
@@ -95,7 +95,7 @@ class Objectives extends MX_Controller
         $data['title']  = "Core Objectives";
         $data['view']   = "core_objectives";
 
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
     
 

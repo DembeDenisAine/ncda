@@ -15,7 +15,9 @@ class Parameters_model extends CI_Model{
             'parameter_name' => $this->input->post('parameter_name'),
             'parameter_description' => $this->input->post('parameter_description'),
             'activity_id' => $this->input->post('activity_id'),
-            'created_by'             => $user_id,
+            'core_objective_id' => $this->input->post('core_id'),
+            'target_value'=>$this->input->post('target'),
+            'created_by'=> $user_id,
         );
         return $this->db->insert('ncda_parameters', $data);
     }
@@ -28,7 +30,9 @@ class Parameters_model extends CI_Model{
         $data = array(
             'parameter_name' => $this->input->post('parameter_name'),
             'parameter_description' => $this->input->post('parameter_description'),
-            'activity_id'           => $this->input->post('activity_id'),
+            'activity_id'       => $this->input->post('activity_id'),
+            'core_objective_id' => $this->input->post('core_id'),
+            'target_value'=>$this->input->post('target'),
             'created_by'            => $user_id,
         );
         
@@ -76,6 +80,17 @@ class Parameters_model extends CI_Model{
         return $query;
 
     } 
+
+    public function get_core_activities($objectiveId){
+              
+              $result = $this->db
+                 ->query("
+                    SELECT * from ncda_activities WHERE
+                    id in (SELECT DISTINCT(activity_id) from ncda_parameters where core_objective_id = '$objectiveId')")
+                ->result();
+        return $result;
+
+    }
 
 
 }

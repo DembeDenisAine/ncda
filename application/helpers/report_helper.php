@@ -19,12 +19,18 @@ if (!function_exists('activities')) {
 */
 if (!function_exists('objectives')) {
     
-    function objectives($id){
+    function objectives($id,$isCore=false){
 
         $ci =& get_instance();
+        if($id!==null)
         $ci->db->where('project_id',$id);
-        $query = $ci->db->get('ncda_objectives');
-        return $query->result();
+
+        if($isCore)
+        $ci->db->where('is_core',1);
+
+        $data = $ci->db->get('ncda_objectives')->result();
+
+        return $data;
     }
 }
 
@@ -34,10 +40,14 @@ if (!function_exists('objectives')) {
 */
 if (!function_exists('parameters')) {
     
-    function parameters($id,$branchActivity=false){
+    function parameters($id,$branchActivity=false,$isCore=false){
 
         $ci =& get_instance();
         $ci->db->where('activity_id',$id);
+        
+        if($isCore)
+            $ci->db->where('core_objective_id >0');
+
         $query = $ci->db->get(($branchActivity)?'branch_activty_parameters':'ncda_parameters');
         return $query->result();
     }

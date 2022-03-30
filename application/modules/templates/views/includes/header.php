@@ -280,7 +280,7 @@ body::-webkit-scrollbar-thumb
   min-width: 100%!important;
 }
 
-.dropdown-menu>li{
+./*dropdown-menu>li{
   min-width: 100%;
   margin-bottom: 5px!important;
   padding-bottom: 5px!important;
@@ -292,7 +292,7 @@ body::-webkit-scrollbar-thumb
 
 .dropdown-menu>li>a:hover{
   color:#2084ba!important;
-}
+}*/
 
 .cell-header{
   padding:8px;
@@ -351,10 +351,9 @@ body::-webkit-scrollbar-thumb
     background: #f1f7ff;
 }
 
-
 </style>
 
 </head>
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed sidebar-collapse sidebar-closed">
 <!-- Site wrapper -->
 <div class="wrapper">

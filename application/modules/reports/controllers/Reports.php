@@ -18,7 +18,6 @@ class Reports extends MX_Controller {
         $this->load->model("facilitation/facilitation_model",'facilitationModel'); //Facilitation model
         $this->load->model("facilities/facilities_model",'facilitiesnModel');
     
-
 		$this->module = 'reports';
 
 	}
@@ -42,7 +41,7 @@ class Reports extends MX_Controller {
         $data['view']   = "data";
 		$data['module'] = $this->module;
         
-        echo Modules::run('templates/main',$data);
+        render_view($data);
 
 	}
 
@@ -55,7 +54,7 @@ class Reports extends MX_Controller {
         $data['view']   = "project_visualization";
 		$data['module'] = $this->module;
         
-        echo Modules::run('templates/main',$data);
+        render_view($data);
 	}
 
 	public function activities($value='')
@@ -66,7 +65,7 @@ class Reports extends MX_Controller {
         $data['view']       = "report_activities";
 		$data['module']     = $this->module;
         
-        echo Modules::run('templates/main',$data);
+        render_view($data);
 	}
 
 	 
@@ -79,8 +78,19 @@ class Reports extends MX_Controller {
         $data['title']  = "Facilitation Report";
         $data['view']="facilitation_report";
 
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
+
+    public function core(){
+
+		$data['objectives'] = objectives(null,true);
+
+		$data['title']  = "Strategic Summary";
+        $data['view']   = "core_visualization";
+		$data['module'] = $this->module;
+        
+        render_view($data);
+	}
 	
 
 }

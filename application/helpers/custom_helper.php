@@ -5,6 +5,26 @@
  *
  */
 
+
+
+if (!function_exists('render_view')) {
+    function render_view($data)
+    {
+        // Get a reference to the controller object
+        $ci =& get_instance();
+        echo Modules::run('templates/main',$data);
+    }
+}
+
+if (!function_exists('get_flash')) {
+    function get_flash($key)
+    {
+        // Get a reference to the controller object
+        $ci =& get_instance();
+        return $ci->session->flashdata($key);
+    }
+}
+
 //set flash data
 if (!function_exists('set_flash')) {
     function set_flash($message,$isError=false)
@@ -51,6 +71,7 @@ if (!function_exists('truncate')) {
       return (strlen($content)>$limit)? substr($content,0,$limit)."...":$content;
     }
 }
+
 
 if (!function_exists('paginate')) {
 function paginate($route,$totals,$perPage=20,$segment=2)
@@ -104,7 +125,7 @@ function time_ago($timestamp)
     $years = round($seconds / 31553280);     //(365+365+365+365+366)/5 * 24 * 60 * 60
 
     if ($seconds <= 60) {
-        return "Just_now";
+        return "Just now";
     } else if ($minutes <= 60) {
         if ($minutes == 1) {
             return "1 " . "Minute" . " " . "ago";
@@ -226,6 +247,23 @@ if (!function_exists('branch_parameter_score')) {
             $ci->load->model("bactivities_model",'activitiesModel');
             return $ci->activitiesModel->getParamScore($paramId,$facilityId);
          
+    }
+}
+
+if (!function_exists('core_objectives')) {
+    function core_objectives(){
+         $ci =& get_instance();
+         
+        $ci->load->model("objectives/objectives_model",'objModel');
+        return $ci->objModel->core_objectives();
+    }
+}
+
+if (!function_exists('core_activities')) {
+    function core_activities($objectiveId){
+         $ci =& get_instance();
+        $ci->load->model("parameters/parameters_model",'paramModel');
+        return $ci->paramModel->get_core_activities($objectiveId);
     }
 }
 

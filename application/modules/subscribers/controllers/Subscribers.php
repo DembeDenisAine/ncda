@@ -21,16 +21,15 @@ class Subscribers extends MX_Controller
         $data['links']    = paginate('subscribers/',$count,$perPage,3);
         $data['page']   = $page;
         $data['module'] = $this->module;
-        $data['title']  = "Our Subscribers";
+        $data['title']  = "Member Orgaizations";
         $data['view']   = "subscribers";
-
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
     
     public function save_subscriber() { //save objective
 
         $this->subscribersModel->save();
-        set_flash('Subscriber saved successfully');
+        set_flash('Member saved successfully');
         $redirect_route = 'subscribers';
         return redirect(site_url($redirect_route ));
     }
@@ -39,17 +38,18 @@ class Subscribers extends MX_Controller
     public function subscriber($id = null){ //show single member
 
         $data['subscriber'] = $this->subscribersModel->find($id);
+        $data['membership'] = $this->subscribersModel->subscriber_membership($id);
+        $data['current_membership'] = $this->subscribersModel->current_membership($id);
         $data['module'] = $this->module;
-        $data['title']  = "Subscriber Profile";
+        $data['title']  = "Member Profile";
         $data['view']   = "subscriber_profile";
-
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
 
     public function update_subscriber(){
          //update subscriber
-        $this->subscribersModel->update($this->input->post('id'));
-        set_flash('Subscriber updated successfully');
+        $this->subscribersModel->update();
+        set_flash('Member updated successfully');
         $redirect_route = (!isset($_POST['is_profile']))?'subscribers':'subscriber/'.$this->input->post('subscriber_id');
        
         return redirect($redirect_route);
@@ -58,7 +58,13 @@ class Subscribers extends MX_Controller
     public function delete($id = null){ //delete objective
         $this->subscribersModel->delete($id);
         return redirect(site_url('subscribers'));
-    }  
+    } 
+
+    public function save_membership(){
+         $this->subscribersModel->save_membership($this->input->post('id'));
+         set_flash('membership saved successfully');
+        return redirect(site_url('subscriber/'.$_POST['subscriber_id']));
+    } 
 
 
 }

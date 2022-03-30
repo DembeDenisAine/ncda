@@ -29,7 +29,7 @@ class="btn btn-primary btn-sm pull-right"><i class="fas fa-arrow-left"></i> Back
             <th style="width: 10px">#</th>
             <th>Activity Title</th>
             <th>Details</th>
-            <th>Parameters</th>
+            <th>Indicators</th>
             <th style="width: 150px">Action</th>
         </tr>
     </thead>
@@ -38,6 +38,8 @@ class="btn btn-primary btn-sm pull-right"><i class="fas fa-arrow-left"></i> Back
                if($activities): $i=0;  
                foreach($activities as $activity): 
                $i++;
+               require('edit_activity_modal.php');
+               require('delete_modal.php');
         ?>
             <tr>
                 <td><?php echo $i; ?></td>
@@ -45,11 +47,13 @@ class="btn btn-primary btn-sm pull-right"><i class="fas fa-arrow-left"></i> Back
                 <td><?php echo $activity->activity_description; ?></td>
                 <td>
                     <a href="<?php echo base_url('parameter-list/'.$activity->id);?>" 
-                    class="btn btn-success btn-sm">Parameters</a>
+                    class="btn btn-success btn-sm">Indicators</a>
                 </td>
                 <td>
-                    <a href="<?php echo base_url('edit-activity/'.$activity->id);?>" 
-                    class="btn btn-primary btn-sm">Edit</a> <a href="<?php echo base_url('delete-activity/'.$activity->id);?>" 
+                    <a href="#edit_activity<?=$activity->id?>" 
+                        data-toggle="modal"
+                    class="btn btn-primary btn-sm">Edit</a> 
+                    <a href="#del<?=$activity->id?>" data-toggle="modal" 
                     class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>

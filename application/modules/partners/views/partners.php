@@ -2,7 +2,7 @@
 
 <div class="row mb-4">
 <a href="#add_partner"  data-toggle="modal"
-class="btn btn-success btn-sm pull-right">Add Partner <i class="fas fa-plus"></i></a>
+class="btn btn-success btn-sm pull-right">Add Donor <i class="fas fa-plus"></i></a>
 </div>
 
 <hr>
@@ -10,7 +10,7 @@ class="btn btn-success btn-sm pull-right">Add Partner <i class="fas fa-plus"></i
     <thead>
         <tr>
             <th style="width: 10px">#</th>
-            <th>Partner</th>
+            <th>Donor</th>
             <th>Description</th>
             <th>Address</th>
             <th>Phone Number</th>

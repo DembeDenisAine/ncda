@@ -7,7 +7,7 @@
         Back to Activities 
     </a>
     <a href="#add_parameter"  data-toggle="modal" class="btn btn-success btn-sm pull-right"> 
-        <i class="fas fa-plus"></i> Create New Parameter
+        <i class="fas fa-plus"></i> Create New Indicator
     </a>
 </div>
 
@@ -24,13 +24,13 @@
 </div>
 <br>
 
-<h4 class="text-muted">Activity Parameters</h4>
+<h4 class="text-muted">Activity Indicators</h4>
 
 <table class="table table-bordered">
 <thead>
     <tr>
         <th style="width: 10px">#</th>
-        <th>Parameter Title</th>
+        <th>Indicator Title</th>
         <th>Details</th>
         <th style="width: 150px">Action</th>
     </tr>
@@ -48,7 +48,7 @@
             <td><?php echo $param->parameter_name; ?></td>
             <td><?php echo $param->parameter_description; ?></td>
             <td>
-                <a href="#edit_parameter<?=$param->id?>" data-toggle="modal" class="btn btn-primary btn-sm">Edit Parameter</a> 
+                <a href="#edit_parameter<?=$param->id?>" data-toggle="modal" class="btn btn-primary btn-sm">Edit Indicator</a> 
                 <!-- <a href="<?php echo base_url('delete-activity/'.$param->id);?>"  class="btn btn-danger btn-sm">Delete</a>-->
             </td> 
         </tr>

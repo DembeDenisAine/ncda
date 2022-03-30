@@ -21,7 +21,7 @@ class Bparameters extends MX_Controller
         $data['title']  = "Activity Parameters";
         $data['view']="data";
 
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
     
     

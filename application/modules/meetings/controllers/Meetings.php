@@ -26,7 +26,7 @@ class Meetings extends MX_Controller
         $data['meetings'] = $this->meetingModel->get($perPage,$page);
         $data['links']    = paginate('meetings',$count,$perPage,2);
 
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
   
 
@@ -60,7 +60,7 @@ class Meetings extends MX_Controller
             make_pdf($html,$filename,"D",true);
         else:
             $data['view']="details";
-            echo Modules::run('templates/main',$data);
+            render_view($data);
         endif;
     }
 
@@ -100,7 +100,7 @@ class Meetings extends MX_Controller
 
             make_pdf($html,$filename,"D",true);
         else:
-            echo Modules::run('templates/main',$data);
+            render_view($data);
         endif;
 
         
@@ -219,7 +219,7 @@ class Meetings extends MX_Controller
             //when accessed directly in browser
             $data['view'] = 'meetings_calendar';
             $data['module'] = $this->module;
-            echo Modules::run('templates/main',$data);
+            render_view($data);
         else:
             //sharing with other module
             $this->load->view('meetings_calendar', $data);

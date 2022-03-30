@@ -5,7 +5,7 @@ class wmf {
 var $mpdf = null;
 var $gdiObjectArray;
 
-function __construct(&$mpdf) {
+function wmf(&$mpdf) {
 	$this->mpdf = $mpdf;
 }
 

@@ -122,24 +122,32 @@
 
 </script>
 
-
-<h4><?php echo $project->project_name; ?></h4>
-<p><?php echo nl2br($project->project_description); ?></p>
-<hr>
        <?php 
+
          $rows = 0;
+         $count = 0;
+
          foreach($objectives as $objective):
-          $activities = activities($objective->id);
-                  
+            $count++;
+
+                 $activities = core_activities($objective->id); //activities($objective->id);
+
+         ?>
+
+    <h3><?=$count.". ".$objective->objective_name?></h3>
+    <hr>
+               
+         <?php   
                   foreach($activities as $activty):
 
-                    $paramData = parameters($activty->id);
+                    $paramData = parameters($activty->id,false,true);
 
                     if($paramData):
                  ?>
-                 
-             <h3><?=$activty->activity_name?></h3>
 
+             <!--     
+             <h5><?=$activty->activity_name?></h5>
+ -->
            
             <div class="row">
                     <?php 
@@ -159,7 +167,7 @@
 
                      ?>
 
-                    <div class="col-md-4" style="padding:40px;">
+                    <div class="col-md-4 card" style="padding:40px;">
                     <figure class="highcharts-figure">
 
                         <!-- <p class="highcharts-description text-">
@@ -175,16 +183,23 @@
 
                     </script>
 
-             
+     
+      
 <?php 
 
     endforeach; 
     $rows++;
 
 ?>
-
+ 
 
 </div>
+
+
+<?php if( count($paramData)<1): ?>
+    <h1 class="text-danger"> No indicators attached to objective</h1>
+<?php endif; ?>
+
 
 <?php 
 

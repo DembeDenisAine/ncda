@@ -510,7 +510,7 @@ public function addPermissions(){
   $data['view']="add_permissions";
   $data['title']="Add Permission";
   $data['module']="auth";
-  echo Modules::run('templates/main',$data);
+  render_view($data);
 }
 
 

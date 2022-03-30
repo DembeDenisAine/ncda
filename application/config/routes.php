@@ -91,8 +91,8 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['create-activity/(:num)'] = 'activities/create/$1';
 	$route['save-activity'] = 'activities/store';
 	$route['edit-activity/(:num)'] = 'activities/singleActivity/$1';
-	$route['update-activity/(:num)'] = 'activities/update/$1';
-	$route['delete-activity/(:num)'] = 'activities/delete/$1';
+	$route['update-activity'] = 'activities/update';
+	$route['delete-activity/(:num)/(:num)'] = 'activities/delete/$1/$1';
 
 
 //PARAMETERS
@@ -154,7 +154,7 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['visualize/(:num)'] = 'reports/visual_report/$1';
 	$route['reports/activities']    = 'reports/activities';
 	$route['reports/facilitation']    = 'reports/facilitation';
-
+    $route['summary'] = 'reports/core';
 	//Governance
 	$route['board-list(/:num)?'] = 'governance/index';
 	$route['save-member']   = 'governance/store';
@@ -164,11 +164,15 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['partners(/:num)?'] = 'partners/index';
 	$route['partner_profile/(:num)'] = 'partners/partner/$1';
 	$route['save-partner'] = 'partners/save_partner';
+	$route['up-partner'] = 'partners/up_partner';
 
 	//Subscriber
 	$route['subscribers(/:num)?'] = 'subscribers/index';
 	$route['subscriber/(:num)'] = 'subscribers/subscriber/$1';
 	$route['save-subscriber'] = 'subscribers/save_subscriber';
+	$route['update-subscriber'] = 'subscribers/update_subscriber';
+	$route['save-membership'] = 'subscribers/save_membership';
+	
 
 	
 

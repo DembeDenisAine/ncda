@@ -203,3 +203,38 @@ input[type="checkbox"] {
         display: inline;
     }
 }
+
+
+    .dropdown-menu li{
+        border-bottom: 1px rgb(224, 224, 224) dotted;
+    }
+
+.dropdown-menu-arrow {
+    top: -25px;
+    left: 50%;
+    width: 0;
+    height: 0;
+    position: relative;
+  }
+  .dropdown-menu-arrow:before,
+  .dropdown-menu-arrow:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 7px 8px;
+    border-style: solid;
+    border-color: transparent;
+    z-index: 1001;
+  }
+  .dropdown-menu-arrow:after {
+    bottom: -18px;
+    right: -8px;
+    border-bottom-color: #fff;
+  }
+  .dropdown-menu-arrow:before {
+    bottom: -17px;
+    right: -8px;
+    border-bottom-color: rgba(0,0,0,.15);
+  }

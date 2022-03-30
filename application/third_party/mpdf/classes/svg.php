@@ -67,7 +67,7 @@ class SVG {
 	var $textjuststarted;	// mPDF 5.7.4
 	var $intext;		// mPDF 5.7.4
 
-	function __construct(&$mpdf){
+	function SVG(&$mpdf){
 		$this->svg_font = array();	// mPDF 6
 		$this->svg_gradient = array();
 		$this->svg_shadinglist = array();

@@ -43,7 +43,7 @@ var $LuDataCache;
 
 var $debugOTL = false;
 
-function __construct(&$mpdf) {
+function ___construct(&$mpdf) {
 	$this->mpdf = $mpdf;
 
 	$this->arabic_initialise();
@@ -832,8 +832,8 @@ for($sch=0;$sch<=$subchunk;$sch++) {
 			// so we will do one minor change here:
            		// From ICU: If the present character is a number, and the next character is a pre-number combining mark
            		 // then the two characters are reordered
-			// From MS OTL spec the following are Digit modifiers (Md): 0F18–0F19, 0F3E–0F3F
-			// Digits: 0F20–0F33
+			// From MS OTL spec the following are Digit modifiers (Md): 0F18ï¿½0F19, 0F3Eï¿½0F3F
+			// Digits: 0F20ï¿½0F33
 			// On testing only 0x0F3F (pre-based mark) seems to need re-ordering
 			for($ptr=0; $ptr<count($this->OTLdata)-1; $ptr++) {
     				if (INDIC::in_range($this->OTLdata[$ptr]['uni'], 0x0F20, 0x0F33) && $this->OTLdata[$ptr+1]['uni'] == 0x0F3F ) {
@@ -2850,7 +2850,7 @@ Final match
 	$ok = true;
 	$matches = array();
 	while ($ok) {
-		$x = ord($dict{$dictptr});
+		$x = ord($dict[$dictptr]);
 		$c = $this->OTLdata[$ptr]['uni'] & 0xFF;
 		if ($x==_DICT_INTERMEDIATE_MATCH) {
 //echo "DICT_INTERMEDIATE_MATCH: ".dechex($c).'<br />';
@@ -2871,11 +2871,11 @@ Final match
 		else if ($x==_DICT_NODE_TYPE_LINEAR) {
 //echo "DICT_NODE_TYPE_LINEAR: ".dechex($c).'<br />';
 			$dictptr++;
-			$m = ord($dict{$dictptr});
+			$m = ord($dict[$dictptr]);
 			if ($c == $m) {
 				$ptr++;
 				if ($ptr > count($this->OTLdata)-1) {
-					$next = ord($dict{$dictptr+1});
+					$next = ord($dict[$dictptr+1]);
 					if ($next==_DICT_INTERMEDIATE_MATCH || $next==_DICT_FINAL_MATCH) {
 						// Do not match if next character in text is a Mark
 						if (isset($this->OTLdata[$ptr]['uni']) && strpos($this->GlyphClassMarks, $this->OTLdata[$ptr]['hex'])===false) { 
@@ -2895,14 +2895,14 @@ Final match
 		else if ($x==_DICT_NODE_TYPE_SPLIT) {
 //echo "DICT_NODE_TYPE_SPLIT ON ".dechex($d).": ".dechex($c).'<br />';
 			$dictptr++;
-			$d = ord($dict{$dictptr});
+			$d = ord($dict[$dictptr]);
 			if ($c < $d) {
 				$dictptr += 5;
 			}
 			else {
 				$dictptr++;
 				// Unsigned long 32-bit offset
-				$offset = (ord($dict{$dictptr})*16777216) + (ord($dict{$dictptr+1})<<16) + (ord($dict{$dictptr+2})<<8) + ord($dict{$dictptr+3});
+				$offset = (ord($dict[$dictptr])*16777216) + (ord($dict[$dictptr+1])<<16) + (ord($dict[$dictptr+2])<<8) + ord($dict[$dictptr+3]);
 				$dictptr = $offset;
 			}
 		}
@@ -4332,7 +4332,7 @@ function _bidiSort($ta, $str='', $dir, &$chunkOTLdata, $useGPOS) {
 			// stores string characters and other information
 			if (isset($chunkOTLdata['GPOSinfo'][$i])) { $gpos = $chunkOTLdata['GPOSinfo'][$i]; }
 			else $gpos = '';
-			$chardata[] = array('char' => $chunkOTLdata['char_data'][$i]['uni'], 'level' => $cel, 'type' => $chardir, 'group' => $chunkOTLdata['group']{$i}, 'GPOSinfo' => $gpos);
+			$chardata[] = array('char' => $chunkOTLdata['char_data'][$i]['uni'], 'level' => $cel, 'type' => $chardir, 'group' => $chunkOTLdata['group'][$i], 'GPOSinfo' => $gpos);
 		}
 	}
 
@@ -4789,7 +4789,7 @@ function _bidiPrepare(&$para, $dir) {
 					$match = array_pop($remember);
 				}
 			}
-			//	In all cases, set the PDI’s level to the embedding level of the last entry on the directional status stack left after the steps above.
+			//	In all cases, set the PDIï¿½s level to the embedding level of the last entry on the directional status stack left after the steps above.
 			//	NB The level assigned to an isolate initiator is always the same as that assigned to the matching PDI.
 			if ($dos != -1) { $chardir = $dos; } 
 			else { $chardir = $chunkOTLdata['char_data'][$i]['bidi_class']; }
@@ -5183,7 +5183,7 @@ function _bidiReorder(&$chunkorder, &$content, &$cOTLdata, $blockdir) {
 			if (isset($cOTLdata[$nc]['char_data'][$i]['type'])) $carac['type'] = $cOTLdata[$nc]['char_data'][$i]['type'];
 			if (isset($cOTLdata[$nc]['char_data'][$i]['level'])) $carac['level'] = $cOTLdata[$nc]['char_data'][$i]['level'];
 			if (isset($cOTLdata[$nc]['char_data'][$i]['orig_type'])) { $carac['orig_type'] = $cOTLdata[$nc]['char_data'][$i]['orig_type']; }
-			$carac['group'] = $cOTLdata[$nc]['group']{$i};
+			$carac['group'] = $cOTLdata[$nc]['group'][$i];
 			$carac['chunkid'] = $chunkorder[$nc];	// gives font id and/or object ID
 
 			$maxlevel = max((isset($carac['level']) ? $carac['level'] : 0),$maxlevel);
@@ -5339,6 +5339,7 @@ function sliceOTLdata($OTLdata, $pos, $len) {
 
 // Remove one or more occurrences of $char (single character) from $txt and adjust OTLdata
 function removeChar(&$txt, &$cOTLdata, $char) {
+
 	while(mb_strpos($txt, $char, 0, $this->mpdf->mb_enc )!== false) {
 		$pos = mb_strpos($txt, $char, 0, $this->mpdf->mb_enc );
 		$newGPOSinfo = array();

@@ -17,7 +17,7 @@ class Forms extends MX_Controller {
 	{
 		$data=array('module'=>$this->module,'title'=>"Forms",
 		            'uptitle'=>"Forms and Fields",'view'=>"forms");
-	echo Modules::run('templates/main',$data);
+	render_view($data);
 	}
 	public function forms(){
 		$data=array('module'=>$this->module,'title'=>"Forms",

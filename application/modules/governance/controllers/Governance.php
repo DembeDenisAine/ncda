@@ -25,7 +25,7 @@ class Governance extends MX_Controller
         $data['title']="Board Members";
         $data['view']="board_members";
 
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
     
     

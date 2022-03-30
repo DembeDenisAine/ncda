@@ -21,7 +21,7 @@ class Activities extends MX_Controller
         $data['title']  = "Objective  Activities";
         $data['view']   = "data";
 
-        echo Modules::run('templates/main',$data);
+        render_view($data);
 	}
     
 	public function create($id){ // add activity form
@@ -32,7 +32,7 @@ class Activities extends MX_Controller
         $data['uptitle']="Main Activities";
         $data['view']="create";
 
-        echo Modules::run('templates/main',$data);
+        render_view($data);
 	}
 
     public function store() { //activity list
@@ -49,23 +49,23 @@ class Activities extends MX_Controller
         $data['objective_obj'] = $this->objectivesModel->find($id);
        
         $data['module']=$this->module;
-        $data['title']="Objective - Activities";
+        $data['title']="Objective Activities";
         $data['view']="edit";
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
 
     public function update(){ //updat activity
 
         $this->activitiesModel->update();
         $objectiveId = $this->input->post('objective_id');
-        set_flash('Activity saved successfully');
+        set_flash('Activity updated successfully');
         return redirect(site_url('activity-list/'.$objectiveId));
     }
  
-    public function delete($id = null){ //delete activity
+    public function delete($projectId,$id = null){ //delete activity
 
         $this->activitiesModel->delete($id);
-        return redirect(site_url('activity-list'));
+        return redirect(site_url('activity-list/'.$projectId));
     }  
 
 

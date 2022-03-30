@@ -35,7 +35,7 @@ class Facilities extends MX_Controller
         $data['title']  = (($data['district'])?"Branch ":""). "Facilities ".@$data['district']['district_name'];
         $data['view']   = "data";
 
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
     
     //save facility
@@ -55,7 +55,7 @@ class Facilities extends MX_Controller
         $data['title']="Facility";
 
         $data['view']="edit";
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
 
     //update facility
@@ -86,7 +86,7 @@ class Facilities extends MX_Controller
         $data['title']="Branch Teams";
 
         $data['view']="teams";
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
 
     public function create_team($id = null){ //get facility teams
@@ -100,7 +100,7 @@ class Facilities extends MX_Controller
         $data['title']="Branch Teams";
 
         $data['view']="create-team";
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
 
 

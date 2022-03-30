@@ -29,7 +29,7 @@ class Projects extends MX_Controller
         $data['projects'] = $this->projectsModel->get($perPage,$page);
         $data['links'] = paginate('project-list',$count, $perPage,2);
 
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
     
     public function create(){ // add projects form
@@ -38,7 +38,7 @@ class Projects extends MX_Controller
         $data['title']="Create Project";
         $data['view']="create_project";
 
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
 
     public function store() { //save project
@@ -56,7 +56,7 @@ class Projects extends MX_Controller
         $data['title']="Projects";
         $data['view']="edit_project";
         
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
 
     public function update($id = null){ //updat project
@@ -91,7 +91,7 @@ class Projects extends MX_Controller
         $data['title'] = "Field Data Entry";
         $data['view']  = "data_entry";
         
-        echo Modules::run('templates/main',$data);
+        render_view($data);
     }
 
     private function paramtizedActivities($activities){

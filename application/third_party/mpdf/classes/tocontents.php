@@ -32,7 +32,7 @@ var $TOC_pagenumstyle;	// mPDF 6
 var $TOC_suppress;	// mPDF 6
 var $m_TOC; 
 
-function __construct(&$mpdf) {
+function tocontents(&$mpdf) {
 	$this->mpdf = $mpdf;
 	$this->_toc=array();
 	$this->TOCmark = 0;

@@ -25,7 +25,7 @@ class Svariables extends MX_Controller {
 		$data['message'] = $this->svariables_mdl->update_variables($postdata);
 		}
 
-	   echo Modules::run('templates/main',$data);
+	   render_view($data);
 	}
 	public function getSettings(){
 	   return $this->svariables_mdl->getSettings();
@@ -44,6 +44,6 @@ class Svariables extends MX_Controller {
 		$data['module']='svariables';
 		$data['view']="logs";
 
-	   echo Modules::run('templates/main',$data);
+	   render_view($data);
 	}
 }

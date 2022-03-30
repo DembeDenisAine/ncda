@@ -20,7 +20,7 @@
       <div class="user-panel mt-3 pb-3 mb-3" style="text-align:center; line-height:0.2cm;">
 
         <div class="image">
-          <img src="<?php echo base_url(); ?>assets/img/user.jpg" class="img-circle elevation-2" alt="User Image" style="width:50px; height:50px;">
+          <img src="<?php echo base_url(); ?>assets/img/user.jpg" class="img-circle elevation-2" alt="User Image" style="width:40px; height:40px;">
            <span class="text-white"><?php   echo strtoupper(truncate($userdata['names'],1230));  ?></span>
         </div>
       
@@ -79,13 +79,13 @@
             <li class="nav-item">
                     <a href="<?=site_url('partners')?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Partners</p>
+                        <p>Donors</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?=site_url('subscribers')?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Subscribers</p>
+                        <p>Member Organizations</p>
                     </a>
                 </li>
             </ul>
