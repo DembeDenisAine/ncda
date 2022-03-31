@@ -13,15 +13,13 @@ class Auth_mdl extends CI_Model {
 
 	
 public function loginChecker($postdata){
+	$username=$postdata['username'];
+	$password=md5($postdata['password']);
 
-	$username = $postdata['username'];
-	$password = md5($postdata['password']);
-
-	//if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
+	if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
 	 //login using username
 	
 	 $this->db->where("username",$username);
-	 $this->db->or_where("email",$username);
 	 $this->db->where("password",$password);
 	 $this->db->where("status",1);
 	 $this->db->join('user_groups','user_groups.group_id=user.role');
@@ -30,19 +28,48 @@ public function loginChecker($postdata){
  
 	 $rows=$qry->num_rows();
  
-		if($rows !== 0){
-			$person=$qry->row();
-			return $person;
-		}
-	    else{
-			return "failed";
-		}
-	 // }
-	 // else{
-	//	 return "failed";
-	 //  }
+	 if($rows!==0){
+ 
+	 $person=$qry->row();
+ 
+ 
+	 return $person;
+ 
+	}
+    }
+ 
+	
+	else{
 
+
+		//login using email
+	
+		$this->db->where("email",$username);
+		$this->db->where("password",$password);
+		$this->db->where("status",1);
+		$this->db->join('user_groups','user_groups.group_id=user.role');
+	
+		$qry=$this->db->get($this->table);
+	}
+	
+		$rows=$qry->num_rows();
+	
+		if($rows!==0){
+	
+		$person=$qry->row();
+	
+	
+		return $person;
+	
+	   }
+	
+	   else{
+	
+		 return "failed";
+	 }
+	
 }
+
 
 
 public function unlock($pass){
@@ -83,6 +110,7 @@ public function getAll($start,$limit,$key=FALSE){
 	}
 	//$this->db->limit($start,$start);
 	$this->db->join('user_groups','user_groups.group_id=user.role','left');
+	$this->db->where("user_id !=","1");
 	$qry=$this->db->get($this->table);
 
 	return $qry->result();
@@ -94,7 +122,7 @@ public function count_Users($key=FALSE){
 	$this->db->where("username like '$key%'");
 	}
 
-
+	$this->db->where("user_id !=","1");
 	$qry=$this->db->get($this->table);
 	return $qry->num_rows();
 
@@ -102,21 +130,9 @@ public function count_Users($key=FALSE){
 
 
 public function addUser($postdata){
-	$distid=$postdata['district_id'];
-	$facid=$postdata['facility_id'];
-	
-	//get district
-	$distname=$this->db->query("SELECT distinct district from ihrisdata where district_id='$distid'");
-    $distn=$distname->row()->district;
-	//get facility
-	$facname=$this->db->query("SELECT distinct facility from ihrisdata where facility_id='$facid'");
-    $facn=$facname->row()->facility;
-	$postdata['password']=md5($this->password);
-	$postdata['facility']=$facn;
-	$postdata['department']=$postdata['department_id'];
-	$postdata['district']=$distn;
 
-	$postdata['status']=1;
+	$postdata['password']=md5($this->password);
+	
 	$qry=$this->db->insert($this->table,$postdata);
 	$rows=$this->db->affected_rows();
 
@@ -341,32 +357,9 @@ public function blockUser($postdata){
 		return $groups;
 	}
 
-	public function getDepartments(){
-		$this->db->select('department,department_id');
-		$this->db->distinct('department');
-		//$qry=$this->db->get('ihrisdata');
-		$qry=$this->db->get('ihrisdata');
-
-		return $qry->result();
-	}
 
 
-	public function getDistricts(){
-		$this->db->select('district,district_id');
-		$this->db->distinct('district');
-		$qry=$this->db->get('ihrisdata');
 
-		return $qry->result();
-	}
-	
-
-	public function getFacilities(){
-		$this->db->select('facility_id,facility');
-		$this->db->distinct('facility_id');
-		$qry=$this->db->get('ihrisdata');
-
-		return $qry->result();
-	}
 
     public function getPermissions(){
 		$query= $this->db->get("permissions");
