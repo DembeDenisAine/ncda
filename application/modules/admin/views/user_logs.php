@@ -23,11 +23,11 @@
           <div class="col-lg-12">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><?php echo $title; ?><h3>
+                    <h5 class="panel-title"><?php echo $title; ?><h5>
                       
                 </div>
                 <div class="panel-body">
-                    <div><a class="pull-right btn btn-info btn-sm" data-toggle="modal" data-target="#clearlogs">Clear Logs</a></div>
+                    <div><a class="pull-right btn btn-default btn-sm" data-toggle="modal" data-target="#clearlogs" >Clear Logs</a></div>
                     <br><br>
 
                     <table class="table table-striped thistbl">
@@ -42,7 +42,7 @@
                   <tbody>
 
                     <?php  $no=0; foreach($logs as $logEntry) { $no++; ?>
-                    <tr id="user<?php echo $logEntry->log_id; ?>" >
+                    <tr id="user<?php echo $logEntry->id; ?>" >
                       <td><?php echo $no; ?>. </td>
                       <td>
                     <?php echo substr(ucwords($logEntry->activity),0, 35)."..."; ?>
@@ -108,18 +108,19 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
+       <h4 class="modal-title">Clear User Logs</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Clear Activity Log</h4>
+        
       </div>
       <div class="modal-body">
           <br>
-        <h3>Do you what to clear all logs?</h3>
+        <h5>Do you what to clear all logs?</h5>
         <br>
        
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <a href="<?php echo base_url(); ?>admin/clearLogs" class="btn btn-danger" >Yes, Clear All</a>
-       
       </div>
     </div>
 

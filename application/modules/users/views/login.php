@@ -95,7 +95,7 @@
                 </div>
                 <div class="col-lg-6 p-t-100">
                     <div class="text-white">
-                    <h1>NCDAMobile Update Tool</h1>
+                    <h1>NCDA LOGIN</h1>
                         <p class="s-18 p-t-b-20 font-weight-lighter"></p>
                     </div>
                     <form action="<?php echo base_url()?>users/login" id="loginForm" novalidate method="post" accept-charset="utf-8">

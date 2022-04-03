@@ -41,6 +41,11 @@ require_once("includes/sidenav.php");
           <div class="col-12" style="margin-bottom:3px;">
              <div class="card">
              <div class="card-body">
+                 <!-- Main content -->
+              <div id="ppreloader"> 
+                <div id="sstatus">
+                </div> 
+              </div>
               
               <?php  $this->load->view($module."/".$view);  ?>
             
@@ -58,6 +63,7 @@ require_once("includes/sidenav.php");
       </div>
     </section>
     <!-- /.content -->
+    
   </div>
   <!-- /.content-wrapper -->
 

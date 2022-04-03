@@ -28,9 +28,11 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2" style="overflow:hidden; font-size:14px;">
+      
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+        <?php if(in_array('16', $permissions)): ?>
           <li class="nav-item has-treeview">
             <a href="<?php echo base_url(); ?>" class="nav-link">
               <i class="fa fa-tachometer-alt"></i>
@@ -40,7 +42,8 @@
               </p>
             </a>
           </li>
-
+          <?php endif; ?>
+          <?php if(in_array('19', $permissions)): ?>
           <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-gavel"></i>
@@ -51,20 +54,28 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
+            <?php if(in_array('17', $permissions)): ?>
             <li class="nav-item">
                     <a href="<?=site_url('board-list')?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Board Members</p>
                     </a>
                 </li>
+             <?php endif; ?>
+             <?php if(in_array('18', $permissions)): ?>
                 <li class="nav-item">
                     <a href="<?=site_url('core-objectives')?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Core Objectives</p>
                     </a>
                 </li>
+                <?php endif; ?>
             </ul>
         </li>
+        
+        <?php endif; ?>
+
+        <?php if(in_array('42', $permissions)): ?>
 
         <li class="nav-item">
             <a href="#" class="nav-link">
@@ -76,22 +87,28 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
+            <?php if(in_array('43', $permissions)): ?>
             <li class="nav-item">
                     <a href="<?=site_url('partners')?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Donors</p>
                     </a>
                 </li>
+                <?php endif; ?>
+                <?php if(in_array('44', $permissions)): ?>
                 <li class="nav-item">
                     <a href="<?=site_url('subscribers')?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Member Organizations</p>
                     </a>
                 </li>
+                <?php endif; ?>
             </ul>
         </li>
 
+        <?php endif; ?>
 
+        <?php if(in_array('22', $permissions)): ?>
           <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
@@ -102,22 +119,26 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
+            <?php if(in_array('20', $permissions)): ?>
             <li class="nav-item">
                     <a href="<?=site_url('create-project')?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Create Project</p>
                     </a>
                 </li>
+                <?php endif; ?>
+                <?php if(in_array('21', $permissions)): ?>
                 <li class="nav-item">
                     <a href="<?=site_url('project-list')?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>List Projects</p>
                     </a>
                 </li>
+                <?php endif; ?>
             </ul>
         </li>
-     
-        
+        <?php endif; ?>
+        <?php if(in_array('27', $permissions)): ?>
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-edit"></i>
@@ -127,20 +148,26 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
+            <?php if(in_array('28', $permissions)): ?>
                 <li class="nav-item">
                     <a href="<?=base_url()?>meetings" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Manage Meetings</p>
                     </a>
                 </li>
+                <?php endif; ?>
+                <?php if(in_array('30', $permissions)): ?>
                 <li class="nav-item">
                     <a href="<?=base_url()?>meetings-calendar" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Meeting Calendar</p>
                     </a>
                 </li>
+                <?php endif; ?>
             </ul>
         </li>
+        <?php endif ?>
+        <?php if(in_array('31', $permissions)): ?>
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-map"></i>
@@ -150,27 +177,36 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
+            <?php if(in_array('32', $permissions)): ?>
                 <li class="nav-item">
                     <a href="<?=site_url('district-list')?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Branches</p>
                     </a>
+                
                 </li>
+            <?php endif; ?>
+            <?php if(in_array('33', $permissions)): ?>
                 <li class="nav-item">
                     <a href="<?=site_url('facility-list')?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Facilities</p>
                     </a>
                 </li>
+            <?php endif; ?>
+            <?php if(in_array('34', $permissions)): ?>
                 <li class="nav-item">
                     <a href="<?=site_url('contacts-list')?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Contacts</p>
                     </a>
                 </li>
+            <?php endif; ?>
             </ul>
         </li>
+        <?php endif; ?>
 
+        <?php if(in_array('41', $permissions)): ?>
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-list"></i>
@@ -180,23 +216,27 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
+            <?php if(in_array('36', $permissions)): ?>
                 <li class="nav-item">
                     <a href="<?=site_url('branch-acts')?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Regular Activities</p>
                     </a>
                 </li>
-
+                <?php endif; ?>
+                <?php if(in_array('37', $permissions)): ?>
                 <li class="nav-item">
                     <a href="<?=site_url('facilitation')?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Facilitation</p>
                     </a>
                 </li>
+                <?php endif; ?>
                 
             </ul>
         </li>
-        
+        <?php endif; ?>
+        <?php if(in_array('38', $permissions)): ?>
         <li class="nav-item">
             <a href="<?=base_url()?>contacts" class="nav-link">
                 <i class="nav-icon far fa-calendar-alt"></i>
@@ -206,6 +246,7 @@
                 </p>
             </a>
         </li>
+        <?php endif; ?>
        <!--  <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-archive"></i>
@@ -223,6 +264,7 @@
                 </li>
             </ul>
         </li> -->
+        <?php if(in_array('39', $permissions)): ?>
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-list"></i>
@@ -231,6 +273,7 @@
                     <i class="fas fa-angle-left right"></i>
                 </p>
             </a>
+           
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="<?=base_url()?>project_report" class="nav-link">
@@ -252,8 +295,9 @@
                 </li>
             </ul>
         </li>
+        <?php endif; ?>
            <!--user perm 14-->
-          <?php if(in_array('35', $permissions)){ ?>
+          <?php if(in_array('35', $permissions)): ?>
           <li class="nav-item has-treeview ">
             <a href="#" class="nav-link">
               <i class="fa fa-cog"></i>
@@ -266,7 +310,7 @@
                 
                 <li class="nav-item">
 
-                <?php if(in_array('15', $permissions)){ ?>
+                <?php if(in_array('15', $permissions)): ?>
                 <a href="<?php echo base_url();?>auth/users" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage User</p>
@@ -284,16 +328,10 @@
                   <p>User Logs</p>
                 </a>
                 </li>
-                <li class="nav-item">
-                <a href="<?php echo base_url();?>forms/"  class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Constants & Variables</p>
-                </a>
-                  </li>
-                <?php } ?>
+                <?php endif ?>
             </ul>
           </li>
-          <?php } ?>
+          <?php endif; ?>
           </li>
         </ul>
       </nav>

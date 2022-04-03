@@ -14,13 +14,13 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Start Date</label>
-                            <input type="date" class="form-control date" name="start_date" style="width: 100%;">
+                            <input type="text" class="form-control datepicker" autocomplete="off"  name="start_date" style="width: 100%;">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>End date</label>
-                            <input type="date"  class="form-control date" name="end_date" style="width: 100%;">
+                            <input type="text"  class="form-control datepicker" autocomplete="off"  name="end_date" style="width: 100%;">
                         </div>
                     </div>
                     <div class="col-md-4">

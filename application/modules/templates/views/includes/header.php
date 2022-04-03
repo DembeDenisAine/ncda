@@ -308,7 +308,7 @@ body::-webkit-scrollbar-thumb
     height: 400px;
 }
 
-.highcharts-figure,
+
 .highcharts-data-table table {
     min-width: 310px;
     max-width: 500px;
@@ -347,13 +347,36 @@ body::-webkit-scrollbar-thumb
     background: #f8f8f8;
 }
 
-.highcharts-data-table tr:hover {
-    background: #f1f7ff;
-}
+  .highcharts-data-table tr:hover {
+      background: #f1f7ff;
+  }
+
+  #ppreloader {
+      position: fixed;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      background-color:#E4E5E5; 
+      z-index:200;
+  }
+  #sstatus {
+      width:50px;
+      height:50px;
+      position:absolute;
+      left:60%; 
+      top:50%; 
+      background-image:url("<?php echo base_url()?>assets/images/loader.gif");
+      z-index:9999; 
+      background-repeat:no-repeat;
+      background-position:center;
+      background-size: cover;
+      margin:-50px 0 0 -50px; 
+  }
 
 </style>
 
 </head>
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed sidebar-collapse sidebar-closed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed sidebar-closed">
 <!-- Site wrapper -->
 <div class="wrapper">

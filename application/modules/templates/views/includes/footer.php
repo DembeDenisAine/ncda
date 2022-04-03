@@ -27,6 +27,7 @@
 
 <!-- DataTables  & Plugins -->
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 
 <script src="<?php echo base_url(); ?>assets/dist/js/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -46,6 +47,15 @@
 
 <div class="control-sidebar-bg"></div>
 </div>
+<script>
+$(window).load(function() {
+
+$('#sstatus').delay(2000).fadeOut(2000); // will first fade out the loading animation
+$('#ppreloader').delay(1000).fadeOut(1000); // will fade out the white div
+
+})
+
+</script>
 
 <script>
 
