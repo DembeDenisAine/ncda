@@ -146,9 +146,9 @@ public function updateUser($postdata){
 	//get facility
 	$facd=explode("_",$facdata);
 
-        $fac_id=$facd[0];
-        $facility=$facd[1]; 
-	$facname=""; //$this->db->query("SELECT distinct facility from ihrisdata where facility_id='$fac_id'");
+        $fac_id=@$facd[0];
+        $facility=@$facd[1]; 
+	    $facname=""; //$this->db->query("SELECT distinct facility from ihrisdata where facility_id='$fac_id'");
         $facn= ""; //$facname->row()->facility;
 
 
@@ -162,8 +162,6 @@ public function updateUser($postdata){
 		"department"=>@$postdata['department_id'],
 		"department_id"=>@$postdata['department_id'],
 		"role"=>$postdata['role']
-
-
 
 	);
 
