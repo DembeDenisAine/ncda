@@ -35,7 +35,8 @@ class Subscribers_model extends CI_Model{
             'email'    => $this->input->post('email'),
             'phone_no' => $this->input->post('phone'),
             'since'    => $this->input->post('start_year'),
-            'is_active'=> $this->input->post('status')
+            'is_active'=> $this->input->post('status'),
+            'contact_person' => $this->input->post('contact_person')
         );
 
         return $this->db->insert($this->table, $data);
@@ -50,7 +51,8 @@ class Subscribers_model extends CI_Model{
             'email'    => $this->input->post('email'),
             'phone_no' => $this->input->post('phone'),
             'since'    => $this->input->post('start_year'),
-            'is_active'=> $this->input->post('status')
+            'is_active'=> $this->input->post('status'),
+            'contact_person' => $this->input->post('contact_person')
         );
 
         $this->db->where('id',$this->input->post('subscriber_id'));

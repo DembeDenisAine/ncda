@@ -25,8 +25,8 @@
 
         <div class="col-md-4">
             <div class="form-group">
-                <label>Member Role</label>
-                <input placeholder="Member Role" class="form-control"  name="role" style="width: 100%;" value="<?=(@$member)?$member->role:''?>" />
+                <label>Designation</label>
+                <input placeholder="Designation" class="form-control"  name="role" style="width: 100%;" value="<?=(@$member)?$member->role:''?>" />
             </div>
         </div>
 

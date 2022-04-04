@@ -44,6 +44,13 @@
             </div>
         </div>
 
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>Contact Person</label>
+                <input placeholder=" e.g John Jones" class="form-control"  name="contact_person" style="width: 100%;" value="<?=(@$subscriber)?$subscriber->contact_person:''?>" />
+            </div>
+        </div>
+
 
         <div class="col-md-12">
             <div class="form-group">

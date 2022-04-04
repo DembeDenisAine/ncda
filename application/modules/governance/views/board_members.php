@@ -25,7 +25,7 @@
         <tr>
             <th width="2%">#</th>
             <th>Member Name</th>
-            <th>Member Role</th>
+            <th>Designation</th>
             <th>Phone Number</th>
             <th>Email</th>
             <th>Tenure</th>

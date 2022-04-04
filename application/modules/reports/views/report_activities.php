@@ -29,7 +29,7 @@
             <th class="cell-header">Activity</th>
             <th class="cell-header">Indicator(s)</th>
             <th class="cell-header">Target</th>
-            <th class="cell-header">Score</th>
+            <th class="cell-header">Status</th>
         </tr>
     </thead>
        <?php 
