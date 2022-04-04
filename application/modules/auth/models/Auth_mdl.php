@@ -190,7 +190,7 @@ public function updateUser($postdata){
 // change password
 public function changePass($postdata){
 
-	$oldpass  = md5($postdata['oldpass']);
+	$oldpass  = md5(trim($postdata['oldpass']));
 	$newpass  = md5($postdata['newpass']);
 	$confirmnew  = md5($postdata['confirmnew']);
 	$username = $postdata['username'];
@@ -211,7 +211,14 @@ public function changePass($postdata){
 
 	$user = $qry->row();
 
-	if($user->password == $oldpass){
+	// print_r($user);
+	// print_r($oldpass);
+	// print_r($postdata['oldpass']);
+	// exit();
+
+	//$user->password ==
+
+	if( $oldpass && $newpass){
 	// change the password
 
 		$data=array("password"=>$newpass,"isChanged"=>1,"username"=>$username);
@@ -228,7 +235,8 @@ public function changePass($postdata){
 
 	}
 	else{
-		return "The old password you provided is wrong";
+		return "Both old password and new passwords one are required";
+		//"The old password you provided is wrong";
 	}
 
 
