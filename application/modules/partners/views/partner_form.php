@@ -28,6 +28,13 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
+                <label>Donor Contact Person</label>
+                <input placeholder="Contact Person" class="form-control"  name="text" style="width: 100%;" value="<?=(@$partner)?$partner->contact_person:''?>" />
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
                 <label>Donor Since <small>(Year)</small></label>
                 <input placeholder="Donor since e.g 1999" class="form-control"  name="since" style="width: 100%;" value="<?=(@$partner)?$partner->since:''?>" />
             </div>

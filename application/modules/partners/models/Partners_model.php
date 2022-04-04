@@ -34,7 +34,8 @@ class Partners_model extends CI_Model{
             'address'  => $this->input->post('address'),
             'email'    => $this->input->post('email'),
             'phone_no' => $this->input->post('phone'),
-            'since'    => $this->input->post('start_year')
+            'since'    => $this->input->post('start_year'),
+            'contact_person' => $this->input->post('contact_person')
         );
 
         return $this->db->insert($this->table, $data);
@@ -49,7 +50,8 @@ class Partners_model extends CI_Model{
             'email'    => $this->input->post('email'),
             'phone_no' => $this->input->post('phone'),
             'since'    => $this->input->post('start_year'),
-            'is_active'=> ($this->input->post('is_active')!=null)?$this->input->post('is_active'):0
+            'is_active'=> ($this->input->post('is_active')!=null)?$this->input->post('is_active'):0,
+            'contact_person' => $this->input->post('contact_person')
         );
 
         $this->db->where('id',$this->input->post('partner_id'));
