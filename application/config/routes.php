@@ -164,7 +164,7 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['partners(/:num)?'] = 'partners/index';
 	$route['partner_profile/(:num)'] = 'partners/partner/$1';
 	$route['save-partner'] = 'partners/save_partner';
-	$route['up-partner'] = 'partners/up_partner';
+	$route['update-partner'] = 'partners/up_partner';
 
 	//Subscriber
 	$route['subscribers(/:num)?'] = 'subscribers/index';
