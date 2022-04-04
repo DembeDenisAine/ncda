@@ -17,6 +17,15 @@ class Dashboard extends MX_Controller {
 
 	public function index()
 	{
+		
+		$userdata=$this->session->get_userdata(); 
+
+
+		if($userdata['changed'] == 0){
+		  set_flash('Please change your password',true);
+		  redirect('auth/myprofile');
+		}
+
 		redirect(site_url('summary'));
 
 		// $data['module']=$this->dashmodule;

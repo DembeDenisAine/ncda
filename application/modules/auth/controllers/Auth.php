@@ -34,14 +34,8 @@ class Auth extends MX_Controller {
 		$data['view']="profile";
 		$data['title']="My Profile";
 		$user_role=$this->session->userdata('role');
-		if($user_role=='sadmin'){
+
 		echo Modules::run("templates/main",$data);
-		}
-		else{
-		
-		echo Modules::run("templates/main",$data);
-		
-		}
 		
 	}
 
@@ -321,18 +315,17 @@ $res=$this->auth_mdl->changePass($postdata);
 
 if($res=='ok'){
 
-	$_SESSION['changed']=1;
+  $msg="Password updated successfully";
+  set_flash($msg);
+  $this->session->unset_userdata('changed');
+	$this->session->set_userdata('changed',1);
 
-	//echo $res;
-
-  redirect('dashboard');
+  redirect('auth/myprofile');
 }
 
-else{
-  $msg="<font color='red'>Something went wrong, change your password gain to proceed</font>";
-  Modules::run('utility/setFlash',$msg);
-   redirect('dashboard');
-
+else{;
+    set_flash($res,true);
+    redirect('auth/myprofile');
 }
 
 
@@ -345,9 +338,7 @@ $postdata=$this->input->post();
 
 $res=$this->auth_mdl->resetPass($postdata);
 
-
 echo  $res;
-
 
  }
 

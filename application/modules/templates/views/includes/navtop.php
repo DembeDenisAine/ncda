@@ -51,7 +51,7 @@
    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     
     <div class="dropdown-divider"></div>
-         <a href="#" class="dropdown-item" data-toggle="modal" data-target="#profile"><i class="fa fa-user"></i> Profile</a>  
+         <a href="<?php echo base_url(); ?>auth/myprofile" class="dropdown-item" ><i class="fa fa-user"></i> Profile</a>  
      
                <div class="dropdown-divider"></div>
           <a href="<?php echo base_url(); ?>auth/logout" class="dropdown-item"><i class="fa fa-arrow-left"></i> Logout</a>

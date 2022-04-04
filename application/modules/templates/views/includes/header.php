@@ -1,11 +1,13 @@
 
 <?php 
 $userdata=$this->session->get_userdata(); 
+
 if   (!isset($userdata['names'])){
   redirect('auth');
 }
 
 $permissions=$userdata['permissions'];
+
 
  ?>
 <!DOCTYPE html>
