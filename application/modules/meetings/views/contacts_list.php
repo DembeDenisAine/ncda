@@ -9,7 +9,7 @@
 <div class="btn-group">
 <a href="#create-contact" data-toggle="modal"
 class="btn btn-success btn-sm"><i class="fas fa-plus"></i> New Contact</a>
-<a href="<?=base_url()?>uploads/contacts_template.xlsx" data-toggle="modal"
+<a href="<?=base_url()?>uploads/contacts_template.xlsx" 
 class="btn btn-primary btn-sm"><i class="fas fa-download"></i> Download Template</a>
 <a href="#import-contacts" data-toggle="modal"
 class="btn btn-info btn-sm"><i class="fas fa-upload"></i> Import Contacts</a>
