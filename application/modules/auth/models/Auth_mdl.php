@@ -136,8 +136,8 @@ public function addUser($postdata){
 
 public function updateUser($postdata){
 
-	$distid=$postdata['district_id'];
-	$facdata=$postdata['facility_id'];
+	$distid=@$postdata['district_id'];
+	$facdata=@$postdata['facility_id'];
 	$depid=$postdata['user_id'];
 
 	//get district
@@ -155,12 +155,12 @@ public function updateUser($postdata){
 	$savedata=array(
 		"name"=>$postdata['name'],
 		"district"=>$distn,
-		"district_id"=>$postdata['district_id'],
+		"district_id"=>@$postdata['district_id'],
 		"facility_id"=>$fac_id,
 		"facility"=>$facn,
 		'email'=>$postdata['email'],
-		"department"=>$postdata['department_id'],
-		"department_id"=>$postdata['department_id'],
+		"department"=>@$postdata['department_id'],
+		"department_id"=>@$postdata['department_id'],
 		"role"=>$postdata['role']
 
 
