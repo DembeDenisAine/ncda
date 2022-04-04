@@ -19,9 +19,9 @@
     var targetValue = (data.parameter_target)?parseInt(data.parameter_target):100;
 
 
-    console.log(data.id);
-    console.log(currentValue);
-    console.log(targetValue);
+    // console.log(data.id);
+    // console.log(currentValue);
+    // console.log(targetValue);
 
         Highcharts.chart('container'+data.id, {
 
@@ -159,9 +159,8 @@
                     if($paramData):
                  ?>
 
-             <!--     
-             <h5><?=$activty->activity_name?></h5>
- -->
+
+             <!-- <h5><?=$activty->activity_name?></h5> -->
            
             <div class="row">
                     <?php 
@@ -181,7 +180,7 @@
 
                      ?>
 
-                    <div class="col-md-4 card" style="padding:40px;">
+                    <div class="col-md-4 card" style="padding:40px; margin:5px; max-width:32.33%;!important">
                     <figure class="highcharts-figure">
 
                         <!-- <p class="highcharts-description text-">
@@ -192,9 +191,7 @@
                     </div>
 
                     <script type="text/javascript">
-                        
                         renderChart('<?=json_encode($json)?>');
-
                     </script>
 
      

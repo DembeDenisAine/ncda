@@ -13,13 +13,15 @@ class Auth_mdl extends CI_Model {
 
 	
 public function loginChecker($postdata){
-	$username=$postdata['username'];
-	$password=md5($postdata['password']);
 
-	if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
+	$username = $postdata['username'];
+	$password = md5($postdata['password']);
+
+	//if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
 	 //login using username
 	
 	 $this->db->where("username",$username);
+	 $this->db->or_where("email",$username);
 	 $this->db->where("password",$password);
 	 $this->db->where("status",1);
 	 $this->db->join('user_groups','user_groups.group_id=user.role');
@@ -28,48 +30,19 @@ public function loginChecker($postdata){
  
 	 $rows=$qry->num_rows();
  
-	 if($rows!==0){
- 
-	 $person=$qry->row();
- 
- 
-	 return $person;
- 
-	}
-    }
- 
-	
-	else{
+		if($rows !== 0){
+			$person=$qry->row();
+			return $person;
+		}
+	    else{
+			return "failed";
+		}
+	 // }
+	 // else{
+	//	 return "failed";
+	 //  }
 
-
-		//login using email
-	
-		$this->db->where("email",$username);
-		$this->db->where("password",$password);
-		$this->db->where("status",1);
-		$this->db->join('user_groups','user_groups.group_id=user.role');
-	
-		$qry=$this->db->get($this->table);
-	}
-	
-		$rows=$qry->num_rows();
-	
-		if($rows!==0){
-	
-		$person=$qry->row();
-	
-	
-		return $person;
-	
-	   }
-	
-	   else{
-	
-		 return "failed";
-	 }
-	
 }
-
 
 
 public function unlock($pass){
@@ -110,7 +83,6 @@ public function getAll($start,$limit,$key=FALSE){
 	}
 	//$this->db->limit($start,$start);
 	$this->db->join('user_groups','user_groups.group_id=user.role','left');
-	$this->db->where("user_id !=","1");
 	$qry=$this->db->get($this->table);
 
 	return $qry->result();
@@ -122,7 +94,7 @@ public function count_Users($key=FALSE){
 	$this->db->where("username like '$key%'");
 	}
 
-	$this->db->where("user_id !=","1");
+
 	$qry=$this->db->get($this->table);
 	return $qry->num_rows();
 
@@ -130,9 +102,21 @@ public function count_Users($key=FALSE){
 
 
 public function addUser($postdata){
-
-	$postdata['password']=md5($this->password);
+	$distid=$postdata['district_id'];
+	$facid=$postdata['facility_id'];
 	
+	//get district
+	//$distname=$this->db->query("SELECT distinct district from ihrisdata where district_id='$distid'");
+    $distn=""; //$distname->row()->district;
+	//get facility
+	//$facname=$this->db->query("SELECT distinct facility from ihrisdata where facility_id='$facid'");
+        $facn=""; //$facname->row()->facility;
+	$postdata['password']=md5($this->password);
+	$postdata['facility']=$facn;
+	$postdata['department']=$postdata['department_id'];
+	$postdata['district']=$distn;
+
+	$postdata['status']=1;
 	$qry=$this->db->insert($this->table,$postdata);
 	$rows=$this->db->affected_rows();
 
@@ -157,15 +141,15 @@ public function updateUser($postdata){
 	$depid=$postdata['user_id'];
 
 	//get district
-	$distname=$this->db->query("SELECT distinct district from ihrisdata where district_id='$distid'");
-    $distn=$distname->row()->district;
+	//$distname=$this->db->query("SELECT distinct district from ihrisdata where district_id='$distid'");
+       $distn= ""; //$distname->row()->district;
 	//get facility
 	$facd=explode("_",$facdata);
 
         $fac_id=$facd[0];
         $facility=$facd[1]; 
-	$facname=$this->db->query("SELECT distinct facility from ihrisdata where facility_id='$fac_id'");
-    $facn=$facname->row()->facility;
+	$facname=""; //$this->db->query("SELECT distinct facility from ihrisdata where facility_id='$fac_id'");
+        $facn= ""; //$facname->row()->facility;
 
 
 	$savedata=array(
@@ -206,44 +190,44 @@ public function updateUser($postdata){
 // change password
 public function changePass($postdata){
 
-	$oldpass=md5($postdata['oldpass']);
-	$newpass=md5($postdata['newpass']);
-	$user=$this->session->get_userdata();
-	$uid=$user['user_id'];
+	$oldpass  = md5($postdata['oldpass']);
+	$newpass  = md5($postdata['newpass']);
+	$confirmnew  = md5($postdata['confirmnew']);
+	$username = $postdata['username'];
+
+    if($oldpass == $newpass)
+		return "The old password cannot be similar to the new one";
+
+    if($confirmnew !== $newpass)
+		return "The new password and the confirmation don't match,try again";
+	
+
+	$user = $this->session->get_userdata();
+	$uid  = $user['user_id'];
 
 	$this->db->select('password');
 	$this->db->where('user_id',$uid);
-	$qry=$this->db->get($this->table);
+	$qry  = $this->db->get($this->table);
 
-	$user=$qry->row();
+	$user = $qry->row();
 
-	if($user->password==$oldpass){
+	if($user->password == $oldpass){
 	// change the password
 
-	$data=array("password"=>$newpass,"isChanged"=>1);
-	$this->db->where('user_id',$uid);
-	$this->db->update($this->table,$data);
-	$rows=$this->db->affected_rows();
+		$data=array("password"=>$newpass,"isChanged"=>1,"username"=>$username);
 
-	if($rows==1){
+		$this->db->where('user_id',$uid);
+		$this->db->update($this->table,$data);
+		$rows=$this->db->affected_rows();
 
-		return "ok";
-
-
-	} else{
-
-
-
-		return "Operation failed for an unknown reason, try again";
-	}
-
-
+		if($rows==1){
+			return "ok";
+		} else{
+			return "Operation failed for an unknown reason, try again";
+		}
 
 	}
-
 	else{
-
-
 		return "The old password you provided is wrong";
 	}
 
@@ -280,6 +264,7 @@ public function updateProfile($postdata){
 public function resetPass($postdata){
 
 	$uid=$postdata['user_id'];
+
 	$password=md5($postdata['password']);
 
 	$data=array("password"=>$password,"isChanged"=>0);
@@ -357,9 +342,32 @@ public function blockUser($postdata){
 		return $groups;
 	}
 
+	public function getDepartments(){
+		$this->db->select('department,department_id');
+		$this->db->distinct('department');
+		//$qry=$this->db->get('ihrisdata');
+		$qry=$this->db->get('ihrisdata');
+
+		return $qry->result();
+	}
 
 
+	public function getDistricts(){
+		$this->db->select('district_name,id');
+		$this->db->distinct('district_name');
+		$qry=$this->db->get('ncda_districts');
 
+		return $qry->result();
+	}
+	
+
+	public function getFacilities(){
+		$this->db->select('id,facility_name');
+		$this->db->distinct('facility_name');
+		$qry=$this->db->get('ncda_facilities');
+
+		return $qry->result();
+	}
 
     public function getPermissions(){
 		$query= $this->db->get("permissions");
@@ -418,14 +426,6 @@ public function blockUser($postdata){
 
    	    return false;
    }													
-
-
-
-
-
-
-
-
 
 
 

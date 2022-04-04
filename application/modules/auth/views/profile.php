@@ -1,26 +1,59 @@
    <?php
 
-$user=$this->session->get_userdata();
-$userifo=Modules::run('auth/getuserInfo',$user['ihris_pid']);
+    $user= (Object) $this->session->get_userdata();
 
+   //print_r($user);
    ?>
 
-<div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="modalLabelSmall" aria-hidden="true">
-<div class="modal-dialog modal-sm">
-<div class="modal-content">
-
-<div class="modal-header">
-<h4 class="modal-title" id="modalLabelSmall">Personal Details</h4>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
+      <!-- /.card-header -->
+<div class="card-body">
+<form class="user_form" method="post" action="<?=base_url()?>auth/changePass" enctype="multipart/form-data">
+  <div class="row">
+      <div class="col-md-12">
 </div>
-
-<div class="modal-body">
-
-
+<div class="col-md-12" style="margin:0 auto;">
+	<span class="status"></span>
 </div>
+    <div class="col-sm-4">
+      <!-- text input -->
+      <div class="form-group">
+        <label>Name</label>
+         <h5><?=$user->names?></h5>
+      </div>
+    </div>
+  
+    <div class="col-sm-12">
+      <!-- textarea -->
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" value="<?=$user->username?>" required name="username"  autocomplete="off" class="form-control" placeholder="Username"  required/>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <!-- textarea -->
 
-</div>
-</div>
+      <div class="form-group">
+        <label>Old Password</label>
+        <input type="password" required name="oldpass"   class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label>New Password</label>
+        <input type="password" required name="newpass"   class="form-control" minlength="6" />
+      </div>
+
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" required name="confirmnew"   class="form-control" minlength="6"  />
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <button type="submit" class="btn btn-info float-right">Save Changes</button>
+    </div>
+   
+
+    </div>
+  </div>
+</form>
 </div>
