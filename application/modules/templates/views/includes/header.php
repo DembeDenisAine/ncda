@@ -48,7 +48,7 @@ $permissions=$userdata['permissions'];
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-avatar@latest/dist/avatar.css" rel="stylesheet">
  <link href="<?php echo base_url(); ?>assets/css/fullcalendar.css" rel="stylesheet">
  <link href="<?php echo base_url(); ?>assets/plugins/summernote/summernote.min.css" rel="stylesheet">
- <link href="<?php echo base_url(); ?> assets/plugins/toastr/toastr.min.css" rel="stylesheet">
+ <link href="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.css" rel="stylesheet">
  
 <!-- Bootstrap 4 -->
 <script src="<?php echo base_url(); ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -59,6 +59,7 @@ $permissions=$userdata['permissions'];
 <script src="<?php echo base_url(); ?>assets/dist/js/adminlte.min.js"></script>
 
 <script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="<?php echo base_url(); ?>assets/plugins/jquery-ui/jquery-ui.min.js"></script>
 <link href="<?php echo base_url(); ?>assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">

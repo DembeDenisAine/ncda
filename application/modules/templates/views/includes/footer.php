@@ -27,7 +27,6 @@
 
 <!-- DataTables  & Plugins -->
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 
 <script src="<?php echo base_url(); ?>assets/dist/js/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
