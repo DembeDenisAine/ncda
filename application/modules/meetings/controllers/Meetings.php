@@ -32,9 +32,94 @@ class Meetings extends MX_Controller
 
     public function store() { //save meeting
 
-        $this->meetingModel->insert();
+        $data = array(
+                     'meeting_name'        => $this->input->post('title'),
+                    'meeting_description' => $this->input->post('description'),
+                    'meeting_date'        => $this->input->post('date'),
+                    'venue'               => $this->input->post('venue'),
+                    'start_at'            => $this->input->post('start_time'),
+                    'end_at'              => $this->input->post('end_time')
+                            );
+
+        $this->meetingModel->insert($data);
         set_flash('Meeting saved successfully');
         redirect(site_url('meetings'));
+    }
+
+
+     public function importMeetings(){
+
+        $config['upload_path'] = FCPATH.'uploads/';
+        $config['allowed_types'] = 'csv|xls|xlsx';
+        $config['max_size']      = 200000;
+        $config['file_name']     ="contacts_file";
+
+        //$file_name=$config['file_name'];
+
+       $this->load->library('upload', $config);
+
+       $this->upload->initialize($config);
+
+        if ( ! $this->upload->do_upload('import_file'))
+        {
+                $alert = $this->upload->display_errors('<p>', '</p>');
+        }
+        else
+        {    
+            
+            $file_name= $this->upload->data('file_name'); 
+
+            $this->load->library('excel');
+            
+            $type = PHPExcel_IOFactory::identify('uploads/'.$file_name);
+            
+            $objReader=PHPExcel_IOFactory::createReader($type);     //For excel 2003 
+              //Set to read only
+            $objReader->setReadDataOnly(true);          
+            //Load excel file
+            $objPHPExcel=$objReader->load(strip_tags(FCPATH.'uploads/'.$file_name));    
+            
+             
+            $totalrows=$objPHPExcel->setActiveSheetIndex(0)->getHighestRow();   //Count Numbe of rows avalable in excel         
+            $objWorksheet=$objPHPExcel->setActiveSheetIndex(0);  
+             
+            $rowsnow = 0;
+             //loop from first data untill last data
+             for($i=2;$i<=$totalrows;$i++)
+              {
+
+                  $title      = $objWorksheet->getCellByColumnAndRow(0,$i)->getValue();
+                  $description= $objWorksheet->getCellByColumnAndRow(1,$i)->getValue();
+                  $date       = $this->getExcelDate($objWorksheet->getCellByColumnAndRow(2,$i)->getFormattedValue());
+                  $venue      = $objWorksheet->getCellByColumnAndRow(3,$i)->getValue();
+                  $start_time = $this->getExcelTime($objWorksheet->getCellByColumnAndRow(4,$i)->getCalculatedValue(), 'hh:mm:ss');
+                  $end_time   = $this->getExcelTime($objWorksheet->getCellByColumnAndRow(5,$i)->getCalculatedValue(), 'hh:mm:ss');
+
+                  $formated_row =  array(
+                                'meeting_name' => $title,
+                                'meeting_description' => $description,
+                                'meeting_date'        => $date,
+                                'venue'               => $venue,
+                                'start_at'            => $start_time,
+                                'end_at'              => $end_time
+                            );
+
+                $saved =  $this->meetingModel->insert($formated_row);
+
+                if($saved)
+                    $rowsnow++;
+                 
+             }
+
+             if($rowsnow>0)
+             $alert = "Data imported successfully";
+         
+           }
+          
+           unlink(FCPATH.'uploads/'.$file_name); //File Deleted After uploading
+           set_flash($alert);
+           redirect(site_url('meetings'));
+    
     }
 
 
@@ -122,58 +207,101 @@ class Meetings extends MX_Controller
         endif;
     }
 
-     public function importContacts(){
+    
+    public function importContacts(){
 
-            $config['upload_path'] = './uploads/';
-            $config['allowed_types'] = 'csv';
-            $config['max_size']     = '500';
+        $config['upload_path'] = FCPATH.'uploads/';
+        $config['allowed_types'] = 'csv|xls|xlsx';
+        $config['max_size']      = 200000;
+        $config['file_name']     ="contacts_file";
 
-            $this->load->library('upload', $config);
-            $this->upload->initialize($config);
+        //$file_name=$config['file_name'];
 
-            if(!$this->upload->do_upload('contacts')){
+       $this->load->library('upload', $config);
 
-                $error = $this->upload->display_errors('<p>', '</p>');
+       $this->upload->initialize($config);
 
-                set_flash($error,true);
-                redirect(site_url('contacts'));
-
-            }else{
-
-                $file = (Object) $this->upload->data();
-                $data = read_csv('./uploads/'.$file->file_name);
-
-
-                for($i=1; $i<count($data); $i++):
-
-                    $row = $data[$i];
-
-                    $formated_row = array(
-                        'firstname'   => $row[0],
-                        'lastname'    => $row[1],
-                        'gender'      => $row[2],
-                        'title'       => $row[3],
-                        'email'       => $row[4],
-                        'phone'       => $row[5],
-                        'mobile'      => $row[6],
-                        'address'     => $row[7]
-                    );
-
-                    $this->meetingModel->saveContact($formated_row);
-
-                 endfor;
-
-                set_flash('Participant imported successfully');
-                redirect(site_url('contacts'));
-            }
+        if ( ! $this->upload->do_upload('import_file'))
+        {
+                $alert = $this->upload->display_errors('<p>', '</p>');
+        }
+        else
+        {    
             
+            $file_name= $this->upload->data('file_name'); 
 
-     }
+            $this->load->library('excel');
+            
+            $type = PHPExcel_IOFactory::identify('uploads/'.$file_name);
+            
+            $objReader=PHPExcel_IOFactory::createReader($type);     //For excel 2003 
+              //Set to read only
+            $objReader->setReadDataOnly(true);          
+            //Load excel file
+            $objPHPExcel=$objReader->load(strip_tags(FCPATH.'uploads/'.$file_name));    
+            
+             
+            $totalrows=$objPHPExcel->setActiveSheetIndex(0)->getHighestRow();   //Count Numbe of rows avalable in excel         
+            $objWorksheet=$objPHPExcel->setActiveSheetIndex(0);  
+             
+            $rowsnow = 0;
+             //loop from first data untill last data
+             for($i=2;$i<=$totalrows;$i++)
+              {
+
+                  $firstname = $objWorksheet->getCellByColumnAndRow(0,$i)->getValue();
+                  $lastname  = $objWorksheet->getCellByColumnAndRow(1,$i)->getValue();
+                  $gender    = $objWorksheet->getCellByColumnAndRow(2,$i)->getValue();
+                  $title     = $objWorksheet->getCellByColumnAndRow(3,$i)->getValue();
+                  $email     = $objWorksheet->getCellByColumnAndRow(4,$i)->getValue();
+                  $phone     = $objWorksheet->getCellByColumnAndRow(5,$i)->getValue();
+                  $mobile    = $objWorksheet->getCellByColumnAndRow(6,$i)->getValue();
+                  $address   = $objWorksheet->getCellByColumnAndRow(7,$i)->getValue();
+
+                  $formated_row = array(
+                            'firstname'   => $firstname,
+                            'lastname'    => $lastname,
+                            'gender'      => $gender,
+                            'title'       => $title,
+                            'email'       => $email,
+                            'phone'       => $phone,
+                            'mobile'      => $mobile,
+                            'address'     => $address
+                        );
+                
+                if($this->input->post('meeting'))
+                    $formated_row['meeting'] = $this->input->post('meeting'); 
+
+                $saved =  $this->meetingModel->saveContact($formated_row);
+
+                if($saved)
+                    $rowsnow++;
+                 
+             }
+
+             if($rowsnow>0)
+             $alert = "Data imported successfully";
+         
+           }
+          
+           unlink(FCPATH.'uploads/'.$file_name); //File Deleted After uploading
+           set_flash($alert);
+           redirect(site_url('contacts'));
+    
+    }
+
 
     //save Discussion
     public function saveDiscussion(){
 
-        $this->meetingModel->saveDiscussion();
+        $data = array(
+            'meeting_id'   => $this->input->post('meeting'),
+            'item_name'    => $this->input->post('topic'),
+            'item_details' => $this->input->post('details')
+        );
+
+
+        $this->meetingModel->saveDiscussion($data);
         
         if(!empty($_POST['discussion'])):
             set_flash('Discussion updated successfully');
@@ -184,10 +312,87 @@ class Meetings extends MX_Controller
         redirect(site_url('meeting/'.$_POST['meeting']));
     }
 
+
+     public function importDiscussions(){
+
+        $config['upload_path'] = FCPATH.'uploads/';
+        $config['allowed_types'] = 'csv|xls|xlsx';
+        $config['max_size']      = 200000;
+        $config['file_name']     ="contacts_file";
+
+        //$file_name=$config['file_name'];
+
+       $this->load->library('upload', $config);
+
+       $this->upload->initialize($config);
+
+        if ( ! $this->upload->do_upload('import_file'))
+        {
+                $alert = $this->upload->display_errors('<p>', '</p>');
+        }
+        else
+        {    
+            
+            $file_name= $this->upload->data('file_name'); 
+
+            $this->load->library('excel');
+            
+            $type = PHPExcel_IOFactory::identify('uploads/'.$file_name);
+            
+            $objReader=PHPExcel_IOFactory::createReader($type);     //For excel 2003 
+              //Set to read only
+            $objReader->setReadDataOnly(true);          
+            //Load excel file
+            $objPHPExcel=$objReader->load(strip_tags(FCPATH.'uploads/'.$file_name));    
+            
+             
+            $totalrows=$objPHPExcel->setActiveSheetIndex(0)->getHighestRow();   //Count Numbe of rows avalable in excel         
+            $objWorksheet=$objPHPExcel->setActiveSheetIndex(0);  
+             
+            $rowsnow = 0;
+             //loop from first data untill last data
+             for($i=2;$i<=$totalrows;$i++)
+              {
+
+                  $topic    = $objWorksheet->getCellByColumnAndRow(0,$i)->getValue();
+                  $details  = $objWorksheet->getCellByColumnAndRow(1,$i)->getValue();
+
+                  $formated_row = array(
+                            'meeting_id'   => $this->input->post('meeting'),
+                            'item_name'    => $topic,
+                            'item_details' => $details
+                        );
+
+                $saved =  $this->meetingModel->saveDiscussion($formated_row);
+
+                if($saved)
+                    $rowsnow++;
+                 
+             }
+
+             if($rowsnow>0)
+             $alert = "Data imported successfully";
+         
+           }
+          
+           unlink(FCPATH.'uploads/'.$file_name); //File Deleted After uploading
+           set_flash($alert);
+           redirect(site_url('meeting/'.$_POST['meeting']));
+    
+    }
+
     //save Discussion
     public function saveAction(){
-        
-        $this->meetingModel->saveActionPoint();
+
+        $data = array(
+              'meeting_id'   => $this->input->post('meeting'),
+              'action_point' => $this->input->post('action'),
+          );
+
+        if(!empty( $this->input->post('action_id')))
+              $data ['id'] = $this->input->post('action_id');
+  
+        $this->meetingModel->saveActionPoint($data);
         
         if(!empty($_POST['action_id'])):
             set_flash('Action Point updated successfully');
@@ -196,6 +401,72 @@ class Meetings extends MX_Controller
         endif;
         
         redirect(site_url('meeting/'.$_POST['meeting']));
+    }
+
+     public function importActions(){
+
+        $config['upload_path'] = FCPATH.'uploads/';
+        $config['allowed_types'] = 'csv|xls|xlsx';
+        $config['max_size']      = 200000;
+        $config['file_name']     ="contacts_file";
+
+        //$file_name=$config['file_name'];
+
+       $this->load->library('upload', $config);
+
+       $this->upload->initialize($config);
+
+        if ( ! $this->upload->do_upload('import_file'))
+        {
+                $alert = $this->upload->display_errors('<p>', '</p>');
+        }
+        else
+        {    
+            
+            $file_name= $this->upload->data('file_name'); 
+
+            $this->load->library('excel');
+            
+            $type = PHPExcel_IOFactory::identify('uploads/'.$file_name);
+            
+            $objReader=PHPExcel_IOFactory::createReader($type);     //For excel 2003 
+              //Set to read only
+            $objReader->setReadDataOnly(true);          
+            //Load excel file
+            $objPHPExcel=$objReader->load(strip_tags(FCPATH.'uploads/'.$file_name));    
+            
+             
+            $totalrows=$objPHPExcel->setActiveSheetIndex(0)->getHighestRow();   //Count Numbe of rows avalable in excel         
+            $objWorksheet=$objPHPExcel->setActiveSheetIndex(0);  
+             
+            $rowsnow = 0;
+             //loop from first data untill last data
+             for($i=2;$i<=$totalrows;$i++)
+              {
+
+                  $action    = $objWorksheet->getCellByColumnAndRow(0,$i)->getValue();
+
+                  $formated_row =  array(
+                      'meeting_id'   => $this->input->post('meeting'),
+                      'action_point' => $action
+                  );
+
+                $saved =  $this->meetingModel->saveActionPoint($formated_row);
+
+                if($saved)
+                    $rowsnow++;
+                 
+             }
+
+             if($rowsnow>0)
+             $alert = "Data imported successfully";
+         
+           }
+          
+           unlink(FCPATH.'uploads/'.$file_name); //File Deleted After uploading
+           set_flash($alert);
+           redirect(site_url('meeting/'.$_POST['meeting']));
+    
     }
 
      /**
@@ -224,6 +495,15 @@ class Meetings extends MX_Controller
             //sharing with other module
             $this->load->view('meetings_calendar', $data);
         endif;
+    }
+
+    function getExcelDate($input,$format="Y-m-d"){
+       $date = PHPExcel_Shared_Date::ExcelToPHP($input);
+        return date($format,$date);
+    }
+
+    function getExcelTime($input,$format="hh:mm:ss"){
+       return PHPExcel_Style_NumberFormat::toFormattedString($input,$format);
     }
 }
 

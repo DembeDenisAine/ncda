@@ -1,12 +1,32 @@
 
-<div class="btn-group">
+<div class="row">
+    <div class="btn-group float-right">
 
-<a href="<?=base_url()?>meetings"
-class="btn btn-info btn-sm pull-right"><i class="fa fa-arrow-left"></i> Back to Meetings </a>
+    <a href="<?=base_url()?>meetings"
+    class="btn btn-info btn-sm"><i class="fa fa-arrow-left"></i> Back to Meetings </a>
 
-<a href="<?=base_url()?>meeting/<?=$meeting->id?>?pdf=1"
-class="btn btn-warning btn-sm pull-right"><i class="fa fa-file"></i> Export PDF</a>
+    <a href="#import-contacts" data-toggle="modal"
+    class="btn btn-primary btn-sm"><i class="fa fa-users"></i> Import Participants</a>
+
+    <a href="#import-actions" data-toggle="modal"
+    class="btn btn-default btn-sm"><i class="fa fa-upload"></i> Import Action Points</a>
+
+    <a href="#import-discussions" data-toggle="modal"
+    class="btn btn-dark btn-sm"><i class="fa fa-upload"></i> Import Discussions</a>
+
+    <a href="<?=base_url()?>meeting/<?=$meeting->id?>?pdf=1"
+    class="btn btn-warning btn-sm"><i class="fa fa-file"></i> Export Meeting to PDF</a>
+
+    </div>
 </div>
+
+<?php 
+
+    require_once('import_contacts_modal.php');
+    require_once('import_actions_modal.php');
+    require_once('import_discussions_modal.php');
+
+ ?>
 
 <hr>
 

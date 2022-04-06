@@ -194,5 +194,9 @@ class Districts_model extends CI_Model{
         return $query;
     }
 
+    public function insert_district_batch($data){
+        return $this->db->insert_batch('ncda_districts',$data);
+    }
+
 }
 

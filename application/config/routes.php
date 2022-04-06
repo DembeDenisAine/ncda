@@ -65,6 +65,7 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['edit-branch-team/(:num)/(:num)'] = 'districts/edit_team/$1/$2';
 	$route['update-branch-team'] = 'districts/update_district_team';
 	$route['delete-branch-staff/(:num)/(:num)'] = 'districts/delete_district_team/$1/$2';
+	$route['import-districts'] = 'districts/excel_upload';
 	
 //PROJECTS
 	$route['project-list(/:num)?'] = 'projects/index';
@@ -128,6 +129,9 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['meetings-calendar'] = 'meetings/meetingCalendar';
 	$route['update-meeting']    = 'meetings/update';
 	$route['import-contacts']   = 'meetings/importContacts';
+	$route['import-actions']    = 'meetings/importActions';
+	$route['import-discussions']= 'meetings/importDiscussions';
+	$route['import-meetings']	= 'meetings/importMeetings';
 
 //BRANCH ACTIVITIES
 	$route['branch-acts'] 		= 'bactivities/index';

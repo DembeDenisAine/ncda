@@ -1,8 +1,17 @@
-<?php  require_once('add_district_modal.php'); ?>
+<?php  
+  require_once('add_district_modal.php'); 
+  require_once('upload_districts_modal.php'); 
+  ?>
 
-<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">Add a Branch  <i class="fas fa-plus"></i></button>
 
-<form class="form-inline" method="POST" action="<?=site_url('district-list')?>">
+    <div class="btn-group">
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
+          <i class="fas fa-plus"></i> Add a Branch</button>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#upload"><i class="fas fa-upload"></i> Import from Excel</button>
+        <a class="btn btn-primary" href="<?=base_url()?>uploads/Districts_template.xlsx"><i class="fas fa-download"></i> Download Excel Template</a>
+    </div>
+
+<form class="form-inline mt-3" method="POST" action="<?=site_url('district-list')?>">
   <div class="form-group">
     <div  class="form-control-plaintext" >Search <small>(e.g branch name, region)</small></div>
   </div>

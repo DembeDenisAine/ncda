@@ -1,9 +1,17 @@
 
 <?php require_once('add_meeting_modal.php'); ?>
 
+<div class="btn-group">
 <a href="#create-meeting" data-toggle="modal"
 class="btn btn-success btn-sm pull-right"><i class="fas fa-plus"></i> Create  Meeting</a>
+
+<a href="#import-meetings" data-toggle="modal"
+class="btn btn-info btn-sm pull-right"><i class="fas fa-file-excel"></i> Import Meetings from Excel</a>
+
+</div>
 <hr>
+
+<?php   require('import_meetings_modal.php'); ?>
 
 <table class="table table-bordered">
     <thead>
