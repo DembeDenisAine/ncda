@@ -16,7 +16,21 @@ class Partners_model extends CI_Model{
     }
 
     public function get($limit=null, $start=null){
-        $query = $this->db->query("SELECT * FROM $this->table LIMIT $start,$limit")->result();
+
+        $search = $this->input->post('search');
+
+
+        if(!empty($search)){
+            $this->db->like('partner_name',$search);
+            $this->db->or_like('partner_description',$search);
+            $this->db->or_like('address',$search);
+            $this->db->or_like('contact_person',$search);
+            $this->db->or_like('phone_no',$search);
+        }
+
+        $this->db->limit($limit,$start);
+        $query = $this->db->get($this->table)->result();
+
         return (object)$query;
     }
 

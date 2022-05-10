@@ -1,9 +1,22 @@
 <?php include('add_partner_modal.php'); ?>
 
 <div class="row mb-4">
+ <div class="btn-group">
 <a href="#add_partner"  data-toggle="modal"
 class="btn btn-success btn-sm pull-right">Add Donor <i class="fas fa-plus"></i></a>
+<a href="<?=base_url()?>partners?pdf=1"  class="btn btn-warning btn-sm pull-right">Export Pdf <i class="fas fa-download"></i></a>
 </div>
+</div>
+
+<form class="mt-2" method="POST" action="<?=site_url('partners')?>">
+    
+    <label for="hint">Search <small>(e.g seach by name,phone)</small></label>
+    <div class="input-group">
+            <input value="<?=$search?>" id="hint" type="text" placeholder="Search here..." class="form-control" name="search">
+        <button  class="input-group-addon btn bg-primary flat"  type="submit" class="btn btn-primary">Search</button>
+    </div>
+    
+</form>
 
 <hr>
 <table class="table table-bordered table-responsive-lg">

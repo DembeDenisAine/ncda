@@ -3,6 +3,17 @@
 class Districts_model extends CI_Model{
 
     public function get($limit=null, $start=null){
+
+
+        $search = $this->input->post('search');
+
+
+        if(!empty($search)){
+            $this->db->like('district_name',$search);
+            $this->db->or_like('region',$search);
+        }
+            
+
         $this->db->limit($limit,$start);
         $query = $this->db->get("ncda_districts")->result();
         return $query;

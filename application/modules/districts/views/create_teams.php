@@ -5,6 +5,7 @@
                     <label>Facilty</label>
                     <select type="text" class="form-control select2" name="facility_id" style="width: 100%;">
                         <option value="Central Region">Select---</option>
+                        <option value="">None</option>
                         <?php  foreach($facilities as $fty):?>
                             <option value="<?php echo $fty['id']?>"><?php echo $fty['facility_name']; ?></option>
                         <?php endforeach; ?>

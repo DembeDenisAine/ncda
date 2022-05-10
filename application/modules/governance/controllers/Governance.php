@@ -15,7 +15,14 @@ class Governance extends MX_Controller
 
         $page  = ($this->uri->segment(2))? $this->uri->segment(2) : 0;
         $route = 'board-list';
-        $perPage = 10;
+        $perPage = 15;
+
+         if(!empty($_GET['pdf'])){
+            $page = 0;
+            $perPage = 5000;
+        }
+
+        $data['search'] = $this->input->post('search');
 
         $count = $this->governanceModel->count_members();
         $data['members'] = $this->governanceModel->get($perPage, $page);
@@ -25,7 +32,17 @@ class Governance extends MX_Controller
         $data['title']="Board Members";
         $data['view']="board_members";
 
-        render_view($data);
+
+         if(!empty($_GET['pdf'])):
+
+            $data['view'] = 'members_pdf';
+            $html = $this->load->view("templates/pdf",$data,true);
+            $filename = "board_".time().".pdf";
+            make_pdf($html,$filename,"D",true);
+            
+        else:
+            render_view($data);
+        endif;
     }
     
     

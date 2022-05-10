@@ -929,4 +929,12 @@ ul.message-list-menu li .message-info {
 	right: 240px;
 }
 }
+
+
+.flexed{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
  

@@ -18,6 +18,8 @@ class Districts extends MX_Controller
         $route = 'district-list';
         $perPage = 10;
 
+        $data['search'] = $this->input->post('search');
+
         $count = $this->districtModel->district_count();
         $data['districts'] = $this->districtModel->get($perPage, $page);
 

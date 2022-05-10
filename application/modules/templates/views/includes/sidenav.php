@@ -58,7 +58,7 @@
             <li class="nav-item">
                     <a href="<?=site_url('board-list')?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Board Members</p>
+                        <p>Board of Directors</p>
                     </a>
                 </li>
              <?php endif; ?>
@@ -81,7 +81,7 @@
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
-                    Membership
+                    Stakeholders
                     <i class="fas fa-angle-left right"></i>
                     <span class="badge badge-info right"></span>
                 </p>
@@ -172,7 +172,7 @@
             <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-map"></i>
                 <p>
-                    Locations/Territory
+                    Locations/Site
                     <i class="fas fa-angle-left right"></i>
                 </p>
             </a>

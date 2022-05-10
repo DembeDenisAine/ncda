@@ -16,7 +16,22 @@ class Subscribers_model extends CI_Model{
     }
 
     public function get($limit=null, $start=null){
-        $query = $this->db->query("SELECT * FROM $this->table LIMIT $start,$limit")->result();
+
+        $search = $this->input->post('search');
+
+
+        if(!empty($search)){
+            $this->db->like('subscriber_name',$search);
+            $this->db->or_like('subscriber_description',$search);
+            $this->db->or_like('address',$search);
+            $this->db->or_like('contact_person',$search);
+            $this->db->or_like('phone_no',$search);
+        }
+
+
+        $this->db->limit($limit,$start);
+        $query = $this->db->get($this->table)->result();
+        
         return (object)$query;
     }
 
@@ -36,7 +51,9 @@ class Subscribers_model extends CI_Model{
             'phone_no' => $this->input->post('phone'),
             'since'    => $this->input->post('start_year'),
             'is_active'=> $this->input->post('status'),
-            'contact_person' => $this->input->post('contact_person')
+            'contact_person' => $this->input->post('contact_person'),
+            'contact_person_email'=>$this->input->post('contact_person_email'),
+            'contact_person_phone'=>$this->input->post('contact_person_phone')
         );
 
         return $this->db->insert($this->table, $data);
@@ -52,7 +69,9 @@ class Subscribers_model extends CI_Model{
             'phone_no' => $this->input->post('phone'),
             'since'    => $this->input->post('start_year'),
             'is_active'=> $this->input->post('status'),
-            'contact_person' => $this->input->post('contact_person')
+            'contact_person' => $this->input->post('contact_person'),
+            'contact_person_email'=>$this->input->post('contact_person_email'),
+            'contact_person_phone'=>$this->input->post('contact_person_phone')
         );
 
         $this->db->where('id',$this->input->post('subscriber_id'));

@@ -44,12 +44,28 @@
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group">
                 <label>Contact Person</label>
                 <input placeholder=" e.g John Jones" class="form-control"  name="contact_person" style="width: 100%;" value="<?=(@$subscriber)?$subscriber->contact_person:''?>" />
             </div>
         </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Contact Person's Phone</label>
+                <input placeholder=" e.g 0706896770" class="form-control"  name="contact_person_phone" style="width: 100%;" value="<?=(@$subscriber)?$subscriber->contact_person_phone:''?>" />
+            </div>
+        </div>
+
+
+         <div class="col-md-4">
+            <div class="form-group">
+                <label>Contact  Person's Email</label>
+                <input placeholder=" e.g jonhn@gmail.com" class="form-control"  name="contact_person_email" style="width: 100%;" value="<?=(@$subscriber)?$subscriber->contact_person_email:''?>" />
+            </div>
+        </div>
+
 
 
         <div class="col-md-12">

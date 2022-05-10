@@ -40,12 +40,12 @@
                     <?php foreach($paramData as $param):
 
                         $value = param_data($param->id);
-                        $meetsTarget = ($value &&  (!empty($value->target_value)) && is_numeric($value->target_value) && $value->parameter_value>=$param->target_value)?true:false;
+                        
                      ?>
                         <tr style="background-color:<?=(($rows%2)>0)?'#eee':''?>"> 
                             <td> <?=$param->parameter_name?></td>
                             <td> <?=$param->target_value?></td>
-                            <td  style="background-color:<?=($meetsTarget)?'#3bc92e':'#f79797'?>"> <?=($value)?$value->parameter_value:'N/A'?></td>
+                            <td  style="background-color:<?=color_code($value,$param)?>"> <?=($value)?$value->parameter_value:'N/A'?></td>
                         </tr>
                     <?php endforeach; ?>
 

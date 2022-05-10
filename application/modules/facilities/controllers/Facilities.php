@@ -75,6 +75,8 @@ class Facilities extends MX_Controller
 
     public function facility_teams($id){ //get facility teams
 
+        $data['search'] = $this->input->post('search');
+
         $data['teams'] = $this->FM->teams_by_facility($id);
         $fac = $this->FM->facility_by_id($id);
         $data['facility'] = $fac->facility_name;
@@ -86,7 +88,17 @@ class Facilities extends MX_Controller
         $data['title']="Branch Teams";
 
         $data['view']="teams";
-        render_view($data);
+
+         if(!empty($_GET['pdf'])):
+
+            $data['view'] = 'pdf_teams';
+            $html = $this->load->view("templates/pdf",$data,true);
+            $filename = "teams_".time().".pdf";
+            make_pdf($html,$filename,"D",true);
+            
+        else:
+            render_view($data);
+        endif;
     }
 
     public function create_team($id = null){ //get facility teams

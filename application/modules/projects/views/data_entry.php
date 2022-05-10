@@ -37,7 +37,7 @@
 <?php if(count($objectives)>0){ ?>
 
     <form class="row" method="post" id="entryForm">
-        <div class="form-group col-lg-5 col-md-12 col-sm-12">
+        <div class="form-group col-lg-4 col-md-12 col-sm-12">
             <label>Objective</label>
             <select class="form-control select2" name="objective_id" onchange="$('#entryForm').submit()">
                 <option>Choose Objective</option>
@@ -50,7 +50,7 @@
         </div>
 
 
-        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+        <div class="form-group col-lg-4 col-md-12 col-sm-12">
             <label>Facility</label>
             <select class="form-control select2 required" name="facility" onchange="$('#entryForm').submit()">
                 <option value=""> Choose Facility</option>
@@ -64,6 +64,10 @@
                     endif; 
                 ?>
             </select>
+        </div>
+        <div class="form-group col-lg-4 col-md-12 col-sm-12">
+            <label>Collection Date</label>
+            <input type="date" class="form-control  datepicker"  name="date">
         </div>
     </form>
     
@@ -96,7 +100,7 @@
                 <tr>
                     <th></th>
                     <th>Target</th>
-                    <th>Score</th>
+                    <th>Status</th>
                 </tr>
             </thead> 
             <?php
@@ -130,7 +134,7 @@
 
        <div class="text-center">
             <h1 class="text-muted"><i class="fa fa-info-circle"></i></h1>
-            <h5 class="text-danger">No Parameters set up under <?=$activity->activity_name?></h5>
+            <h5 class="text-danger">No Indicators set up under <?=$activity->activity_name?></h5>
         </div> 
         <br>
 

@@ -74,6 +74,28 @@ if (!function_exists('param_data')) {
     }
 }
 
+if(!function_exists('color_code')){
+
+    function color_code($value, $param){
+
+        $score = ($value && $param)?(($param->target_value>0)? ((($value->parameter_value)/$param->target_value)*100):(($value->parameter_value/100)*100)):0;
+
+        $color = "";
+
+        if($score >=0 &&  $score <31){
+            $color = "red";
+        } 
+        else if($score >30 &&  $score <69){
+            $color = "orange";
+        }
+        else if($score >69){
+            $color = "green";
+        }
+
+       return $color;
+    }
+}
+
 
 
 

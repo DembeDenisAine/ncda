@@ -10,7 +10,16 @@ class Governance_model extends CI_Model{
     }
 
     public function get($limit=null, $start=null){
-        
+
+        $search = $this->input->post('search');
+
+
+        if(!empty($search)){
+            $this->db->like('firstname',$search);
+            $this->db->or_like('lastname',$search);
+            $this->db->or_like('phone_no',$search);
+        }
+            
         $this->db->limit($limit,$start);
         $query = $this->db->get($this->table)->result();
         return $query;

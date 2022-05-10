@@ -90,13 +90,21 @@ class Facilities_model extends CI_Model{
 
     public function teams_by_facility($id)
     {
-        $query = $this->db->query("SELECT `bt`.*, `nf`.`facility_name` as `facility_name` 
-                                  FROM (`ncda_branch_teams` `bt`) 
-                                  JOIN `ncda_facilities` `nf` 
-                                  ON `nf`.`id`=`bt`.`facility_id`
-                                  WHERE `bt`.`facility_id`='$id'")
-                          ->result_array();
-        return (object)$query;
+
+        $search = $this->input->post('search');
+
+
+        if(!empty($search)){
+            $this->db->like('ncda_branch_teams.first_name',$search);
+            $this->db->or_like('ncda_branch_teams.last_name',$search);
+            $this->db->or_like('ncda_branch_teams.contact',$search);
+        }
+
+        $this->db->join("ncda_facilities", "ncda_facilities.id = ncda_branch_teams.facility_id");
+        $this->db->where("ncda_branch_teams.facility_id",$id);
+        $query = $this->db->get("ncda_branch_teams");
+
+        return (object)$query->result_array();
 
     }
 

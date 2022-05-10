@@ -17,14 +17,31 @@ class Partners extends MX_Controller
         $page    = ($this->uri->segment(3))?$this->uri->segment(3):0;
         $perPage = 12;
 
+         if(!empty($_GET['pdf'])){
+            $page = 0;
+            $perPage = 5000;
+        }
+
+        $data['search'] = $this->input->post('search');
+
         $data['partners'] = $this->partnersModel->get($perPage,$page);
         $data['links']    = paginate('partners/',$count,$perPage,3);
         $data['page']   = $page;
         $data['module'] = $this->module;
-        $data['title']  = "Our Donors";
+        $data['title']  = "Donors";
         $data['view']   = "partners";
 
-        render_view($data);
+        if(!empty($_GET['pdf'])):
+
+            $data['view'] = 'pdf_partners';
+            $html = $this->load->view("templates/pdf",$data,true);
+            $filename = "donors_".time().".pdf";
+            make_pdf($html,$filename,"D",true);
+            
+        else:
+            $data['view']   = "partners";
+            render_view($data);
+        endif;
     }
     
     public function save_partner() { //save objective

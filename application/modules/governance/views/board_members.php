@@ -2,16 +2,19 @@
 
 <div class="row">
 
-<div class="col-lg-2">
+<div class="col-lg-4 flexed">
+     <div class="btn-group">
     <a class="btn btn-default" data-toggle="modal" data-target="#add_member">Add a Member  <i class="fas fa-plus"></i></a>
+    <a href="<?=base_url()?>board-list?pdf=1"  class="btn btn-warning btn-sm pull-right">Export Pdf <i class="fas fa-download"></i></a>
+   </div>
 </div>
-<div class="col-lg-8">
+<div class="col-lg-6">
     <form class="mt-2" method="POST" action="<?=site_url('board-list')?>">
     
     <label for="hint">Search <small>(e.g seach by name,role,phone)</small></label>
     <div class="input-group">
-            <input id="hint" type="text" placeholder="Search here..." class="form-control" name="search">
-        <button  class="input-group-addon btn bg-primary flat"  type="submit" class="btn btn-primary">Submit</button>
+            <input value="<?=$search?>" id="hint" type="text" placeholder="Search here..." class="form-control" name="search">
+        <button  class="input-group-addon btn bg-primary flat"  type="submit" class="btn btn-primary">Search</button>
     </div>
     
     </form>
