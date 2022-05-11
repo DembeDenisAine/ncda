@@ -76,9 +76,19 @@ class Facilities_model extends CI_Model{
     
     public function facilities_by_district($id)
     {
-        $query = $this->db->query("SELECT * FROM ncda_facilities WHERE district_id='$id'")
-                          ->result_array();
-        return (object)$query;
+         $search = $this->input->post('search');
+
+
+        if(!empty($search)){
+            $this->db->like('district_name',$search);
+            $this->db->or_like('region',$search);
+        }
+            
+
+         $this->db->where("district_id",$id);
+         $query =$this->db->get('ncda_facilities')->result_array();
+         
+         return (object)$query;
 
     }
 

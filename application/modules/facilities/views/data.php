@@ -1,7 +1,28 @@
 
 
-    <button type="button" class="btn btn-default" data-toggle="modal" 
-    data-target="#modal-facility">Add Facility <i class="fas fa-plus"></i></button>
+<div class="row">
+    <div class="btn-group">
+        <button type="button" class="btn btn-default" data-toggle="modal" 
+        data-target="#modal-facility">Add Facility <i class="fas fa-plus"></i></button>
+         <a href="<?=base_url()?>facility-list?pdf=1"  class="btn btn-warning btn-sm pull-right">Export Pdf <i class="fas fa-download"></i></a>
+     </div> 
+</div>
+<br>
+
+<?php if(!empty($district)): ?>
+    <h4><?=$district?> Facilities</h4>
+<?php endif; ?>
+
+ <form class="mt-2" method="POST" action="<?=site_url('facility-list')?>">
+                                    
+    <label for="hint">Search</label>
+    <div class="input-group">
+            <input value="<?=$search?>" id="hint" type="text" placeholder="Search here..." class="form-control" name="search">
+        <button  class="input-group-addon btn bg-primary flat"  type="submit" class="btn btn-primary">Search</button>
+    </div>
+                                    
+ </form>
+
 <hr>
 
 

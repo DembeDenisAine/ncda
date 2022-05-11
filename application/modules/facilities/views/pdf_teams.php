@@ -1,6 +1,6 @@
 
     
- <h2><b>Branch: <?php echo $district;?></b>, <?php echo $facility;?> Facility Team Members </h2>  
+ <h2><b><?php echo $district;?></b>, <?php echo $facility;?> Team Members </h2>  
 
 <table border="1">
     <thead>

@@ -2,7 +2,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-8">
-                    <h6><b>Branch: <?php echo $district;?></b>,<?php echo $facility;?> Facility Teams </h6>
+                    <h6><b><?php echo $district;?></b>,<?php echo $facility;?>  Team Members </h6>
                 </div>
                 <div class="col-sm-4">
                     <ol class="breadcrumb float-sm-right">

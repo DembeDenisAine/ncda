@@ -32,10 +32,21 @@ class Facilities extends MX_Controller
         }
         
         $data['module'] = $this->module;
-        $data['title']  = (($data['district'])?"Branch ":""). "Facilities ".@$data['district']['district_name'];
+        $data['search'] = $this->input->post('search');
+        $data['title']  =  "Facilities ".((!empty($data['district']))?@$data['district']['district_name']:'');
         $data['view']   = "data";
 
-        render_view($data);
+         if(!empty($_GET['pdf'])):
+
+            $data['view'] = 'pdf_facilities';
+            $html = $this->load->view("templates/pdf",$data,true);
+            $filename = "facilities_".time().".pdf";
+            make_pdf($html,$filename,"D",true);
+            
+        else:
+            render_view($data);
+        endif;
+
     }
     
     //save facility
