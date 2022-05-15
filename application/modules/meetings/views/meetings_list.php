@@ -21,6 +21,7 @@ class="btn btn-info btn-sm pull-right"><i class="fas fa-file-excel"></i> Import 
             <th>Meeting Date</th>
             <th>Start Time</th>
             <th>End Time</th>
+            <th>Type</th>
             <th style="width: 150px">Action</th>
         </tr>
     </thead>
@@ -38,6 +39,7 @@ class="btn btn-info btn-sm pull-right"><i class="fas fa-file-excel"></i> Import 
                 <td><?php echo $row->meeting_date; ?></td>
                 <td><?php echo $row->start_at; ?></td>
                 <td><?php echo $row->end_at; ?></td>
+                <td><?php echo $row->meeting_type; ?></td>
                 <td> 
 
                 <div class="dropdown">
