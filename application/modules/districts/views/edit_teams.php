@@ -57,6 +57,11 @@
                     <label>Contact</label>
                     <input type="text" class="form-control" name="contact" value="<?php echo $staff->contact; ?>" style="width: 100%;">
                 </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email" value="<?php echo $staff->email; ?>" style="width: 100%;">
+                </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">

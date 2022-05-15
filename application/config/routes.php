@@ -62,7 +62,7 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['teams-district/(:num)(/:num)?'] = 'districts/get_teams/$1';
 	$route['create-branch-team/(:num)'] = 'districts/create_team/$1';
 	$route['save-branch-team'] = 'districts/save_branch_team';
-	$route['edit-branch-team/(:num)/(:num)'] = 'districts/edit_team/$1/$2';
+	$route['edit-branch-team/(:num)(/:num)?'] = 'districts/edit_team/$1/$2';
 	$route['update-branch-team'] = 'districts/update_district_team';
 	$route['delete-branch-staff/(:num)/(:num)'] = 'districts/delete_district_team/$1/$2';
 	$route['import-districts'] = 'districts/excel_upload';
@@ -176,6 +176,9 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['save-subscriber'] = 'subscribers/save_subscriber';
 	$route['update-subscriber'] = 'subscribers/update_subscriber';
 	$route['save-membership'] = 'subscribers/save_membership';
+
+
+	$route['about'] = 'governance/about';
 	
 
 	

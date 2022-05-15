@@ -66,6 +66,19 @@ class Governance_model extends CI_Model{
         return $this->db->update($this->table,$data);
     }
 
+    public function update_about(){
+
+         $data = $this->input->post();
+
+         $updates = array(
+            "about"  =>$data['about'],
+            "mission"=>$data['mission'],
+            "vision" =>$data['vision']
+         );
+
+         $this->db->update('settings',$updates);
+
+    }
 
 }
 

@@ -45,6 +45,12 @@
                     <label>Contact</label>
                     <input type="text" class="form-control" name="contact" style="width: 100%;">
                 </div>
+
+                 <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email" style="width: 100%;">
+                </div>
+
                 <div class="form-group">
                     <label>Notes</label>
                     <textarea type="text" class="form-control" rows="3" name="notes" style="width: 100%;"> </textarea>

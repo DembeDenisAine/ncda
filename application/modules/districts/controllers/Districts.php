@@ -105,15 +105,15 @@ class Districts extends MX_Controller
     }
 
     //edit district team - form
-    public function edit_team($id, $district_id){ 
+    public function edit_team($id, $district_id=null){ 
 
         $data['staff'] = $this->districtModel->single_district_staff($id);
         $district = $this->districtModel->find($district_id);
-        $data['district'] = $district->district_name;
+        $data['district'] = ($district)?$district->district_name:"";
         $data['district_id']=$district_id;
         $data['facilities'] = $this->districtModel->get_facilities($district_id);
         $data['module']=$this->module;
-        $data['title']="Edit Branch Teams - ".$district->district_name.": Branch";
+        $data['title']="Edit Branch Team";
 
         $data['view']="edit_teams";
         render_view($data);

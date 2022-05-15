@@ -96,7 +96,7 @@ class Districts_model extends CI_Model{
     {  
         $query = $this->db->query("SELECT `bt`.*, `nf`.`facility_name` as `facility_name` 
                         FROM (`ncda_branch_teams` `bt`) 
-                        JOIN `ncda_facilities` `nf` 
+                        LEFT JOIN `ncda_facilities` `nf` 
                         ON `nf`.`id`=`bt`.`facility_id`
                         WHERE `bt`.`id`=$id")->row();
         return (object)$query;

@@ -60,6 +60,22 @@ class Governance extends MX_Controller
         set_flash('Member updated successfully');
         return redirect(site_url('board-list'));
     }
+
+
+     //save mission and vision
+    public function about() { 
+
+        if(isset($_POST['mission'])):
+            $this->governanceModel->update_about();
+            set_flash('Inforamtion Update successfully');
+            redirect(site_url('summary'));
+        else:
+            $data['module']=$this->module;
+            $data['title']="Organizational Info";
+            $data['view']="about_form";
+            render_view($data);
+        endif;
+    }
  
    
 

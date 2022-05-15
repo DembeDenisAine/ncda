@@ -38,7 +38,8 @@ class Meetings extends MX_Controller
                     'meeting_date'        => $this->input->post('date'),
                     'venue'               => $this->input->post('venue'),
                     'start_at'            => $this->input->post('start_time'),
-                    'end_at'              => $this->input->post('end_time')
+                    'end_at'              => $this->input->post('end_time'),
+                    'meeting_type'        => $this->input->post('type')
                             );
 
         $this->meetingModel->insert($data);
@@ -101,7 +102,8 @@ class Meetings extends MX_Controller
                                 'meeting_date'        => $date,
                                 'venue'               => $venue,
                                 'start_at'            => $start_time,
-                                'end_at'              => $end_time
+                                'end_at'              => $end_time,
+                                'meeting_type'        => $this->input->post('type')
                             );
 
                 $saved =  $this->meetingModel->insert($formated_row);

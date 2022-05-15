@@ -64,7 +64,7 @@
                                         <td><?php echo $tm['contact']; ?></td>
                                         <td><?php echo $tm['title']; ?></td>
                                         <td>
-                                            <a href="<?php echo base_url('edit-district/'.$tm['id']);?>" 
+                                            <a href="<?php echo base_url('edit-branch-team/'.$tm['id']);?>" 
                                             class="btn btn-primary btn-sm">Edit</a> 
                                             <a href="<?php echo base_url('delete-district/'.$tm['id']);?>" 
                                             class="btn btn-danger btn-sm">Delete</a>

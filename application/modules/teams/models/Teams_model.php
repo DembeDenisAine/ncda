@@ -86,6 +86,7 @@ class Teams_model extends CI_Model{
             'gender' => $this->input->post('gender'),
             'dob' => $this->input->post('dob'),
             'contact' => $this->input->post('contact'),
+            'email' => $this->input->post('email'),
             'notes' => $this->input->post('notes'),
         );
         $this->db->insert('ncda_branch_teams', $data);
@@ -109,6 +110,7 @@ class Teams_model extends CI_Model{
             'gender' => $this->input->post('gender'),
             'dob' => $this->input->post('dob'),
             'contact' => $this->input->post('contact'),
+            'email' => $this->input->post('email')
             'notes' => $this->input->post('notes'),
         );
 
