@@ -66,9 +66,9 @@ class Governance extends MX_Controller
     public function about() { 
 
         if(isset($_POST['mission'])):
-            $this->governanceModel->update_about();
-            set_flash('Inforamtion Update successfully');
-            redirect(site_url('summary'));
+            $result = $this->governanceModel->update_about();
+            set_flash('Inforamtion Updated successfully');
+            redirect(site_url('about'));
         else:
             $data['module']=$this->module;
             $data['title']="Organizational Info";

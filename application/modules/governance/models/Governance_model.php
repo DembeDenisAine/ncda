@@ -70,13 +70,16 @@ class Governance_model extends CI_Model{
 
          $data = $this->input->post();
 
+
          $updates = array(
             "about"  =>$data['about'],
             "mission"=>$data['mission'],
             "vision" =>$data['vision']
          );
 
-         $this->db->update('settings',$updates);
+
+         $this->db->where('id',1);
+         return $this->db->update('setting',$updates);
 
     }
 

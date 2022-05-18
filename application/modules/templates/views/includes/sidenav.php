@@ -70,6 +70,14 @@
                     </a>
                 </li>
                 <?php endif; ?>
+             <?php if(in_array('18', $permissions)): ?>
+            <li class="nav-item">
+                <a href="<?=site_url('about')?>" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>About UNCDA</p>
+                </a>
+            </li>
+            <?php endif; ?>
             </ul>
         </li>
         
