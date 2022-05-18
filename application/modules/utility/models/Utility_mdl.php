@@ -28,8 +28,22 @@ class Utility_mdl extends CI_Model {
         	return $sliders;
         }
 
+        public function cookUpdates(){
 
+                if (!is_dir('uploads/attachments'))
+                    mkdir('./uploads/attachments', 0777, TRUE);
 
+                $this->db->query("ALTER table `ncda_meetings` ADD COLUMN  meeting_type VARCHAR(20)");
+                $this->db->query("ALTER table `setting` ADD COLUMN  about TEXT");
+                $this->db->query("ALTER table `setting` ADD COLUMN  vision TEXT");
+                $this->db->query("ALTER table `setting` ADD COLUMN  mission TEXT");
+                $this->db->query("ALTER table `ncda_subscribers` ADD COLUMN  contact_person_email VARCHAR(100)");
+                $this->db->query("ALTER table `ncda_subscribers` ADD COLUMN  contact_person_phone VARCHAR(100)");
+                $this->db->query("ALTER table `ncda_partners` ADD COLUMN  contact_person VARCHAR(100)");
+                $this->db->query("CREATE TABLE attachments ( description TEXT,attachment TEXT)");
 
-
+                if (!is_dir('uploads/attachments'))
+                    mkdir('./uploads/attachments', 0777, TRUE);
+    }
+    
 }

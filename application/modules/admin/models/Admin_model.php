@@ -296,4 +296,44 @@ class Admin_model extends CI_Model {
    
     }
 
+     public function attach_document()
+    {           
+              
+                $desc = $this->input->post('desc');
+
+                $target = "uploads/attachments/";
+                $config['upload_path'] = './'.$target;
+                $config['allowed_types'] = 'xls|docx|pdf|jpg|png|csv';
+                $config['file_name'] = 'uncda_document' . mt_rand(0,999).time();
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('file')) {
+
+                    $data = array('upload_data' => $this->upload->data());
+
+                    if (isset($data['upload_data']['full_path'])) {
+
+                    $item = array(
+                            'description' => $desc,
+                            'attachment' => $target.$data['upload_data']['file_name']
+                            );
+
+                    $this->db->insert('attachments', $item);
+
+                        return true;
+                    }
+                    return false;
+                } 
+                else {
+                    return false;
+                }
+            
+        }
+
+
+    public function get_attachments(){
+        return $this->db->get('attachments')->result();
+    }
+
+
 }

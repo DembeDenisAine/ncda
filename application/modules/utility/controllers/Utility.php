@@ -48,6 +48,13 @@ class Utility extends MX_Controller {
 		 return "<center><img src='".base_url()."assets/images/busy.gif' width='60px'/><center>";
 	}
 
+	public function update(){
+
+		$this->utility_mdl->cookUpdates();
+		$this->session->set_flashdata('success', 'Updated successfully');
+     	redirect('dashboard');
+	}
+
 
 
 }

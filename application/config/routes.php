@@ -179,7 +179,9 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 	$route['about'] = 'governance/about';
-	
+	$route['docs']	= "admin/attachments";
+	$route['attachment_docs']	= "admin/upload_attachments";
+	$route['update']	= "utility/update";
 
 	
 

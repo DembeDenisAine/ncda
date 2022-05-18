@@ -255,6 +255,17 @@
             </a>
         </li>
         <?php endif; ?>
+
+         <?php if(in_array('39', $permissions)): ?>
+        <li class="nav-item">
+            <a href="<?=base_url()?>docs" class="nav-link">
+                <i class="nav-icon far fa-file-alt"></i>
+                <p>
+                    Documents
+                </p>
+            </a>
+        </li>
+        <?php endif; ?>
        <!--  <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-archive"></i>

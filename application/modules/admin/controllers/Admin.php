@@ -91,7 +91,33 @@ function addGroup(){
 }
 
 
+public function attachments()
+{
+    $data['title']     = "Company Documents";
+    $data['documents'] = $this->admin_model->get_attachments();
+    $data['module'] ='admin';
+    $data['view'] ='documents';
+    render_view($data);
+}
 
+
+//upload downlodables
+public function upload_attachments(){
+
+    $res = $this->admin_model->attach_document();
+
+    if($res){
+
+    $this->session->set_flashdata('success', 'Document saved successfully');
+     redirect($this->agent->referrer());
+
+    }else{
+
+    $this->session->set_flashdata('danger', 'File upload Failed,try again');
+     redirect($this->agent->referrer());
+    }
+
+}
 
 
 
