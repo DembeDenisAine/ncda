@@ -4,7 +4,7 @@ Can be customised to fit any small&medium organsisation to fit their M&E approac
 
 This solution provides better insights compared to other traditional business and socio-economic research institutions.
 
-
+For any inquiries, Feel Free to contact us: 
 Agaba Andrew
 #agabaandre@gmail.com, 
 Nkuke Henry
