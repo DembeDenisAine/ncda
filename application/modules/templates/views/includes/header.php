@@ -377,6 +377,10 @@ body::-webkit-scrollbar-thumb
       margin:-50px 0 0 -50px; 
   }
 
+  .hidden{
+    display: none;
+  }
+
 </style>
 
 </head>

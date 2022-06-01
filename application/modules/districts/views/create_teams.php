@@ -1,10 +1,9 @@
-<form method="post" action="<?= site_url('save-branch-team') ?>">
+
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Facilty</label>
                     <select type="text" class="form-control select2" name="facility_id" style="width: 100%;">
-                        <option value="Central Region">Select---</option>
                         <option value="">None</option>
                         <?php  foreach($facilities as $fty):?>
                             <option value="<?php echo $fty['id']?>"><?php echo $fty['facility_name']; ?></option>
@@ -17,18 +16,18 @@
                     <label>First Name</label>
                     <input type="text" class="form-control" name="first_name" style="width: 100%;">
                     <input type="hidden" 
-                            class="form-control" name="district_id" value="<?php echo $district_id; ?>">
+                            class="form-control" placeholder="First Name" name="district_id" value="<?php echo $district_id; ?>">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Last Name</label>
-                    <input type="text" class="form-control" name="last_name" style="width: 100%;">
+                    <input type="text" placeholder="Last Name" class="form-control" name="last_name" style="width: 100%;">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Title</label>
+                    <label>Designation</label>
                     <input type="text" class="form-control" name="title" style="width: 100%;">
                 </div>
             </div>
@@ -45,21 +44,25 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Date of Birth</label>
-                    <input type="date" class="form-control" name="dob" style="width: 100%;">
+                    <input type="date" class="form-control" placeholder="Date of birth" name="dob" style="width: 100%;">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Contact</label>
-                    <input type="text" class="form-control" name="contact" style="width: 100%;">
+                    <input type="text" class="form-control" placeholder="Contact Number" name="contact" style="width: 100%;">
                 </div>
             </div>
             <div class="col-md-6">
+            <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" placeholder="Email" name="email" value="<?php echo $staff->email; ?>" style="width: 100%;">
+                </div>
+            </div>
+            <div class="col-md-12">
                 <div class="form-group">
                     <label>Notes</label>
-                    <textarea type="text" class="form-control" rows="5" name="notes" style="width: 100%;"></textarea>
+                    <textarea type="text" class="form-control" rows="3" name="notes" style="width: 100%;"></textarea>
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-info btn-xs pull-right">Save <i class="fas fa-plus"></i></button>
-</form>

@@ -1,6 +1,6 @@
 <div class="modal fade" id="add_partner">
     <div class="modal-dialog modal-lg ">
-       <form method="post" action="<?= site_url('save-partner') ?>">
+       <form method="post" action="<?= site_url('save-partner') ?>" enctype="multipart/form-data">
           
         <div class="modal-content">
                      

@@ -1,5 +1,6 @@
 
  <!-- Main Sidebar Container -->
+
  
  
  <aside class="main-sidebar sidebar-dark-primary elevation-4" >
@@ -266,23 +267,7 @@
             </a>
         </li>
         <?php endif; ?>
-       <!--  <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-archive"></i>
-                <p>
-                    Extras
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Clinic Types</p>
-                    </a>
-                </li>
-            </ul>
-        </li> -->
+      
         <?php if(in_array('39', $permissions)): ?>
         <li class="nav-item">
             <a href="#" class="nav-link">
@@ -314,9 +299,20 @@
                 </li>
             </ul>
         </li>
+
+        <?php if(in_array('39', $permissions)): ?>
+        <li class="nav-item">
+            <a href="<?=base_url()?>uploads/system_guide.pdf" target="_blank" class="nav-link">
+                <i class="nav-icon far fa-file"></i>
+                <p>
+                    System Guide
+                </p>
+            </a>
+        </li>
+        <?php endif; ?>
         <?php endif; ?>
            <!--user perm 14-->
-          <?php if(in_array('35', $permissions)): ?>
+          <?php if(in_array(35, $permissions)): ?>
           <li class="nav-item has-treeview ">
             <a href="#" class="nav-link">
               <i class="fa fa-cog"></i>
@@ -329,7 +325,7 @@
                 
                 <li class="nav-item">
 
-                <?php if(in_array('15', $permissions)): ?>
+                <?php if(in_array(15, $permissions)): ?>
                 <a href="<?php echo base_url();?>auth/users" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage User</p>

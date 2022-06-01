@@ -50,13 +50,10 @@
 $(window).load(function() {
 
 $('#sstatus').delay(2000).fadeOut(2000); // will first fade out the loading animation
+
 $('#ppreloader').delay(1000).fadeOut(1000); // will fade out the white div
 
-})
-
-</script>
-
-<script>
+});
 
 $(document).ready(function() {
 
@@ -138,24 +135,16 @@ if(isPassChanged!=1){
  $('#changepass').modal('show');
 }
 
-var url="<?php echo $this->uri->segment(2); ?>";
-
-if(url=="tabular" || url=="actuals"||  url=="fetch_report"|| url=="actualsreport"|| url=="tabular#" || url=="timesheet" || url=="attfrom_report"){
-
-$('body').addClass('sidebar-collapse');
-$('#sidebar').toggleClass('active');
-
-};
-
 
 $('.select2').select2()
 $('.select2dist').select2({ dropdownParent: "#switch" });
 
 $('.select2bs4').select2({
     theme: 'bootstrap4'
-})
+});
 
 });
+
 
 </script>
  

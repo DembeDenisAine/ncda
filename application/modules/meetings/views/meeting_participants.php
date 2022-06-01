@@ -15,10 +15,18 @@
             <th>Address</th>
             <th>Telephone</th>
             <th>Mobile</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        <?php  if($participants): $i=0;  foreach($participants as $row): $i++; ?>
+        <?php 
+         if($participants): 
+            $i=0;  
+            foreach($participants as $row):
+             $i++; 
+
+              require 'edit_contact_modal.php';
+             ?>
             <tr>
                 <td><?php echo $i; ?></td>
                 <td><?php echo $row->title." ".$row->first_name." ".$row->last_name; ?></td>
@@ -26,6 +34,7 @@
                 <td><?php echo $row->address; ?></td>
                 <td><?php echo $row->phone; ?></td>
                 <td><?php echo $row->mobile; ?></td>
+                <td> <a href="#contact<?=$row->id?>" data-toggle="modal"><i class="fa fa-expand option-icon"></i> Details</a></td>
                 
             </tr>
         <?php endforeach; endif; ?>

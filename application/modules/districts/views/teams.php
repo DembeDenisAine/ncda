@@ -1,5 +1,9 @@
 
-<a href="<?=site_url('create-branch-team')?>/<?php echo $district_id; ?>" class="btn btn-info btn-xs pull-right">Adda Member <i class="fas fa-plus"></i></a>
+<?php include 'add_teams_modal.php'; ?>
+<div class="btn-group">
+  <a href="#addteam_member" data-toggle="modal" class="btn btn-info">Adda Member <i class="fas fa-plus"></i></a>
+  <a href="<?=site_url('teams-district')."/".@$district_id."?pdf=1"?>"  class="btn btn-warning">Export to PDF <i class="fas fa-file"></i></a>
+</div>
 <hr>
 <table class="table table-bordered">
     <thead>
@@ -7,7 +11,7 @@
             <th width="5%">#</th>
             <th>Name</th>
             <th>Gender</th>
-            <th>Title</th>
+            <th>Designation</th>
             <th>Contact</th>
             <th>Facility</th>
             <th width="15%">Action</th>
@@ -16,7 +20,14 @@
     <tbody>
 
         <?php if($teams): ?>
-        <?php $i=0; foreach($teams as $tm): $i++; ?>
+        <?php 
+        $i=0; 
+        foreach($teams as $tm): 
+
+            require('edit_teams_modal.php');
+
+            $i++; 
+        ?>
         <tr>
             <td><?php echo $i; ?></td>
             <td><?php echo $tm['first_name']." ".$tm['last_name']; ?></td>
@@ -34,7 +45,7 @@
                     </button>
                     <ul class="dropdown-menu options-dropdown" style="padding: 10px;">
                         <li>
-                            <a href="<?php echo base_url('edit-branch-team/'.$tm['id'].'/'.$tm['district_id']);?>" 
+                            <a href="#edit-branch-team<?php echo $tm['id'];?>" data-toggle="modal" 
                         class="btn btn-primary btn-xs">Edit</a>
                         </li>
                         <li>

@@ -175,6 +175,8 @@ class Meetings extends MX_Controller
         $page    = ($this->uri->segment(2))? $this->uri->segment(2) : 0;
         $perPage = 15;
 
+        $data['search'] = $this->input->post('search');
+
         $data['page']      = $page;
         $data['contacts']  = $this->meetingModel->getContacts($perPage,$page);
         $data['links']     = paginate('contacts',$count,$perPage,2);
@@ -205,6 +207,22 @@ class Meetings extends MX_Controller
             redirect(site_url('contacts'));
         else:
             set_flash('Participant saved successfully');
+          redirect(site_url('meeting/'.$_POST['meeting']));
+        endif;
+    }
+
+//save Contact/Meeting Particpant
+    public function updateContact(){
+
+        $data = $this->input->post();
+        
+        $this->meetingModel->saveContact($data);
+        
+        if(empty($_POST['meeting'])):
+            set_flash('Contact updated successfully');
+            redirect(site_url('contacts'));
+        else:
+            set_flash('Participant updated successfully');
           redirect(site_url('meeting/'.$_POST['meeting']));
         endif;
     }
@@ -259,6 +277,7 @@ class Meetings extends MX_Controller
                   $phone     = $objWorksheet->getCellByColumnAndRow(5,$i)->getValue();
                   $mobile    = $objWorksheet->getCellByColumnAndRow(6,$i)->getValue();
                   $address   = $objWorksheet->getCellByColumnAndRow(7,$i)->getValue();
+                  $designation  = $objWorksheet->getCellByColumnAndRow(8,$i)->getValue();
 
                   $formated_row = array(
                             'firstname'   => $firstname,
@@ -268,7 +287,8 @@ class Meetings extends MX_Controller
                             'email'       => $email,
                             'phone'       => $phone,
                             'mobile'      => $mobile,
-                            'address'     => $address
+                            'address'     => $address,
+                            'designation' => $designation
                         );
                 
                 if($this->input->post('meeting'))

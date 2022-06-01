@@ -91,6 +91,11 @@ class Districts extends MX_Controller
         $route = 'teams-district/'.$id;
         $perPage = 3;
 
+        if(!empty($_GET['pdf'])){
+            $page = 0;
+            $perPage = 5000;
+        }
+
         $data['teams'] = $this->districtModel->district_teams($id, $perPage, $page);
         $data['links'] = paginate($route, $count, $perPage, 3);
 
@@ -98,10 +103,18 @@ class Districts extends MX_Controller
         $data['district'] = $this->districtModel->find($id);
         $data['district_id']=$id;
         $data['module']=$this->module;
-        $data['title']="Branch Teams";
+        $data['title']="Branch Teams, ".$data['district']->district_name."District";
 
-        $data['view']="teams";
-        render_view($data);
+        if(!empty($_GET['pdf'])):
+
+            $data['view'] = 'pdf_teams';
+            $html = $this->load->view("templates/pdf",$data,true);
+            $filename = "district_teams_".time().".pdf";
+            make_pdf($html,$filename,"D",true);
+        else:
+            $data['view']="teams";
+            render_view($data);
+        endif;
     }
 
     //edit district team - form

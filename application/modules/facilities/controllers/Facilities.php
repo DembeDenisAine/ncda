@@ -94,6 +94,7 @@ class Facilities extends MX_Controller
         $data['district'] = $fac->district_name;
         $data['district_id'] = $fac->district_id;
         $data['facility_id'] = $fac->id;
+        $data['facilities']  = $this->FM->facilities_by_district($fac->district_id);
 
         $data['module']=$this->module;
         $data['title']="Branch Teams";

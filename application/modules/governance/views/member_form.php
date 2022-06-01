@@ -68,6 +68,29 @@
             </div>
         </div>
 
-        
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Description</label>
+                <textarea type="text" class="form-control" rows="3" name="description" style="width: 100%;"></textarea>
+            </div>
+        </div>
 
+        <div class="col-md-8">
+            <div class="form-group">
+                <label>Photo</label>
+                <br>
+                <input type="file"  name="photo" class="photo" >
+                
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+
+
+                <?php if(@$member->photo): ?>
+                    <img class="img img-thumbnail preview" width="200px" src="<?=base_url()?>uploads/images/<?=@$member->photo?>">
+                <?php endif; ?>
+
+            </div>
+        </div>
     </div>

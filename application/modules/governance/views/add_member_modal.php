@@ -1,6 +1,6 @@
 <div class="modal fade" id="add_member">
     <div class="modal-dialog modal-lg ">
-       <form method="post" action="<?= site_url('save-member') ?>">
+       <form method="post" action="<?= site_url('save-member') ?>" enctype="multipart/form-data">
           
         <div class="modal-content">
                      

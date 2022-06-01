@@ -42,6 +42,7 @@ class Partners_model extends CI_Model{
 
     public function save()
     {    
+       
         $data = array(
             'partner_name' => $this->input->post('name'),
             'partner_description' => $this->input->post('desc'),

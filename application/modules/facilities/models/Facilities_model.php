@@ -98,6 +98,12 @@ class Facilities_model extends CI_Model{
         return $query->result_array();
     }
 
+     public function get_all_facilities(){
+
+        $query = $this->db->get("ncda_facilities");
+        return $query->result_array();
+    }
+
     public function teams_by_facility($id)
     {
 

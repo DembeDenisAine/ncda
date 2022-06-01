@@ -1,6 +1,6 @@
 <div class="modal fade" id="edit_member<?=$member->id?>">
     <div class="modal-dialog modal-lg ">
-       <form method="post" action="<?= site_url('update-member') ?>">
+       <form method="post" action="<?= site_url('update-member') ?>" enctype="multipart/form-data">
           
         <div class="modal-content">
                      

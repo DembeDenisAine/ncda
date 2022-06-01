@@ -53,12 +53,24 @@ class Meetings_model extends CI_Model{
     public function getAttendants($id){
         $this->db->order_by('ncda_meeting_participants.id','desc');
         $this->db->join('ncda_contact_catalog',
-        'ncda_contact_catalog.id = ncda_meeting_participants.contact_id');
+            'ncda_contact_catalog.id = ncda_meeting_participants.contact_id');
         return $this->db->get_where('ncda_meeting_participants', array('meeting_id' => $id))->result();
     }
 
     //contacts
     public function getContacts($perPage,$page){
+        
+        $search = $this->input->post('search');
+       
+        if(!empty($search)):
+            $this->db->like('first_name',$search);
+            $this->db->or_like('last_name',$search);
+            $this->db->or_like('designation',$search);
+            $this->db->or_like('phone',$search);
+            $this->db->or_like('mobile',$search);
+            $this->db->or_like('email',$search);
+        endif;
+
         $this->db->order_by('id','desc');
         $this->db->limit($perPage,$page);  
         return $this->db->get('ncda_contact_catalog')->result();
@@ -66,7 +78,19 @@ class Meetings_model extends CI_Model{
 
     //contacts
     public function countContacts(){
-        return $this->db->count_all('ncda_contact_catalog');
+
+         $search = $this->input->post('search');
+
+        if(!empty($search)):
+            $this->db->like('first_name',$search);
+            $this->db->or_like('last_name',$search);
+            $this->db->or_like('designation',$search);
+            $this->db->or_like('phone',$search);
+            $this->db->or_like('mobile',$search);
+            $this->db->or_like('email',$search);
+        endif;
+
+        return count($this->db->get('ncda_contact_catalog')->result());
     }
 
     //meeting impacts
@@ -92,7 +116,7 @@ class Meetings_model extends CI_Model{
     {   
         $user_id = 1; 
 
-        $data = array(
+        $insert_data = array(
             'first_name'  => $data['firstname'],
             'last_name'   => $data['lastname'],
             'gender'      => $data['gender'],
@@ -101,23 +125,29 @@ class Meetings_model extends CI_Model{
             'email'       => $data['email'],
             'phone'       => $data['phone'],
             'mobile'      => $data['mobile'],
-            'address'     => $data['address']
+            'address'     => $data['address'],
+            'designation' => $data['designation']
         );
 
          //for Updates
          if(!empty( $data['contact']))
            $data ['id'] = $data['contact'];
 
-        $inserted = $this->db->replace('ncda_contact_catalog', $data);
+        $inserted = $this->db->replace('ncda_contact_catalog', $insert_data);
 
-        if(!empty( $data['meeting'])):
+        if(!empty($data['meeting'])):
+
             $meeting_attendant = array('contact_id'  => $this->db->insert_id(),
                              'meeting_id'  => $data['meeting']);
+
             $this->db->insert('ncda_meeting_participants',$meeting_attendant);
         endif;
 
         return $inserted;
     }
+
+
+
 
     //saves a Discussion
     public function saveDiscussion($data)

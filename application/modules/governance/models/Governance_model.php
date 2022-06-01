@@ -39,7 +39,41 @@ class Governance_model extends CI_Model{
             'to_year'    => $this->input->post('to_year'),
             'subscriber_id' => $this->input->post('subscriber_id')
         );
-        return $this->db->insert($this->table, $data);
+
+
+    if(!empty($_FILES['photo']['tmp_name'])){
+
+
+      $config['upload_path']   = './uploads/images/'; 
+
+      $config['allowed_types'] = 'gif|jpg|png'; 
+
+      $config['max_size']      = 3070;
+      $config['file_name']      = time();
+
+      $this->load->library('upload', $config);
+
+    
+        if ( ! $this->upload->do_upload('photo')) {
+
+             $error = $this->upload->display_errors(); 
+             echo strip_tags($error);
+
+          }else { 
+
+             $file_info = $this->upload->data();
+
+             $photofile = $file_info['file_name'];
+
+             $path = $config['upload_path'].$photofile;
+
+             $data['photo'] = $photofile;
+
+          } 
+
+      }
+
+      return $this->db->insert($this->table, $data);
     }
 
 
@@ -49,8 +83,9 @@ class Governance_model extends CI_Model{
         return $query;
     }
 
-    public function update() 
-        { $data = array(
+    public function update() { 
+
+            $data = array(
             'title'     => $this->input->post('title'),
             'firstname'=> $this->input->post('fname'),
             'lastname' => $this->input->post('lname'),
@@ -61,6 +96,38 @@ class Governance_model extends CI_Model{
             'to_year'    => $this->input->post('to_year'),
             'subscriber_id' => $this->input->post('subscriber_id')
         );
+
+    if(!empty($_FILES['photo']['tmp_name'])){
+
+
+      $config['upload_path']   = './uploads/images/'; 
+
+      $config['allowed_types'] = 'gif|jpg|png'; 
+
+      $config['max_size']      = 3070;
+      $config['file_name']      = time();
+
+      $this->load->library('upload', $config);
+
+    
+        if ( ! $this->upload->do_upload('photo')) {
+
+             $error = $this->upload->display_errors(); 
+             echo strip_tags($error);
+
+          }else { 
+
+             $file_info = $this->upload->data();
+
+             $photofile = $file_info['file_name'];
+
+             $path = $config['upload_path'].$photofile;
+
+             $data['photo'] = $photofile;
+
+          } 
+
+      }
 
         $this->db->where('id',$this->input->post('id'));
         return $this->db->update($this->table,$data);
